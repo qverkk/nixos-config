@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../optional/nvidia.nix
     ];
 
   # Bootloader.
@@ -96,11 +97,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.enable = true;
-
-  hardware.nvidia.package = config.boot.kernelPackages.nvidia_x11;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
