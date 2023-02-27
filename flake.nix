@@ -3,8 +3,13 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-22.11";
-    home-manager.url = "github:nix-community/home-manager/release-22.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-22.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
   outputs = { nixpkgs, home-manager, ... }: 
@@ -33,10 +38,7 @@
     nixosConfigurations = {
       nixos = lib.nixosSystem {
 	inherit system;
-
-	modules = [
-          ./configuration.nix
-	];
+	modules = [ ./configuration.nix ];
       };
     };
   };
