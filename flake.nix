@@ -10,7 +10,7 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/v0.22.0beta";
   };
 
   outputs = { nixpkgs, home-manager, ... }: 
