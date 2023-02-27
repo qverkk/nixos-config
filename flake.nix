@@ -21,7 +21,7 @@
     homeManagerConfigurations = {
       qverkk = home-manager.lib.homeManagerConfiguration {
         inherit system pkgs;
-	username = qverkk;
+	username = "qverkk";
 	homeDirectory = "/home/qverkk";
 	configuration = {
           imports = [
