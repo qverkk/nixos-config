@@ -41,8 +41,6 @@
       nixos = lib.nixosSystem {
 	inherit system;
 	modules = [
-	  hyprland.nixosModules.default
-	  {programs.hyprland.enable = true;}
 	  ./hosts/nixos
 	];
       };
