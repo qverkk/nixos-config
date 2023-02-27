@@ -11,9 +11,10 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     hyprland.url = "github:hyprwm/Hyprland/v0.22.0beta";
+    hyprwm-contrib.url = "github:hyprwm/contrib";
   };
 
-  outputs = { nixpkgs, home-manager, ... }: 
+  outputs = { nixpkgs, home-manager, hyprland, ... }: 
   let
     system = "x86_64-linux";
 
@@ -39,7 +40,11 @@
     nixosConfigurations = {
       nixos = lib.nixosSystem {
 	inherit system;
-	modules = [ ./hosts/nixos ];
+	modules = [
+	  hyprland.nixosModules.default
+	  {programs.hyprland.enable = true;}
+	  ./hosts/nixos
+	];
       };
     };
   };
