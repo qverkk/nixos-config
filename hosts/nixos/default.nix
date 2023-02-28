@@ -3,12 +3,22 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+    swayConfig = pkgs.writeText "greetd-sway-config" ''
+    # `-l` activates layer-shell mode. Notice that `swaymsg exit` will run after gtkgreet.
+    exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -c sway; swaymsg exit"
+    bindsym Mod4+shift+e exec swaynag \
+      -t warning \
+      -m 'What do you want to do?' \
+      -b 'Poweroff' 'systemctl poweroff' \
+      -b 'Reboot' 'systemctl reboot'
+  '';
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../optional/nvidia.nix
+      #../../optional/nvidia.nix
     ];
 
   # Bootloader.
@@ -50,10 +60,20 @@
     xkbVariant = "";
   };
 
-  # sddm
-  services.xserver.enable = true;
-  #services.xserver.displayManager.defaultSession = "plasmawayland";
-  services.xserver.displayManager.sddm.enable = true;
+  # greetd
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
+      };
+    };
+  };
+
+  environment.etc."greetd/environments".text = ''
+    sway
+    bash
+  '';
 
   # Configure console keymap
   console.keyMap = "pl2";
@@ -65,6 +85,7 @@
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
+  security.polkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
