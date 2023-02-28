@@ -14,7 +14,7 @@
     hyprwm-contrib.url = "github:hyprwm/contrib";
   };
 
-  outputs = { nixpkgs, home-manager, hyprland, ... }: 
+  outputs = { nixpkgs, home-manager, ... }: 
   let
     system = "x86_64-linux";
 
@@ -25,16 +25,11 @@
 
     lib = nixpkgs.lib;
   in {
-    homeManagerConfigurations = {
+    homeConfigurations = {
       qverkk = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
 	username = "qverkk";
 	homeDirectory = "/home/qverkk";
-	configuration = {
-          imports = [
-            
-	  ];
-	};
+	modules = [ ./home/nixos.nix ];
       };
     };
     nixosConfigurations = {
