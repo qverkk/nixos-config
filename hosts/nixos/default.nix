@@ -50,6 +50,11 @@
     xkbVariant = "";
   };
 
+  # sddm
+  services.xserver.enable = true;
+  #services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.xserver.displayManager.sddm.enable = true;
+
   # Configure console keymap
   console.keyMap = "pl2";
 
