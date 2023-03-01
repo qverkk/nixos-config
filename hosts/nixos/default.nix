@@ -60,10 +60,13 @@ in
     xkbVariant = "";
   };
 
+  # sway
+  programs.sway.enable = true;
+
   # greetd
   services.greetd = {
     enable = true;
-    settings = {
+    settings = rec {
       default_session = {
         command = "${pkgs.sway}/bin/sway --config ${swayConfig}";
       };

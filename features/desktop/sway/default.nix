@@ -6,9 +6,6 @@
     config = rec {
       modifier = "Mod4";
       terminal = "konsole"; 
-      startup = [
-        {command = "konsole";}
-      ];
     };
   };
 }
