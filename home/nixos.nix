@@ -5,6 +5,7 @@
     ../features/desktop/sway
 
     ../optional/kitty.nix
+    ../optional/font.nix
   ];
   
   # Let home manager install and makage itself
