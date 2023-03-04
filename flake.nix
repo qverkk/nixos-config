@@ -20,11 +20,13 @@
       config = { allowUnfree = true; };
     };
 
+    system = "x86_64-linux";
+
     lib = nixpkgs.lib;
     in {
       homeConfigurations = {
         qverkk = home-manager.lib.homeManagerConfiguration {
-	  pkgs = nixpkgs.legacyPackages.x86_64-linux;
+	pkgs = nixpkgs.legacyPackages.${system};
           modules = [ ./home/nixos.nix ];
         };
       };

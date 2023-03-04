@@ -3,6 +3,8 @@
 {
   imports = [
     ../features/desktop/sway
+
+    ../optional/kitty.nix
   ];
   
   # Let home manager install and makage itself
