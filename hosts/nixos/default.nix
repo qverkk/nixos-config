@@ -86,8 +86,6 @@ in
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      kate
-    #  thunderbird
     ];
   };
 
@@ -101,8 +99,6 @@ in
     git
     fd
     ripgrep
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
   ];
 
   nix = {
@@ -138,5 +134,7 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
+  
+  security.pam.services = { swaylock = { }; };
 
 }

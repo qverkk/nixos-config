@@ -19,11 +19,10 @@ in
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     hardware.nvidia.powerManagement.enable = false;
     hardware.opengl.enable = true;
+    hardware.opengl.driSupport = true;
 
     services.xserver = {
       videoDrivers = [ "nvidia" ];
     };
   };
-
-  #hardware.nvidia.package = config.boot.kernelPackages.nvidia_x11;
 }
