@@ -6,7 +6,7 @@
     extraOptions = [ "--unsupported-gpu" ];
     config = rec {
       modifier = "Mod4";
-      terminal = "konsole"; 
+      terminal = "kitty"; 
     };
   };
   
