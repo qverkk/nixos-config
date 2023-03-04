@@ -6,6 +6,7 @@
 
     ../optional/kitty.nix
     ../optional/font.nix
+    ../optional/nushell
   ];
   
   # Let home manager install and makage itself
