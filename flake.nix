@@ -2,7 +2,7 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-22.11";
@@ -16,29 +16,24 @@
 
   outputs = { nixpkgs, home-manager, ... }: 
   let
-    system = "x86_64-linux";
-
     pkgs = import nixpkgs {
-      inherit system;
       config = { allowUnfree = true; };
     };
 
     lib = nixpkgs.lib;
-  in {
-    homeConfigurations = {
-      qverkk = home-manager.lib.homeManagerConfiguration {
-	username = "qverkk";
-	homeDirectory = "/home/qverkk";
-	modules = [ ./home/nixos.nix ];
+    in {
+      homeConfigurations = {
+        qverkk = home-manager.lib.homeManagerConfiguration {
+	  pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [ ./home/nixos.nix ];
+        };
       };
-    };
-    nixosConfigurations = {
-      nixos = lib.nixosSystem {
-	inherit system;
-	modules = [
-	  ./hosts/nixos
-	];
+      nixosConfigurations = {
+        nixos = lib.nixosSystem {
+          modules = [
+            ./hosts/nixos
+          ];
+        };
       };
-    };
   };
 }
