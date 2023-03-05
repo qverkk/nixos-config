@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ../features/desktop/sway
+    #../features/desktop/sway
+    ../features/desktop/hyprland
 
     ../optional/home-manager/kitty.nix
     ../optional/home-manager/font.nix

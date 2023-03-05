@@ -14,8 +14,10 @@
     hyprwm-contrib.url = "github:hyprwm/contrib";
   };
 
-  outputs = { nixpkgs, home-manager, ... }: 
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
   let
+    inherit (self) outputs;
+
     pkgs = import nixpkgs {
       config = { allowUnfree = true; };
     };
@@ -26,7 +28,8 @@
     in {
       homeConfigurations = {
         qverkk = home-manager.lib.homeManagerConfiguration {
-	pkgs = nixpkgs.legacyPackages.${system};
+	        pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home/nixos.nix ];
         };
       };
