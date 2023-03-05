@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ../../../optional/home-manager/kanshi.nix
+  ];
   wayland.windowManager.sway = {
     enable = true;
     extraOptions = [ "--unsupported-gpu" ];

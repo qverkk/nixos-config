@@ -8,7 +8,6 @@
     ../optional/home-manager/kitty.nix
     ../optional/home-manager/font.nix
     ../optional/home-manager/nushell
-    ../optional/home-manager/kanshi.nix
   ];
   
   # Let home manager install and makage itself
