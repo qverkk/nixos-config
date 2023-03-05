@@ -11,7 +11,7 @@
     ../optional/home-manager/font.nix
     ../optional/home-manager/nushell
   ];
-  
+
   # Let home manager install and makage itself
   programs.home-manager.enable = true;
 

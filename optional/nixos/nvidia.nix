@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 let
-  extraEnv = { 
+  extraEnv = {
     WLR_NO_HARDWARE_CURSORS = "1";
     XWAYLAND_NO_GLAMOR = "1";
-#    WLR_RENDERER = "vulkan";
+    #    WLR_RENDERER = "vulkan";
   };
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
@@ -16,7 +16,7 @@ let
 in
 {
 
-  config = { 
+  config = {
     environment.variables = extraEnv;
     environment.sessionVariables = extraEnv;
 
@@ -35,12 +35,12 @@ in
     hardware.opengl.extraPackages = with pkgs; [
       vaapiVdpau
     ];
-    
+
     hardware.nvidia.prime = {
       offload.enable = true;
-      
+
       intelBusId = "PCI:0:2:0";
-      
+
       nvidiaBusId = "PCI:1:0:0";
     };
 

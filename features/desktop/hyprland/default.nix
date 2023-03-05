@@ -7,16 +7,16 @@
 
   #programs.hyprland.enable = true;
   wayland.windowManager.hyprland.enable = true;
-    
+
   home.packages = with pkgs; [
-        wofi
+    wofi
   ];
 
-  wayland.windowManager.hyprland.extraConfig = 
+  wayland.windowManager.hyprland.extraConfig =
     (import ./monitors.nix {
       inherit lib;
       inherit (config) monitors;
-    }) + 
-    (import ./config.nix {})
-    ;
+    }) +
+    (import ./config.nix { })
+  ;
 }

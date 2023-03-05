@@ -14,21 +14,22 @@
     hyprwm-contrib.url = "github:hyprwm/contrib";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
-  let
-    inherit (self) outputs;
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      inherit (self) outputs;
 
-    pkgs = import nixpkgs {
-      config = { allowUnfree = true; };
-    };
+      pkgs = import nixpkgs {
+        config = { allowUnfree = true; };
+      };
 
-    system = "x86_64-linux";
+      system = "x86_64-linux";
 
-    lib = nixpkgs.lib;
-    in {
+      lib = nixpkgs.lib;
+    in
+    {
       homeConfigurations = {
         qverkk = home-manager.lib.homeManagerConfiguration {
-	        pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home/nixos.nix ];
         };
@@ -40,5 +41,5 @@
           ];
         };
       };
-  };
+    };
 }
