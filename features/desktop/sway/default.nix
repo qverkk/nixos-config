@@ -5,6 +5,7 @@
     enable = true;
     extraOptions = [ "--unsupported-gpu" ];
     wrapperFeatures.gtk = true;
+    systemdIntegration = true;
     config = rec {
       modifier = "Mod4";
       terminal = "kitty"; 
