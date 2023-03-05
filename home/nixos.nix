@@ -3,7 +3,9 @@
 {
   imports = [
     #../features/desktop/sway
+
     ../features/desktop/hyprland
+    ../optional/home-manager/hyprland-monitors.nix
 
     ../optional/home-manager/kitty.nix
     ../optional/home-manager/font.nix
@@ -21,15 +23,14 @@
 
   programs.helix.enable = true;
 
-  #monitors = [
-  #  {
-  #    name = "DP-0";
-  #    width = 3440;
-  #    height = 1440;
-  #    isPrimary = true;
-  #    refreshRate = 144;
-  #    x = 0;
-  #    workspace = "1";
-  #  }
-  #];
+  monitors = [
+    {
+      name = "DP-1";
+      width = 3440;
+      height = 1440;
+      refreshRate = 144;
+      x = 0;
+      workspace = "1";
+    }
+  ];
 }
