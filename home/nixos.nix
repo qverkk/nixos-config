@@ -5,6 +5,7 @@
     #../features/desktop/sway
 
     ../features/desktop/hyprland
+    ../features/desktop/common/mako.nix
     ../optional/home-manager/hyprland-monitors.nix
 
     ../optional/home-manager/kitty.nix
