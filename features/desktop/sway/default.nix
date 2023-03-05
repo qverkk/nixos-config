@@ -26,5 +26,4 @@
       line-color = "ffffff";
       show-failed-attempts = true;
   };
-  
 }
