@@ -4,9 +4,9 @@
   imports = [
     ../features/desktop/sway
 
-    ../optional/kitty.nix
-    ../optional/font.nix
-    ../optional/nushell
+    ../optional/home-manager/kitty.nix
+    ../optional/home-manager/font.nix
+    ../optional/home-manager/nushell
   ];
   
   # Let home manager install and makage itself

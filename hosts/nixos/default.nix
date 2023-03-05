@@ -18,7 +18,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../optional/nvidia.nix
+      ../../optional/nixos/nvidia.nix
     ];
 
   # Bootloader.
