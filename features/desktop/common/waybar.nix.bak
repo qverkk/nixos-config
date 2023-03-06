@@ -1,0 +1,316 @@
+{ outputs, config, lib, pkgs, ... }:
+
+{
+  programs.waybar = {
+    enable = true;
+
+    settings = {
+      primary = {
+        mode = "dock";
+        layer = "top";
+        height = 32;
+        #width = 100;
+        margin = "6";
+        position = "top";
+        modules-left = (lib.optionals config.wayland.windowManager.sway.enable [
+          "sway/workspaces"
+          "sway/mode"
+        ]) ++ (lib.optionals config.wayland.windowManager.hyprland.enable [
+          "wlr/workspaces"
+        ]);
+
+	modules-right = [
+	  "network"
+           "custom/pipewire"
+	   "clock"
+	];
+
+        "wlr/workspaces" = {
+          on-click = "activate";
+        };
+
+	"network" = {
+          "format-wifi"= "{essid} ({signalStrength}%) ";
+          "format-ethernet"= "{ifname}: {ipaddr}/{cidr} ";
+          "format-linked"= "{ifname} (No IP) ";
+          "format-disconnected"= "Disconnected ⚠";
+          "format-alt"= "{ifname}: {ipaddr}/{cidr}";
+	};
+
+	"custom/pipewire" = {
+          "format" = "{volume}% {icon} {format_source}";
+          "format-bluetooth" = "{volume}% {icon} {format_source}";
+          "format-bluetooth-muted" = " {icon} {format_source}";
+          "format-muted" = " {format_source}";
+          "format-source" = "{volume}% ";
+          "format-source-muted" = "";
+          "format-icons" = {
+              "headphone" = "";
+              "hands-free" = "";
+              "headset" = "";
+              "phone" = "";
+              "portable" = "";
+              "car" = "";
+              "default" = ["" "" ""];
+          };
+	  "exec" = "pw-volume status";
+          #"on-click": "pavucontrol;
+	};
+
+	"clock" = {
+          "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          "format-alt" = "{:%Y-%m-%d}";
+	};
+      };
+
+      #primary = {
+      #  mode = "dock";
+      #  layer = "top";
+      #  height = 40;
+      #  margin = "6";
+      #  position = "top";
+      #  output = builtins.map (m: m.name) (builtins.filter (m: m.hasBar) config.monitors);
+      #};
+    };
+
+    #style = ''
+    #    * {
+    #  	border: none;
+    #  	border-radius: 0;
+    #  	/* font-family: Nerd Font Hack; */
+    #  	font-size: 14px;
+    #  	min-height: 24px;
+    #  }
+
+    #  window#waybar {
+    #        background: rgba(43, 48, 59, 0.5);
+    #      /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+    #      color: white;
+    #  	/* background: transparent; */
+    #  }
+
+    #  window#waybar.hidden {
+    #  	opacity: 0.2;
+    #  }
+
+    #  #window {
+    #      margin-top: 8px;
+    #      padding-left: 16px;
+    #      padding-right: 16px;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #  	/*
+    #      color: #f8f8f2;
+    #  	background: #282a36;
+    #      */
+    #      color: transparent;
+    #  	background: transparent;
+    #  }
+
+    #  window#waybar.termite #window,
+    #  window#waybar.Firefox #window,
+    #  window#waybar.Navigator #window,
+    #  window#waybar.PCSX2 #window {
+    #      color: #4d4d4d;
+    #  	background: #e6e6e6;
+    #  }
+
+    #  #workspaces {
+    #  	margin-top: 8px;
+    #  	margin-left: 12px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	background: #282a36;
+    #  	transition: none;
+    #  }
+
+    #  #workspaces button {
+    #  	transition: none;
+    #  	color: #f8f8f2;
+    #  	background: transparent;
+    #  	font-size: 16px;
+    #  }
+
+    #  #workspaces button.focused {
+    #  	color: #9aedfe;
+    #    border: 2px solid green;
+    #  }
+
+    #  #workspaces button:hover {
+    #  	transition: none;
+    #  	box-shadow: inherit;
+    #  	text-shadow: inherit;
+    #  	color: #ff79c6;
+    #  }
+
+    #  #mpd {
+    #  	margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	background: #282a36;
+    #  	transition: none;
+    #  	color: #4d4d4d;
+    #  	background: #5af78e;
+    #  }
+
+    #  #mpd.disconnected,
+    #  #mpd.stopped {
+    #  	color: #f8f8f2;
+    #  	background: #282a36;
+    #  }
+
+    #  #network {
+    #  	margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #  	color: #4d4d4d;
+    #  	background: #d88382;
+    #  }
+
+    #  #pulseaudio {
+    #  	margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #  	color: #4d4d4d;
+    #  	background: #9aedfe;
+    #  }
+
+    #  #temperature {
+    #  	margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #  	color: #4d4d4d;
+    #  	background: #5af78e;
+    #  }
+
+    #  #cpu {
+    #  	margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #  	color: #4d4d4d;
+    #  	background: #f1fa8c;
+    #  }
+
+    #  #memory {
+    #  	margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #  	color: #4d4d4d;
+    #  	background: #ff6e67;
+    #  }
+
+    #  #clock {
+    #  	margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	margin-right: 12px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #  	color: #f8f8f2;
+    #  	background: #282a36;
+    #  }
+
+    #  #language {
+    #  	margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #  	color: #4d4d4d;
+    #  	background: #afaeaf;
+    #  }
+
+
+    #  #battery {
+    #    margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #    background-color: #f6f7f2;
+    #    color: black;
+    #  }
+
+    #  #battery.charging {
+    #    margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+
+    #    color: white;
+    #    background-color: #26A65B;
+    #  }
+
+    #  @keyframes blink {
+    #      to {
+    #          background-color: #ffffff;
+    #          color: black;
+    #      }
+    #  }
+
+    #  #battery.warning:not(.charging) {
+    #      background: #f53c3c;
+    #      color: white;
+    #      animation-name: blink;
+    #      animation-duration: 0.5s;
+    #      animation-timing-function: linear;
+    #      animation-iteration-count: infinite;
+    #      animation-direction: alternate;
+    #  }
+
+    #  #backlight {
+    #    margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #    color: white;
+    #    background-color: #6d7c70;
+    #  }
+
+    #  #tray {
+    #    margin-top: 8px;
+    #  	margin-left: 8px;
+    #  	padding-left: 16px;
+    #  	padding-right: 16px;
+    #  	margin-bottom: 0;
+    #  	border-radius: 26px;
+    #  	transition: none;
+    #    background-color: #6da8a2;
+    #'';
+  };
+}

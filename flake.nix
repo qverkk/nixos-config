@@ -18,11 +18,12 @@
     let
       inherit (self) outputs;
 
-      pkgs = import nixpkgs {
-        config = { allowUnfree = true; };
-      };
-
       system = "x86_64-linux";
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
 
       lib = nixpkgs.lib;
     in
@@ -30,7 +31,7 @@
       homeConfigurations = {
         qverkk = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
-          extraSpecialArgs = { inherit inputs outputs; };
+          extraSpecialArgs = { inherit inputs outputs pkgs; };
           modules = [ ./home/nixos.nix ];
         };
       };

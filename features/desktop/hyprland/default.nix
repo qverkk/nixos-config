@@ -3,6 +3,7 @@
 {
   imports = [
     inputs.hyprland.homeManagerModules.default
+    ../common/waybar.nix
   ];
 
   #programs.hyprland.enable = true;

@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 
 {
   imports = [
@@ -10,10 +10,12 @@
 
     ../optional/home-manager/kitty.nix
     ../optional/home-manager/font.nix
+    ../optional/home-manager/intellij.nix
   ];
 
   # Let home manager install and makage itself
   programs.home-manager.enable = true;
+
 
   home = {
     username = "qverkk";
