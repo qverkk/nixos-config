@@ -30,8 +30,6 @@ in
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  users.users.qverkk.shell = pkgs.nushell;
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -87,6 +85,7 @@ in
     isNormalUser = true;
     description = "qverkk";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.nushell;
     packages = with pkgs; [
       firefox
     ];
