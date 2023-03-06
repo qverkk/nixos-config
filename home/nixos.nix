@@ -11,6 +11,7 @@
     ../optional/home-manager/kitty.nix
     ../optional/home-manager/font.nix
     ../optional/home-manager/intellij.nix
+    ../optional/home-manager/syncthing.nix
   ];
 
   # Let home manager install and makage itself
