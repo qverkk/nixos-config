@@ -292,7 +292,7 @@ in
     # x y -> vertical, horizontal
     # x y z -> top, horizontal, bottom
     # w x y z -> top, right, bottom, left
-    style =  ''
+    style = ''
       * {
         font-family: "FiraCode";
         font-size: 12pt;

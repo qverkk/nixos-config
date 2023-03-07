@@ -2,11 +2,8 @@
 
 {
   imports = [
-    #../features/desktop/sway
-
-    ../features/desktop/hyprland
-    ../features/desktop/common/mako.nix
-    ../optional/home-manager/hyprland-monitors.nix
+    ../modules/desktop/hyprland/home.nix
+    ../modules/desktop/hyprland/monitors-config.nix
 
     ../optional/home-manager/kitty.nix
     ../optional/home-manager/font.nix

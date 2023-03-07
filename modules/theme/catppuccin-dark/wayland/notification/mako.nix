@@ -1,8 +1,7 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  programs.mako = {
-    enable = true;
+  services.mako = {
     #iconPath = "${pkgs.papirus-icon-theme.package}/share/icons/Papirus-Dark";
     font = "FiraCode 12";
     padding = "10,20";

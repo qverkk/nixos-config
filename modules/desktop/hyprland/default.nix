@@ -1,0 +1,27 @@
+{ config, lib, pkgs, inputs, ... }:
+
+{
+  imports = [
+    ../../programs/wayland/waybar/waybar.nix
+    ../../theme/catppuccin-dark/wayland
+  ];
+
+  programs = {
+    dconf.enable = true;
+    light.enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    #inputs.hypr-contrib.packages.${pkgs.system}.grimblast
+    #inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
+    #swww
+    #swaylock-effects
+    pamixer
+  ];
+
+  security.pam.services.swaylock = { };
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
+}
