@@ -2,8 +2,8 @@
 
 let
   extraEnv = {
-      WLR_NO_HARDWARE_CURSORS = "1";
-      XWAYLAND_NO_GLAMOR = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    XWAYLAND_NO_GLAMOR = "1";
   };
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1

@@ -37,6 +37,7 @@
       };
       nixosConfigurations = {
         nixos = lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/nixos
           ];

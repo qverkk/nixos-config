@@ -1,4 +1,4 @@
 [
-  #  ./notification
+  ./notification
   ./launcher
 ]
