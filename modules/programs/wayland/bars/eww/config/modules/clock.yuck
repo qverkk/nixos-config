@@ -1,0 +1,18 @@
+(defwidget clock_module []
+  (eventbox
+    :onclick "${EWW_CMD} open --toggle calendar"
+    (overlay
+      :class "module"
+      (box
+        :space-evenly false
+        (label
+          :text {time.hour}
+          :class "hour")
+        (label
+          :text ":")
+        (label
+          :text {time.minute}
+          :class "minute")
+        (label
+          :text {time.date}
+          :class "date")))))
