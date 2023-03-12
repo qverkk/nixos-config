@@ -14,6 +14,7 @@
     # exec-once = waybar & hyprpaper & firefox
     exec-once=mako
   #  exec-once=waybar
+    exec-once=swaybg -i ~/.local/share/wallpapers/wallpaper-2.jpg --mode fill
     exec-once=eww open bar
 
     # Source a file (multi-file configs)

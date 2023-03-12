@@ -1,4 +1,5 @@
 [
   ./notification
   ./launcher
+  ./swaybg
 ]
