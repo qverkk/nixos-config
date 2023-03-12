@@ -10,6 +10,8 @@
     ../optional/home-manager/intellij.nix
     ../optional/home-manager/syncthing.nix
     ../optional/home-manager/keepassxc.nix
+
+    ../modules/programs/moonlander/home.nix
   ];
 
   # Let home manager install and makage itself

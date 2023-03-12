@@ -9,8 +9,6 @@
   ] ++
   (import ../../programs/wayland);
 
-  #programs.hyprland.enable = true;
-
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;

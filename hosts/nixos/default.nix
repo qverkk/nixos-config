@@ -11,6 +11,7 @@
       ./hardware-configuration.nix
       inputs.hyprland.nixosModules.default
       ../../modules/hardware/nvidia.nix
+      ../../modules/programs/moonlander
     ];
 
   # Bootloader.
