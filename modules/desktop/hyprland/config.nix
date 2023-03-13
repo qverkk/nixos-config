@@ -120,7 +120,7 @@
     bind = $mainMod, space, exec, wofi --show drun
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
-    bind = $mainMod, L, exec, loginctl lock-session
+    bind = $mainMod, L, exec, swaylock
 
     # Move focus with mainMod + arrow keys
     bind = $mainMod, left, movefocus, l
