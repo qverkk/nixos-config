@@ -2,4 +2,5 @@
   ./notification
   ./launcher
   ./swaybg
+  ./swaylock
 ]
