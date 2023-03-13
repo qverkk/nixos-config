@@ -1,11 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [
-    ../../programs/wayland/waybar/waybar.nix
-    ../../theme/catppuccin-dark/wayland
-  ];
-
   programs = {
     dconf.enable = true;
     light.enable = true;

@@ -7,7 +7,9 @@
     ../../programs/wayland/bars/eww/home.nix
     (import ../../environment/hypr-variables.nix)
   ] ++
-  (import ../../programs/wayland);
+  (import ../../programs/wayland) ++
+  (import ../../theme/catppuccin-dark/wayland);
+
 
   wayland.windowManager.hyprland = {
     enable = true;
