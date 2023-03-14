@@ -10,6 +10,7 @@
     ../optional/home-manager/intellij.nix
     ../optional/home-manager/syncthing.nix
     ../optional/home-manager/keepassxc.nix
+    ../optional/home-manager/nushell
 
     ../modules/programs/moonlander/home.nix
   ];
