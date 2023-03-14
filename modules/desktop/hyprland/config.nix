@@ -111,6 +111,16 @@
     # See https://wiki.hyprland.org/Configuring/Keywords/ for more
     $mainMod = SUPER
 
+    # Fix jetbrains
+    windowrulev2 = rounding 0, xwayland:1, floating:1
+    windowrulev2 = center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|splash)$
+    windowrulev2 = size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$
+    windowrulev2 = float,floating:0,class:^(jetbrains-.*),title:^(win.*)
+    windowrulev2 = float,class:^(jetbrains-.*),title:^(Welcome to.*)
+    windowrulev2 = center,class:^(jetbrains-.*),title:^(Replace All)$
+    windowrulev2 = forceinput,class:^(jetbrains-.*)
+    windowrulev2 = windowdance,class:^(jetbrains-.*) # allows IDE to move child windows
+
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
     bind = $mainMod, return, exec, kitty nu
     bind = $mainMod, Q, killactive,

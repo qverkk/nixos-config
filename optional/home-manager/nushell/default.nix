@@ -4,10 +4,10 @@
   programs.nushell = {
     enable = true;
     configFile = {
-        source = ./config.nu;
+      source = ./config.nu;
     };
     envFile = {
-        source = ./env.nu;
+      source = ./env.nu;
     };
   };
 }
