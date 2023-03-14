@@ -24,6 +24,9 @@
     username = "qverkk";
     homeDirectory = "/home/qverkk";
     stateVersion = "22.11";
+    packages = with pkgs; [
+      wireplumber
+    ];
   };
 
   programs.helix.enable = true;
