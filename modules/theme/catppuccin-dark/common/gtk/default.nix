@@ -8,7 +8,7 @@ rec {
   gtk = {
     enable = true;
     font = {
-      name = "FiraCode";
+      name = "JetBrainsMono Nerd Font";
       size = 12;
     };
     theme = {

@@ -1,12 +1,12 @@
 { lib, config, pkgs, ... }:
 
 let
-  nerdFira = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+  nerdFira = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
 in
 {
   fonts.fontconfig.enable = true;
   home.packages = [
     nerdFira
-    pkgs.fira-code
+    pkgs.jetbrains-mono
   ];
 }

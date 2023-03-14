@@ -3,7 +3,7 @@
   programs.mako = {
     enable = true;
     #iconPath = "${pkgs.papirus-icon-theme.package}/share/icons/Papirus-Dark";
-    font = "FiraCode 12";
+    font = "JetBrainsMono Nerd Font 12";
     padding = "10,20";
     anchor = "top-center";
     width = 400;
