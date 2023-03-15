@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+vol() {
+  wpctl get-volume @DEFAULT_AUDIO_"$1"@ | awk '{print int($2*100)}'
+}
+
+ismuted() {
+  wpctl get-volume @DEFAULT_AUDIO_"$1"@ | rg -i muted
+}
+
+echo '{
+ "input": {
+   "volume": "'"$(vol "SOURCE")"'",
+   "muted": "'"$(ismuted "SOURCE")"'"
+ },
+ "output": {
+   "volume": "'"$(vol "SINK")"'",
+   "muted": "'"$(ismuted "SINK")"'"
+ }
+}'

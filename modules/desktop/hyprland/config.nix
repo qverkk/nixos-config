@@ -119,6 +119,7 @@
     windowrulev2 = float,class:^(jetbrains-.*),title:^(Welcome to.*)
     windowrulev2 = center,class:^(jetbrains-.*),title:^(Replace All)$
     windowrulev2 = forceinput,class:^(jetbrains-.*)
+    windowrulev2 = noanim,class:^(jetbrains-.*)
     windowrulev2 = windowdance,class:^(jetbrains-.*) # allows IDE to move child windows
 
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more

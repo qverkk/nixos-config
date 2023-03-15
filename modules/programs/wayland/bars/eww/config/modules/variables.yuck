@@ -8,5 +8,6 @@
 (defvar osd-volume false)
 
 (defpoll time :interval "5s" `date +'{"date": "%d/%m/%y", "hour": "%H", "minute": "%M", "day": "%A"}'`)
+(defpoll volume :interval "1s" "scripts/volume")
 
 (deflisten workspace "scripts/workspaces")

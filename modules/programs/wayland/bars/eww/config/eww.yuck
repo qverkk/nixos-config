@@ -1,6 +1,7 @@
 (include "./modules/clock.yuck")
 (include "./modules/variables.yuck")
 (include "./modules/workspaces.yuck")
+(include "./modules/volume.yuck")
 
 (include "./windows/calendar.yuck")
 
@@ -14,6 +15,7 @@
     (box
         :space-evenly false
         :halign "end"
+        (volume_module)
         (clock_module)))
 
 (defwidget center []

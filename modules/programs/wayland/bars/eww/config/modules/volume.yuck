@@ -1,0 +1,12 @@
+(defwidget volume_module []
+  (box
+    :class "module icon"
+    (eventbox
+      :onclick "hyprctl dispatch exec [float] pavucontrol"
+      (box
+        (label
+          :class "vol-icon"
+          :text " ${volume.output.volume}%")
+        (label
+          :class "vol-icon"
+          :text "Input ${volume.input.volume}%")))))
