@@ -6,7 +6,7 @@
       (box
         (label
           :class "vol-icon"
-          :text " ${volume.output.volume}%")
+          :text "${volume.output.muted == "" ? '' : ''} ${volume.output.volume}%")
         (label
           :class "vol-icon"
-          :text "Input ${volume.input.volume}%")))))
+          :text "${volume.input.muted == "" ? '' : '' } ${volume.input.volume}%")))))
