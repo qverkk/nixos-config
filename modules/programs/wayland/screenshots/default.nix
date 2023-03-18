@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.packages = with pkgs; [
     grim
-    flameshot
+    #flameshot
+    inputs.hyprland-contrib.packages.${pkgs.hostPlatform.system}.grimblast
   ];
 }
