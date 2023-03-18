@@ -12,6 +12,8 @@
     ../optional/home-manager/keepassxc.nix
     ../optional/home-manager/obsidian.nix
     ../optional/home-manager/nushell
+    ../optional/home-manager/messaging.nix
+    ../optional/home-manager/pipewire.nix
 
     ../modules/programs/moonlander/home.nix
   ];
@@ -24,10 +26,6 @@
     username = "qverkk";
     homeDirectory = "/home/qverkk";
     stateVersion = "22.11";
-    packages = with pkgs; [
-      wireplumber
-      pavucontrol
-    ];
   };
 
   programs.helix.enable = true;

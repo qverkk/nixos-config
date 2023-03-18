@@ -2,7 +2,8 @@
 
 {
   home.packages = with pkgs; [
-    jetbrains.idea-ultimate
+    signal-desktop
+    tdesktop
+    element-desktop
   ];
 }
-

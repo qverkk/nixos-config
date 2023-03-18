@@ -1,8 +1,8 @@
 { pkgs, config, ... }:
 
 {
-  home.packages = [
-    pkgs.keepassxc
+  home.packages = with pkgs; [
+    keepassxc
   ];
 }
 
