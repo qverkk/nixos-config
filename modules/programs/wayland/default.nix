@@ -3,4 +3,5 @@
   ./launcher
   ./swaybg
   ./swaylock
+  ./screenshots
 ]

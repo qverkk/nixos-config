@@ -122,6 +122,10 @@
     windowrulev2 = noanim,class:^(jetbrains-.*)
     windowrulev2 = windowdance,class:^(jetbrains-.*) # allows IDE to move child windows
 
+    # flameshot
+    layerrule = noanim, ^(gtk-layer-shell)$
+    layerrule = noanim, ^(notifications)$
+
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
     bind = $mainMod, return, exec, kitty nu
     bind = $mainMod, Q, killactive,

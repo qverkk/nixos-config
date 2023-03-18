@@ -9,9 +9,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib?rev=1af47a008e850c595aeddc83bb3f04fd81935caa";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     hyprland.url = "github:hyprwm/Hyprland/v0.23.0beta";
-    hyprwm-contrib.url = "github:hyprwm/contrib";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -20,8 +24,13 @@
 
       system = "x86_64-linux";
 
+      overlays = [
+        (import ./overlays/flameshot)
+      ];
+
       pkgs = import nixpkgs {
         inherit system;
+        inherit overlays;
         config.allowUnfree = true;
       };
 

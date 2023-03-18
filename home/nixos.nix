@@ -15,13 +15,13 @@
     ../optional/home-manager/messaging.nix
     ../optional/home-manager/pipewire.nix
     ../optional/home-manager/mail.nix
+    ../optional/home-manager/gimp.nix
 
     ../modules/programs/moonlander/home.nix
   ];
 
   # Let home manager install and makage itself
   programs.home-manager.enable = true;
-
 
   home = {
     username = "qverkk";
