@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+deviceDetails() {
+  # shellcheck disable=SC2207
+  local fields=($(nmcli device | grep \\s"$1"\\s | awk '{split($0, a, " "); print a[1], a[2], a[3], a[4]}'))
+  local deviceName="${fields[0]}"
+  local type="${fields[1]}"
+  local state="${fields[2]}"
+  local connection="${fields[3]}"
+  # shellcheck disable=SC2155
+  local ip_address=$(nmcli device show "$deviceName" | awk '/IP4.ADDRESS/{print $2}' | cut -d "/" -f 1)
+  declare strength
+  if [ "$1" = "wifi" ]; then
+    signal_strength=$(iw dev "$deviceName" link | awk '/signal:/ {print int(($2 * 100) / -70)}')
+  fi
+  declare -A device=(
+    ["name"]="$deviceName"
+    ["type"]="$type"
+    ["state"]="$state"
+    ["connection"]="$connection"
+    ["ip"]="$ip_address"
+    ["strength"]="$signal_strength"
+  )
+  declare -p device
+}
+
+# shellcheck disable=SC2178
+device=$(deviceDetails "wifi")
+# shellcheck disable=SC2128
+eval "$device"
+wifi='
+  {
+    "ip": "'"${device[ip]}"'",
+    "enabled": "'"${device[state]}"'",
+    "connectedNetwork": "'"${device[connection]}"'",
+    "strength": "'"${device[strength]}"'"
+  }
+'
+
+# shellcheck disable=SC2178
+device=$(deviceDetails "ethernet")
+# shellcheck disable=SC2128
+eval "$device"
+ethernet='
+  {
+    "ip": "'"${device[ip]}"'",
+    "enabled": "'"${device[state]}"'"
+  }
+'
+
+echo '{
+  "ethernet" : '"$ethernet"',
+  "wifi" : '"$wifi"'
+}'

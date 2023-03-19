@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     jq
     socat
+    iw
   ];
 
   programs.eww = {

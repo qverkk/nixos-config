@@ -1,0 +1,23 @@
+(defwidget network_module []
+  (eventbox
+    :onclick "hyprctl dispatch exec [float] kitty nmtui"
+    (overlay
+      :class "module"
+      (box
+        :space-evenly false
+        (label
+          :text "ETHERNET ")
+        (label
+          :text "${network.ethernet.enabled} ")
+        (label
+          :text "${network.ethernet.ip} ")
+        (label
+          :text "WIFI ")
+        (label
+          :text "${network.wifi.enabled} ")
+        (label
+          :text "${network.wifi.strength} ")
+        (label
+          :text "${network.wifi.connectedNetwork} ")
+        (label
+          :text "${network.wifi.ip}")))))
