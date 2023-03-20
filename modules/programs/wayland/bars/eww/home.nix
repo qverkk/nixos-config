@@ -6,6 +6,8 @@
     jq
     socat
     iw
+    playerctl
+    bc
   ];
 
   programs.eww = {

@@ -12,3 +12,4 @@
 (defpoll network :interval "1s" "scripts/network")
 
 (deflisten workspace "scripts/workspaces")
+(deflisten music "scripts/music")
