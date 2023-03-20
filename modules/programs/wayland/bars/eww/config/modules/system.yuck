@@ -3,12 +3,19 @@
     :class "module"
     :space-evenly false
     :spacing 5
-    (label
-      :text "Battery ${EWW_BATTERY["BAT0"].capacity}%"
-      :class "rambar")
-    (label
-      :text "RAM ${round(EWW_RAM.used_mem_perc,0)}%"
-      :class "rambar")
-    (label
-      :text "CPU ${round(EWW_CPU.avg,0)}%"
-      :class "cpubar")))
+    (eventbox
+      :onclick "${EWW_CMD} open --toggle system-menu"
+      (box
+        (label
+          :text "Battery ${EWW_BATTERY["BAT0"].capacity}%"
+          :class "rambar")
+        (label
+          :text "  ")
+        (label
+          :text "RAM ${round(EWW_RAM.used_mem_perc,0)}%"
+          :class "rambar")
+        (label
+          :text "  ")
+        (label
+          :text "CPU ${round(EWW_CPU.avg,0)}%"
+          :class "cpubar")))))

@@ -7,6 +7,7 @@
 (include "./modules/music.yuck")
 
 (include "./windows/calendar.yuck")
+(include "./windows/system.yuck")
 
 (defwidget left []
     (box
