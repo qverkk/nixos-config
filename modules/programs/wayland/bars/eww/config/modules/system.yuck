@@ -1,0 +1,11 @@
+(defwidget system_module []
+  (box
+    :class "module"
+    :space-evenly false
+    :spacing 5
+    (label
+      :text "RAM ${round(EWW_RAM.used_mem_perc,0)}%"
+      :class "rambar")
+    (label
+      :text "CPU ${round(EWW_CPU.avg,0)}%"
+      :class "cpubar")))

@@ -3,6 +3,7 @@
 (include "./modules/workspaces.yuck")
 (include "./modules/volume.yuck")
 (include "./modules/network.yuck")
+(include "./modules/system.yuck")
 
 (include "./windows/calendar.yuck")
 
@@ -16,6 +17,7 @@
     (box
         :space-evenly false
         :halign "end"
+        (system_module)
         (volume_module)
         (network_module)
         (clock_module)))
