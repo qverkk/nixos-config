@@ -133,7 +133,7 @@
     bind = $mainMod SHIFT, E, exit,
     bind = $mainMod, E, exec, dolphin
     bind = $mainMod, V, togglefloating,
-    bind = $mainMod, space, exec, wofi --show drun
+    bind = $mainMod, space, exec, ~/.config/rofi/launcher.sh
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
     bind = $mainMod, L, exec, swaylock
