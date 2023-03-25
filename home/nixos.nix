@@ -16,6 +16,7 @@
     ../optional/home-manager/pipewire.nix
     ../optional/home-manager/mail.nix
     ../optional/home-manager/gimp.nix
+    ../optional/home-manager/clipboard.nix
 
     ../modules/programs/moonlander/home.nix
   ];
@@ -28,8 +29,6 @@
     homeDirectory = "/home/qverkk";
     stateVersion = "22.11";
   };
-
-  programs.helix.enable = true;
 
   monitors = [
     {

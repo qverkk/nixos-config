@@ -1,11 +1,3 @@
-(defvar bright_reveal false)
-(defvar bt_rev false)
-(defvar net_rev false)
-(defvar time_rev false)
-(defvar vol_reveal false)
-(defvar osd-brightness false)
-(defvar osd-volume false)
-
 (defpoll time :interval "5s" `date +'{"date": "%d/%m/%y", "hour": "%H", "minute": "%M", "day": "%A"}'`)
 (defpoll volume :interval "1s" "scripts/volume")
 (defpoll network :interval "1s" "scripts/network")

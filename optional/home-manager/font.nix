@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 
 let
-  nerdFonts = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+  nerdFonts = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "NerdFontsSymbolsOnly" ]; };
 in
 {
   fonts.fontconfig.enable = true;

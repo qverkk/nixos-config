@@ -1,23 +1,14 @@
 (defwidget network_module []
   (eventbox
-    :onclick "hyprctl dispatch exec [float] kitty nmtui"
+    :onrightclick "hyprctl dispatch exec [float] kitty nmtui"
+    :onclick "${EWW_CMD} open --toggle network-menu"
     (overlay
       :class "module"
       (box
         :space-evenly false
         (label
-          :text "ETHERNET ")
+          :class "icon"
+          :text "${network.ethernet.enabled == "connected" ? '' : ''}")
         (label
-          :text "${network.ethernet.enabled} ")
-        (label
-          :text "${network.ethernet.ip} ")
-        (label
-          :text "WIFI ")
-        (label
-          :text "${network.wifi.enabled} ")
-        (label
-          :text "${network.wifi.strength} ")
-        (label
-          :text "${network.wifi.connectedNetwork} ")
-        (label
-          :text "${network.wifi.ip}")))))
+          :class "icon"
+          :text "${network.wifi.enabled == "connected" ? '直' : '睊'}")))))

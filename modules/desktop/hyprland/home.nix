@@ -3,7 +3,6 @@
 {
   imports = [
     inputs.hyprland.homeManagerModules.default
-    #    ../../programs/wayland/waybar/waybar.nix
     ../../programs/wayland/bars/eww/home.nix
     (import ../../environment/hypr-variables.nix)
   ] ++

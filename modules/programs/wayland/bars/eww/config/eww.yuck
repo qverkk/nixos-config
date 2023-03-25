@@ -8,6 +8,7 @@
 
 (include "./windows/calendar.yuck")
 (include "./windows/system.yuck")
+(include "./windows/network.yuck")
 
 (defwidget left []
     (box
@@ -19,8 +20,8 @@
     (box
         :space-evenly false
         :halign "end"
-        (system_module)
         (volume_module)
+        (system_module)
         (network_module)
         (clock_module)))
 
