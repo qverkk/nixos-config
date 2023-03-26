@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+toggle() {
+  status=$(rfkill -J | jq -r '.rfkilldevices[] | select(.type == "'"$1"'") | .soft' | head -1)
+
+  if [ "$status" = "unblocked" ]; then
+    rfkill block "$1"
+  else
+    rfkill unblock "$1"
+  fi
+}
+
+toggle "$1"

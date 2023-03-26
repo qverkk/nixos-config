@@ -17,7 +17,38 @@
           :text {time.date})
         (label
           :class "day"
-          :text {time.day})))))
+          :text {time.day})))
+
+      (centerbox
+        :class "system-row"
+        (eventbox
+          :onclick ""
+          :class "wifi-box element icon ${network.wifi.class}"
+          (button
+            :onclick "scripts/wireless-toggle wlan"
+            "直"))
+
+        (eventbox
+          :class "bluetooth-box element icon ${bluetooth.class}"
+          :onclick ""
+          (box
+            :space-evenly false
+            :orientation "v"
+            (button
+              :class "bluetooth-button"
+              :onclick "scripts/wireless-toggle bluetooth"
+              "${bluetooth.text}")
+            (label
+              :text "${bluetooth.connected}")))
+
+
+        (eventbox
+          :class "airplane-box element icon ${airplane.class}"
+          :onclick ""
+          (button
+            :class "bluetooth-button"
+            :onclick "scripts/airplane toggle"
+            "")))))
 
 (defwindow system-menu
   :stacking "fg"

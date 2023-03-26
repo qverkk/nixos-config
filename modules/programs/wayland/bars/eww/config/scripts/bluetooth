@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+powered=$(bluetoothctl show | rg Powered | cut -f 2- -d ' ')
+
+# Run bluetoothctl info command and get output
+info_output=$(bluetoothctl info)
+
+# Get connected device name from info output
+if [[ "$powered" = "no" ]]; then
+  connected="none"
+  text=""
+  enabled=false
+  class="not-active"
+elif [[ "$info_output" =~ "Connected: yes" ]]; then
+  connected=$(echo "$info_output" | rg "Name" | cut -f 2- -d ' ')
+  text=""
+  enabled=true
+  class="connected"
+else
+  connected="none"
+  text=""
+  enabled=true
+  class="active"
+fi
+
+# Print results
+echo '{
+  "connected":"'$connected'",
+  "text":"'$text'",
+  "enabled": "'$enabled'",
+  "class": "'$class'"
+}'

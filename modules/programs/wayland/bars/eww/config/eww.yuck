@@ -2,13 +2,11 @@
 (include "./modules/variables.yuck")
 (include "./modules/workspaces.yuck")
 (include "./modules/volume.yuck")
-(include "./modules/network.yuck")
 (include "./modules/system.yuck")
 (include "./modules/music.yuck")
 
 (include "./windows/calendar.yuck")
 (include "./windows/system.yuck")
-(include "./windows/network.yuck")
 
 (defwidget left []
     (box
@@ -22,7 +20,6 @@
         :halign "end"
         (volume_module)
         (system_module)
-        (network_module)
         (clock_module)))
 
 (defwidget center []

@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+iconclass() {
+  if [ "$STATUS" = "true" ]; then
+    echo "active"
+  else
+    echo "not-active"
+  fi
+}
+
+toggle() {
+  if [ "$STATUS" = "true" ]; then
+    rfkill block all
+  else
+    rfkill unblock all
+  fi
+}
+
+STATUS="$(rfkill -J | jq -r '.rfkilldevices | map(select(.soft == "unblocked")) | length == 0')"
+
+if [ "$1" = "toggle" ]; then
+  toggle
+fi
+
+echo '{
+  "class": "'"$(iconclass)"'"
+}'

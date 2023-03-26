@@ -1,3 +1,28 @@
+(defwidget network_module []
+  (eventbox
+    :onrightclick "hyprctl dispatch exec [float] kitty nmtui"
+    (overlay
+      :class "module"
+      (box
+        :space-evenly false
+        (label
+          :class "icon"
+          :text "${network.ethernet.enabled == "connected" ? '' : ''}")
+        (label
+          :class "icon"
+          :text "${network.wifi.enabled == "connected" ? '直' : '睊'}")))))
+
+(defwidget bluetooth_module []
+  (eventbox
+    :onrightclick "hyprctl dispatch exec [float] blueman-manager"
+    (overlay
+      :class "module"
+      (box
+        :space-evenly false
+        (label
+          :class "icon"
+          :text "${bluetooth.text}")))))
+
 (defwidget system_module []
   (box
     :class "module"
@@ -9,8 +34,8 @@
         (label
           :text "${EWW_BATTERY == "" ? "" : 'Battery' + EWW_BATTERY["BAT0"].capacity + '%'}")
         (label
-          :text "RAM ${round(EWW_RAM.used_mem_perc,0)}%"
-          :class "rambar")
+          :text "RAM ${round(EWW_RAM.used_mem_perc,0)}%")
         (label
-          :text "CPU ${round(EWW_CPU.avg,0)}%"
-          :class "cpubar")))))
+          :text "CPU ${round(EWW_CPU.avg,0)}%")
+        (network_module)
+        (bluetooth_module)))))

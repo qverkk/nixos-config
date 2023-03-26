@@ -8,6 +8,9 @@
     iw
     playerctl
     bc
+    bluez5
+    blueman
+    upower
   ];
 
   programs.eww = {

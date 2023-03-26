@@ -1,6 +1,8 @@
 (defpoll time :interval "5s" `date +'{"date": "%d/%m/%y", "hour": "%H", "minute": "%M", "day": "%A"}'`)
 (defpoll volume :interval "1s" "scripts/volume")
 (defpoll network :interval "1s" "scripts/network")
+(defpoll airplane :interval "5s" "scripts/airplane")
+(defpoll bluetooth :interval "5s" "scripts/bluetooth")
 
 (deflisten workspace "scripts/workspaces")
 (deflisten music "scripts/music")
