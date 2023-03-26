@@ -24,9 +24,16 @@
         (eventbox
           :onclick ""
           :class "wifi-box element icon ${network.wifi.class}"
-          (button
-            :onclick "scripts/wireless-toggle wlan"
-            "直"))
+          (box
+            :orientation "v"
+            :space-evenly false
+            (button
+              :onclick "scripts/wireless-toggle wlan"
+              "直")
+            (label
+                :text {network.wifi.connectedNetwork}
+                :xalign 0.5
+                :limit-width 15)))
 
         (eventbox
           :class "bluetooth-box element icon ${bluetooth.class}"
@@ -39,16 +46,25 @@
               :onclick "scripts/wireless-toggle bluetooth"
               "${bluetooth.text}")
             (label
-              :text "${bluetooth.connected}")))
+              :text "${bluetooth.connected}"
+              :xalign 0.5
+              :limit-width 15)))
 
 
         (eventbox
           :class "airplane-box element icon ${airplane.class}"
           :onclick ""
-          (button
-            :class "bluetooth-button"
-            :onclick "scripts/airplane toggle"
-            "")))))
+          (box
+            :orientation "v"
+            :space-evenly false
+            (button
+              :class "bluetooth-button"
+              :onclick "scripts/airplane toggle"
+              "")
+            (label
+              :text "Airplane Mode"
+              :xalign 0.5
+              :limit-width 16))))))
 
 (defwindow system-menu
   :stacking "fg"

@@ -8,6 +8,11 @@
 (include "./windows/calendar.yuck")
 (include "./windows/system.yuck")
 
+(defwidget separator []
+        (label
+            :class "separator"
+            :text "|"))
+
 (defwidget left []
     (box
         :space-evenly false
@@ -19,7 +24,9 @@
         :space-evenly false
         :halign "end"
         (volume_module)
+        (separator)
         (system_module)
+        (separator)
         (clock_module)))
 
 (defwidget center []
