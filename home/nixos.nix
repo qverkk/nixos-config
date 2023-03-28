@@ -17,6 +17,7 @@
     ../optional/home-manager/mail.nix
     ../optional/home-manager/gimp.nix
     ../optional/home-manager/clipboard.nix
+    ../optional/home-manager/spotifyd.nix
 
     ../modules/programs/moonlander/home.nix
   ];

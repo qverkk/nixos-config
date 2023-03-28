@@ -10,11 +10,30 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.hyprland.nixosModules.default
+      inputs.agenix.nixosModules.default
       ../../modules/hardware/nvidia.nix
       ../../modules/hardware/bluetooth.nix
       ../../modules/programs/moonlander
       ../../modules/desktop/hyprland
     ];
+
+  age = {
+    identityPaths = [
+        "/home/qverkk/.ssh/nixos-desktop"
+    ];
+    secrets = {
+        spotify-username = {
+          file = "/home/qverkk/.secrets/spotify-username.age";
+          owner = "qverkk";
+          group = "users";
+        };
+        spotify-password = {
+          file = "/home/qverkk/.secrets/spotify-password.age";
+          owner = "qverkk";
+          group = "users";
+        };
+     };
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -79,7 +98,7 @@
     isNormalUser = true;
     description = "qverkk";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
     packages = with pkgs; [
       firefox
     ];
