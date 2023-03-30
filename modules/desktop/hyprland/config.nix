@@ -185,4 +185,8 @@
     bindl=, XF86AudioPlay, exec, playerctl play-pause
     bindl=, XF86AudioPrev, exec, playerctl previous
     bindl=, XF86AudioNext, exec, playerctl next
+
+    # Brightness
+    bindl=, XF86MonBrightnessDown, exec, brightnessctl set 5%-
+    bindl=, XF86MonBrightnessUp, exec, brightnessctl set +5%
 ''
