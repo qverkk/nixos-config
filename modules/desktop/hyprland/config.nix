@@ -175,4 +175,14 @@
     # Move/resize windows with mainMod + LMB/RMB and dragging
     bindm = $mainMod, mouse:272, movewindow
     bindm = $mainMod, mouse:273, resizewindow
+
+    # Volume
+    bindl=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    bindl=, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+    bindl=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+    # Music
+    bindl=, XF86AudioPlay, exec, playerctl play-pause
+    bindl=, XF86AudioPrev, exec, playerctl previous
+    bindl=, XF86AudioNext, exec, playerctl next
 ''
