@@ -1,24 +1,13 @@
 {}: ''
-    # This is an example Hyprland config file.
-    #
-    # Refer to the wiki for more information.
-
-    #
-    # Please note not all available settings / options are set here.
-    # For a full list, see the wiki
-    #
-
-    # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-
-    # Execute your favorite apps at launch
-    # exec-once = waybar & hyprpaper & firefox
     exec-once=mako
-  #  exec-once=waybar
     exec-once=swaybg -i ~/.local/share/wallpapers/wallpaper-2.jpg --mode fill
     exec-once=eww open bar
 
-    # Source a file (multi-file configs)
-    # source = ~/.config/hypr/myColors.conf
+    misc {
+        disable_hyprland_logo = true
+        animate_mouse_windowdragging = false
+        animate_manual_resizes = false
+    }
 
     # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
     input {
@@ -38,12 +27,10 @@
     }
 
     general {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
         gaps_in = 5
-        gaps_out = 20
+        gaps_out = 5
         border_size = 2
-        col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+        col.active_border = rgb(FFF0F5)
         col.inactive_border = rgba(595959aa)
 
         layout = dwindle
@@ -65,24 +52,18 @@
     }
 
     animations {
-        enabled = true
-
-        # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-
-        bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-
-        animation = windows, 1, 7, myBezier
-        animation = windowsOut, 1, 7, default, popin 80%
-        animation = border, 1, 10, default
-        animation = borderangle, 1, 8, default
-        animation = fade, 1, 7, default
-        animation = workspaces, 1, 6, default
+        enabled = false
+        animation = border, 1, 2, default
+        animation = fade, 1, 4, default
+        animation = windows, 1, 3, default, popin 80%
+        animation = workspaces, 1, 2, default, slide
     }
 
     dwindle {
-        # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-        pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-        preserve_split = true # you probably want this
+        pseudotile = true
+        preserve_split = true
+        force_split = 2
+        use_active_for_splits = false
     }
 
     master {
@@ -129,13 +110,18 @@
 
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
     bind = $mainMod, return, exec, kitty nu
-    bind = $mainMod, Q, killactive,
+    bind = $mainMod, space, exec, ~/.config/rofi/launcher.sh
     bind = $mainMod SHIFT, E, exit,
     bind = $mainMod, E, exec, dolphin
+
+    bind = $mainMod, Q, killactive,
     bind = $mainMod, V, togglefloating,
-    bind = $mainMod, space, exec, ~/.config/rofi/launcher.sh
-    bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
+    bind = $mainMod, F, fullscreen,
+    bind = $mainMod, G, togglegroup,
+    bind = $mainMod, TAB, changegroupactive, f
+    bind = $mainMod SHIFT, TAB, changegroupactive, b
+    bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, L, exec, swaylock
 
     # Move focus with mainMod + arrow keys
