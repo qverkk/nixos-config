@@ -11,7 +11,7 @@
     ../optional/home-manager/syncthing.nix
     ../optional/home-manager/keepassxc.nix
     ../optional/home-manager/obsidian.nix
-    ../optional/home-manager/nushell
+#    ../optional/home-manager/nushell
     ../optional/home-manager/messaging.nix
     ../optional/home-manager/pipewire.nix
     ../optional/home-manager/mail.nix
