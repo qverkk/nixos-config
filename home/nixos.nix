@@ -14,7 +14,6 @@
     #    ../optional/home-manager/nushell
     ../optional/home-manager/messaging.nix
     ../optional/home-manager/starship.nix
-    ../optional/home-manager/zsh.nix
     ../optional/home-manager/pipewire.nix
     ../optional/home-manager/mail.nix
     ../optional/home-manager/gimp.nix
@@ -22,6 +21,7 @@
     ../optional/home-manager/spotifyd.nix
 
     ../modules/programs/moonlander/home.nix
+    ../modules/programs/zsh/home.nix
   ];
 
   # Let home manager install and makage itself

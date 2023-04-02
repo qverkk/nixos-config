@@ -14,6 +14,7 @@
       ../../modules/hardware/nvidia.nix
       ../../modules/hardware/bluetooth.nix
       ../../modules/programs/moonlander
+      ../../modules/programs/zsh
       ../../modules/desktop/hyprland
     ];
 
