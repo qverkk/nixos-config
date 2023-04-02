@@ -32,10 +32,10 @@
         :space-evenly false
         :spacing 5
         (label
-          :text "${EWW_BATTERY == "" ? "" : 'Battery' + EWW_BATTERY["BAT0"].capacity + '%'}")
+          :text "${EWW_BATTERY == "" ? "" : 'Battery ' + EWW_BATTERY["BAT0"].capacity + '% '}")
         (label
-          :text "RAM ${round(EWW_RAM.used_mem_perc,0)}%")
+          :text "RAM ${round(EWW_RAM.used_mem_perc,0)}% ")
         (label
-          :text "CPU ${round(EWW_CPU.avg,0)}%")
+          :text "CPU ${round(EWW_CPU.avg,0)}% ")
         (network_module)
         (bluetooth_module)))))

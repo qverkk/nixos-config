@@ -48,12 +48,11 @@
       };
 
       homeConfigurations = {
-        qverkk = home-manager.lib.homeManagerConfiguration {
+        "qverkk@nixos" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = { inherit inputs outputs pkgs; };
           modules = [ ./home/nixos.nix ];
         };
-
 
         "qverkk@hybrid" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
