@@ -33,6 +33,7 @@
       vimium
       decentraleyes
       privacy-badger
+      keepassxc-browser
     ];
 
     profiles = {
