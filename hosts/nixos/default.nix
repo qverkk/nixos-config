@@ -19,20 +19,20 @@
 
   age = {
     identityPaths = [
-        "/home/qverkk/.ssh/nixos-desktop"
+      "/home/qverkk/.ssh/nixos-desktop"
     ];
     secrets = {
-        spotify-username = {
-          file = "/home/qverkk/.secrets/spotify-username.age";
-          owner = "qverkk";
-          group = "users";
-        };
-        spotify-password = {
-          file = "/home/qverkk/.secrets/spotify-password.age";
-          owner = "qverkk";
-          group = "users";
-        };
-     };
+      spotify-username = {
+        file = "/home/qverkk/.secrets/spotify-username.age";
+        owner = "qverkk";
+        group = "users";
+      };
+      spotify-password = {
+        file = "/home/qverkk/.secrets/spotify-password.age";
+        owner = "qverkk";
+        group = "users";
+      };
+    };
   };
 
   # Bootloader.
