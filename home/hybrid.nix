@@ -36,8 +36,8 @@
   monitors = [
     {
       name = "eDP-1";
-      width = 3840;
-      height = 2160;
+      width = 1920;
+      height = 1080;
       refreshRate = 60;
       x = 0;
       workspace = "1";
