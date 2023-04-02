@@ -11,6 +11,7 @@
       ./hardware-configuration.nix
       inputs.hyprland.nixosModules.default
       inputs.agenix.nixosModules.default
+      inputs.nur.nixosModules.nur
       ../../modules/hardware/nvidia.nix
       ../../modules/hardware/bluetooth.nix
       ../../modules/programs/moonlander
@@ -100,9 +101,6 @@
     description = "qverkk";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-      firefox
-    ];
   };
 
   # Allow unfree packages

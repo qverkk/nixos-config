@@ -22,6 +22,7 @@
 
     ../modules/programs/moonlander/home.nix
     ../modules/programs/zsh/home.nix
+    ../modules/programs/firefox/home.nix
   ];
 
   # Let home manager install and makage itself
