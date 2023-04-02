@@ -42,6 +42,11 @@
       lib = nixpkgs.lib;
     in
     {
+      devShells.${system} = {
+        #run by `nix devlop` or `nix-shell`(legacy)
+        default = import ./shell.nix { inherit pkgs; };
+      };
+
       homeConfigurations = {
         qverkk = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
