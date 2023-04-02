@@ -53,12 +53,26 @@
           extraSpecialArgs = { inherit inputs outputs pkgs; };
           modules = [ ./home/nixos.nix ];
         };
+
+
+        "qverkk@hybrid" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = { inherit inputs outputs pkgs; };
+          modules = [ ./home/hybrid.nix ];
+        };
       };
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/nixos
+          ];
+        };
+
+        hybrid = lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/hybrid
           ];
         };
       };
