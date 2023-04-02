@@ -21,16 +21,19 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     hyprland.url = "github:hyprwm/Hyprland/v0.23.0beta";
+
+    nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
     let
       inherit (self) outputs;
 
       system = "x86_64-linux";
 
       overlays = [
-        (import ./overlays/flameshot)
+        #        (import ./overlays/flameshot)
+        inputs.nur.overlay
       ];
 
       pkgs = import nixpkgs {
