@@ -17,9 +17,14 @@
         FirefoxHome = {
           Search = true;
           Pocket = false;
-          #              Snippets = false;
-          #              TopSites = false;
-          #              Highlights = false;
+          SponsoredTopSites = false;
+          SponsoredPocket = false;
+          Snippets = false;
+          TopSites = false;
+          Highlights = false;
+        };
+        Cookies = {
+          RejectTracker = true;
         };
         UserMessaging = {
           ExtensionRecommendations = false;

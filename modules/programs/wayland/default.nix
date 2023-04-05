@@ -4,4 +4,5 @@
   ./swaybg
   ./swaylock
   ./screenshots
+  ./general
 ]

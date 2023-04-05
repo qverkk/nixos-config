@@ -1,0 +1,4 @@
+[
+  ./intellij.nix
+  ./obsidian.nix
+]

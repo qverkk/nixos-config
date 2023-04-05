@@ -5,25 +5,11 @@
     ../modules/desktop/hyprland/home.nix
     ../modules/desktop/hyprland/monitors-config.nix
 
-    ../optional/home-manager/kitty.nix
-    ../optional/home-manager/font.nix
-    ../optional/home-manager/intellij.nix
-    ../optional/home-manager/syncthing.nix
-    ../optional/home-manager/keepassxc.nix
-    ../optional/home-manager/obsidian.nix
-    #    ../optional/home-manager/nushell
-    ../optional/home-manager/messaging.nix
-    ../optional/home-manager/starship.nix
-    ../optional/home-manager/pipewire.nix
-    ../optional/home-manager/mail.nix
-    ../optional/home-manager/gimp.nix
-    ../optional/home-manager/clipboard.nix
-    ../optional/home-manager/spotifyd.nix
-
     ../modules/programs/moonlander/home.nix
-    ../modules/programs/zsh/home.nix
-    ../modules/programs/firefox/home.nix
-  ];
+  ] ++
+  (import ../modules/programs/development) ++
+  (import ../modules/programs/social) ++
+  (import ../modules/programs/general);
 
   # Let home manager install and makage itself
   programs.home-manager.enable = true;
