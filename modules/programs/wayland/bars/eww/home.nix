@@ -11,6 +11,7 @@
     bluez5
     blueman
     upower
+    brightnessctl
   ];
 
   programs.eww = {

@@ -32,6 +32,8 @@
         :space-evenly false
         :spacing 5
         (label
+          :text "Brightness ${brightness}")
+        (label
           :text "${EWW_BATTERY == "" ? "" : 'Battery ' + EWW_BATTERY["BAT0"].capacity + '% '}")
         (label
           :text "RAM ${round(EWW_RAM.used_mem_perc,0)}% ")
