@@ -46,6 +46,11 @@
         id = 0;
         name = "qverkk";
         isDefault = true;
+        settings = {
+          "browser.sessionstore.resume_from_crash" = true;
+          "privacy.trackingprotection.enabled" = true;
+          "browser.startup.page" = 3; # Restore previous session
+        };
       };
       work = {
         id = 1;
