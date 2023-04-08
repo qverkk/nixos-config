@@ -32,7 +32,7 @@
         :space-evenly false
         :spacing 5
         (label
-          :text "Brightness ${brightness}")
+          :text "Brightness ${brightness.percentage}")
         (label
           :text "${EWW_BATTERY == "" ? "" : 'Battery ' + battery.percentage + '% '}")
         (label

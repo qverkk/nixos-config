@@ -3,8 +3,8 @@
 (defpoll network :interval "1s" "scripts/network")
 (defpoll airplane :interval "5s" "scripts/airplane")
 (defpoll bluetooth :interval "5s" "scripts/bluetooth")
-(defpoll brightness :interval "5s" 'brightnessctl | rg -o "\d+%"')
 
 (deflisten workspace "scripts/workspaces")
 (deflisten music "scripts/music")
 (deflisten battery "scripts/batteryrs/target/release/batteryrs")
+(deflisten brightness "scripts/brightnessrs/target/release/brightnessrs scan")
