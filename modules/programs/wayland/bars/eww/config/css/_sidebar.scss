@@ -2,6 +2,11 @@
   @include window;
   background-color: $bg;
   color: $text;
+  padding-bottom: 1rem;
+}
+
+.system-menu-battery {
+  padding-top: 1rem;
 }
 
 .separator {

@@ -64,7 +64,27 @@
             (label
               :text "Airplane Mode"
               :xalign 0.5
-              :limit-width 16))))))
+              :limit-width 16))))
+      (box
+        :orientation "v"
+        :class "system-menu-battery"
+        (label
+          :text "Battery")
+        (box
+            (label
+                :text "Capacity")
+            (label
+                :text "${battery.capacity}"))
+        (box
+            (label
+                :text "Charging")
+            (label
+                :text "${battery.time_to_full} to full"))
+        (box
+            (label
+                :text "Discharging")
+            (label
+                :text "${battery.time_to_empty} left")))))
 
 (defwindow system-menu
   :stacking "fg"

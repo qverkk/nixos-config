@@ -7,3 +7,4 @@
 
 (deflisten workspace "scripts/workspaces")
 (deflisten music "scripts/music")
+(deflisten battery "scripts/batteryrs/target/release/batteryrs")
