@@ -20,7 +20,7 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    hyprland.url = "github:hyprwm/Hyprland/v0.24.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.24.1";
 
     nur.url = "github:nix-community/NUR";
   };
