@@ -6,6 +6,7 @@
     ../modules/desktop/hyprland/monitors-config.nix
 
     ../modules/programs/moonlander/home.nix
+    ../modules/programs/development/neovim/home.nix
   ] ++
   (import ../modules/programs/development) ++
   (import ../modules/programs/social) ++
