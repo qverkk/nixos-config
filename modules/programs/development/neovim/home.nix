@@ -30,6 +30,7 @@ in
       sumneko-lua-language-server
       nodePackages.pyright
       kotlin-language-server
+      jdt-ls
     ];
     plugins = with pkgs.vimPlugins; [
       (plugin "ThePrimeagen/harpoon" "f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971")
@@ -61,6 +62,10 @@ in
 
       #java
       nvim-jdtls
+
+	  #snippets
+	  vim-vsnip
+	  cmp-vsnip
 
       nvim-lspconfig
       nvim-tree-lua

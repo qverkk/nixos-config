@@ -33,6 +33,7 @@
 
       overlays = [
         #        (import ./overlays/flameshot)
+        (import ./overlays { })
         inputs.nur.overlay
       ];
 
