@@ -28,9 +28,10 @@ in
       nodePackages.typescript-language-server
       rnix-lsp
       sumneko-lua-language-server
-      nodePackages.pyright
       kotlin-language-server
       jdt-ls
+	  nodePackages.bash-language-server
+	  rust-analyzer
     ];
     plugins = with pkgs.vimPlugins; [
       (plugin "ThePrimeagen/harpoon" "f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971")
@@ -40,12 +41,10 @@ in
       cmp-nvim-ultisnips
       cmp-path
       comment-nvim
-      committia-vim
       gitsigns-nvim
       gv-vim
       impatient-nvim
       indent-blankline-nvim
-      lspkind-nvim
       lualine-nvim
       markdown-preview-nvim
       mkdir-nvim
@@ -55,7 +54,6 @@ in
 
       # dap
       nvim-dap
-      nvim-dap-go
       nvim-dap-ui
       nvim-dap-virtual-text
       telescope-dap-nvim
@@ -63,31 +61,26 @@ in
       #java
       nvim-jdtls
 
-	  #snippets
-	  vim-vsnip
-	  cmp-vsnip
+      #snippets
+      vim-vsnip
+      cmp-vsnip
 
       nvim-lspconfig
       nvim-tree-lua
       nvim-web-devicons
       plenary-nvim
-      popup-nvim
       gruvbox
-      symbols-outline-nvim
       telescope-fzf-native-nvim
       telescope-fzf-writer-nvim
       telescope-nvim
       telescope-live-grep-args-nvim
       telescope-ui-select-nvim
-      ultisnips
       undotree
       vim-fugitive
       vim-repeat
       vim-snippets
       vim-surround
-      vimwiki
       diffview-nvim
-      gitlinker-nvim
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: [
         plugins.tree-sitter-javascript
         plugins.tree-sitter-jsdoc

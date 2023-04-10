@@ -2,6 +2,7 @@ require("lspconfig").sumneko_lua.setup {}
 require("lspconfig").kotlin_language_server.setup {}
 require("lspconfig").rust_analyzer.setup {}
 require("lspconfig").bashls.setup {}
+require("lspconfig").rnix.setup {}
 
 local root_pattern = require("lspconfig").util.root_pattern
 
