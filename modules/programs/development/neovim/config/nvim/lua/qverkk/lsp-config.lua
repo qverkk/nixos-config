@@ -13,8 +13,14 @@ local function jdt_on_attach(client, bufnr)
 	require("jdtls.setup").add_commands()
 end
 
+local home = os.getenv('HOME')
+
 function start_jdtls()
   local settings = {
+	['java.settings.url'] = home .. "/.config/nvim/formatters/settings.pref",
+	['java.format.settings.profile'] = "GoogleStyle",
+	['java.format.settings.url'] = home .. "/.config/nvim/formatters/eclipse-java-google-style.xml",
+
     java = {
       signatureHelp = { enabled = true },
       referenceCodeLens = { enabled = true },
@@ -39,6 +45,9 @@ function start_jdtls()
   local root_dir = root_pattern(".git", "gradlew", "mvnw")(bufname)
   local workspace_dir = "/tmp/jdtls_workspaces/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
+	local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
+	extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+
   require("jdtls").start_or_attach({
     cmd = { "jdt-ls", "-data", workspace_dir, "-Xmx8g" },
     on_attach = jdt_on_attach,
@@ -46,8 +55,10 @@ function start_jdtls()
     capabilities = capabilities,
     settings = settings,
     init_options = {
-      bundles = bundles,
-      extendedCapabilities = require("jdtls").extendedClientCapabilities,
+		extendedCapabilities = extendedClientCapabilities,
+		languageFeatures = {
+			codeLens = false
+		}
     },
   })
 end
