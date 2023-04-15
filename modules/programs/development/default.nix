@@ -1,6 +1,6 @@
 [
   ./intellij.nix
   ./obsidian.nix
-  ./podman/home.nix
+  ./insomnia.nix
   ./neovim/home.nix
 ]

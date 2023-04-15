@@ -26,12 +26,13 @@ in
       tree-sitter
       nodePackages.typescript
       nodePackages.typescript-language-server
+      nodePackages.dockerfile-language-server-nodejs
       rnix-lsp
       sumneko-lua-language-server
       kotlin-language-server
       jdt-ls
-	  nodePackages.bash-language-server
-	  rust-analyzer
+      nodePackages.bash-language-server
+      rust-analyzer
     ];
     plugins = with pkgs.vimPlugins; [
       (plugin "ThePrimeagen/harpoon" "f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971")

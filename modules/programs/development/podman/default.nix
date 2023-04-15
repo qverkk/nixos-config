@@ -1,16 +1,17 @@
 { pkgs, ... }:
 
 let
-    dockerStart = pkgs.writeShellScriptBin "docker-start" ''
-        systemctl --user start podman.socket
-        systemctl --user start podman
-    '';
+  dockerStart = pkgs.writeShellScriptBin "docker-start" ''
+    systemctl --user start podman.socket
+    systemctl --user start podman
+  '';
 
-    dockerStop = pkgs.writeShellScriptBin "docker-stop" ''
-        systemctl --user stop podman.socket
-        systemctl --user stop podman
-    '';
-in {
+  dockerStop = pkgs.writeShellScriptBin "docker-stop" ''
+    systemctl --user stop podman.socket
+    systemctl --user stop podman
+  '';
+in
+{
   # podman
   virtualisation.podman = {
     enable = true;
