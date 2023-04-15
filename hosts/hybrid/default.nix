@@ -17,6 +17,7 @@
       ../../modules/programs/moonlander
       ../../modules/programs/general/zsh
       ../../modules/desktop/hyprland
+      ../../modules/programs/development/podman
     ];
 
   # Bootloader.
@@ -81,7 +82,7 @@
   users.users.qverkk = {
     isNormalUser = true;
     description = "qverkk";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "podman" ];
     shell = pkgs.zsh;
   };
 
