@@ -41,6 +41,7 @@ in
       cmp-nvim-lsp
       cmp-nvim-ultisnips
       cmp-path
+	  cmp-cmdline
       comment-nvim
       gitsigns-nvim
       gv-vim

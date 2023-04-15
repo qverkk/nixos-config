@@ -13,13 +13,26 @@ struct BatteryInfo {
 }
 
 fn main() {
+    let mut battery_found = false;
+
     loop {
         // Get battery info
-        let output = Command::new("upower")
+        let output = match Command::new("upower")
             .arg("-i")
             .arg("/org/freedesktop/UPower/devices/battery_BAT0")
             .output()
-            .expect("Failed to execute upower command");
+            .map_err(|e| format!("Failed to execute upower command: {}", e)) {
+                Ok(res) => res,
+                Err(e) => {
+                    if battery_found {
+                        thread::sleep(Duration::from_secs(60));
+                        continue;
+                    }
+                    panic!("{:?}", e);
+                },
+            };
+
+        battery_found = true;
 
         let output_str = String::from_utf8_lossy(&output.stdout);
 

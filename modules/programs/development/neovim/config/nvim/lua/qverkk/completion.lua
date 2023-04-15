@@ -21,15 +21,15 @@ cmp.setup({
 	},
 
 	sorting = {
-      priority_weight = 2,
+      priority_weight = 1,
       comparators = {
         -- compare.offset,
-        -- compare.exact,
+        compare.exact,
         -- compare.scopes,
         -- compare.score,
-        compare.recently_used,
         compare.locality,
         compare.sort_text,
+        compare.recently_used,
         compare.kind,
         compare.length,
         compare.order,
@@ -39,9 +39,8 @@ cmp.setup({
 	mapping = {
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				print("next item")
 				cmp.select_next_item()
-			elseif vim.fn["vsnip#available"] == 1 then
+			elseif vim.fn["vsnip#available"](1) == 1 then
 				feedkey("<Plug>(vsnip-expand-or-jump)", "")
 			else
 				fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
@@ -69,18 +68,17 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', priority = 10, max_item_count = 15 },
 		{ name = 'nvim_lsp_signature_help', max_item_count = 15 },
-		{ name = 'path', priority = 1},
-		{ name = 'vsnip', priority = 0 },
+		{ name = 'path', priority = 1 },
+		{ name = 'vsnip', priority = 1 },
 		{ name = 'buffer', priority = 0, max_item_count = 5 },
 	})
-
-	})
+})
 
 	-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-	cmp.setup.cmdline('/', {
-		sources = {
-			{ name = 'buffer' }
-		}
-	})
+cmp.setup.cmdline('/', {
+	sources = {
+		{ name = 'buffer' }
+	}
+})
 
 vim.o.completeopt = "menuone,noselect"
