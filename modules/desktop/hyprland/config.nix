@@ -103,7 +103,7 @@
   # windowrulev2 = noanim,class:^(flameshot)^,title:^(flameshot)^
   # bind = $mainMod, print, exec, flameshot gui
   bind = $mainMod, print, exec, grimblast copy area
-  bind = $mainMod SHIFT, print, exec, grimblast copy area && wl-paste | tesseract stdin stdout | wl-copy && notify-send "$(wl-paste)"
+  bind = $mainMod SHIFT, print, exec, grimblast copy area && wl-paste | tesseract -l "eng+pol" stdin stdout | wl-copy && notify-send "$(wl-paste)"
 
   # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
   bind = $mainMod, return, exec, kitty zsh
