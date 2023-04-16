@@ -1,0 +1,3 @@
+(defwidget activewindow-module []
+  (label
+    :text "${activewindow.current}"))

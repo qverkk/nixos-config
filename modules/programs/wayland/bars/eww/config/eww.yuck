@@ -4,6 +4,7 @@
 (include "./modules/volume.yuck")
 (include "./modules/system.yuck")
 (include "./modules/music.yuck")
+(include "./modules/activewindow.yuck")
 
 (include "./windows/calendar.yuck")
 (include "./windows/system.yuck")
@@ -34,7 +35,7 @@
     (box
         :space-evenly false
         :halign "center"
-        (music-module)))
+        (activewindow-module)))
 
 (defwidget bar []
     (centerbox

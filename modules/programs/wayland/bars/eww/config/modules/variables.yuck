@@ -5,6 +5,8 @@
 (defpoll bluetooth :interval "5s" "scripts/bluetooth")
 (defpoll razerbattery :interval "60s" "scripts/razer")
 
+
+(deflisten activewindow "scripts/activewindow")
 (deflisten workspace "scripts/workspaces")
 (deflisten music "scripts/music")
 (deflisten battery "scripts/batteryrs/target/release/batteryrs")
