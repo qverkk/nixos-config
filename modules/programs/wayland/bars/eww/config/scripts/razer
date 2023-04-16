@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+percentage=$(awk '{printf "%.0f",($1/255)*100}' /sys/bus/hid/drivers/razermouse/*/charge_level)
+
+enabled=false
+
+if [[ $percentage -gt 0 ]]; then
+	enabled=true
+fi
+
+echo '{
+	"enabled": '"$enabled"',
+	"percentage": '"$percentage"'
+}'

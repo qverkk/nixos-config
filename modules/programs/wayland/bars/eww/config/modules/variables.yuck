@@ -3,6 +3,7 @@
 (defpoll network :interval "1s" "scripts/network")
 (defpoll airplane :interval "5s" "scripts/airplane")
 (defpoll bluetooth :interval "5s" "scripts/bluetooth")
+(defpoll razerbattery :interval "60s" "scripts/razer")
 
 (deflisten workspace "scripts/workspaces")
 (deflisten music "scripts/music")

@@ -36,6 +36,8 @@
         (label
           :text "${EWW_BATTERY == "" ? "" : 'Battery ' + battery.percentage + '% '}")
         (label
+          :text "${!razerbattery.enabled ? "" : 'Razer Battery ' + razerbattery.percentage + '% '}")
+        (label
           :text "RAM ${round(EWW_RAM.used_mem_perc,0)}% ")
         (label
           :text "CPU ${round(EWW_CPU.avg,0)}% ")

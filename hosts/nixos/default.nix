@@ -14,6 +14,7 @@
       inputs.nur.nixosModules.nur
       ../../modules/hardware/nvidia.nix
       ../../modules/hardware/bluetooth.nix
+      ../../modules/hardware/openrazer.nix
       ../../modules/programs/moonlander
       ../../modules/programs/general/zsh
       ../../modules/desktop/hyprland
@@ -100,7 +101,7 @@
   users.users.qverkk = {
     isNormalUser = true;
     description = "qverkk";
-    extraGroups = [ "networkmanager" "wheel" "podman" ];
+    extraGroups = [ "networkmanager" "wheel" "podman" "openrazer" ];
     shell = pkgs.zsh;
   };
 
