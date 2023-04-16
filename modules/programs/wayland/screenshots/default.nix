@@ -5,7 +5,7 @@
     grim
     #flameshot
     inputs.hyprland-contrib.packages.${pkgs.hostPlatform.system}.grimblast
-	tesseract5
-	libnotify
+    tesseract5
+    libnotify
   ];
 }
