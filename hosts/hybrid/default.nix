@@ -15,6 +15,7 @@
       ../../modules/hardware/nvidia.nix
       ../../modules/hardware/bluetooth.nix
       ../../modules/hardware/openrazer.nix
+      ../../modules/hardware/onlykey.nix
       ../../modules/programs/moonlander
       ../../modules/programs/general/zsh
       ../../modules/desktop/hyprland
