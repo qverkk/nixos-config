@@ -1,3 +1,4 @@
 (defwidget activewindow-module []
   (label
+	:limit-width 30
     :text "${activewindow.current}"))

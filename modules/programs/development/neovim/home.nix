@@ -68,6 +68,7 @@ in
       cmp-vsnip
 
       nvim-lspconfig
+	  symbols-outline-nvim
       nvim-tree-lua
       nvim-web-devicons
       plenary-nvim
