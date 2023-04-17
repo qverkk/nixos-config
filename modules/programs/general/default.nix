@@ -9,4 +9,5 @@
   ./spotifyd.nix
   ./zsh/home.nix
   ./starship.nix
+  ./video.nix
 ]
