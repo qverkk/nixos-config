@@ -62,6 +62,7 @@ in
 
       #java
       nvim-jdtls
+	  vim-test
 
       #snippets
       vim-vsnip

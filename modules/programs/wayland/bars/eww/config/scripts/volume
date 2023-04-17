@@ -9,17 +9,6 @@ ismuted() {
 }
 
 printVolume() {
-	# echo '{
-	#  "input": {
-	#    "volume": "'"$(vol "SOURCE")"'",
-	#    "muted": "'"$(ismuted "SOURCE")"'"
-	#  },
-	#  "output": {
-	#    "volume": "'"$(vol "SINK")"'",
-	#    "muted": "'"$(ismuted "SINK")"'"
-	#  }
-	# }'
-
 	echo "{ \"input\": { \"volume\": \""$(vol "SOURCE")"\", \"muted\": \""$(ismuted "SOURCE")"\" }, \"output\": { \"volume\": \""$(vol "SINK")"\", \"muted\": \""$(ismuted "SINK")"\" }}"
 }
 
