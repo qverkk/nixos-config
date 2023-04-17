@@ -8,13 +8,24 @@ ismuted() {
   wpctl get-volume @DEFAULT_AUDIO_"$1"@ | rg -i muted
 }
 
-echo '{
- "input": {
-   "volume": "'"$(vol "SOURCE")"'",
-   "muted": "'"$(ismuted "SOURCE")"'"
- },
- "output": {
-   "volume": "'"$(vol "SINK")"'",
-   "muted": "'"$(ismuted "SINK")"'"
- }
-}'
+printVolume() {
+	# echo '{
+	#  "input": {
+	#    "volume": "'"$(vol "SOURCE")"'",
+	#    "muted": "'"$(ismuted "SOURCE")"'"
+	#  },
+	#  "output": {
+	#    "volume": "'"$(vol "SINK")"'",
+	#    "muted": "'"$(ismuted "SINK")"'"
+	#  }
+	# }'
+
+	echo "{ \"input\": { \"volume\": \""$(vol "SOURCE")"\", \"muted\": \""$(ismuted "SOURCE")"\" }, \"output\": { \"volume\": \""$(vol "SINK")"\", \"muted\": \""$(ismuted "SINK")"\" }}"
+}
+
+printVolume
+stdbuf -o0 alsactl monitor | \
+  while read; do
+    printVolume
+  done
+
