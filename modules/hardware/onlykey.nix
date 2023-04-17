@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-	hardware.onlykey.enable = true;
+  hardware.onlykey.enable = true;
 }
