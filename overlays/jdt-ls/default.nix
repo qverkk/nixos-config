@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
   buildInputs = [
     bash
     jdk
-	lombok
+    lombok
   ];
 
   installPhase =

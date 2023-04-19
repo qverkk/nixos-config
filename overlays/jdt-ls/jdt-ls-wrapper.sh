@@ -124,6 +124,7 @@ cp @config_path@/config.ini "$configuration"
 # use java version from PATH, @jdk@ as fallback
 java_bin=$(command -v java || echo "@jdk@")
 $java_bin \
+    -javaagent:@lombok_jar@ \
     "$xms" \
     "$xmx" \
     "$log_level" \
@@ -132,6 +133,4 @@ $java_bin \
     --add-opens java.base/java.util=ALL-UNNAMED \
     --add-opens java.base/java.lang=ALL-UNNAMED \
     -configuration "$configuration" \
-    -javaagent:@lombok_jar@ \
-    -Xbootclasspath/a:@lombok_jar@ \
     -data "$data" ${extra_args[@]}

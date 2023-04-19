@@ -17,6 +17,10 @@ bind("n", "<s-k>", "10k<cr>", opt)
 bind("v", "<s-j>", "10j<cr>", opt)
 bind("v", "<s-k>", "10k<cr>", opt)
 
+-- escape by jk
+bind("i", "jk", "<ESC>", {noremap = false, silent = true})
+bind("t", "jk", "<C-\\><C-n>", {noremap = false, silent = true})
+
 -- show the error message when hovering
 bind(
 	"n",
