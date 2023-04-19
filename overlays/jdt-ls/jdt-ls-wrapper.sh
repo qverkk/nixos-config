@@ -132,4 +132,6 @@ $java_bin \
     --add-opens java.base/java.util=ALL-UNNAMED \
     --add-opens java.base/java.lang=ALL-UNNAMED \
     -configuration "$configuration" \
+    -javaagent:@lombok_jar@ \
+    -Xbootclasspath/a:@lombok_jar@ \
     -data "$data" ${extra_args[@]}

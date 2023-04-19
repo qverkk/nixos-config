@@ -2,6 +2,7 @@
 , stdenv
 , fetchurl
 , jdk
+, lombok
 , bash
 }:
 
@@ -24,6 +25,7 @@ stdenv.mkDerivation rec {
   buildInputs = [
     bash
     jdk
+	lombok
   ];
 
   installPhase =
@@ -45,6 +47,7 @@ stdenv.mkDerivation rec {
       substituteInPlace $out/bin/jdt-ls \
         --subst-var-by shell ${bash}/bin/bash \
         --subst-var-by jdk ${jdk}/bin/java \
+        --subst-var-by lombok_jar ${lombok}/share/java/lombok.jar \
         --subst-var-by config_path $out/share/config \
         --subst-var launcher
     '';
