@@ -1,5 +1,5 @@
 [
-  ./intellij.nix
+  ./java-development.nix
   ./obsidian.nix
   ./insomnia.nix
   ./git.nix
