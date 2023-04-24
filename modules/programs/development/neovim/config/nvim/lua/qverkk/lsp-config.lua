@@ -12,6 +12,11 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local function jdt_on_attach(client, bufnr)
 	vim.keymap.set("n", "<c-a-v>", "<cmd>lua require('jdtls').extract_variable()<cr>", {})
 	vim.keymap.set("n", "<c-a-m>", "<cmd>lua require('jdtls').extract_method()<cr>", {})
+
+	vim.keymap.set("n", "<leader>df", "<cmd>lua require'jdtls'.test_class()<CR>", {})
+	vim.keymap.set("n", "<leader>dn", "<cmd>lua require'jdtls'.test_nearest_method()<CR>", {})
+
+	require('jdtls').setup_dap({ hotcodereplace = 'auto' })
 	require("jdtls.setup").add_commands()
 end
 

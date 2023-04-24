@@ -30,7 +30,12 @@ in
       rnix-lsp
       sumneko-lua-language-server
       kotlin-language-server
-      jdt-ls
+
+		# Java
+		jdt-ls
+		vscode-extensions.vscjava.vscode-java-test
+		vscode-extensions.vscjava.vscode-java-debug
+
       nodePackages.bash-language-server
       rust-analyzer
     ];
