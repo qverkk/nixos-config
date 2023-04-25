@@ -17,6 +17,11 @@ in
 {
   home.file.".config/nvim".source = ./config/nvim;
 
+  home.sessionVariables = {
+    JAVA_TEST_DIR = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test/server/*.jar";
+    JAVA_DEBUG_DIR = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug/server/com.microsoft.java.debug.plugin-*.jar";
+  };
+
   programs.neovim = {
     enable = true;
     vimAlias = true;
@@ -31,10 +36,10 @@ in
       sumneko-lua-language-server
       kotlin-language-server
 
-		# Java
-		jdt-ls
-		vscode-extensions.vscjava.vscode-java-test
-		vscode-extensions.vscjava.vscode-java-debug
+      # Java
+      jdt-ls
+      vscode-extensions.vscjava.vscode-java-test
+      vscode-extensions.vscjava.vscode-java-debug
 
       nodePackages.bash-language-server
       rust-analyzer
