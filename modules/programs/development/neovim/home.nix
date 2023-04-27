@@ -49,7 +49,7 @@ in
       cmp-buffer
       cmp-calc
       cmp-nvim-lsp
-	  cmp_luasnip
+      cmp_luasnip
       cmp-path
       cmp-cmdline
       comment-nvim
@@ -64,6 +64,9 @@ in
       nvim-cmp
       nvim-colorizer-lua
 
+      # terminal
+      toggleterm-nvim
+
       # dap
       nvim-dap
       nvim-dap-ui
@@ -77,7 +80,7 @@ in
       #snippets
       vim-vsnip
       cmp-vsnip
-	  luasnip
+      luasnip
 
       nvim-lspconfig
       symbols-outline-nvim
