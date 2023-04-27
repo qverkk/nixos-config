@@ -49,7 +49,7 @@ in
       cmp-buffer
       cmp-calc
       cmp-nvim-lsp
-      cmp-nvim-ultisnips
+	  cmp_luasnip
       cmp-path
       cmp-cmdline
       comment-nvim
@@ -77,6 +77,7 @@ in
       #snippets
       vim-vsnip
       cmp-vsnip
+	  luasnip
 
       nvim-lspconfig
       symbols-outline-nvim
