@@ -94,6 +94,7 @@ in
       telescope-nvim
       telescope-live-grep-args-nvim
       telescope-ui-select-nvim
+      trouble-nvim
       undotree
       vim-fugitive
       vim-repeat
