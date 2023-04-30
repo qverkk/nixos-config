@@ -88,6 +88,7 @@ in
       nvim-web-devicons
       plenary-nvim
       gruvbox
+      nightfox-nvim
       telescope-fzf-native-nvim
       telescope-fzf-writer-nvim
       telescope-nvim

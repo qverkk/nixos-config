@@ -5,4 +5,5 @@
   ./git.nix
   ./cli-tools.nix
   ./neovim/home.nix
+  ./zellij.nix
 ]
