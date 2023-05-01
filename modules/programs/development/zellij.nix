@@ -26,6 +26,8 @@
                   tmux {
                       bind "n" { NewTab; SwitchToMode "normal"; }
                       bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
+                      bind "d" { Detach; }
+                      bind "q" { Quit; }
                       bind "Esc" { SwitchToMode "normal"; }
                    }
 

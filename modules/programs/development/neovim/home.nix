@@ -120,6 +120,7 @@ in
       symbols-outline-nvim
       trouble-nvim
       vim-surround
+      fidget-nvim
 
       # telescope
       plenary-nvim

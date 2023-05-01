@@ -54,6 +54,8 @@ function start_jdtls()
 	local workspace_dir = "/tmp/jdtls_workspaces/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 	local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
+	extendedClientCapabilities['progressReportProvider'] = false
+
 	extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 	local java_debug_jar = os.getenv('JAVA_DEBUG_DIR')
