@@ -28,41 +28,68 @@ in
     withNodeJs = true;
 
     extraPackages = with pkgs; [
+      # language specific colors
       tree-sitter
+
+      # typescript
       nodePackages.typescript
       nodePackages.typescript-language-server
+
+      # docker
       nodePackages.dockerfile-language-server-nodejs
-      rnix-lsp
+
+      # lua
       sumneko-lua-language-server
+
+      # kotlin
       kotlin-language-server
+
+      # nix
+      rnix-lsp
 
       # Java
       jdt-ls
       vscode-extensions.vscjava.vscode-java-test
       vscode-extensions.vscjava.vscode-java-debug
 
+      # bash
       nodePackages.bash-language-server
+
+      # rust
       rust-analyzer
     ];
     plugins = with pkgs.vimPlugins; [
+      # blazing fast buffer switching
       (plugin "ThePrimeagen/harpoon" "f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971")
+
+      # git
+      gv-vim # commit browser, maybe replace this with lazygit? Atm it's laggy due to nightfox
+      vim-fugitive
+      gitsigns-nvim
+      diffview-nvim
+
+      # cmp
       cmp-buffer
       cmp-calc
       cmp-nvim-lsp
       cmp_luasnip
       cmp-path
       cmp-cmdline
-      comment-nvim
-      gitsigns-nvim
-      gv-vim
-      impatient-nvim
-      indent-blankline-nvim
-      lualine-nvim
-      markdown-preview-nvim
-      mkdir-nvim
-      nvim-autopairs
       nvim-cmp
+
+      # utils
+      comment-nvim
+      nvim-autopairs
+      lualine-nvim
       nvim-colorizer-lua
+      indent-blankline-nvim
+      markdown-preview-nvim
+      undotree
+      nvim-tree-lua
+      vim-repeat
+
+      # nvim speedup
+      impatient-nvim # needs setting up? TODO
 
       # terminal
       toggleterm-nvim
@@ -81,26 +108,26 @@ in
       vim-vsnip
       cmp-vsnip
       luasnip
+      vim-snippets
 
-      nvim-lspconfig
-      symbols-outline-nvim
-      nvim-tree-lua
-      nvim-web-devicons
-      plenary-nvim
+      # themes
       gruvbox
       nightfox-nvim
+      nvim-web-devicons
+
+      # lsp
+      nvim-lspconfig
+      symbols-outline-nvim
+      trouble-nvim
+      vim-surround
+
+      # telescope
+      plenary-nvim
       telescope-fzf-native-nvim
       telescope-fzf-writer-nvim
       telescope-nvim
       telescope-live-grep-args-nvim
       telescope-ui-select-nvim
-      trouble-nvim
-      undotree
-      vim-fugitive
-      vim-repeat
-      vim-snippets
-      vim-surround
-      diffview-nvim
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: [
         plugins.tree-sitter-javascript
         plugins.tree-sitter-jsdoc
