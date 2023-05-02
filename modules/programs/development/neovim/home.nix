@@ -62,6 +62,10 @@ in
       # blazing fast buffer switching
       (plugin "ThePrimeagen/harpoon" "f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971")
 
+      # search commands
+      legendary-nvim
+      which-key-nvim
+
       # Search and replace
       nvim-spectre
 
