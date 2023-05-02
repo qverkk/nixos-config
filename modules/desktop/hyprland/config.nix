@@ -99,6 +99,9 @@
   windowrulev2 = noanim,class:^(jetbrains-.*)
   windowrulev2 = windowdance,class:^(jetbrains-.*) # allows IDE to move child windows
 
+  # keepass
+  windowrulev2 = float,class:^(org.keepassxc.KeePassXC)$,title:^(KeePassXC - Browser Access Request)$
+
   # flameshot
   # windowrulev2 = noanim,class:^(flameshot)^,title:^(flameshot)^
   # bind = $mainMod, print, exec, flameshot gui
