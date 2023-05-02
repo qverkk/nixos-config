@@ -62,11 +62,15 @@ in
       # blazing fast buffer switching
       (plugin "ThePrimeagen/harpoon" "f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971")
 
+      # project management
+	  (pkgs.projections-nvim)
+
       # git
       gv-vim # commit browser, maybe replace this with lazygit? Atm it's laggy due to nightfox
       vim-fugitive
       gitsigns-nvim
       diffview-nvim
+
 
       # cmp
       cmp-buffer

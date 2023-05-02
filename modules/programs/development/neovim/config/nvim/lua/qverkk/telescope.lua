@@ -9,6 +9,19 @@ vim.keymap.set("n", "<leader>fa", builtin.commands, {})
 
 -- This is your opts table
 require("telescope").setup({
+
+	pickers = {
+		buffers = {
+			show_all_buffers = true,
+			sort_mru = true,
+			mappings = {
+				i = {
+					["<c-d>"] = "delete_buffer",
+				},
+			},
+		},
+	},
+
 	fzf = {
 		fuzzy = true, -- false will only do exact matching
 		override_generic_sorter = true, -- override the generic sorter

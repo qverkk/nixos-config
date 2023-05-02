@@ -34,6 +34,7 @@
       overlays = [
         #        (import ./overlays/flameshot)
         (import ./overlays/rofi-wayland-unwrapped)
+        (import ./overlays/nvim/projections)
         (import ./overlays { })
         inputs.nur.overlay
       ];
