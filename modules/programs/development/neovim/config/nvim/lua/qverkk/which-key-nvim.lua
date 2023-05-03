@@ -25,10 +25,11 @@ local vopts = {
 
 local harpoonopts = {
 	mode = "n", -- NORMAL mode
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
+	prefix = "<A>",
+	-- buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	-- silent = true, -- use `silent` when creating keymaps
+	-- noremap = true, -- use `noremap` when creating keymaps
+	-- nowait = true, -- use `nowait` when creating keymaps
 }
 
 local harpoonmappings = {
@@ -51,8 +52,8 @@ local vmappings = {
 local mappings = {
 	h = {
 		name = "Harpoon",
-		a = { harpoon_mark.add_file, "Add mark" },
-		e = { harpoon_ui.toggle_quick_menu, "Browse marks" },
+		a = { harpoon_mark.add_file, "Harpoon add mark" },
+		e = { harpoon_ui.toggle_quick_menu, "Harpoon browse marks" },
 	},
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>confirm q<CR>", "Quit" },
@@ -60,12 +61,12 @@ local mappings = {
 	["c"] = { "<cmd>bd<CR>", "Close Buffer" },
 	f = {
 		name = "Find",
-		f = { "<cmd>Telescope find_files<cr>", "Files" },
-		g = { "<cmd>Telescope live_grep<cr>", "Text" },
-		b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-		p = { "<cmd>Telescope git_files<cr>", "Git files" },
-		a = { "<cmd>Telescope commands<cr>", "Commands" },
-		A = { "<cmd>Legendary<cr>", "Legendary commands" },
+		f = { "<cmd>Telescope find_files<cr>", "Find files" },
+		g = { "<cmd>Telescope live_grep<cr>", "Find text" },
+		b = { "<cmd>Telescope buffers<cr>", "Find buffers" },
+		p = { "<cmd>Telescope git_files<cr>", "Find git files" },
+		a = { "<cmd>Telescope commands<cr>", "Find commands" },
+		A = { "<cmd>Legendary<cr>", "Find legendary commands" },
 		l = { "<cmd>Telescope resume<cr>", "Resume last search" },
 	},
 	["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
@@ -73,33 +74,33 @@ local mappings = {
 		name = "Debug",
 		t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
 		T = { "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
-			"Conditional breakpoint" },
-		b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
-		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-		C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
-		d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
-		g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
-		i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-		o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-		u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
-		p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
-		r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-		s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
-		q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
-		U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
+			"Debug conditional breakpoint" },
+		b = { "<cmd>lua require'dap'.step_back()<cr>", "Debug step Back" },
+		c = { "<cmd>lua require'dap'.continue()<cr>", "Debug continue" },
+		C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Debug run To Cursor" },
+		d = { "<cmd>lua require'dap'.disconnect()<cr>", "Debug disconnect" },
+		g = { "<cmd>lua require'dap'.session()<cr>", "Debug get Session" },
+		i = { "<cmd>lua require'dap'.step_into()<cr>", "Debug step Into" },
+		o = { "<cmd>lua require'dap'.step_over()<cr>", "Debug step Over" },
+		u = { "<cmd>lua require'dap'.step_out()<cr>", "Debug step Out" },
+		p = { "<cmd>lua require'dap'.pause()<cr>", "Debug pause" },
+		r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Debug toggle Repl" },
+		s = { "<cmd>lua require'dap'.continue()<cr>", "Debug start" },
+		q = { "<cmd>lua require'dap'.close()<cr>", "Debug quit" },
+		U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Debug toggle UI" },
 	},
 	g = {
 		name = "Git",
 		g = { "<cmd>lua _lazygit_toggle()<CR>", "Lazygit" },
-		j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
-		k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
-		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+		j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Git next Hunk" },
+		k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Git prev Hunk" },
+		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Git blame" },
+		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Git preview Hunk" },
+		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Git reset Hunk" },
+		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Git reset Buffer" },
+		o = { "<cmd>Telescope git_status<cr>", "Git open changed file" },
+		b = { "<cmd>Telescope git_branches<cr>", "Git checkout branch" },
+		c = { "<cmd>Telescope git_commits<cr>", "Git checkout commit" },
 		C = {
 			"<cmd>Telescope git_bcommits<cr>",
 			"Checkout commit(for current file)",
@@ -136,12 +137,14 @@ local mappings = {
 	},
 	["u"] = { "<cmd>UndotreeToggle<CR>", "Undotree" },
 	t = {
-		t = { "<cmd>TestNearest<cr>", "Nearest" },
-		T = { "<cmd>TestFile<cr>", "File" },
-		a = { "<cmd>TestSuite<cr>", "All" },
-		l = { "<cmd>TestLast<cr>", "Last" },
+		name = "Test",
+		t = { "<cmd>TestNearest<cr>", "Test nearest" },
+		T = { "<cmd>TestFile<cr>", "Test file" },
+		a = { "<cmd>TestSuite<cr>", "Test all" },
+		l = { "<cmd>TestLast<cr>", "Test last" },
 		g = { "<cmd>TestVisit<cr>", "Go to test class" },
 	},
+	["T"] = { "<cmd>ToggleTerm<cr>", "Toggle terminal" }
 }
 
 which_key.setup {
@@ -176,7 +179,6 @@ which_key.setup {
 			-- ["<space>"] = "SPC",
 			-- ["<cr>"] = "RET",
 			-- ["<tab>"] = "TAB",
-			["<A>"] = "alt"
 		},
 		window = {
 			border = "single", -- none, single, double, shadow
@@ -213,10 +215,8 @@ which_key.setup {
 	},
 }
 
-require('legendary').setup({
-	which_key = { auto_register = true }
-})
-
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
+
+-- TODO: Doesn't work, needs fixing
 which_key.register(harpoonmappings, harpoonopts)
