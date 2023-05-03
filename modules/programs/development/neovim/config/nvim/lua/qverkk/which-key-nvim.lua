@@ -65,9 +65,11 @@ local mappings = {
 		g = { "<cmd>Telescope live_grep<cr>", "Find text" },
 		b = { "<cmd>Telescope buffers<cr>", "Find buffers" },
 		p = { "<cmd>Telescope git_files<cr>", "Find git files" },
+		P = { "<cmd>Telescope projections<cr>", "Find projects" },
 		a = { "<cmd>Telescope commands<cr>", "Find commands" },
 		A = { "<cmd>Legendary<cr>", "Find legendary commands" },
 		l = { "<cmd>Telescope resume<cr>", "Resume last search" },
+		s = { "<cmd>SymbolsOutline<cr>", "Find symbols outline" },
 	},
 	["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
 	d = {
@@ -88,6 +90,8 @@ local mappings = {
 		s = { "<cmd>lua require'dap'.continue()<cr>", "Debug start" },
 		q = { "<cmd>lua require'dap'.close()<cr>", "Debug quit" },
 		U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Debug toggle UI" },
+		n = { "<cmd>lua _debug_nearest_method()<CR>", "Debug nearest method" },
+		f = { "<cmd>lua _debug_test_class()<CR>", "Debug test class" },
 	},
 	g = {
 		name = "Git",
@@ -144,7 +148,8 @@ local mappings = {
 		l = { "<cmd>TestLast<cr>", "Test last" },
 		g = { "<cmd>TestVisit<cr>", "Go to test class" },
 	},
-	["T"] = { "<cmd>ToggleTerm<cr>", "Toggle terminal" }
+	["T"] = { "<cmd>ToggleTerm<cr>", "Toggle terminal" },
+	["S"] = { "<cmd>Spectre<cr>", "Toggle spectre (find and replace)" }
 }
 
 which_key.setup {
@@ -218,5 +223,5 @@ which_key.setup {
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
 
--- TODO: Doesn't work, needs fixing
+-- TODO: Doesn't work, needs fixing, these don't work in legendary aswell
 which_key.register(harpoonmappings, harpoonopts)

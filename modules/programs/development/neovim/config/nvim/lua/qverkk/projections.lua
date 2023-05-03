@@ -14,7 +14,6 @@ require("projections").setup({
 
 require('telescope').load_extension('projections')
 
-vim.keymap.set("n", "<leader>fp", function() vim.cmd("Telescope projections") end)
 vim.opt.sessionoptions:append("localoptions")
 
 -- Autostore session on VimExit

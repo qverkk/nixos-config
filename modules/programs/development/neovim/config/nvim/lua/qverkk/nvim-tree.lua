@@ -10,9 +10,7 @@ require("nvim-tree").setup({
 				{ key = "h", action = "close_node" },
 				{ key = "v", action = "vsplit" },
 				{ key = "C", action = "cd" },
-				{ key = "u", action = "dir_up" },
-				{ key = "gtf", action = "telescope_find_files", action_cb = telescope_find_files },
-				{ key = "gtg", action = "telescope_live_grep", action_cb = telescope_live_grep },
+				{ key = "u", action = "dir_up" }
 			},
 		},
 	},
@@ -26,5 +24,3 @@ require("nvim-tree").setup({
 		ignore_list = {},
 	},
 })
-
-vim.keymap.set("n", "<space>e", ":NvimTreeToggle<CR>")

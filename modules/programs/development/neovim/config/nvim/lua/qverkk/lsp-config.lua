@@ -10,13 +10,32 @@ local root_pattern = require("lspconfig").util.root_pattern
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local function jdt_on_attach(client, bufnr)
-	vim.keymap.set("n", "<c-a-v>", "<cmd>lua require('jdtls').extract_variable()<cr>", {})
-	vim.keymap.set("n", "<c-a-m>", "<cmd>lua require('jdtls').extract_method()<cr>", {})
+	local jdtls = require('jdtls')
 
-	vim.keymap.set("n", "<leader>df", "<cmd>lua require'jdtls'.test_class()<CR>", {})
-	vim.keymap.set("n", "<leader>dn", "<cmd>lua require'jdtls'.test_nearest_method()<CR>", {})
+	function _extract_variable()
+		vim.keymap.set("n", "<c-a-v>", "<cmd>lua require('jdtls').extract_variable()<cr>", {})
+		-- jdtls.extract_variable()
+	end
 
-	require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+	function _extract_method()
+		vim.keymap.set("n", "<c-a-m>", "<cmd>lua require('jdtls').extract_method()<cr>", {})
+		-- jdtls.extract_method()
+	end
+
+	function _debug_nearest_method()
+		-- vim.keymap.set("n", "<leader>dn", "<cmd>lua require'jdtls'.test_nearest_method()<CR>", {})
+		jdtls.test_nearest_method()
+	end
+
+	function _debug_test_class()
+		-- vim.keymap.set("n", "<leader>df", "<cmd>lua require'jdtls'.test_class()<CR>", {})
+		jdtls.test_class()
+	end
+
+
+	_extract_method()
+	_extract_variable()
+	jdtls.setup_dap({ hotcodereplace = 'auto' })
 	require("jdtls.setup").add_commands()
 	require("jdtls.dap").setup_dap_main_class_configs()
 end

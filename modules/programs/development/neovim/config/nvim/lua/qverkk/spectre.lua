@@ -170,7 +170,3 @@ require('spectre').setup({
 	is_open_target_win = true, --open file on opener window
 	is_insert_mode     = false -- start open panel on is_insert_mode
 })
-
-vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>', {
-	desc = "Open Spectre"
-})

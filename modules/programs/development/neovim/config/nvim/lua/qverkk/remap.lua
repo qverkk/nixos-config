@@ -21,6 +21,7 @@ bind("v", "<s-k>", "10k<cr>", opt)
 bind("i", "jk", "<ESC>", { noremap = false, silent = true })
 bind("t", "jk", "<C-\\><C-n>", { noremap = false, silent = true })
 
+-- TODO: Move these to which-key soonTM
 -- show the error message when hovering
 bind(
 	"n",
