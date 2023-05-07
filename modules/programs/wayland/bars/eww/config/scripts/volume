@@ -12,6 +12,7 @@ printVolume() {
 	echo "{ \"input\": { \"volume\": \""$(vol "SOURCE")"\", \"muted\": \""$(ismuted "SOURCE")"\" }, \"output\": { \"volume\": \""$(vol "SINK")"\", \"muted\": \""$(ismuted "SINK")"\" }}"
 }
 
+sleep 5
 printVolume
 stdbuf -o0 alsactl monitor | \
   while read; do
