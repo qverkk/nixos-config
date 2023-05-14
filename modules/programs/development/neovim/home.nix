@@ -120,6 +120,7 @@ in
       cmp-vsnip
       luasnip
       vim-snippets
+	  friendly-snippets
 
       # themes
       gruvbox
