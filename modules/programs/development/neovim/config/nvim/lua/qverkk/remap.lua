@@ -42,6 +42,5 @@ bind("n", "<a-r>", "<cmd>:Telescope lsp_references<cr>", opt)
 bind("n", "<a-c>", "<cmd>:Telescope lsp_dynamic_workspace_symbols<cr>", opt)
 
 -- diagnostics
-bind("n", "<a-c-q>", "<cmd>:Telescope diagnostics<cr>", {})
 bind("n", "<a-[>", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opt)
 bind("n", "<a-]>", "<cmd>lua vim.diagnostic.goto_next()<cr>", opt)
