@@ -13,6 +13,15 @@ end
 vim.cmd("set pumheight=8")
 
 cmp.setup({
+	experimental = {
+		ghost_text = true;
+	},
+	completion = {
+		autocomplete = {
+			cmp.TriggerEvent.TextChanged,
+		},
+		keyword_length = 3
+	},
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
@@ -22,20 +31,20 @@ cmp.setup({
 	},
 
 	sorting = {
-      priority_weight = 1,
-      comparators = {
-        -- compare.offset,
-        compare.exact,
-        -- compare.scopes,
-        -- compare.score,
-        compare.locality,
-        compare.sort_text,
-        compare.recently_used,
-        compare.kind,
-        compare.length,
-        compare.order,
-      },
-    },
+		priority_weight = 1,
+		comparators = {
+			-- compare.offset,
+			compare.exact,
+			-- compare.scopes,
+			-- compare.score,
+			compare.locality,
+			compare.sort_text,
+			compare.recently_used,
+			compare.kind,
+			compare.length,
+			compare.order,
+		},
+	},
 
 	mapping = {
 		["<Tab>"] = cmp.mapping(function(fallback)
@@ -76,7 +85,7 @@ cmp.setup({
 	})
 })
 
-	-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
 	sources = {
 		{ name = 'buffer' }
