@@ -78,6 +78,8 @@ in
       gitsigns-nvim
       diffview-nvim
 
+      # rest client
+      rest-nvim
 
       # cmp
       cmp-buffer
@@ -120,7 +122,7 @@ in
       cmp-vsnip
       luasnip
       vim-snippets
-	  friendly-snippets
+      friendly-snippets
 
       # themes
       gruvbox
