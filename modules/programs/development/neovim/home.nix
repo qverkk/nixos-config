@@ -37,9 +37,10 @@ in
 
       # docker
       nodePackages.dockerfile-language-server-nodejs
+      docker-compose-language-service
 
       # lua
-      sumneko-lua-language-server
+      lua-language-server
 
       # kotlin
       kotlin-language-server
@@ -149,7 +150,6 @@ in
         plugins.tree-sitter-json
         plugins.tree-sitter-nix
         plugins.tree-sitter-lua
-        plugins.tree-sitter-help
         plugins.tree-sitter-typescript
         plugins.tree-sitter-rust
         plugins.tree-sitter-java

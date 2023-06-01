@@ -1,4 +1,4 @@
-require("lspconfig").sumneko_lua.setup {}
+require("lspconfig").lua_ls.setup {}
 require("lspconfig").kotlin_language_server.setup {}
 require("lspconfig").rust_analyzer.setup {}
 require("lspconfig").bashls.setup {}

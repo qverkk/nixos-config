@@ -2,7 +2,7 @@
 
 rec {
   home.sessionVariables = {
-    GTK_THEME = "Catppuccin-Green-Dark";
+    GTK_THEME = "Catppuccin-Mocha-Standard-Green-Dark";
   };
 
   gtk = {
@@ -12,8 +12,11 @@ rec {
       size = 12;
     };
     theme = {
-      name = "Catppuccin-Green-Dark";
-      package = pkgs.catppuccin-gtk;
+      name = "Catppuccin-Mocha-Standard-Green-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["green"];
+        variant = "mocha";
+      };
     };
     iconTheme = {
       name = "Papirus-Dark";

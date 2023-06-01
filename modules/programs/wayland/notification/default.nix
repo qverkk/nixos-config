@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  programs.mako = {
+  services.mako = {
     enable = true;
     #iconPath = "${pkgs.papirus-icon-theme.package}/share/icons/Papirus-Dark";
     font = "JetBrainsMono Nerd Font 12";

@@ -2,10 +2,10 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -15,12 +15,12 @@
     };
 
     hyprland-contrib = {
-      url = "github:hyprwm/contrib?rev=1af47a008e850c595aeddc83bb3f04fd81935caa";
+      url = "github:hyprwm/contrib?rev=805bedf51a2f75a2279b6fc75b3066ff21f235ee";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    hyprland.url = "github:hyprwm/Hyprland/v0.24.1";
+#    hyprland.url = "github:hyprwm/Hyprland/v0.24.1";
 
     nur.url = "github:nix-community/NUR";
   };

@@ -17,7 +17,7 @@ in
     enable = true;
     dockerCompat = true;
     dockerSocket.enable = true;
-    defaultNetwork.dnsname.enable = true;
+    defaultNetwork.settings.dns_enable = true;
   };
 
   environment.systemPackages = with pkgs; [

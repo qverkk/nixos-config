@@ -13,6 +13,11 @@
     #swaylock-effects
   ];
 
+  programs.hyprland = {
+    enable = true;
+    nvidiaPatches = true;
+  };
+
   security.pam.services.swaylock = { };
   xdg.portal = {
     enable = true;

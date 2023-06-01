@@ -7,10 +7,10 @@
         :space-evenly false
         (label
           :class "icon"
-          :text "${network.ethernet.enabled == "connected" ? '' : ''}")
+          :text "${network.ethernet.enabled == "connected" ? '󰌘' : '󰌙'}")
         (label
           :class "icon"
-          :text "${network.wifi.enabled == "connected" ? '直' : '睊'}")))))
+          :text "${network.wifi.enabled == "connected" ? '󰖩' : '󰖪'}")))))
 
 (defwidget bluetooth_module []
   (eventbox

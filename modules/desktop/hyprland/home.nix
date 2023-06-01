@@ -2,7 +2,6 @@
 
 {
   imports = [
-    inputs.hyprland.homeManagerModules.default
     ../../programs/wayland/bars/eww/home.nix
     (import ../../environment/hypr-variables.nix)
   ] ++
@@ -10,16 +9,28 @@
   (import ../../theme/catppuccin-dark/wayland);
 
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    systemdIntegration = true;
-    nvidiaPatches = true;
-    extraConfig =
-      (import ./monitors-decoder.nix {
+  home.file.hyprconf = {
+    target = ".config/hypr/hyprland.conf";
+    text = ''
+      ${import ./monitors-decoder.nix {
         inherit lib;
         inherit (config) monitors;
-      }) +
-      (import ./config.nix { })
-    ;
+      }}
+
+      ${import ./config.nix { }}
+    '';
   };
+
+  #  wayland.windowManager.hyprland = {
+  #    enable = true;
+  #    systemdIntegration = true;
+  #    nvidiaPatches = true;
+  #    extraConfig =
+  #      (import ./monitors-decoder.nix {
+  #        inherit lib;
+  #        inherit (config) monitors;
+  #      }) +
+  #      (import ./config.nix { })
+  #    ;
+  #  };
 }

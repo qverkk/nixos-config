@@ -29,7 +29,7 @@
             :space-evenly false
             (button
               :onclick "scripts/wireless-toggle wlan"
-              "直")
+              "󰖩")
             (label
                 :text {network.wifi.connectedNetwork}
                 :xalign 0.5

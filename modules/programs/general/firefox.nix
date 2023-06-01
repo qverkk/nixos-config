@@ -74,14 +74,6 @@
         };
       };
     };
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      ublock-origin
-      clearurls
-      vimium
-      decentraleyes
-      privacy-badger
-      keepassxc-browser
-    ];
 
     profiles = {
       qverkk = {
@@ -93,6 +85,15 @@
           "privacy.trackingprotection.enabled" = true;
           "browser.startup.page" = 3; # Restore previous session
         };
+
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          clearurls
+          vimium
+          decentraleyes
+          privacy-badger
+          keepassxc-browser
+        ];
       };
       work = {
         id = 1;

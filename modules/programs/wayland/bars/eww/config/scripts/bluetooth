@@ -8,17 +8,17 @@ info_output=$(bluetoothctl info)
 # Get connected device name from info output
 if [[ "$powered" = "no" ]]; then
   connected="none"
-  text=""
+  text="󰂲"
   enabled=false
   class="not-active"
 elif [[ "$info_output" =~ "Connected: yes" ]]; then
   connected=$(echo "$info_output" | rg "Name" | cut -f 2- -d ' ')
-  text=""
+  text="󰂰"
   enabled=true
   class="connected"
 else
   connected="none"
-  text=""
+  text="󰂯"
   enabled=true
   class="active"
 fi

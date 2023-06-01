@@ -17,12 +17,12 @@
   home = {
     username = "qverkk";
     homeDirectory = "/home/qverkk";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
   };
 
   monitors = [
     {
-      name = "DP-1";
+      name = "";
       width = 3440;
       height = 1440;
       refreshRate = 144;
