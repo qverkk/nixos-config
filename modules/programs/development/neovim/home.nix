@@ -154,6 +154,7 @@ in
         plugins.tree-sitter-rust
         plugins.tree-sitter-java
         plugins.tree-sitter-kotlin
+        plugins.tree-sitter-http
       ]))
     ];
   };
