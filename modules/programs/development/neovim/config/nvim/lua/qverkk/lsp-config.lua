@@ -4,6 +4,7 @@ require("lspconfig").rust_analyzer.setup {}
 require("lspconfig").bashls.setup {}
 require("lspconfig").rnix.setup {}
 require("lspconfig").dockerls.setup {}
+require("lspconfig").docker_compose_language_service.setup {}
 
 local root_pattern = require("lspconfig").util.root_pattern
 
@@ -32,7 +33,6 @@ local function jdt_on_attach(client, bufnr)
 		jdtls.test_class()
 	end
 
-
 	_extract_method()
 	_extract_variable()
 	jdtls.setup_dap({ hotcodereplace = 'auto' })
@@ -54,7 +54,7 @@ function start_jdtls()
 			implementationsCodeLens = { enabled = true },
 			autobuild = { enabled = true },
 			trace = { server = "verbose" },
-			contentProvider = { preferred = 'fernflower' };
+			contentProvider = { preferred = 'fernflower' },
 			sources = {
 				organizeImports = {
 					starThreshold = 9999,
