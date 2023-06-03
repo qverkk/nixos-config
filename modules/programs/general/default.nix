@@ -10,4 +10,5 @@
   ./zsh/home.nix
   ./starship.nix
   ./video.nix
+  ./steam-run.nix
 ]

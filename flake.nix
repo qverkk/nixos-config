@@ -20,7 +20,7 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-#    hyprland.url = "github:hyprwm/Hyprland/v0.24.1";
+    #    hyprland.url = "github:hyprwm/Hyprland/v0.24.1";
 
     nur.url = "github:nix-community/NUR";
   };
@@ -35,6 +35,7 @@
         #        (import ./overlays/flameshot)
         (import ./overlays/rofi-wayland-unwrapped)
         (import ./overlays/nvim/projections)
+        (import ./overlays/nvim/codeium)
         (import ./overlays { })
         inputs.nur.overlay
       ];

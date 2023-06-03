@@ -67,6 +67,9 @@ in
       legendary-nvim
       which-key-nvim
 
+      # codeium
+      (pkgs.codeium-vim)
+
       # Search and replace
       nvim-spectre
 
