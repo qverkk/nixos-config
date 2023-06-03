@@ -51,6 +51,7 @@
       devShells.${system} = {
         #run by `nix devlop` or `nix-shell`(legacy)
         default = import ./shell.nix { inherit pkgs; };
+		ignore = import ./git-ignore.nix { inherit pkgs; };
       };
 
       homeConfigurations = {
