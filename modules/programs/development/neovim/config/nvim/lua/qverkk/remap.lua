@@ -3,6 +3,7 @@ _G.bind = vim.api.nvim_set_keymap
 local opt = { noremap = false, silent = true }
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = ";"
 
 -- Better navigation
 bind("n", "<C-h>", "<C-w>h", opt)
