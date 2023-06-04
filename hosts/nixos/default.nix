@@ -11,6 +11,7 @@
       ./hardware-configuration.nix
       inputs.agenix.nixosModules.default
       inputs.nur.nixosModules.nur
+      inputs.nixos-hardware.nixosModules.common-pc-ssd
       ../../modules/hardware/nvidia.nix
       ../../modules/hardware/bluetooth.nix
       ../../modules/hardware/openrazer.nix
