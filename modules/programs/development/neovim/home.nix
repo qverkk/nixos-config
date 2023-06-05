@@ -1,18 +1,20 @@
-{ pkgs, lib, ... }:
-
+{ pkgs
+, lib
+, ...
+}:
 ## Thanks ernestre
 ## https://github.com/ernestre/dotfiles/blob/master/nixpkgs/home-manager/modules/neovim/default.nix
-
 let
-  plugin = repo: rev: pkgs.vimUtils.buildVimPluginFrom2Nix {
-    pname = "${lib.strings.sanitizeDerivationName repo}";
-    version = rev;
-    src = builtins.fetchGit {
-      url = "https://github.com/${repo}.git";
-      ref = "master";
-      rev = rev;
+  plugin = repo: rev:
+    pkgs.vimUtils.buildVimPluginFrom2Nix {
+      pname = "${lib.strings.sanitizeDerivationName repo}";
+      version = rev;
+      src = builtins.fetchGit {
+        url = "https://github.com/${repo}.git";
+        ref = "master";
+        inherit rev;
+      };
     };
-  };
 in
 {
   home.file.".config/nvim".source = ./config/nvim;
@@ -28,6 +30,43 @@ in
     withNodeJs = true;
 
     extraPackages = with pkgs; [
+      # linters
+      ## lua
+      selene
+      stylua
+
+      ## nix
+      deadnix
+      statix
+      alejandra
+
+      ## kotlin
+      ktlint
+
+      ## java
+      checkstyle
+      google-java-format
+
+      ## html, xml
+      html-tidy
+
+      ## Dockerfile
+      hadolint
+
+      ## Shell
+      shellcheck
+      beautysh
+
+      ## rustfmt
+      rustfmt
+
+      ## toml
+      taplo
+
+      ### TODO: Possibly add this to nixpkgs
+      ## groovy, jenkinsfile
+      # npm_groovy_lint
+
       # language specific colors
       tree-sitter
 
@@ -68,13 +107,13 @@ in
       which-key-nvim
 
       # codeium
-      (pkgs.codeium-vim)
+      pkgs.codeium-vim
 
       # Search and replace
       nvim-spectre
 
       # project management
-      (pkgs.projections-nvim)
+      pkgs.projections-nvim
 
       # git
       gv-vim # commit browser, maybe replace this with lazygit? Atm it's laggy due to nightfox
@@ -106,7 +145,7 @@ in
       vim-repeat
 
       # nvim speedup
-      impatient-nvim # needs setting up? TODO
+      impatient-nvim # needs setting up?
 
       # terminal
       toggleterm-nvim
@@ -139,6 +178,7 @@ in
       trouble-nvim
       vim-surround
       fidget-nvim
+      null-ls-nvim
 
       # telescope
       plenary-nvim

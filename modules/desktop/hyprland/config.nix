@@ -87,6 +87,7 @@
 
   # See https://wiki.hyprland.org/Configuring/Keywords/ for more
   $mainMod = SUPER
+  $mainModShift = SUPER_SHIFT
 
   # Fix jetbrains
   windowrulev2 = rounding 0, xwayland:1, floating:1
@@ -129,6 +130,12 @@
   bind = $mainMod, right, movefocus, r
   bind = $mainMod, up, movefocus, u
   bind = $mainMod, down, movefocus, d
+
+  # Move window with mainMod + shift + arrow keys
+  bind = $mainModShift, left, movewindow, l
+  bind = $mainModShift, right, movewindow, r
+  bind = $mainModShift, up, movewindow, u
+  bind = $mainModShift, down, movewindow, d
 
   # Switch workspaces with mainMod + [0-9]
   bind = $mainMod, 1, workspace, 1

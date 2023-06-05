@@ -1,11 +1,10 @@
-require('toggleterm').setup({
-	shell = "zsh"
+require("toggleterm").setup({
+	shell = "zsh",
 })
 
-local Terminal  = require('toggleterm.terminal').Terminal
+local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
 
 function _lazygit_toggle()
-  lazygit:toggle()
+	lazygit:toggle()
 end
-

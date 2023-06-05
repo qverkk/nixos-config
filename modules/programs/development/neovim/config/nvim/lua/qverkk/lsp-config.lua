@@ -1,17 +1,17 @@
-require("lspconfig").lua_ls.setup {}
-require("lspconfig").kotlin_language_server.setup {}
-require("lspconfig").rust_analyzer.setup {}
-require("lspconfig").bashls.setup {}
-require("lspconfig").rnix.setup {}
-require("lspconfig").dockerls.setup {}
-require("lspconfig").docker_compose_language_service.setup {}
+require("lspconfig").lua_ls.setup({})
+require("lspconfig").kotlin_language_server.setup({})
+require("lspconfig").rust_analyzer.setup({})
+require("lspconfig").bashls.setup({})
+require("lspconfig").rnix.setup({})
+require("lspconfig").dockerls.setup({})
+require("lspconfig").docker_compose_language_service.setup({})
 
 local root_pattern = require("lspconfig").util.root_pattern
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local function jdt_on_attach(client, bufnr)
-	local jdtls = require('jdtls')
+	local jdtls = require("jdtls")
 
 	function _extract_variable()
 		vim.keymap.set("n", "<c-a-v>", "<cmd>lua require('jdtls').extract_variable()<cr>", {})
@@ -35,18 +35,18 @@ local function jdt_on_attach(client, bufnr)
 
 	_extract_method()
 	_extract_variable()
-	jdtls.setup_dap({ hotcodereplace = 'auto' })
+	jdtls.setup_dap({ hotcodereplace = "auto" })
 	require("jdtls.setup").add_commands()
 	require("jdtls.dap").setup_dap_main_class_configs()
 end
 
-local home = os.getenv('HOME')
+local home = os.getenv("HOME")
 
 function start_jdtls()
 	local settings = {
-		['java.settings.url'] = home .. "/.config/nvim/formatters/settings.pref",
-		['java.format.settings.profile'] = "GoogleStyle",
-		['java.format.settings.url'] = home .. "/.config/nvim/formatters/eclipse-java-google-style.xml",
+		["java.settings.url"] = home .. "/.config/nvim/formatters/settings.pref",
+		["java.format.settings.profile"] = "Eclipse",
+		["java.format.settings.url"] = home .. "/.config/nvim/formatters/eclipse-java-google-style.xml",
 
 		java = {
 			signatureHelp = { enabled = true },
@@ -54,7 +54,7 @@ function start_jdtls()
 			implementationsCodeLens = { enabled = true },
 			autobuild = { enabled = true },
 			trace = { server = "verbose" },
-			contentProvider = { preferred = 'fernflower' },
+			contentProvider = { preferred = "fernflower" },
 			sources = {
 				organizeImports = {
 					starThreshold = 9999,
@@ -73,14 +73,14 @@ function start_jdtls()
 	local workspace_dir = "/tmp/jdtls_workspaces/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 	local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
-	extendedClientCapabilities['progressReportProvider'] = false
+	extendedClientCapabilities["progressReportProvider"] = false
 
 	extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-	local java_debug_jar = os.getenv('JAVA_DEBUG_DIR')
-	local java_test_jar = os.getenv('JAVA_TEST_DIR')
+	local java_debug_jar = os.getenv("JAVA_DEBUG_DIR")
+	local java_test_jar = os.getenv("JAVA_TEST_DIR")
 	local bundles = {
-		vim.fn.glob(java_debug_jar, 1)
+		vim.fn.glob(java_debug_jar, 1),
 	}
 
 	vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_jar), "\n"))
@@ -95,8 +95,8 @@ function start_jdtls()
 			bundles = bundles,
 			extendedCapabilities = extendedClientCapabilities,
 			languageFeatures = {
-				codeLens = false
-			}
+				codeLens = false,
+			},
 		},
 	})
 end

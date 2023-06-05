@@ -11,7 +11,6 @@ bind("n", "<C-l>", "<C-w>l", opt)
 bind("n", "<C-j>", "<C-w>j", opt)
 bind("n", "<C-k>", "<C-w>k", opt)
 
-
 -- jump 10 lines when holding shift
 bind("n", "<s-j>", "10j<cr>", opt)
 bind("n", "<s-k>", "10k<cr>", opt)
@@ -24,12 +23,7 @@ bind("t", "jk", "<C-\\><C-n>", { noremap = false, silent = true })
 
 -- TODO: Move these to which-key soonTM
 -- show the error message when hovering
-bind(
-	"n",
-	"<a-q>",
-	"<cmd>lua vim.diagnostic.open_float({focusable = false, show_header = false})<cr>",
-	opt
-)
+bind("n", "<a-q>", "<cmd>lua vim.diagnostic.open_float({focusable = false, show_header = false})<cr>", opt)
 -- code actions
 bind("n", "<a-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", {})
 bind("v", "<a-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", {})

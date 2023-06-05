@@ -1,7 +1,7 @@
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
-local which_key = require('which-key')
+local which_key = require("which-key")
 local harpoon_mark = require("harpoon.mark")
 local harpoon_ui = require("harpoon.ui")
 
@@ -75,8 +75,10 @@ local mappings = {
 	d = {
 		name = "Debug",
 		t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
-		T = { "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
-			"Debug conditional breakpoint" },
+		T = {
+			"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
+			"Debug conditional breakpoint",
+		},
 		b = { "<cmd>lua require'dap'.step_back()<cr>", "Debug step Back" },
 		c = { "<cmd>lua require'dap'.continue()<cr>", "Debug continue" },
 		C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Debug run To Cursor" },
@@ -149,10 +151,10 @@ local mappings = {
 		g = { "<cmd>TestVisit<cr>", "Go to test class" },
 	},
 	["T"] = { "<cmd>ToggleTerm<cr>", "Toggle terminal" },
-	["S"] = { "<cmd>Spectre<cr>", "Toggle spectre (find and replace)" }
+	["S"] = { "<cmd>Spectre<cr>", "Toggle spectre (find and replace)" },
 }
 
-which_key.setup {
+which_key.setup({
 	active = true,
 	on_config_done = nil,
 	setup = {
@@ -218,7 +220,7 @@ which_key.setup {
 			filetypes = { "TelescopePrompt" },
 		},
 	},
-}
+})
 
 function _G.http_mappings()
 	local buffKeymap = {

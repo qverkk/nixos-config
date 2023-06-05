@@ -24,10 +24,10 @@ rest_nvim.setup({
 	env_file = ".env",
 })
 
-vim.filetype.add { extension = { http = 'http' } }
+vim.filetype.add({ extension = { http = "http" } })
 
 autocmd("FileType", {
 	pattern = { "http", "text", "*" },
 	callback = http_mappings,
-	desc = "HTTP Buffer mappings"
+	desc = "HTTP Buffer mappings",
 })

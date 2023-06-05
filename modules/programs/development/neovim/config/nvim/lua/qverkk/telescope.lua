@@ -2,7 +2,6 @@ local lga_actions = require("telescope-live-grep-args.actions")
 
 -- This is your opts table
 require("telescope").setup({
-
 	pickers = {
 		buffers = {
 			show_all_buffers = true,
@@ -16,7 +15,7 @@ require("telescope").setup({
 	},
 
 	fzf = {
-		fuzzy = true, -- false will only do exact matching
+		fuzzy = true,             -- false will only do exact matching
 		override_generic_sorter = true, -- override the generic sorter
 		override_file_sorter = true, -- override the file sorter
 		case_mode = "smart_case", -- or "ignore_case" or "respect_case"
@@ -25,7 +24,8 @@ require("telescope").setup({
 	live_grep_args = {
 		auto_quoting = true, -- enable/disable auto-quoting
 		-- define mappings, e.g.
-		mappings = { -- extend mappings
+		mappings = {
+		               -- extend mappings
 			i = {
 				["<C-k>"] = lga_actions.quote_prompt(),
 				["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
@@ -53,7 +53,7 @@ require("telescope").setup({
 			--   codeactions = false,
 			-- }
 		},
-	}
+	},
 })
 -- To get ui-select loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:

@@ -1,6 +1,6 @@
 vim.cmd("set clipboard=unnamedplus")
 
-vim.cmd('colorscheme carbonfox')
+vim.cmd("colorscheme carbonfox")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true

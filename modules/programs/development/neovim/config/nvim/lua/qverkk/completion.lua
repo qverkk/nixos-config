@@ -1,5 +1,5 @@
-local cmp = require('cmp')
-local compare = require('cmp.config.compare')
+local cmp = require("cmp")
+local compare = require("cmp.config.compare")
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -14,19 +14,19 @@ vim.cmd("set pumheight=8")
 
 cmp.setup({
 	experimental = {
-		ghost_text = true;
+		ghost_text = true,
 	},
 	completion = {
 		autocomplete = {
 			cmp.TriggerEvent.TextChanged,
 		},
-		keyword_length = 3
+		keyword_length = 3,
 	},
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
 			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			require('luasnip').lsp_expand(args.body)
+			require("luasnip").lsp_expand(args.body)
 		end,
 	},
 
@@ -65,31 +65,31 @@ cmp.setup({
 			end
 		end, { "i", "s" }),
 
-		['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-		['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-		['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-		['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		['<C-e>'] = cmp.mapping({
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		}),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	},
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp', priority = 10, max_item_count = 15 },
-		{ name = 'nvim_lsp_signature_help', max_item_count = 15 },
-		{ name = 'luasnip' },
-		{ name = 'path', priority = 1 },
-		{ name = 'vsnip', priority = 1 },
-		{ name = 'buffer', priority = 0, max_item_count = 5 },
-	})
+		{ name = "nvim_lsp",                priority = 10,      max_item_count = 15 },
+		{ name = "nvim_lsp_signature_help", max_item_count = 15 },
+		{ name = "luasnip" },
+		{ name = "path",                    priority = 1 },
+		{ name = "vsnip",                   priority = 1 },
+		{ name = "buffer",                  priority = 0,       max_item_count = 5 },
+	}),
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline("/", {
 	sources = {
-		{ name = 'buffer' }
-	}
+		{ name = "buffer" },
+	},
 })
 
 vim.o.completeopt = "menuone,noselect"
