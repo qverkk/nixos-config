@@ -11,4 +11,5 @@
   ./starship.nix
   ./video.nix
   ./steam-run.nix
+  ./system-utilities.nix
 ]
