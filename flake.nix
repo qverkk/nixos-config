@@ -20,67 +20,69 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    #    hyprland.url = "github:hyprwm/Hyprland/v0.24.1";
 
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
-    let
-      inherit (self) outputs;
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    nur,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
 
-      system = "x86_64-linux";
+    system = "x86_64-linux";
 
-      overlays = [
-        #        (import ./overlays/flameshot)
-        (import ./overlays/rofi-wayland-unwrapped)
-        (import ./overlays/nvim/projections)
-        (import ./overlays/nvim/codeium)
-        (import ./overlays { })
-        inputs.nur.overlay
-      ];
+    overlays = [
+      (import ./overlays/rofi-wayland-unwrapped)
+      (import ./overlays/nvim/projections)
+      (import ./overlays/nvim/codeium)
+      (import ./overlays {})
+      inputs.nur.overlay
+    ];
 
-      pkgs = import nixpkgs {
-        inherit system;
-        inherit overlays;
-        config.allowUnfree = true;
+    pkgs = import nixpkgs {
+      inherit system;
+      inherit overlays;
+      config.allowUnfree = true;
+    };
+
+    inherit (nixpkgs) lib;
+  in {
+    devShells.${system} = {
+      #run by `nix devlop` or `nix-shell`(legacy)
+      default = import ./shell.nix {inherit pkgs;};
+    };
+
+    homeConfigurations = {
+      "qverkk@nixos" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {inherit inputs outputs pkgs;};
+        modules = [./home/nixos.nix];
       };
 
-      lib = nixpkgs.lib;
-    in
-    {
-      devShells.${system} = {
-        #run by `nix devlop` or `nix-shell`(legacy)
-        default = import ./shell.nix { inherit pkgs; };
-      };
-
-      homeConfigurations = {
-        "qverkk@nixos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
-          extraSpecialArgs = { inherit inputs outputs pkgs; };
-          modules = [ ./home/nixos.nix ];
-        };
-
-        "qverkk@hybrid" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
-          extraSpecialArgs = { inherit inputs outputs pkgs; };
-          modules = [ ./home/hybrid.nix ];
-        };
-      };
-      nixosConfigurations = {
-        nixos = lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/nixos
-          ];
-        };
-
-        hybrid = lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/hybrid
-          ];
-        };
+      "qverkk@hybrid" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {inherit inputs outputs pkgs;};
+        modules = [./home/hybrid.nix];
       };
     };
+    nixosConfigurations = {
+      nixos = lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/nixos
+        ];
+      };
+
+      hybrid = lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/hybrid
+        ];
+      };
+    };
+  };
 }

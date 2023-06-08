@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     lazygit
   ];
@@ -40,7 +40,7 @@
       oops = "checkout --";
     };
 
-    ignores = [ "*~" "*.swp" "*result*" ".direnv" "node_modules" ];
+    ignores = ["*~" "*.swp" "*result*" ".direnv" "node_modules"];
 
     userEmail = "membersy@gmail.com";
     userName = "qverkk";

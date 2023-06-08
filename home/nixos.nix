@@ -1,15 +1,14 @@
-{ inputs, pkgs, config, ... }:
+{...}: {
+  imports =
+    [
+      ../modules/desktop/hyprland/home.nix
+      ../modules/desktop/hyprland/monitors-config.nix
 
-{
-  imports = [
-    ../modules/desktop/hyprland/home.nix
-    ../modules/desktop/hyprland/monitors-config.nix
-
-    ../modules/programs/moonlander/home.nix
-  ] ++
-  (import ../modules/programs/development) ++
-  (import ../modules/programs/social) ++
-  (import ../modules/programs/general);
+      ../modules/programs/moonlander/home.nix
+    ]
+    ++ (import ../modules/programs/development)
+    ++ (import ../modules/programs/social)
+    ++ (import ../modules/programs/general);
 
   # Let home manager install and makage itself
   programs.home-manager.enable = true;

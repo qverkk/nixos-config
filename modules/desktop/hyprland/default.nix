@@ -1,6 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
-
-{
+{pkgs, ...}: {
   programs = {
     dconf.enable = true;
     light.enable = true;
@@ -18,7 +16,7 @@
     nvidiaPatches = true;
   };
 
-  security.pam.services.swaylock = { };
+  security.pam.services.swaylock = {};
   xdg.portal = {
     enable = true;
     wlr.enable = true;

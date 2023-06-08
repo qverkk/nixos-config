@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+_: {
   services.syncthing = {
     enable = true;
   };

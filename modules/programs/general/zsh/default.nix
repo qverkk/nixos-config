@@ -1,7 +1,5 @@
-{ config, ... }:
-
-{
-  environment.pathsToLink = [ "/share/zsh" ];
+{config, ...}: {
+  environment.pathsToLink = ["/share/zsh"];
 
   programs.zsh = {
     enable = true;

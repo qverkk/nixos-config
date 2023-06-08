@@ -1,12 +1,14 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../../optional/home-manager/kanshi.nix
   ];
   wayland.windowManager.sway = {
     enable = true;
-    extraOptions = [ "--unsupported-gpu" ];
+    extraOptions = ["--unsupported-gpu"];
     wrapperFeatures.gtk = true;
     systemdIntegration = true;
     config = rec {

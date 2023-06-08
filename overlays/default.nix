@@ -1,4 +1,3 @@
-{}:
-self: super: {
-  jdt-ls = super.callPackage ./jdt-ls { };
+{}: self: super: {
+  jdt-ls = super.callPackage ./jdt-ls {};
 }

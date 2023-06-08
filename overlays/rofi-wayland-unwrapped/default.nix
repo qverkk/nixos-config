@@ -1,5 +1,4 @@
-self: super:
-{
+self: super: {
   rofi-wayland-unwrapped = super.rofi-wayland-unwrapped.overrideAttrs (old: rec {
     version = "c6b4dfe";
 

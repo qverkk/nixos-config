@@ -1,6 +1,8 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   extraEnv = {
     WLR_NO_HARDWARE_CURSORS = "1";
     XWAYLAND_NO_GLAMOR = "1";
@@ -12,12 +14,10 @@ let
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec "$@"
   '';
-in
-{
-
+in {
   config = {
     services = {
-      xserver.videoDrivers = [ "nvidia" ];
+      xserver.videoDrivers = ["nvidia"];
     };
 
     environment.variables = extraEnv;

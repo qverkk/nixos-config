@@ -1,8 +1,6 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     vlc
-	ani-cli
+    ani-cli
   ];
 }

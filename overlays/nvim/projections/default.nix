@@ -1,5 +1,4 @@
-self: super:
-{
+self: super: {
   projections-nvim = super.vimUtils.buildVimPluginFrom2Nix {
     name = "projections.nvim";
 
@@ -12,4 +11,3 @@ self: super:
     meta.homepage = "https://github.com/gnikdroy/projections.nvim";
   };
 }
-

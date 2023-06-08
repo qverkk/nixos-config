@@ -1,5 +1,3 @@
-{ config, ... }:
-
-{
+_: {
   hardware.keyboard.zsa.enable = true;
 }
