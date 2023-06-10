@@ -1,7 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }:
 ## Thanks ernestre
 ## https://github.com/ernestre/dotfiles/blob/master/nixpkgs/home-manager/modules/neovim/default.nix
@@ -16,7 +15,8 @@ let
         inherit rev;
       };
     };
-in {
+in
+{
   home.file.".config/nvim".source = ./config/nvim;
 
   home.sessionVariables = {
@@ -114,6 +114,9 @@ in {
 
       # project management
       pkgs.projections-nvim
+
+      # auto resize buffers
+      pkgs.focus-nvim
 
       # git
       gv-vim # commit browser, maybe replace this with lazygit? Atm it's laggy due to nightfox

@@ -39,6 +39,7 @@
       (import ./overlays/rofi-wayland-unwrapped)
       (import ./overlays/nvim/projections)
       (import ./overlays/nvim/codeium)
+      (import ./overlays/nvim/focus)
       (import ./overlays {})
       inputs.nur.overlay
     ];
