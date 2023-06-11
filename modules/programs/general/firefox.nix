@@ -81,6 +81,15 @@
         settings = {
           "browser.sessionstore.resume_from_crash" = true;
           "privacy.trackingprotection.enabled" = true;
+          "privacy.purge_trackers.enabled" = true;
+          "privacy.resistFingerprinting" = true;
+
+          # webrtc
+          "media.peerconnection.ice.default_address_only" = true;
+          "media.peerconnection.enabled" = true;
+          "toolkit.telemetry.enabled" = false;
+          "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+          # "privacy.donottrackheader.enabled" = true;
           "browser.startup.page" = 3; # Restore previous session
         };
 

@@ -1,0 +1,105 @@
+"" Source your .vimrc
+"source ~/.vimrc
+let mapleader=" "
+
+let g:WhichKeyDesc_reload_config        = "<leader>rc  Reload config"
+nnoremap <leader>rc :source ~/.ideavimrc<CR>
+
+set so=5
+set nu
+set rnu
+set incsearch
+set clipboard+=unnamed
+
+set NERDTree
+set which-key
+set notimeout
+set harpoonij
+
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+map <S-j> 10j
+map <S-k> 10k
+
+" Harpoon
+let g:WhichKeyDesc_harpoon        = "<leader>h  Harpoon"
+let g:WhichKeyDesc_harpoon_show        = "<leader>he  Show"
+nmap <leader>he :action ShowHarpoon<cr>
+let g:WhichKeyDesc_harpoon_add        = "<leader>ha  Add"
+nmap <leader>ha :action AddToHarpoon<cr>
+nmap <A-h> :action GotoHarpoon1<cr>
+nmap <A-j> :action GotoHarpoon2<cr>
+nmap <A-k> :action GotoHarpoon3<cr>
+nmap <A-l> :action GotoHarpoon4<cr>
+
+" save?
+" quit?
+
+let g:WhichKeyDesc_comment        = "<leader>/  Comment"
+map <leader>/ <Action>(CommentByLineComment)
+
+let g:WhichKeyDesc_buffer_delete        = "<leader>c  Buffer delete"
+map <leader>c <Action>(CloseContent)
+
+let g:WhichKeyDesc_find        = "<leader>f  Find"
+let g:WhichKeyDesc_find_file        = "<leader>ff  File"
+map <leader>ff <Action>(GotoFile)
+let g:WhichKeyDesc_find_text        = "<leader>fg  Text"
+map <leader>fg <Action>(FindInPath)
+let g:WhichKeyDesc_find_recent_files        = "<leader>fb  Buffers"
+map <leader>fb <Action>(RecentFiles)
+" git files?
+let g:WhichKeyDesc_find_recent_projects        = "<leader>fP  Recent projects"
+map <leader>fP <Action>($LRU)
+let g:WhichKeyDesc_find_actions        = "<leader>fa  Actions"
+map <leader>fa <Action>(GotoAction)
+
+let g:WhichKeyDesc_explorer        = "<leader>e  Explorer"
+map <leader>e :NERDTree<CR>
+let g:NERDTreeMapQuit='<Space>e'
+
+" Add debug options
+" Add git options
+
+let g:WhichKeyDesc_lsp        = "<leader>l  LSP"
+let g:WhichKeyDesc_lsp_code_action        = "<leader>la  CodeAction"
+map <leader>la <Action>(ShowIntentionActions)
+" Add buffer workspace diagnostics?
+" Add workspace diagnostics?
+let g:WhichKeyDesc_lsp_format        = "<leader>lf  Format"
+map <leader>lf <Action>(ReformatCode)
+" Ignore lsp info
+let g:WhichKeyDesc_lsp_next_error        = "<leader>lj  Next error"
+map <leader>lj <Action>(GotoNextError)
+let g:WhichKeyDesc_lsp_previous_error        = "<leader>lk  Previous error"
+map <leader>lk <Action>(GotoPreviousError)
+" What is Code lens???
+let g:WhichKeyDesc_lsp_file_quickfixes        = "<leader>lq  Quickfixes"
+map <leader>lq <Action>(ActivateProblemsViewToolWindow)
+let g:WhichKeyDesc_lsp_rename = "<leader>lr  Rename"
+map <leader>lr <Action>(RenameElement)
+let g:WhichKeyDesc_lsp_structure_in_file        = "<leader>ls  File structure"
+map <leader>ls <Action>(FileStructurePopup)
+let g:WhichKeyDesc_lsp_project_symbols        = "<leader>lS  Project symbols"
+map <leader>lS <Action>(GotoSymbol)
+" Telescope quickfix?
+
+let g:WhichKeyDesc_undohistory        = "<leader>u  Undo history"
+map <leader>u <Action>(LocalHistory.ShowHistory)
+
+let g:WhichKeyDesc_test        = "<leader>t  Test"
+let g:WhichKeyDesc_test_go_to_test        = "<leader>tt  Go to test"
+map <leader>tt <Action>(GotoTest)
+
+let g:WhichKeyDesc_terminal        = "<leader>T  Terminal"
+map <leader>T <Action>(ActivateTerminalToolWindow)
+
+let g:WhichKeyDesc_find_and_replace        = "<leader>S  Find and replace"
+map <leader>S <Action>(ReplaceInPath)
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+" Find more examples here: https://jb.gg/share-ideavimrc
