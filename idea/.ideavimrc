@@ -7,14 +7,19 @@ nnoremap <leader>rc :source ~/.ideavimrc<CR>
 
 set so=5
 set nu
+set visualbell
 set rnu
 set incsearch
+set hlsearch
+set ignorecase
+set smartcase
 set clipboard+=unnamed
 
 set NERDTree
 set which-key
 set notimeout
 set harpoonij
+set sneak
 
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
@@ -24,6 +29,11 @@ map Q gq
 
 map <S-j> 10j
 map <S-k> 10k
+
+map <C-j> <Action>(EditorScrollDown)
+map <C-k> <Action>(EditorScrollUp)
+map <C-d> <Action>(Debug)
+map <C-r> <Action>(Run)
 
 " Harpoon
 let g:WhichKeyDesc_harpoon        = "<leader>h  Harpoon"
