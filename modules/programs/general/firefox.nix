@@ -82,14 +82,14 @@
           "browser.sessionstore.resume_from_crash" = true;
           "privacy.trackingprotection.enabled" = true;
           "privacy.purge_trackers.enabled" = true;
-          "privacy.resistFingerprinting" = true;
+          # "privacy.resistFingerprinting" = true; # this doesn't allow websites to follow system theme
 
-          # webrtc
+          # # webrtc
           "media.peerconnection.ice.default_address_only" = true;
           "media.peerconnection.enabled" = true;
           "toolkit.telemetry.enabled" = false;
-          "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
-          # "privacy.donottrackheader.enabled" = true;
+          # "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org"; # no need for this if we follow system theme
+          "privacy.donottrackheader.enabled" = true;
           "browser.startup.page" = 3; # Restore previous session
         };
 
