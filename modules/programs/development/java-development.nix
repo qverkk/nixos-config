@@ -3,9 +3,4 @@
     jetbrains.idea-ultimate
     git-ignore
   ];
-
-  programs.eclipse = {
-    enable = true;
-    package = pkgs.eclipses.eclipse-java;
-  };
 }
