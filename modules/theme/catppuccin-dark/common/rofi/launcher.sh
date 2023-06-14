@@ -21,4 +21,5 @@ cat > $dir/colors.rasi <<- EOF
 	}
 EOF
 
-rofi -no-lazy-grab -combi -combi-modes "window,drun,ssh" -modes combi -show combi -theme $dir/"$theme"
+# rofi -no-lazy-grab -combi -,combicombi-modes "window,drun,ssh" -modes combi -show combi -theme $dir/"$theme"
+rofi -no-lazy-grab -show combi -theme $dir/"$theme"

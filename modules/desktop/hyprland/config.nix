@@ -111,7 +111,7 @@
 
   # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
   bind = $mainMod, return, exec, kitty zsh
-  bind = $mainMod, space, exec, ~/.config/rofi/launchers/type-1/launcher.sh
+  bind = $mainMod, space, exec, ~/.config/rofi/launcher.sh
   bind = $mainMod SHIFT, E, exit,
   bind = $mainMod, E, exec, dolphin
 

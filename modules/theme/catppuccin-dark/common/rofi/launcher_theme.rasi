@@ -1,12 +1,16 @@
 configuration {
+  modi:                       "combi,filebrowser,ssh";
+  combi-modes: [window,drun];
   font:                       "JetBrainsMono Nerd Font 12";
   show-icons:                 true;
   icon-theme:                 "Papirus";
   display-drun:               "";
+  display-combi:               "";
   drun-display-format:        "{name}";
   disable-history:            false;
   sidebar-mode:               false;
 }
+
 @import "colors.rasi"
 
 window {
@@ -106,4 +110,37 @@ element selected {
   border:                     0% 0% 0% 0%;
   border-radius:              0px;
   border-color:               @bg;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     20px;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "mode-switcher", "message", "listview" ];
+}
+
+/*****----- Mode Switcher -----*****/
+mode-switcher{
+    enabled:                     true;
+    expand:                      false;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    background-color:            transparent;
+}
+button {
+    padding:                     12px;
+    border:                      0px solid;
+    border-radius:               8px;
+    text-color:                  inherit;
+    cursor:                      pointer;
+}
+button selected {
 }
