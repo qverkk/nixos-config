@@ -18,6 +18,7 @@
     ../../modules/hardware/openrazer.nix
     ../../modules/hardware/onlykey.nix
     ../../modules/programs/moonlander
+    ../../modules/programs/general/tailscale
     ../../modules/programs/general/zsh
     ../../modules/desktop/hyprland
     ../../modules/programs/development/podman
@@ -133,6 +134,9 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
