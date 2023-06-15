@@ -1,5 +1,5 @@
 configuration {
-  modi:                       "combi,Projects:~/.config/rofi/projects.sh";
+  modi:                       "combi,Projects:~/.config/rofi/projects.sh,Tailscale:~/.config/rofi/tailscale.sh";
   combi-modes: [window,drun];
   font:                       "JetBrainsMono Nerd Font 12";
   show-icons:                 true;
