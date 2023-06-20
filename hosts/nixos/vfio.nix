@@ -65,6 +65,5 @@
   in [
     "L+ /var/lib/libvirt/hooks/qemu - - - - ${qemuHook}"
     "L+ /var/lib/libvirt/qemu/Windows.xml - - - - ${./Windows.xml}"
-    "L+ /var/lib/libvirt/qemu/WindowsTemp.xml - - - - ${./WindowsTemp2.xml}"
   ];
 }
