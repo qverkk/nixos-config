@@ -27,6 +27,7 @@
   environment = {
     systemPackages = [
       pkgs.virt-manager
+	  pkgs.killall
     ];
     shellAliases = {
       vm-start = "virsh start Windows";
@@ -42,9 +43,8 @@
         OPERATION="$2"
         SUB_OPERATION="$3"
 
-        if [ "$GUEST_NAME" == "Windows" ]; then
+        if [ "$GUEST_NAME" == "WindowsTemp" ]; then
           if [ "$OPERATION" == "prepare" ]; then
-      # hyprctl dispatch exit 1
       		modprobe -r -a nvidia_uvm nvidia_drm nvidia nvidia_modeset
       		${pkgs.libvirt}/bin/virsh nodedev-detach pci_0000_01_00_0
       		${pkgs.libvirt}/bin/virsh nodedev-detach pci_0000_01_00_1
@@ -53,19 +53,18 @@
       		systemctl set-property --runtime -- init.scope AllowedCPUs=14-19
           fi
           if [ "$OPERATION" == "release" ]; then
-      # hyprctl dispatch exit 1
       		systemctl set-property --runtime -- user.slice AllowedCPUs=0-19
       		systemctl set-property --runtime -- system.slice AllowedCPUs=0-19
       		systemctl set-property --runtime -- init.scope AllowedCPUs=0-19
       		${pkgs.libvirt}/bin/virsh nodedev-reattach pci_0000_01_00_0
       		${pkgs.libvirt}/bin/virsh nodedev-reattach pci_0000_01_00_1
       		modprobe -a nvidia_uvm nvidia_drm nvidia nvidia_modeset
-      		# Hyprland
           fi
         fi
     '';
   in [
     "L+ /var/lib/libvirt/hooks/qemu - - - - ${qemuHook}"
     "L+ /var/lib/libvirt/qemu/Windows.xml - - - - ${./Windows.xml}"
+    "L+ /var/lib/libvirt/qemu/WindowsTemp.xml - - - - ${./WindowsTemp2.xml}"
   ];
 }
