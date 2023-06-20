@@ -164,6 +164,24 @@
     </input>
     <input type="mouse" bus="ps2"/>
     <input type="keyboard" bus="ps2"/>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-Razer_Razer_Viper_Ultimate_Dongle-if01-event-kbd"/>
+    </input>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-Razer_Razer_Viper_Ultimate_Dongle-if02-event-kbd"/>
+    </input>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-Razer_Razer_Viper_Ultimate_Dongle-event-mouse"/>
+    </input>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-ZSA_Technology_Labs_Moonlander_Mark_I-event-kbd" grab="all" repeat="on"/>
+    </input>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-ZSA_Technology_Labs_Moonlander_Mark_I-event-if03" grab="all" repeat="on"/>
+    </input>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-ZSA_Technology_Labs_Moonlander_Mark_I-if03-event-kbd" grab="all" repeat="on"/>
+    </input>
     <sound model="ich9">
       <address type="pci" domain="0x0000" bus="0x00" slot="0x1b" function="0x0"/>
     </sound>
