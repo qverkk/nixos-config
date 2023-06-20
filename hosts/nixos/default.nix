@@ -9,6 +9,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./vfio.nix
     inputs.agenix.nixosModules.default
     inputs.nur.nixosModules.nur
     inputs.nixos-hardware.nixosModules.common-pc-ssd
