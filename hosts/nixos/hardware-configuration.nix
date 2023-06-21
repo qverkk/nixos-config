@@ -18,12 +18,12 @@
   boot.kernelParams = ["module_blacklist=i915"];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/a859b7ca-b5c6-4682-bbfb-6e88a6451c02";
+    device = "/dev/disk/by-label/NIXROOT";
     fsType = "ext4";
   };
 
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/835D-BE49";
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/NIXBOOT";
     fsType = "vfat";
   };
 
