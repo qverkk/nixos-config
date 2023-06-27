@@ -92,7 +92,7 @@
   users.users.qverkk = {
     isNormalUser = true;
     description = "qverkk";
-    extraGroups = [ "networkmanager" "wheel" "podman" "openrazer" ];
+    extraGroups = [ "networkmanager" "wheel" "podman" "openrazer" "Git" ];
     shell = pkgs.zsh;
   };
 

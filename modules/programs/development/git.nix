@@ -6,6 +6,10 @@
   programs.git = {
     enable = true;
 
+    extraConfig = {
+      credential.helper = "keepassxc --git-groups";
+    };
+
     delta = {
       enable = true;
       options = {
