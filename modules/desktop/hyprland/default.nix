@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ../../programs/wayland/greetd
+  ];
+
   programs = {
     dconf.enable = true;
     light.enable = true;
