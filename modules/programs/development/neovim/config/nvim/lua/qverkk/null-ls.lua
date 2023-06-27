@@ -20,7 +20,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.hadolint,
 		-- kotlin
 		null_ls.builtins.diagnostics.ktlint.with({
-			filetypes = { "kt" },
+			filetypes = { "kt", "kotlin" },
 			extra_args = { "**/*.kt" },
 		}),
 		-- lua
@@ -50,7 +50,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.jq,
 		-- kotlin
 		null_ls.builtins.formatting.ktlint.with({
-			filetypes = { "kt" },
+			filetypes = { "kt", "kotlin" },
 			extra_args = { "**/*.kt" },
 		}),
 		-- lua
