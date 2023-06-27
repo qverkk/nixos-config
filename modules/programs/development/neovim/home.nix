@@ -40,9 +40,6 @@ in
       statix
       alejandra
 
-      ## kotlin
-      ktlint
-
       ## java
       checkstyle
       google-java-format

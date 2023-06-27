@@ -3,5 +3,8 @@
     jetbrains.idea-ultimate
     git-ignore
     leetcode-cli
+
+    ## kotlin
+    ktlint
   ];
 }
