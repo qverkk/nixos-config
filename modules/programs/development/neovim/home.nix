@@ -132,8 +132,8 @@ in
       # cmp-path
       # cmp-cmdline
       # nvim-cmp
-	  coq_nvim
-	  coq-artifacts
+      coq_nvim
+      coq-artifacts
 
       # utils
       comment-nvim
@@ -188,7 +188,10 @@ in
       telescope-fzf-writer-nvim
       telescope-nvim
       telescope-live-grep-args-nvim
-      telescope-ui-select-nvim
+
+      # dressing
+      dressing-nvim
+
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: [
         plugins.tree-sitter-javascript
         plugins.tree-sitter-jsdoc
