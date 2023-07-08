@@ -3,7 +3,7 @@ vim.g.coq_settings = {
 	xdg = true,
 
 	keymap = {
-		jump_to_mark = "<tab>"
+		jump_to_mark = "<tab>",
 	},
 
 	clients = {
@@ -24,7 +24,11 @@ vim.g.coq_settings = {
 	},
 }
 
-local coq = require 'coq'
+require("coq_3p")({
+	{ src = "codeium", short_name = "COD" },
+})
+
+local coq = require("coq")
 local capabilities = coq.lsp_ensure_capabilities()
 
 require("lspconfig").lua_ls.setup(capabilities)

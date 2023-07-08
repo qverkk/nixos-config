@@ -134,6 +134,7 @@ in
       # nvim-cmp
       coq_nvim
       coq-artifacts
+	  pkgs.coq-thirdparty
 
       # utils
       comment-nvim
