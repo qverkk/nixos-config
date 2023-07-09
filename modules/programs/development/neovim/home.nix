@@ -112,6 +112,9 @@ in
       # project management
       pkgs.projections-nvim
 
+      # noice
+      noice-nvim
+
       # auto resize buffers
       pkgs.focus-nvim
 
