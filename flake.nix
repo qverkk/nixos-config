@@ -41,6 +41,7 @@
       (import ./overlays/nvim/projections)
       (import ./overlays/nvim/codeium)
       (import ./overlays/nvim/focus)
+      (import ./overlays/nvim/flash)
       (import ./overlays/nvim/coq-thirdparty)
       (import ./overlays {})
       inputs.nur.overlay

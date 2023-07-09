@@ -115,6 +115,9 @@ in
       # auto resize buffers
       pkgs.focus-nvim
 
+      # navigation
+      pkgs.flash-nvim
+
       # git
       gv-vim # commit browser, maybe replace this with lazygit? Atm it's laggy due to nightfox
       vim-fugitive
@@ -134,7 +137,7 @@ in
       # nvim-cmp
       coq_nvim
       coq-artifacts
-	  pkgs.coq-thirdparty
+      pkgs.coq-thirdparty
 
       # utils
       comment-nvim

@@ -149,7 +149,6 @@ local mappings = {
 		a = { "<cmd>TestSuite<cr>", "Test all" },
 		l = { "<cmd>TestLast<cr>", "Test last" },
 		g = { "<cmd>TestVisit<cr>", "Go to test class" },
-		i = { "<cmd>call test#run('integration', split(<q-args>))<cr>", "integration" },
 	},
 	["T"] = { "<cmd>ToggleTerm<cr>", "Toggle terminal" },
 	["S"] = { "<cmd>Spectre<cr>", "Toggle spectre (find and replace)" },
