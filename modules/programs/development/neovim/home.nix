@@ -5,13 +5,13 @@
 ## Thanks ernestre
 ## https://github.com/ernestre/dotfiles/blob/master/nixpkgs/home-manager/modules/neovim/default.nix
 let
-  plugin = repo: rev:
+  plugin = repo: rev: ref:
     pkgs.vimUtils.buildVimPluginFrom2Nix {
       pname = "${lib.strings.sanitizeDerivationName repo}";
       version = rev;
       src = builtins.fetchGit {
         url = "https://github.com/${repo}.git";
-        ref = "master";
+        inherit ref;
         inherit rev;
       };
     };
@@ -97,7 +97,7 @@ in
     ];
     plugins = with pkgs.vimPlugins; [
       # blazing fast buffer switching
-      (plugin "ThePrimeagen/harpoon" "21f4c47c6803d64ddb934a5b314dcb1b8e7365dc")
+      (plugin "ThePrimeagen/harpoon" "21f4c47c6803d64ddb934a5b314dcb1b8e7365dc" "master")
 
       # search commands
       legendary-nvim
