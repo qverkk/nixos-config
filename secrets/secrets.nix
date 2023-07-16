@@ -3,4 +3,5 @@ let
 in {
   "spotify-username.age".publicKeys = [desktop];
   "spotify-password.age".publicKeys = [desktop];
+  "freshrss.age".publicKeys = [desktop];
 }

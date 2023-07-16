@@ -25,6 +25,7 @@
     ../../modules/programs/development/podman
     ../../modules/programs/general/full-text-rss.nix
     ../../modules/programs/general/caddy.nix
+    ../../modules/programs/general/freshrss.nix
   ];
 
   age = {
@@ -39,6 +40,12 @@
       };
       spotify-password = {
         file = "/home/qverkk/.secrets/spotify-password.age";
+        owner = "qverkk";
+        group = "users";
+      };
+      freshrss = {
+        file = "/home/qverkk/.secrets/freshrss.age";
+        mode = "777";
         owner = "qverkk";
         group = "users";
       };

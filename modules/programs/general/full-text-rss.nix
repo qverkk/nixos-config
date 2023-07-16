@@ -6,8 +6,8 @@
       environment = {
         "FTR_ADMIN_PASSWORD" = "";
       };
-      volumes = ["/home/qverkk/.rsscache:/var/www/html/cache"];
-      ports = ["127.0.0.1:8080:80"];
+      volumes = ["rss-cache:/var/www/html/cache"];
+      ports = ["127.0.0.1:9999:80"];
       autoStart = true;
     };
   };

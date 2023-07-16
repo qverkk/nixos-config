@@ -1,10 +1,15 @@
-{pkgs, ...}: {
-  # users.users.qverkk.extraGroups = [ "freshrss" ];
+{ pkgs
+, config
+, ...
+}: {
   services.freshrss = {
     enable = true;
-    baseUrl = "http://localhost";
-    passwordFile = "/home/qverkk/.config/freshrss/credentials.txt";
-    # dataDir = "/home/qverkk/.config/freshrss";
-    virtualHost = "localhost";
+    defaultUser = "qverkk";
+    baseUrl = "https://freshrss";
+    passwordFile = config.age.secrets.freshrss.path;
+    dataDir = "/var/lib/freshrss";
+    virtualHost = "freshrss";
   };
+
+  networking.extraHosts = "127.0.0.3 freshrss.local";
 }
