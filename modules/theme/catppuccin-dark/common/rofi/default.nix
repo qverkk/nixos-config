@@ -1,13 +1,12 @@
-{ lib
-, pkgs
-, user
-, ...
-}:
-let
+{
+  lib,
+  pkgs,
+  user,
+  ...
+}: let
   launcher_type = "1";
   launcher_style = "6";
-in
-{
+in {
   #  home.file.".config/rofi/off.sh".source = ./off.sh;
   home.file.".config/rofi/launcher.sh".source = ./launcher.sh;
   home.file.".config/rofi/projects.sh".source = ./projects.sh;

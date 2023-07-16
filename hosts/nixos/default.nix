@@ -1,10 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ inputs
-, config
-, pkgs
-, ...
+{
+  inputs,
+  config,
+  pkgs,
+  ...
 }: {
   imports = [
     # Include the results of the hardware scan.
@@ -22,6 +23,8 @@
     ../../modules/programs/general/zsh
     ../../modules/desktop/hyprland
     ../../modules/programs/development/podman
+    ../../modules/programs/general/full-text-rss.nix
+    ../../modules/programs/general/caddy.nix
   ];
 
   age = {
@@ -104,7 +107,7 @@
   users.users.qverkk = {
     isNormalUser = true;
     description = "qverkk";
-    extraGroups = [ "networkmanager" "wheel" "podman" "openrazer" "Git" ];
+    extraGroups = ["networkmanager" "wheel" "podman" "openrazer" "Git"];
     shell = pkgs.zsh;
   };
 
@@ -117,6 +120,7 @@
     git
     fd
     ripgrep
+    nss_latest
   ];
 
   nix = {

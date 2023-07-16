@@ -27,7 +27,7 @@
   environment = {
     systemPackages = [
       pkgs.virt-manager
-	  pkgs.killall
+      pkgs.killall
     ];
     shellAliases = {
       vm-start = "virsh start Windows";
@@ -39,28 +39,28 @@
 
   systemd.tmpfiles.rules = let
     qemuHook = pkgs.writeShellScript "qemu-hook" ''
-        GUEST_NAME="$1"
-        OPERATION="$2"
-        SUB_OPERATION="$3"
+      GUEST_NAME="$1"
+      OPERATION="$2"
+      SUB_OPERATION="$3"
 
-        if [ "$GUEST_NAME" == "WindowsTemp" ]; then
-          if [ "$OPERATION" == "prepare" ]; then
-      		modprobe -r -a nvidia_uvm nvidia_drm nvidia nvidia_modeset
-      		${pkgs.libvirt}/bin/virsh nodedev-detach pci_0000_01_00_0
-      		${pkgs.libvirt}/bin/virsh nodedev-detach pci_0000_01_00_1
-      		systemctl set-property --runtime -- user.slice AllowedCPUs=14-19
-      		systemctl set-property --runtime -- system.slice AllowedCPUs=14-19
-      		systemctl set-property --runtime -- init.scope AllowedCPUs=14-19
-          fi
-          if [ "$OPERATION" == "release" ]; then
-      		systemctl set-property --runtime -- user.slice AllowedCPUs=0-19
-      		systemctl set-property --runtime -- system.slice AllowedCPUs=0-19
-      		systemctl set-property --runtime -- init.scope AllowedCPUs=0-19
-      		${pkgs.libvirt}/bin/virsh nodedev-reattach pci_0000_01_00_0
-      		${pkgs.libvirt}/bin/virsh nodedev-reattach pci_0000_01_00_1
-      		modprobe -a nvidia_uvm nvidia_drm nvidia nvidia_modeset
-          fi
+      if [ "$GUEST_NAME" == "WindowsTemp" ]; then
+        if [ "$OPERATION" == "prepare" ]; then
+      modprobe -r -a nvidia_uvm nvidia_drm nvidia nvidia_modeset
+      ${pkgs.libvirt}/bin/virsh nodedev-detach pci_0000_01_00_0
+      ${pkgs.libvirt}/bin/virsh nodedev-detach pci_0000_01_00_1
+      systemctl set-property --runtime -- user.slice AllowedCPUs=14-19
+      systemctl set-property --runtime -- system.slice AllowedCPUs=14-19
+      systemctl set-property --runtime -- init.scope AllowedCPUs=14-19
         fi
+        if [ "$OPERATION" == "release" ]; then
+      systemctl set-property --runtime -- user.slice AllowedCPUs=0-19
+      systemctl set-property --runtime -- system.slice AllowedCPUs=0-19
+      systemctl set-property --runtime -- init.scope AllowedCPUs=0-19
+      ${pkgs.libvirt}/bin/virsh nodedev-reattach pci_0000_01_00_0
+      ${pkgs.libvirt}/bin/virsh nodedev-reattach pci_0000_01_00_1
+      modprobe -a nvidia_uvm nvidia_drm nvidia nvidia_modeset
+        fi
+      fi
     '';
   in [
     "L+ /var/lib/libvirt/hooks/qemu - - - - ${qemuHook}"

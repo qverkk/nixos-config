@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.mako = {
     enable = true;
     #iconPath = "${pkgs.papirus-icon-theme.package}/share/icons/Papirus-Dark";

@@ -34,12 +34,12 @@ in
     ];
 
     installPhase = ''
-      THEMES_DIRECTORY=$out/share/themes
+         THEMES_DIRECTORY=$out/share/themes
 
-      # Copy files
-      mkdir -p $THEMES_DIRECTORY
-      cp -r files/* $THEMES_DIRECTORY
-	  chmod -R +w $THEMES_DIRECTORY
+         # Copy files
+         mkdir -p $THEMES_DIRECTORY
+         cp -r files/* $THEMES_DIRECTORY
+      chmod -R +w $THEMES_DIRECTORY
     '';
 
     # cp -rf $FILES_DIR/* /home/qverkk/.config/rofi/

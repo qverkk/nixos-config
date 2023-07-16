@@ -1,6 +1,10 @@
-{ outputs, config, lib, pkgs, ... }:
-
-let
+{
+  outputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   # Dependencies
   jq = "${pkgs.jq}/bin/jq";
   xml = "${pkgs.xmlstarlet}/bin/xml";
@@ -23,7 +27,14 @@ let
   mail = terminal-spawn neomutt;
 
   # Function to simplify making waybar outputs
-  jsonOutput = name: { pre ? "", text ? "", tooltip ? "", alt ? "", class ? "", percentage ? "" }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
+  jsonOutput = name: {
+    pre ? "",
+    text ? "",
+    tooltip ? "",
+    alt ? "",
+    class ? "",
+    percentage ? "",
+  }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
     set -euo pipefail
     ${pre}
     ${jq} -cn \
@@ -34,12 +45,10 @@ let
       --arg percentage "${percentage}" \
       '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
   ''}/bin/waybar-${name}";
-in
-{
+in {
   programs.waybar = {
     enable = true;
     settings = {
-
       #secondary = {
       #  mode = "dock";
       #  layer = "top";
@@ -121,7 +130,7 @@ in
             headphone = "";
             headset = "";
             portable = "";
-            default = [ "" "" "" ];
+            default = ["" "" ""];
           };
           on-click = pavucontrol;
         };
@@ -135,7 +144,7 @@ in
         battery = {
           bat = "BAT0";
           interval = 10;
-          format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
+          format-icons = ["" "" "" "" "" "" "" "" "" ""];
           format = "{icon} {capacity}%";
           format-charging = " {capacity}%";
           onclick = "";
@@ -285,7 +294,6 @@ in
           on-click = "${playerctl} play-pause";
         };
       };
-
     };
     # Cheatsheet:
     # x -> all sides
@@ -359,4 +367,3 @@ in
     '';
   };
 }
-

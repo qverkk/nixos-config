@@ -1,6 +1,7 @@
-{ pkgs
-, lib
-, ...
+{
+  pkgs,
+  lib,
+  ...
 }:
 ## Thanks ernestre
 ## https://github.com/ernestre/dotfiles/blob/master/nixpkgs/home-manager/modules/neovim/default.nix
@@ -15,8 +16,7 @@ let
         inherit rev;
       };
     };
-in
-{
+in {
   home.file.".config/nvim".source = ./config/nvim;
 
   home.sessionVariables = {
