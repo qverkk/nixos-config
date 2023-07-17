@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   virtualisation.oci-containers.backend = "podman";
   virtualisation.oci-containers.containers = {
     "fullfeedrss" = {
@@ -6,8 +6,8 @@
       environment = {
         "FTR_ADMIN_PASSWORD" = "";
       };
-      volumes = ["rss-cache:/var/www/html/cache"];
-      ports = ["127.0.0.1:9999:80"];
+      volumes = [ "rss-cache:/var/www/html/cache" ];
+      ports = [ "9999:80" ];
       autoStart = true;
     };
   };
