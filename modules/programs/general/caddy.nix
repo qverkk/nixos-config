@@ -4,7 +4,7 @@
 
     virtualHosts."full-text-rss.localhost" = {
       extraConfig = ''
-        reverse_proxy localhost:9999
+        reverse_proxy localhost:9907
       '';
       listenAddresses = [ "127.0.0.1" ];
     };
