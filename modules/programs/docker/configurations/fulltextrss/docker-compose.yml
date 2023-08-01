@@ -3,7 +3,7 @@ version: '3'
 services:
   fullfeedrss:
     image: "heussd/fivefilters-full-text-rss:latest"
-    restart: unless-stopped
+    restart: always
     environment:
       # Leave empty to disable admin section
       - FTR_ADMIN_PASSWORD=
