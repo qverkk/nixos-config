@@ -9,6 +9,13 @@
       listenAddresses = [ "127.0.0.1" ];
     };
 
+    virtualHosts."wallabag.localhost" = {
+      extraConfig = ''
+        reverse_proxy localhost:9908
+      '';
+      listenAddresses = [ "127.0.0.1" ];
+    };
+
     virtualHosts."syncthing.localhost" = {
       extraConfig = ''
         reverse_proxy localhost:8384
