@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    image: pictuga/morss
+    environment:
+      - MAX_TIME=20
+      - MAX_ITEM=20
+      - LIM_TIME=20
+      - LIM_ITEM=20
+    ports:
+      - '9909:8000'
