@@ -5,7 +5,7 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "nvim-focus";
       repo = "focus.nvim";
-      rev = "3d9df42aa4f9b572348418207b752f81adea09a5";
+      rev = "c83be53de558f6f0824c8cefcad61719c87ce157";
       sha256 = "sha256-MpGDxBJ0IMMAIxuzFkxIgKtAn56NvpjfTNMVhnBhhsE=";
     };
     meta.homepage = "https://github.com/nvim-focus/focus.nvim";
