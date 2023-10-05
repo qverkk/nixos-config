@@ -6,7 +6,7 @@ self: super: {
       owner = "folke";
       repo = "flash.nvim";
       rev = "ab7b03e5e098de59689d1478b6fea8202d0204ab";
-      sha256 = "sha256-8oqXMSPLNz8afHUUrgs00bcvgwU9VHJmHdKldpnN9vQ=";
+      sha256 = "sha256-5NYcWg/5PlJL4gsU+PeihmBYWeLAdLnWbdI0ZZ9g2iM=";
     };
     meta.homepage = "https://github.com/folke/flash.nvim";
   };

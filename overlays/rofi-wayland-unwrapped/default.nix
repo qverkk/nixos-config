@@ -7,7 +7,7 @@ self: super: {
       repo = "rofi";
       rev = version;
       fetchSubmodules = true;
-      sha256 = "sha256-7eMW4qdrGUUgeFI3ZueXCMMK1bCkeqrYDRunnZpUt3Y=";
+      sha256 = "sha256-uh6kYMu2ZYE5YyjySw57Xz5keAC/+icLlbo9JiACuT8=";
     };
   });
 }
