@@ -5,7 +5,7 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "ms-jpq";
       repo = "coq.thirdparty";
-      rev = "813bd80f2233314aa6756ae747cc9bf41d816e49";
+      rev = "47a748c18d6378df7aa033527d1b56d6dec94dc5";
       sha256 = "sha256-WNibSlM/6OawInyGXZvfZ9c/aR/tz32rEX7v6DBYWmQ=";
     };
 
