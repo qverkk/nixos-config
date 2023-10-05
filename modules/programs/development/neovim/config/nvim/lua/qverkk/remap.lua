@@ -12,10 +12,10 @@ bind("n", "<C-j>", "<C-w>j", opt)
 bind("n", "<C-k>", "<C-w>k", opt)
 
 -- jump 10 lines when holding shift
-bind("n", "<s-j>", "10j<cr>", opt)
-bind("n", "<s-k>", "10k<cr>", opt)
-bind("v", "<s-j>", "10j<cr>", opt)
-bind("v", "<s-k>", "10k<cr>", opt)
+bind("n", "<s-j>", "10j", opt)
+bind("n", "<s-k>", "10k", opt)
+bind("v", "<s-j>", "10j", opt)
+bind("v", "<s-k>", "10k", opt)
 
 -- escape by jk
 bind("i", "jk", "<ESC>", { noremap = false, silent = true })
