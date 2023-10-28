@@ -131,16 +131,16 @@ in {
       rest-nvim
 
       # cmp
-      # cmp-buffer
-      # cmp-calc
-      # cmp-nvim-lsp
-      # cmp_luasnip
-      # cmp-path
-      # cmp-cmdline
-      # nvim-cmp
-      coq_nvim
-      coq-artifacts
-      pkgs.coq-thirdparty
+      cmp-buffer
+      cmp-calc
+      cmp-nvim-lsp
+      cmp_luasnip
+      cmp-path
+      cmp-cmdline
+      nvim-cmp
+      # coq_nvim
+      # coq-artifacts
+      # pkgs.coq-thirdparty
 
       # utils
       comment-nvim
@@ -171,7 +171,7 @@ in {
 
       #snippets
       vim-vsnip
-      # cmp-vsnip
+      cmp-vsnip
       luasnip
       vim-snippets
       friendly-snippets

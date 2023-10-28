@@ -24,24 +24,24 @@ vim.g.coq_settings = {
 	},
 }
 
-require("coq_3p")({
-	{ src = "codeium", short_name = "COD" },
-})
+-- require("coq_3p")({
+-- 	{ src = "codeium", short_name = "COD" },
+-- })
 
-local coq = require("coq")
-local capabilities = coq.lsp_ensure_capabilities()
+-- local coq = require("coq")
+-- local capabilities = coq.lsp_ensure_capabilities()
 
-require("lspconfig").lua_ls.setup(capabilities)
-require("lspconfig").kotlin_language_server.setup(capabilities)
-require("lspconfig").rust_analyzer.setup(capabilities)
-require("lspconfig").bashls.setup(capabilities)
-require("lspconfig").rnix.setup(capabilities)
-require("lspconfig").dockerls.setup(capabilities)
-require("lspconfig").docker_compose_language_service.setup(capabilities)
+require("lspconfig").lua_ls.setup({})
+require("lspconfig").kotlin_language_server.setup({})
+require("lspconfig").rust_analyzer.setup({})
+require("lspconfig").bashls.setup({})
+require("lspconfig").rnix.setup({})
+require("lspconfig").dockerls.setup({})
+require("lspconfig").docker_compose_language_service.setup({})
 
 local root_pattern = require("lspconfig").util.root_pattern
 
--- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local function jdt_on_attach(client, bufnr)
 	local jdtls = require("jdtls")

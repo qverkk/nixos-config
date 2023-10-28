@@ -1,6 +1,6 @@
 require("qverkk.remap")
 require("qverkk.set")
--- require("qverkk.completion")
+require("qverkk.completion")
 require("qverkk.dressing")
 require("qverkk.flash-nvim")
 require("qverkk.noice-nvim")
