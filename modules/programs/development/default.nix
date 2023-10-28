@@ -1,6 +1,6 @@
 [
   ./java-development.nix
-  ./obsidian.nix
+  # ./obsidian.nix
   ./insomnia.nix
   ./git.nix
   ./neovim/home.nix

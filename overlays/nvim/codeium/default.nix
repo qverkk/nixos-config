@@ -1,13 +1,13 @@
 self: super: {
   codeium-vim = super.vimUtils.buildVimPluginFrom2Nix {
     pname = "codeium.vim";
-    version = "2023-10-03";
+    version = "2023-10-27";
 
     src = super.fetchFromGitHub {
       owner = "Exafunction";
       repo = "codeium.vim";
-      rev = "8bc1d192d4f93da60625664e18979a7444e196d4";
-      sha256 = "sha256-SY0rTEqlrIE2/9VCxOHeIpwqrJFWfN2sHRk/tW+nZbk=";
+      rev = "78f32674d42dcf8e5626e105bc8fb93b6c27120b";
+      sha256 = "sha256-IMGHg92T9v8q2fAsTw6tV3vY1GVf2DTVtMBjMBPYHQo=";
     };
 
     meta.homepage = "https://github.com/Exafunction/codeium.vim/";

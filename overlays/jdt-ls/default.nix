@@ -8,12 +8,12 @@
 }:
 stdenv.mkDerivation rec {
   pname = "jdt-ls";
-  version = "1.28.0";
-  timestamp = "202309281329";
+  version = "1.29.0";
+  timestamp = "202310261436";
 
   src = fetchurl {
     url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-    sha256 = "b15c6badd1f437b533d857720d7593c1cbb6ee9afb4dfb0579b7318e3dbb2e19";
+    sha256 = "867995033893ffe2768bf85fee7ff4f03007ff944a3b57663c2c466006eb478d";
   };
 
   # After running unpackPhase, the generic builder changes the current directory

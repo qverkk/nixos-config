@@ -5,8 +5,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "nvim-focus";
       repo = "focus.nvim";
-      rev = "c83be53de558f6f0824c8cefcad61719c87ce157";
-      sha256 = "sha256-ie4Z/WhUj8nthf7XbVFqeS4YJ1u6kLrWTuM67mRXv28=";
+      rev = "5269ea70e2003d9dac199584b093323752a472ba";
+      sha256 = "sha256-EL4mzBYxTcd3zMN8HhGOew06eK3bUVsFE7Gm8Jioirs=";
     };
     meta.homepage = "https://github.com/nvim-focus/focus.nvim";
   };

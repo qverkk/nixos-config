@@ -5,8 +5,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "ms-jpq";
       repo = "coq.thirdparty";
-      rev = "47a748c18d6378df7aa033527d1b56d6dec94dc5";
-      sha256 = "sha256-jFKAiRfHLxoYDIVzHH9Z/lcVqTgr8Sm/siRf69fM/cs=";
+      rev = "f110ee91f1b2b897ab0026da347396756953ca41";
+      sha256 = "sha256-zAtL+s1BbqLk/Z/8JqoExuE348GaaUbQzVybJrf+leQ=";
     };
 
     meta.homepage = "https://github.com/ms-jpq/coq.thirdparty/";
