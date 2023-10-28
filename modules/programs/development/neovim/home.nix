@@ -22,6 +22,7 @@ in {
   home.sessionVariables = {
     JAVA_TEST_DIR = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test/server/*.jar";
     JAVA_DEBUG_DIR = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug/server/com.microsoft.java.debug.plugin-*.jar";
+	CODEIUM_LSP_DIR = "${pkgs.codeium-lsp}";
   };
 
   programs.neovim = {
@@ -104,7 +105,8 @@ in {
       which-key-nvim
 
       # codeium
-      pkgs.codeium-vim
+      # pkgs.codeium-vim
+	  pkgs.codeium-nvim
 
       # Search and replace
       nvim-spectre

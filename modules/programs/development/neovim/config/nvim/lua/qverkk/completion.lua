@@ -76,12 +76,13 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	},
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp",                priority = 10,      max_item_count = 15 },
+		{ name = "codeium", priority = 20 },
+		{ name = "nvim_lsp", priority = 10, max_item_count = 15 },
 		{ name = "nvim_lsp_signature_help", max_item_count = 15 },
 		{ name = "luasnip" },
-		{ name = "path",                    priority = 1 },
-		{ name = "vsnip",                   priority = 1 },
-		{ name = "buffer",                  priority = 0,       max_item_count = 5 },
+		{ name = "path", priority = 1 },
+		{ name = "vsnip", priority = 1 },
+		{ name = "buffer", priority = 0, max_item_count = 5 },
 	}),
 })
 
