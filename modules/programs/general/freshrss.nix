@@ -7,10 +7,10 @@
   services.freshrss = {
     enable = true;
     defaultUser = "qverkk";
-    baseUrl = "http://freshrss.localhost";
+    baseUrl = "https://freshrss";
     passwordFile = config.age.secrets.freshrss.path;
     dataDir = "/var/lib/freshrss";
-    virtualHost = null;
+    virtualHost = "freshrss";
     package = pkgs.freshrss.overrideAttrs (old: {
       overrideConfig = pkgs.writeText "constants.local.php" ''
         <?php
@@ -21,11 +21,11 @@
     });
   };
 
-  services.phpfpm.pools.freshrss.settings = {
-    # use the provided phpfpm pool, but override permissions for caddy
-    "listen.owner" = lib.mkForce "caddy";
-    "listen.group" = lib.mkForce "caddy";
-  };
+  # services.phpfpm.pools.freshrss.settings = {
+  #   # use the provided phpfpm pool, but override permissions for caddy
+  #   "listen.owner" = lib.mkForce "caddy";
+  #   "listen.group" = lib.mkForce "caddy";
+  # };
 
   networking.extraHosts = "127.0.0.3 freshrss.local";
 }
