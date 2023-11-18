@@ -70,7 +70,8 @@ in {
 
       # typescript
       nodePackages.typescript
-      nodePackages.typescript-language-server
+      # nodePackages.typescript-language-server
+
 
       # docker
       nodePackages.dockerfile-language-server-nodejs
@@ -107,6 +108,8 @@ in {
       # codeium
       # pkgs.codeium-vim
 	  pkgs.codeium-nvim
+
+	  pkgs.typescript-tools-nvim
 
       # Search and replace
       nvim-spectre

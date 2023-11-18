@@ -39,6 +39,7 @@
       (import ./overlays/rofi-wayland-unwrapped)
       (import ./overlays/leetcode-cli)
       (import ./overlays/nvim/projections)
+      (import ./overlays/nvim/typescript-tools)
       # (import ./overlays/nvim/codeium)
       (import ./overlays/nvim/codeiumnvim)
       (import ./overlays/nvim/focus)
