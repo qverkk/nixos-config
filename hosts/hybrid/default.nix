@@ -1,11 +1,10 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  inputs,
-  config,
-  pkgs,
-  ...
+{ inputs
+, config
+, pkgs
+, ...
 }: {
   imports = [
     # Include the results of the hardware scan.
@@ -17,6 +16,7 @@
     ../../modules/hardware/bluetooth.nix
     ../../modules/hardware/openrazer.nix
     ../../modules/hardware/onlykey.nix
+    ../../modules/hardware/qmk.nix
     ../../modules/programs/moonlander
     ../../modules/programs/general/tailscale
     ../../modules/programs/general/zsh
@@ -86,7 +86,7 @@
   users.users.qverkk = {
     isNormalUser = true;
     description = "qverkk";
-    extraGroups = ["networkmanager" "wheel" "podman" "openrazer"];
+    extraGroups = [ "networkmanager" "wheel" "podman" "openrazer" ];
     shell = pkgs.zsh;
   };
 
