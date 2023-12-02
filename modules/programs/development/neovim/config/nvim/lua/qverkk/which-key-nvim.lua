@@ -2,8 +2,7 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 local which_key = require("which-key")
-local harpoon_mark = require("harpoon.mark")
-local harpoon_ui = require("harpoon.ui")
+local harpoon = require("harpoon")
 
 local opts = {
 	mode = "n", -- NORMAL mode
@@ -33,10 +32,10 @@ local harpoonopts = {
 }
 
 local harpoonmappings = {
-	["<A-h>"] = { harpoon_ui.nav_file(1), "Harpoon file 1" },
-	["<A-j>"] = { harpoon_ui.nav_file(2), "Harpoon file 2" },
-	["<A-k>"] = { harpoon_ui.nav_file(3), "Harpoon file 3" },
-	["<A-l>"] = { harpoon_ui.nav_file(4), "Harpoon file 4" },
+	["<A-h>"] = { harpoon:list():select(1), "Harpoon file 1" },
+	["<A-j>"] = { harpoon:list():select(2), "Harpoon file 2" },
+	["<A-k>"] = { harpoon:list():select(3), "Harpoon file 3" },
+	["<A-l>"] = { harpoon:list():select(4), "Harpoon file 4" },
 }
 
 -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
@@ -52,8 +51,8 @@ local vmappings = {
 local mappings = {
 	h = {
 		name = "Harpoon",
-		a = { harpoon_mark.add_file, "Harpoon add mark" },
-		e = { harpoon_ui.toggle_quick_menu, "Harpoon browse marks" },
+		a = { function() harpoon:list():append() end, "Harpoon add mark" },
+		e = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Harpoon browse marks" },
 	},
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>confirm q<CR>", "Quit" },

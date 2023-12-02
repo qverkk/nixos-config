@@ -6,8 +6,8 @@
 ## Thanks ernestre
 ## https://github.com/ernestre/dotfiles/blob/master/nixpkgs/home-manager/modules/neovim/default.nix
 let
-  plugin = repo: rev: ref:
-    pkgs.vimUtils.buildVimPluginFrom2Nix {
+  plugin = repo: rev: ref: sha256:
+    pkgs.vimUtils.buildVimPlugin {
       pname = "${lib.strings.sanitizeDerivationName repo}";
       version = rev;
       src = builtins.fetchGit {
@@ -15,6 +15,7 @@ let
         inherit ref;
         inherit rev;
       };
+		inherit sha256;
     };
 in {
   home.file.".config/nvim".source = ./config/nvim;
@@ -99,7 +100,7 @@ in {
     ];
     plugins = with pkgs.vimPlugins; [
       # blazing fast buffer switching
-      (plugin "ThePrimeagen/harpoon" "21f4c47c6803d64ddb934a5b314dcb1b8e7365dc" "master")
+      (plugin "ThePrimeagen/harpoon" "c5f2d71c32a4aa2569bef1066e668947b78f9682" "harpoon2" "")
 
       # search commands
       legendary-nvim

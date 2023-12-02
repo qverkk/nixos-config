@@ -1,14 +1,18 @@
-local ui = require("harpoon.ui")
+local harpoon = require("harpoon")
+
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
 
 vim.keymap.set("n", "<A-h>", function()
-	ui.nav_file(1)
+	harpoon:list():select(1)
 end)
 vim.keymap.set("n", "<A-j>", function()
-	ui.nav_file(2)
+	harpoon:list():select(2)
 end)
 vim.keymap.set("n", "<A-k>", function()
-	ui.nav_file(3)
+	harpoon:list():select(3)
 end)
 vim.keymap.set("n", "<A-l>", function()
-	ui.nav_file(4)
+	harpoon:list():select(4)
 end)

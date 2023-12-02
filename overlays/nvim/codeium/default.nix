@@ -1,5 +1,5 @@
 self: super: {
-  codeium-vim = super.vimUtils.buildVimPluginFrom2Nix {
+  codeium-vim = super.vimUtils.buildVimPlugin {
     pname = "codeium.vim";
     version = "2023-10-27";
 

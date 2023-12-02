@@ -1,5 +1,5 @@
 self: super: {
-  projections-nvim = super.vimUtils.buildVimPluginFrom2Nix {
+  projections-nvim = super.vimUtils.buildVimPlugin {
     name = "projections.nvim";
 
     src = super.fetchFromGitHub {

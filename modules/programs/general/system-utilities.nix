@@ -5,7 +5,7 @@
 
   programs = {
     # ls alternative
-    exa = {
+    eza = {
       enable = true;
       enableAliases = true;
     };

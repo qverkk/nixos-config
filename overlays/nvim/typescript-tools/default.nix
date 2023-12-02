@@ -1,5 +1,5 @@
 self: super: {
-  typescript-tools-nvim = super.vimUtils.buildVimPluginFrom2Nix {
+  typescript-tools-nvim = super.vimUtils.buildVimPlugin {
     name = "typescript-tools.nvim";
 
     src = super.fetchFromGitHub {

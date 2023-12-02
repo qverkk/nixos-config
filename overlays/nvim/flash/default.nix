@@ -1,5 +1,5 @@
 self: super: {
-  flash-nvim = super.vimUtils.buildVimPluginFrom2Nix {
+  flash-nvim = super.vimUtils.buildVimPlugin {
     name = "flash.nvim";
 
     src = super.fetchFromGitHub {

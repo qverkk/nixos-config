@@ -1,5 +1,5 @@
 self: super: {
-  coq-thirdparty = super.vimUtils.buildVimPluginFrom2Nix {
+  coq-thirdparty = super.vimUtils.buildVimPlugin {
     name = "coq.thirdparty";
 
     src = super.fetchFromGitHub {

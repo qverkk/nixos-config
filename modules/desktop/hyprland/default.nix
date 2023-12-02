@@ -17,7 +17,7 @@
 
   programs.hyprland = {
     enable = true;
-    nvidiaPatches = true;
+    enableNvidiaPatches = true;
   };
 
   security.pam.services.swaylock = {};

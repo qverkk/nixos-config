@@ -3,7 +3,7 @@ self: super: {
     patches =
       (old.patches or [])
       ++ [
-        ./patches/directory-slug.patch
+        # ./patches/directory-slug.patch
       ];
   });
 }

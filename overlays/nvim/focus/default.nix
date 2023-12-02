@@ -1,5 +1,5 @@
 self: super: {
-  focus-nvim = super.vimUtils.buildVimPluginFrom2Nix {
+  focus-nvim = super.vimUtils.buildVimPlugin {
     name = "focus.nvim";
 
     src = super.fetchFromGitHub {
