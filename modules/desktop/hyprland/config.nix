@@ -1,6 +1,6 @@
 {}: ''
   exec-once=mako
-  exec-once=swaybg -i ~/.local/share/wallpapers/wallpaper-2.jpg --mode fill
+  exec-once=hyprpaper
   exec-once=eww open bar
 
   misc {
