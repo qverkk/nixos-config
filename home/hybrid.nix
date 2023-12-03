@@ -21,12 +21,13 @@
 
   monitors = [
     {
-      name = "eDP-1";
+      name = "";
       width = 1920;
       height = 1080;
       refreshRate = 60;
       x = 0;
       workspace = "1";
+	  enabled = true;
     }
   ];
 }

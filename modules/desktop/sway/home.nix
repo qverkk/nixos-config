@@ -3,14 +3,16 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ../../../optional/home-manager/kanshi.nix
-  ];
+  # imports = [
+  #   ../../../optional/home-manager/kanshi.nix
+  # ];
   wayland.windowManager.sway = {
     enable = true;
     extraOptions = ["--unsupported-gpu"];
     wrapperFeatures.gtk = true;
-    systemdIntegration = true;
+	systemd = {
+		enable = true;
+	};
     config = rec {
       modifier = "Mod4";
       terminal = "kitty";

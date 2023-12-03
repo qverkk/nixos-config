@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  imports = [
+    ../../programs/wayland/greetd
+  ];
   programs = {
     dconf.enable = true;
     light.enable = true;
@@ -8,5 +11,6 @@
     enable = true;
     wlr.enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr];
+    config.sway.default = ["wlr" "gtk"];
   };
 }
