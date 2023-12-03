@@ -77,7 +77,12 @@
       "qverkk@hybrid" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = {inherit inputs outputs pkgs;};
-        modules = [./home/hybrid.nix];
+        modules = [
+          ./home/hybrid.nix
+
+          {home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";}
+          {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
+        ];
       };
     };
     nixosConfigurations = {
@@ -95,6 +100,9 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/hybrid
+
+          {nix.nixPath = ["nixpkgs=flake:nixpkgs"];}
+          {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
         ];
       };
     };
