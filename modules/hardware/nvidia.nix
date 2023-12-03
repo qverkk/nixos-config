@@ -28,6 +28,7 @@ in {
         modesetting.enable = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
         powerManagement.enable = false;
+		open = false;
         prime = {
           offload.enable = true;
           intelBusId = "PCI:0:2:0";
