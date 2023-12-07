@@ -1,8 +1,8 @@
 [
   ./notification
   ./launcher
-  # ./swaybg
-  ./hyprpaper
+  ./swaybg
+  # ./hyprpaper
   ./swaylock
   ./screenshots
   ./general
