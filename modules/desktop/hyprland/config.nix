@@ -1,6 +1,6 @@
 {}: ''
   exec-once=mako
-  exec-once=hyprpaper
+  exec-once=hyprpaper 
   exec-once=eww open bar
 
   misc {

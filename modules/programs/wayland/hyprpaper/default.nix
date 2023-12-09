@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     hyprpaper
   ];
@@ -12,18 +7,6 @@
     preload = ~/.local/share/wallpapers/wallpaper-2.jpg
     wallpaper = , ~/.local/share/wallpapers/wallpaper-2.jpg
   '';
-
-  # systemd.user.services.hyprpaper = {
-  #   Unit = {
-  #     Description = "Hyprland wallpaper daemon";
-  #     PartOf = ["graphical-session.target"];
-  #   };
-  #   Service = {
-  #     ExecStart = "${lib.getExe pkgs.hyprpaper}";
-  #     Restart = "on-failure";
-  #   };
-  #   Install.WantedBy = ["graphical-session.target"];
-  # };
 
   xdg.dataFile."wallpapers".source = ../swaybg/wallpapers;
 }

@@ -2,7 +2,7 @@
   ./notification
   ./launcher
   ./swaybg
-  # ./hyprpaper
+  ./hyprpaper
   ./swaylock
   ./screenshots
   ./general
