@@ -9,8 +9,8 @@
 
   imports =
     [
-      # ../../programs/wayland/bars/eww/home.nix
-      ../../programs/wayland/bars/waybar/home.nix
+      ../../programs/wayland/bars/eww/home.nix
+      # ../../programs/wayland/bars/waybar/home.nix
     ]
     ++ (import ../../programs/wayland)
     ++ (import ../../theme/catppuccin-dark/wayland);

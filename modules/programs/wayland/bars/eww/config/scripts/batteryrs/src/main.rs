@@ -1,7 +1,7 @@
+use serde::{Deserialize, Serialize};
+use std::process::Command;
 use std::thread;
 use std::time::Duration;
-use std::process::Command;
-use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
 struct BatteryInfo {
@@ -21,16 +21,17 @@ fn main() {
             .arg("-i")
             .arg("/org/freedesktop/UPower/devices/battery_BAT0")
             .output()
-            .map_err(|e| format!("Failed to execute upower command: {}", e)) {
-                Ok(res) => res,
-                Err(e) => {
-                    if battery_found {
-                        thread::sleep(Duration::from_secs(60));
-                        continue;
-                    }
-                    panic!("{:?}", e);
-                },
-            };
+            .map_err(|e| format!("Failed to execute upower command: {}", e))
+        {
+            Ok(res) => res,
+            Err(e) => {
+                if battery_found {
+                    thread::sleep(Duration::from_secs(60));
+                    continue;
+                }
+                panic!("{:?}", e);
+            }
+        };
 
         battery_found = true;
 
@@ -66,16 +67,35 @@ fn main() {
             .lines()
             .find(|line| line.contains("time to full"))
             .map(|line| {
-                let time_in_hours = line
+                let time = line
                     .split(": ")
                     .last()
                     .unwrap()
                     .trim_end_matches(" hours")
                     .trim_end_matches(" days")
+                    .trim_end_matches(" minutes")
                     .trim()
-                    .replace(',', ".")
-                    .parse::<f32>()
-                    .unwrap();
+                    .replace(',', ".");
+
+                let time_in_hours = match time.parse::<f32>() {
+                    Ok(v) => v,
+                    Err(_) => panic!("Failed to parse time to float"),
+                };
+
+                let time_unit = if line.contains(" days") {
+                    "days"
+                } else if line.contains(" hours") {
+                    "hours"
+                } else {
+                    "minutes"
+                };
+
+                let time_in_hours = match time_unit {
+                    "days" => time_in_hours * 24.0,
+                    "minutes" => time_in_hours / 60.0,
+                    _ => time_in_hours,
+                };
+
                 let hours = time_in_hours.floor() as u32;
                 let minutes = ((time_in_hours - hours as f32) * 60.0).round() as u32;
                 format!("{:02}:{:02}", hours, minutes)
@@ -85,16 +105,35 @@ fn main() {
             .lines()
             .find(|line| line.contains("time to empty"))
             .map(|line| {
-                let time_in_hours = line
+                let time = line
                     .split(": ")
                     .last()
                     .unwrap()
                     .trim_end_matches(" hours")
                     .trim_end_matches(" days")
+                    .trim_end_matches(" minutes")
                     .trim()
-                    .replace(',', ".")
-                    .parse::<f32>()
-                    .unwrap();
+                    .replace(',', ".");
+
+                let time_in_hours = match time.parse::<f32>() {
+                    Ok(v) => v,
+                    Err(_) => panic!("Failed to parse time to float"),
+                };
+
+                let time_unit = if line.contains(" days") {
+                    "days"
+                } else if line.contains(" hours") {
+                    "hours"
+                } else {
+                    "minutes"
+                };
+
+                let time_in_hours = match time_unit {
+                    "days" => time_in_hours * 24.0,
+                    "minutes" => time_in_hours / 60.0,
+                    _ => time_in_hours,
+                };
+
                 let hours = time_in_hours.floor() as u32;
                 let minutes = ((time_in_hours - hours as f32) * 60.0).round() as u32;
                 format!("{:02}:{:02}", hours, minutes)
@@ -116,4 +155,3 @@ fn main() {
         thread::sleep(Duration::from_secs(60));
     }
 }
-
