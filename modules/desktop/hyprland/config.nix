@@ -14,7 +14,7 @@
   input {
       kb_layout = pl
 
-      follow_mouse = 1
+      follow_mouse = 4
 
       touchpad {
           natural_scroll = false
