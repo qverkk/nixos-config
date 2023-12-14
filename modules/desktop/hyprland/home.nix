@@ -8,8 +8,8 @@
       ../../programs/wayland/bars/eww/home.nix
       (import ../../environment/hypr-variables.nix)
     ]
-    ++ (import ../../programs/wayland)
-    ++ (import ../../theme/catppuccin-dark/wayland);
+    ++ (import ../../programs/wayland/home.nix)
+    ++ (import ../../theme/catppuccin-dark/wayland/home.nix);
 
   home.file.hyprconf = {
     target = ".config/hypr/hyprland.conf";

@@ -1,4 +1,0 @@
-[
-  ./mail.nix
-  ./messaging.nix
-]

@@ -7,8 +7,8 @@
       ../modules/programs/moonlander/home.nix
       ../modules/programs/docker/home.nix
     ]
-    ++ (import ../modules/programs/development)
-    ++ (import ../modules/programs/social)
+    ++ (import ../modules/programs/development/home.nix)
+    ++ (import ../modules/programs/social/home.nix)
     ++ (import ../modules/programs/general);
 
   # Let home manager install and makage itself
