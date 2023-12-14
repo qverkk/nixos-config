@@ -21,7 +21,8 @@
     ../../modules/programs/moonlander
     ../../modules/programs/general/tailscale
     ../../modules/programs/general/zsh
-    ../../modules/desktop/hyprland
+    # ../../modules/desktop/hyprland
+    ../../modules/desktop/sway
     ../../modules/programs/development/podman
     ../../modules/programs/general/caddy
     ../../modules/programs/general/freshrss

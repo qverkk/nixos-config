@@ -6,6 +6,7 @@
   extraEnv = {
     WLR_NO_HARDWARE_CURSORS = "1";
     XWAYLAND_NO_GLAMOR = "1";
+    WLR_RENDERER = "vulkan";
   };
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
@@ -28,7 +29,7 @@ in {
         modesetting.enable = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
         powerManagement.enable = false;
-		open = false;
+        open = false;
         prime = {
           offload.enable = true;
           intelBusId = "PCI:0:2:0";
@@ -41,6 +42,7 @@ in {
         driSupport = true;
         extraPackages = with pkgs; [
           vaapiVdpau
+          vulkan-validation-layers
         ];
       };
     };
