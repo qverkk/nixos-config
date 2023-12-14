@@ -19,7 +19,7 @@
         inherit (config) monitors;
       }}
 
-      ${import ./config.nix {}}
+      ${builtins.readFile ./hyprland.conf}
     '';
   };
 }

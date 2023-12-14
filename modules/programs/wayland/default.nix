@@ -1,9 +1,9 @@
 [
-  ./notification
-  ./launcher
-  ./swaybg
-  ./hyprpaper
-  ./swaylock
-  ./screenshots
-  ./general
+  ./notification/home.nix
+  ./launcher/home.nix
+  ./swaybg/home.nix
+  ./hyprpaper/home.nix
+  ./swaylock/home.nix
+  ./screenshots/home.nix
+  ./general/home.nix
 ]

@@ -100,7 +100,7 @@ in {
     ];
     plugins = with pkgs.vimPlugins; [
       # blazing fast buffer switching
-      (plugin "ThePrimeagen/harpoon" "c5f2d71c32a4aa2569bef1066e668947b78f9682" "harpoon2" "")
+      (plugin "ThePrimeagen/harpoon" "8f67088e9d479397347b63e69920ee861a9838cd" "harpoon2" "")
 
       # search commands
       legendary-nvim
