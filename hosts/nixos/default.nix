@@ -23,8 +23,8 @@
     ../../modules/programs/general/zsh
     ../../modules/desktop/hyprland
     ../../modules/programs/development/podman
-    ../../modules/programs/general/caddy.nix
-    ../../modules/programs/general/freshrss.nix
+    ../../modules/programs/general/caddy
+    ../../modules/programs/general/freshrss
   ];
 
   age = {

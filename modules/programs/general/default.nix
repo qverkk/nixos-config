@@ -1,15 +1,5 @@
 [
-  ./firefox.nix
-  ./gimp.nix
-  ./pipewire.nix
-  ./keepassxc.nix
-  ./syncthing.nix
-  ./kitty.nix
-  ./font.nix
-  ./spotifyd.nix
-  ./zsh/home.nix
-  ./starship.nix
-  ./video.nix
-  ./steam-run.nix
-  ./system-utilities.nix
+  ./firefox
+  ./syncthing
+  ./spotifyd
 ]
