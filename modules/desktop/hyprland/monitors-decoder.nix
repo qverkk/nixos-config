@@ -8,7 +8,11 @@ in
   concatStringsSep "\n" (
     map
     (m: ''
-      monitor=${m.name},${toString m.width}x${toString m.height}@${toString m.refreshRate},${toString m.x}x${toString m.y},${
+      monitor=${m.name},${
+        if m.modeline == ""
+        then "${toString m.width}x${toString m.height}@${toString m.refreshRate}"
+        else "modeline ${m.modeline}"
+      },${toString m.x}x${toString m.y},${
         if m.enabled
         then "1"
         else "0"

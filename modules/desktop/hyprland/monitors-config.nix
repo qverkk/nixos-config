@@ -41,6 +41,10 @@ in {
           type = types.bool;
           default = true;
         };
+		modeline = mkOption {
+          type = types.str;
+          example = "";
+		};
         workspace = mkOption {
           type = types.nullOr types.str;
           default = null;

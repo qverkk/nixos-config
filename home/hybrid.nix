@@ -1,7 +1,8 @@
 {...}: {
   imports =
     [
-      ../modules/desktop/sway/home.nix
+      # ../modules/desktop/sway/home.nix
+      ../modules/desktop/hyprland/home.nix
       ../modules/desktop/hyprland/monitors-config.nix
 
       ../modules/programs/moonlander/home.nix
@@ -28,7 +29,8 @@
       refreshRate = 60;
       x = 0;
       workspace = "1";
-	  enabled = true;
+      enabled = true;
+      modeline = "173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync";
     }
   ];
 }

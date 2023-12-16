@@ -178,7 +178,7 @@
         "XF86AudioNext" = "exec playerctl next";
 
         # Screenshot
-        "${modifier}+Print" = "grim -g \"$(slurp -d)\" - | wl-copy -t image/png";
+        "${modifier}+Print" = "exec grim -g \"$(slurp -d)\" - | wl-copy -t image/png";
       };
     };
     extraConfigEarly = ''
