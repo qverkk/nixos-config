@@ -1,7 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   # imports = [
   #   ../../../optional/home-manager/kanshi.nix
@@ -26,26 +25,31 @@
           missing_format = "";
         }
         {
+          block = "sound";
+          step_width = 5;
+        }
+        {
           block = "cpu";
+          interval = 1;
           format = " $utilization ";
         }
         {
           block = "temperature";
-          format = " $icon $max ";
+          format = " $averange ";
         }
         {
           block = "memory";
-          format = " $icon$mem_used.eng(p:Mi) ";
-          format_alt = " $icon_swap $swap_used.eng(p:Mi) ";
+          format = " $mem_used.eng(p:Mi)/$mem_total.eng(p:Mi) ";
         }
         {
           block = "battery";
-          format = " $icon  $percentage ";
+          format = " $percentage $power $time ";
           missing_format = "";
         }
         {
           block = "time";
-          format = " $icon $timestamp.datetime(f:'%a %F %R') ";
+          interval = 60;
+          format = " $timestamp.datetime(f:'%a %F %R') ";
         }
       ];
       # icons = "awesome6";
@@ -55,7 +59,7 @@
 
   wayland.windowManager.sway = {
     enable = true;
-    extraOptions = ["--unsupported-gpu"];
+    extraOptions = [ "--unsupported-gpu" ];
     wrapperFeatures.gtk = true;
     systemd = {
       enable = true;
@@ -64,6 +68,11 @@
       modifier = "Mod4";
       terminal = "kitty";
       menu = "~/.config/rofi/launcher.sh";
+      output = {
+        "eDP-1" = {
+          "mode" = "--custom 1920x1080@60Hz";
+        };
+      };
       bars = [
         {
           position = "top";

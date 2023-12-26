@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # sg-nvim = {
+    #   url = "github:sourcegraph/sg.nvim";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nur.url = "github:nix-community/NUR";

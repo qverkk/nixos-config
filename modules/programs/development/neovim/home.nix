@@ -1,7 +1,7 @@
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, inputs
+, ...
 }:
 ## Thanks ernestre
 ## https://github.com/ernestre/dotfiles/blob/master/nixpkgs/home-manager/modules/neovim/default.nix
@@ -15,15 +15,32 @@ let
         inherit ref;
         inherit rev;
       };
-		inherit sha256;
+      inherit sha256;
     };
-in {
+  # sg =
+  #   let
+  #     package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
+  #   in
+  #   {
+  #     inherit package;
+  #     init = pkgs.writeTextFile {
+  #       name = "sg.lua";
+  #       text = ''
+  #         return function()
+  #           package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
+  #         end
+  #       '';
+  #     };
+  #     paths = [ inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default ];
+  #   };
+in
+{
   home.file.".config/nvim".source = ./config/nvim;
 
   home.sessionVariables = {
     JAVA_TEST_DIR = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test/server/*.jar";
     JAVA_DEBUG_DIR = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug/server/com.microsoft.java.debug.plugin-*.jar";
-	CODEIUM_LSP_DIR = "${pkgs.codeium-lsp}";
+    CODEIUM_LSP_DIR = "${pkgs.codeium-lsp}";
   };
 
   programs.neovim = {
@@ -32,6 +49,8 @@ in {
     withNodeJs = true;
 
     extraPackages = with pkgs; [
+      # sg
+
       # linters
       ## lua
       selene
@@ -73,7 +92,6 @@ in {
       nodePackages.typescript
       # nodePackages.typescript-language-server
 
-
       # docker
       nodePackages.dockerfile-language-server-nodejs
       docker-compose-language-service
@@ -108,9 +126,9 @@ in {
 
       # codeium
       # pkgs.codeium-vim
-	  pkgs.codeium-nvim
+      pkgs.codeium-nvim
 
-	  pkgs.typescript-tools-nvim
+      pkgs.typescript-tools-nvim
 
       # Search and replace
       nvim-spectre
