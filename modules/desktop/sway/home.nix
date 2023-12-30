@@ -1,7 +1,12 @@
-{ config
-, pkgs
-, ...
-}: {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  monitor-setup = import ./monitors-decoder.nix {
+    inherit (config) monitors;
+  };
+in {
   # imports = [
   #   ../../../optional/home-manager/kanshi.nix
   # ];
@@ -59,7 +64,7 @@
 
   wayland.windowManager.sway = {
     enable = true;
-    extraOptions = [ "--unsupported-gpu" ];
+    extraOptions = ["--unsupported-gpu"];
     wrapperFeatures.gtk = true;
     systemd = {
       enable = true;
@@ -68,11 +73,7 @@
       modifier = "Mod4";
       terminal = "kitty";
       menu = "~/.config/rofi/launcher.sh";
-      output = {
-        "eDP-1" = {
-          "mode" = "--custom 1920x1080@60Hz";
-        };
-      };
+      output = monitor-setup;
       bars = [
         {
           position = "top";

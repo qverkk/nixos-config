@@ -23,7 +23,7 @@
 
   monitors = [
     {
-      name = "";
+      name = "eDP-1";
       width = 1920;
       height = 1080;
       refreshRate = 60;
@@ -31,6 +31,7 @@
       workspace = "1";
       enabled = true;
       modeline = "173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync";
+      custom = "1920x1080@60Hz";
     }
   ];
 }

@@ -43,7 +43,11 @@ in {
         };
 		modeline = mkOption {
           type = types.str;
-          example = "";
+          default = "";
+		};
+		custom = mkOption {
+          type = types.str;
+          default = "";
 		};
         workspace = mkOption {
           type = types.nullOr types.str;
