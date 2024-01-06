@@ -124,6 +124,9 @@ in
       legendary-nvim
       which-key-nvim
 
+      # cody
+      sg-nvim
+
       # codeium
       # pkgs.codeium-vim
       pkgs.codeium-nvim

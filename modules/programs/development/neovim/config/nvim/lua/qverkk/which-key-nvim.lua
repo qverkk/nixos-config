@@ -32,10 +32,30 @@ local harpoonopts = {
 }
 
 local harpoonmappings = {
-	["<A-h>"] = { function() harpoon:list():select(1) end, "Harpoon file 1" },
-	["<A-j>"] = { function() harpoon:list():select(2) end, "Harpoon file 2" },
-	["<A-k>"] = { function() harpoon:list():select(3) end, "Harpoon file 3" },
-	["<A-l>"] = { function() harpoon:list():select(4) end, "Harpoon file 4" },
+	["<A-h>"] = {
+		function()
+			harpoon:list():select(1)
+		end,
+		"Harpoon file 1",
+	},
+	["<A-j>"] = {
+		function()
+			harpoon:list():select(2)
+		end,
+		"Harpoon file 2",
+	},
+	["<A-k>"] = {
+		function()
+			harpoon:list():select(3)
+		end,
+		"Harpoon file 3",
+	},
+	["<A-l>"] = {
+		function()
+			harpoon:list():select(4)
+		end,
+		"Harpoon file 4",
+	},
 }
 
 -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
@@ -51,8 +71,18 @@ local vmappings = {
 local mappings = {
 	h = {
 		name = "Harpoon",
-		a = { function() harpoon:list():append() end, "Harpoon add mark" },
-		e = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Harpoon browse marks" },
+		a = {
+			function()
+				harpoon:list():append()
+			end,
+			"Harpoon add mark",
+		},
+		e = {
+			function()
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end,
+			"Harpoon browse marks",
+		},
 	},
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>confirm q<CR>", "Quit" },
@@ -71,6 +101,11 @@ local mappings = {
 		s = { "<cmd>SymbolsOutline<cr>", "Find symbols outline" },
 	},
 	["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+	s = {
+		name = "Sourcegraph Cody",
+		s = { "<cmd>lua require('sg.extensions.telescope').fuzzy_search_results()<CR>", "Search" },
+		c = { "<cmd>CodyToggle<CR>", "Toggle Cody" },
+	},
 	d = {
 		name = "Debug",
 		t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
