@@ -1,7 +1,8 @@
-{ pkgs
-, lib
-, inputs
-, ...
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
 }:
 ## Thanks ernestre
 ## https://github.com/ernestre/dotfiles/blob/master/nixpkgs/home-manager/modules/neovim/default.nix
@@ -17,24 +18,22 @@ let
       };
       inherit sha256;
     };
-  # sg =
-  #   let
-  #     package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
-  #   in
-  #   {
-  #     inherit package;
-  #     init = pkgs.writeTextFile {
-  #       name = "sg.lua";
-  #       text = ''
-  #         return function()
-  #           package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
-  #         end
-  #       '';
-  #     };
-  #     paths = [ inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default ];
-  #   };
-in
-{
+
+  sg = let
+    package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
+  in {
+    inherit package;
+    init = pkgs.writeTextFile {
+      name = "sg.lua";
+      text = ''
+        return function()
+          package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
+        end
+      '';
+    };
+    paths = [inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default];
+  };
+in {
   home.file.".config/nvim".source = ./config/nvim;
 
   home.sessionVariables = {
@@ -50,6 +49,7 @@ in
 
     extraPackages = with pkgs; [
       # sg
+      sg.package
 
       # linters
       ## lua
