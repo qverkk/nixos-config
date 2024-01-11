@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -88,6 +93,17 @@
           {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
         ];
       };
+
+      "qverkk@yogi" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {inherit inputs outputs pkgs;};
+        modules = [
+          ./home/yogi.nix
+
+          {home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";}
+          {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
+        ];
+      };
     };
     nixosConfigurations = {
       nixos = lib.nixosSystem {
@@ -104,6 +120,16 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/hybrid
+
+          {nix.nixPath = ["nixpkgs=flake:nixpkgs"];}
+          {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
+        ];
+      };
+
+      yogi = lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/yogi
 
           {nix.nixPath = ["nixpkgs=flake:nixpkgs"];}
           {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
