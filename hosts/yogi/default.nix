@@ -122,6 +122,7 @@
     git
     fd
     ripgrep
+    neovim
   ];
 
   nix = {
