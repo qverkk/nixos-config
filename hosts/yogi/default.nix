@@ -14,15 +14,15 @@
     inputs.nur.nixosModules.nur
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     ../../modules/hardware/bluetooth.nix
-    #../../modules/hardware/openrazer.nix
-    #../../modules/hardware/onlykey.nix
-    #../../modules/hardware/qmk.nix
-    #../../modules/programs/moonlander
+    ../../modules/hardware/openrazer.nix
+    ../../modules/hardware/onlykey.nix
+    ../../modules/hardware/qmk.nix
+    ../../modules/programs/moonlander
     ../../modules/programs/general/tailscale
     ../../modules/programs/general/zsh
     #../../modules/desktop/sway
     ../../modules/desktop/hyprland
-    #../../modules/programs/development/podman
+    ../../modules/programs/development/podman
     ../../modules/programs/development/shell-scripts
   ];
 
