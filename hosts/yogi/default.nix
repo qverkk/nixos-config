@@ -13,6 +13,9 @@
     inputs.agenix.nixosModules.default
     inputs.nur.nixosModules.nur
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+    inputs.nixos-hardware.nixosModules.common-gpu-amd
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    inputs.auto-cpufreq.nixosModules.default
     ../../modules/hardware/bluetooth.nix
     ../../modules/hardware/openrazer.nix
     ../../modules/hardware/onlykey.nix
@@ -25,6 +28,22 @@
     ../../modules/programs/development/podman
     ../../modules/programs/development/shell-scripts
   ];
+
+  programs.auto-cpufreq = {
+    enable = true;
+
+    settings = {
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+    };
+  };
 
   # Bootloader.
   boot = {
