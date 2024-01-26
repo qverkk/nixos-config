@@ -42,6 +42,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     nur,
     ...
@@ -86,6 +87,7 @@
 
           {home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";}
           {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
+          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
         ];
       };
 
@@ -97,6 +99,7 @@
 
           {home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";}
           {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
+          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
         ];
       };
 
@@ -108,6 +111,7 @@
 
           {home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";}
           {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
+          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
         ];
       };
     };
@@ -119,6 +123,7 @@
 
           {nix.nixPath = ["nixpkgs=flake:nixpkgs"];}
           {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
+          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
         ];
       };
 
@@ -129,6 +134,7 @@
 
           {nix.nixPath = ["nixpkgs=flake:nixpkgs"];}
           {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
+          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
         ];
       };
 
@@ -139,6 +145,7 @@
 
           {nix.nixPath = ["nixpkgs=flake:nixpkgs"];}
           {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
+          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
         ];
       };
     };
