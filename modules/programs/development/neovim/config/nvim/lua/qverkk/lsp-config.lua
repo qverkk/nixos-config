@@ -92,7 +92,7 @@ local home = os.getenv("HOME")
 function start_jdtls()
 	local settings = {
 		["java.settings.url"] = home .. "/.config/nvim/formatters/settings.pref",
-		["java.format.settings.profile"] = "Eclipse",
+		["java.format.settings.profile"] = "Helix",
 		["java.format.settings.url"] = home .. "/.config/nvim/formatters/eclipse-java-google-style.xml",
 
 		java = {
