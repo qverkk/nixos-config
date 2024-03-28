@@ -5,8 +5,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "rcasia";
       repo = "neotest-java";
-      rev = "311acc2855cc76917f59f5c534d55e5c91e26810";
-      sha256 = "sha256-LmOarklYI63W8kd8VCp6PAmmfESEpqBokwebb3BrED8=";
+      rev = "8d95a2bdc6840417fe1c5f6527c0f15df78c94f6";
+      sha256 = "sha256-ciuQfd32pndNsFUzqWIOJEGgO5nu0YyZ4+eVUYMec9Y=";
     };
 
     meta.homepage = "https://github.com/rcasia/neotest-java";

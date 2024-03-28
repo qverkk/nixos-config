@@ -7,6 +7,7 @@ neotest.setup({
 		require("neotest-java")({
 			ignore_wrapper = false, -- whether to ignore maven/gradle wrapper
 		}),
+		-- require("neotest-gradle"),
 	},
 })
 

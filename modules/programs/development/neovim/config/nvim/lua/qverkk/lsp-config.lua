@@ -49,7 +49,7 @@ require("lspconfig").lua_ls.setup({})
 require("lspconfig").kotlin_language_server.setup({})
 require("lspconfig").rust_analyzer.setup({})
 require("lspconfig").bashls.setup({})
-require("lspconfig").rnix.setup({})
+require("lspconfig").nixd.setup({})
 require("lspconfig").dockerls.setup({})
 require("lspconfig").docker_compose_language_service.setup({})
 

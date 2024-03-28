@@ -5,8 +5,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "pmizio";
       repo = "typescript-tools.nvim";
-      rev = "11f50fb66132c0bac929533b64536a8a7c490435";
-      sha256 = "sha256-wQbNPTp8bpcUfrepEyUNql9tJciRuELOXW8q9NEmvIE=";
+      rev = "c43d9580c3ff5999a1eabca849f807ab33787ea7";
+      sha256 = "sha256-kpdDYVd6uSuJImS9LU5p/vJgtj9tToNBvRTJHpsHyak=";
     };
     meta.homepage = "https://github.com/pmizio/typescript-tools.nvim";
   };
