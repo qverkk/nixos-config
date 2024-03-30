@@ -197,6 +197,7 @@ in {
       vim-test
 
       # neotest
+      pkgs.nvim-nio
       pkgs.neotest
       FixCursorHold-nvim
       pkgs.neotest-java

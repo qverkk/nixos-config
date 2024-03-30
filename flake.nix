@@ -62,6 +62,7 @@
       (import ./overlays/nvim/neotest-java)
       (import ./overlays/nvim/neotest-gradle)
       (import ./overlays/nvim/neotest)
+      (import ./overlays/nvim/nvim-nio)
       (import ./overlays/nvim/flash)
       # (import ./overlays/nvim/coq-thirdparty)
       (import ./overlays {})
