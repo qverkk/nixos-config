@@ -29,11 +29,21 @@ map Q gq
 
 map <S-j> 10j
 map <S-k> 10k
+map <leader>j <Action>(MethodDown)
+map <leader>k <Action>(MethodUp)
 
 map <C-j> <Action>(EditorScrollDown)
 map <C-k> <Action>(EditorScrollUp)
 map <C-d> <Action>(Debug)
 map <C-r> <Action>(Run)
+" map <C-D> <Action>(ChooseDebugConfiguration)
+" map <C-R> <Action>(ChooseRunConfiguration)
+
+" map <C-H><Action>(StretchSplitToLeft)
+" map <C-L><Action>(StretchSplitToRight)
+
+map gd <Action>(GotoDeclaration)
+map gi <Action>(GotoImplementation)
 
 " Harpoon
 let g:WhichKeyDesc_harpoon        = "<leader>h  Harpoon"
@@ -45,6 +55,11 @@ nmap <A-h> :action GotoHarpoon1<cr>
 nmap <A-j> :action GotoHarpoon2<cr>
 nmap <A-k> :action GotoHarpoon3<cr>
 nmap <A-l> :action GotoHarpoon4<cr>
+
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 " save?
 " quit?
