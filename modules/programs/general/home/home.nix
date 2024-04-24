@@ -2,6 +2,7 @@
   # ./firefox.nix
   ./gimp/home.nix
   ./pipewire/home.nix
+  ./direnv/home.nix
   ./keepassxc/home.nix
   # ./syncthing.nix
   ./kitty/home.nix
