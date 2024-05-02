@@ -4,6 +4,7 @@
     jetbrains.idea-community
     git-ignore
     leetcode-cli
+    gitbutler
 
     ## kotlin
     ktlint
