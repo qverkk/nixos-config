@@ -25,5 +25,10 @@
         };
       };
     };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 }

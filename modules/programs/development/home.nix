@@ -5,5 +5,4 @@
   ./git/home.nix
   ./neovim/home.nix
   ./zellij/home.nix
-  ./zoxide/home.nix
 ]
