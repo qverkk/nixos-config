@@ -5,8 +5,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "nvim-neotest";
       repo = "nvim-nio";
-      rev = "33c62b3eadd8154169e42144de16ba4db6784bec";
-      sha256 = "sha256-MHCrUisx3blgHWFyA5IHcSwKvC1tK1Pgy/jADBkoXX0=";
+      rev = "8765cbc4d0c629c8158a5341e1b4305fd93c3a90";
+      sha256 = "sha256-VfoJOXXtMhalFcnfhVzweq7TVmB8WjRP+Z5Z5Z24Pzc=";
     };
 
     meta.homepage = "https://github.com/nvim-neotest/nvim-nio/";
