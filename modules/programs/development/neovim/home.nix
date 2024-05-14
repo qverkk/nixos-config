@@ -125,7 +125,7 @@ in {
       which-key-nvim
 
       # cody
-      sg-nvim
+      # sg-nvim
 
       # codeium
       # pkgs.codeium-vim

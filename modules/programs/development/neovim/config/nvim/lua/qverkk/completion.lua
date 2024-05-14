@@ -77,7 +77,7 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "codeium", priority = 20 },
-		{ name = "cody", priority = 20 },
+		-- { name = "cody", priority = 20 },
 		{ name = "nvim_lsp", priority = 10, max_item_count = 15 },
 		{ name = "nvim_lsp_signature_help", max_item_count = 15 },
 		{ name = "luasnip" },
