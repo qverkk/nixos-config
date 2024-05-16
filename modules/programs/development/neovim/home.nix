@@ -19,6 +19,8 @@ let
       inherit sha256;
     };
 
+  lsp-enabled = lang: langconf: lib.mkIf (builtins.elem lang ["java"]) langconf;
+
   sg = let
     package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
   in {
@@ -247,5 +249,25 @@ in {
         plugins.tree-sitter-http
       ]))
     ];
+  };
+
+  programs.helix = {
+    enable = true;
+    # extraPackages = with pkgs; [
+    #   jdt-ls
+    # ];
+
+    languages = {
+      language-server.jdtls = lsp-enabled "java" {
+        command = "${pkgs.jdt-ls}/bin/jdt-ls";
+        # args = [
+        #   "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar"
+        #   "-configuration"
+        #   "${config.xdg.cacheHome}/.jdt/jdtls_install/config_linux"
+        #   "-data"
+        #   "${config.xdg.cacheHome}/.jdt/jdtls_data"
+        # ];
+      };
+    };
   };
 }
