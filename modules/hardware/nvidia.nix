@@ -7,6 +7,7 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     XWAYLAND_NO_GLAMOR = "1";
     WLR_RENDERER = "vulkan";
+    WLR_DRM_DEVICES = "/dev/dri/card1";
   };
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1

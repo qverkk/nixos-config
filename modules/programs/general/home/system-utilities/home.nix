@@ -7,7 +7,7 @@
     # ls alternative
     eza = {
       enable = true;
-      enableAliases = true;
+      enableZshIntegration = true;
     };
 
     # cat alternative
