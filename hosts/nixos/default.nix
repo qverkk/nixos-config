@@ -55,6 +55,7 @@
   };
 
   boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_9;
     loader = {
       # Bootloader.
       systemd-boot.enable = true;

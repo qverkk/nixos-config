@@ -157,7 +157,7 @@ in {
       diffview-nvim
 
       # rest client
-      rest-nvim
+      # rest-nvim
 
       # cmp
       cmp-buffer
