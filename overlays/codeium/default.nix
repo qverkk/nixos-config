@@ -6,11 +6,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "codeium-lsp";
-  version = "v1.8.9";
+  version = "v1.8.25";
 
   src = fetchurl {
     url = "https://github.com/Exafunction/codeium/releases/download/language-server-${version}/language_server_linux_x64";
-    sha256 = "sha256-RySX/O1iIn6ApBZM/+lbfclt3mT2W8eQN86al0gx3OU=";
+    sha256 = "sha256-qLtXxUdPZ8BZNhUexIfaEavo7rNE3DtGknBX1byC+n8=";
     # sha256 = lib.fakeSha256;
   };
 
