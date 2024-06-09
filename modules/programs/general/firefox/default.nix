@@ -52,6 +52,13 @@
             URLTemplate = "https://sourcegraph.com/search?q=context:global+file:.nix%24+{searchTerms}&patternType=literal";
           }
           {
+            Name = "Github/Nix";
+            Description = "Github nix search";
+            Alias = "!gnix";
+            Method = "GET";
+            URLTemplate = "https://github.com/search?q=language%3ANix+{searchTerms}&type=code";
+          }
+          {
             Name = "nixpkgs";
             Description = "Nixpkgs query";
             Alias = "!nix";
