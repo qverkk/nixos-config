@@ -18,6 +18,11 @@
   '';
 in {
   config = {
+    boot.kernelParams = [
+      # "nvidia-drm.modeset=1"
+      "nvidia-drm.fbdev=1"
+    ];
+
     services = {
       xserver.videoDrivers = ["nvidia"];
     };
@@ -32,6 +37,7 @@ in {
         powerManagement.enable = false;
         open = false;
         prime = {
+          # sync.enable = true;
           offload.enable = true;
           intelBusId = "PCI:0:2:0";
           nvidiaBusId = "PCI:1:0:0";
@@ -44,6 +50,7 @@ in {
         extraPackages = with pkgs; [
           vaapiVdpau
           vulkan-validation-layers
+          nvidia-vaapi-driver
         ];
       };
     };
