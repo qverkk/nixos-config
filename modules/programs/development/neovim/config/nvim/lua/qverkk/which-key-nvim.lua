@@ -73,7 +73,7 @@ local mappings = {
 		name = "Harpoon",
 		a = {
 			function()
-				harpoon:list():append()
+				harpoon:list():add()
 			end,
 			"Harpoon add mark",
 		},

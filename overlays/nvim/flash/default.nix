@@ -5,8 +5,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "folke";
       repo = "flash.nvim";
-      rev = "7bb4a9c75d1e20cd24185afedeaa11681829ba23";
-      sha256 = "sha256-HYKwF9MtRVsX6d5QxmSAGMWTqeFkkEDrHQA+oyoWxYE=";
+      rev = "43f67935d388fbb540f8b40e8cbfd80de54f978a";
+      sha256 = "sha256-W9QB0zR7Bl7zvL0s34YmjEuKK2jDBoG9BNXiRqZnZ0U=";
     };
     meta.homepage = "https://github.com/folke/flash.nvim";
   };
