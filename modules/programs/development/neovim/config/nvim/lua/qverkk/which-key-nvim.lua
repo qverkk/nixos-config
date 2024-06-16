@@ -66,9 +66,17 @@ local vmappings = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 	},
+	["r"] = {
+		name = "Find and replace",
+		["o"] = { "<esc>:lua require('spectre').open_visual()<cr>", "Find under cursor" },
+	},
 }
 
 local mappings = {
+	["a"] = {
+		name = "Aerial",
+		["a"] = { "<cmd>AerialToggle!<CR>", "Toggle aerial" },
+	},
 	h = {
 		name = "Harpoon",
 		a = {
@@ -101,11 +109,11 @@ local mappings = {
 		s = { "<cmd>SymbolsOutline<cr>", "Find symbols outline" },
 	},
 	["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
-	s = {
-		name = "Sourcegraph Cody",
-		s = { "<cmd>lua require('sg.extensions.telescope').fuzzy_search_results()<CR>", "Search" },
-		c = { "<cmd>CodyToggle<CR>", "Toggle Cody" },
-	},
+	-- s = {
+	-- 	name = "Sourcegraph Cody",
+	-- 	s = { "<cmd>lua require('sg.extensions.telescope').fuzzy_search_results()<CR>", "Search" },
+	-- 	c = { "<cmd>CodyToggle<CR>", "Toggle Cody" },
+	-- },
 	d = {
 		name = "Debug",
 		t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
@@ -153,10 +161,12 @@ local mappings = {
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-		d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
-		w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
+		d = { "<cmd>:Telescope lsp_definitions<cr>", "Definitions" },
+		D = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
+		W = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
 		f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
-		i = { "<cmd>LspInfo<cr>", "Info" },
+		i = { "<cmd>:Telescope lsp_implementations<cr>", "Implementations" },
+		I = { "<cmd>LspInfo<cr>", "Info" },
 		j = {
 			"<cmd>lua vim.diagnostic.goto_next()<cr>",
 			"Next Diagnostic",
@@ -166,26 +176,61 @@ local mappings = {
 			"Prev Diagnostic",
 		},
 		l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-		q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+		r = { "<cmd>:Telescope lsp_references<cr>", "References" },
+		R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 		S = {
 			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 			"Workspace Symbols",
 		},
 		e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
+		q = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature info" },
+		Q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
 	},
 	["u"] = { "<cmd>UndotreeToggle<CR>", "Undotree" },
 	t = {
 		name = "Test",
-		t = { "<cmd>TestNearest<cr>", "Test nearest" },
-		T = { "<cmd>TestFile<cr>", "Test file" },
-		a = { "<cmd>TestSuite<cr>", "Test all" },
-		l = { "<cmd>TestLast<cr>", "Test last" },
-		g = { "<cmd>TestVisit<cr>", "Go to test class" },
+		["a"] = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
+		["f"] = { "<cmd>w<cr><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File" },
+		["F"] = {
+			"<cmd>w<cr><cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>",
+			"Debug File",
+		},
+		["l"] = { "<cmd>w<cr><cmd>lua require('neotest').run.run_last()<cr>", "Run Last" },
+		["L"] = {
+			"<cmd>w<cr><cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>",
+			"Debug Last",
+		},
+		["n"] = { "<cmd>w<cr><cmd>lua require('neotest').run.run()<cr>", "Run Nearest" },
+		["N"] = {
+			"<cmd>w<cr><cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>",
+			"Debug Nearest",
+		},
+		["O"] = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Full Output" },
+		["o"] = {
+			"<cmd>lua require('neotest').output.open({ enter = true, short = true })<cr>",
+			"Short output",
+		},
+		["S"] = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
+		["s"] = { "<cmd>lua require('neotest').summary.open()<cr>", "Summary" },
 	},
 	["T"] = { "<cmd>ToggleTerm<cr>", "Toggle terminal" },
-	["S"] = { "<cmd>Spectre<cr>", "Toggle spectre (find and replace)" },
+	r = {
+		name = "Find and replace",
+		["o"] = { "<cmd>lua require('spectre').open()<cr>", "Find and replace - Open" },
+		["w"] = {
+			"<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
+			"Find and replace - Seach current word",
+		},
+		["l"] = {
+			"<cmd>lua require('spectre').resume_last_search()<cr>",
+			"Find and replace - Resume last search",
+		},
+		["f"] = {
+			"<cmd>lua require('spectre').open_file_search()<cr>",
+			"Find and replace - Rearch in file",
+		},
+	},
 }
 
 which_key.setup({
@@ -264,6 +309,21 @@ function _G.http_mappings()
 	}
 
 	which_key.register(buffKeymap, { prefix = "<localleader>", buffer = 0 })
+end
+
+function _G.typescript_mappings()
+	local buffKeymap = {
+		i = {
+			name = "Typescript tools",
+			r = { "<cmd>TSToolsRenameFile<CR>", "Rename file" },
+			a = { "<cmd>TSToolsAddMissingImports sync<CR>", "Add missing imports" },
+			o = { "<cmd>TSToolsOrganizeImports sync<CR>", "Organize imports" },
+			u = { "<cmd>TSToolsRemoveUnusedImports sync<CR>", "Remove unused" },
+			f = { "<cmd>TSToolsFixAll sync<CR>", "Fix all problems" },
+		},
+	}
+
+	which_key.register(buffKeymap, opts)
 end
 
 which_key.register(mappings, opts)

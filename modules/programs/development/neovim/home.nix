@@ -196,6 +196,8 @@ in {
 
       #java
       nvim-jdtls
+
+      # testing
       vim-test
 
       # neotest
@@ -204,6 +206,9 @@ in {
       FixCursorHold-nvim
       pkgs.neotest-java
       pkgs.neotest-gradle
+      pkgs.neotest-vim-test
+      neotest-jest
+      neotest-vitest
       neodev-nvim
 
       #snippets
@@ -220,7 +225,8 @@ in {
 
       # lsp
       nvim-lspconfig
-      symbols-outline-nvim
+      # symbols-outline-nvim
+	  aerial-nvim
       trouble-nvim
       vim-surround
       fidget-nvim

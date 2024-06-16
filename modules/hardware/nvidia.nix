@@ -8,7 +8,7 @@
     XWAYLAND_NO_GLAMOR = "1";
     # This has to be disabled in order to get hyprland working
     # WLR_RENDERER = "vulkan";
-    WLR_DRM_DEVICES = "/dev/dri/card1";
+    # WLR_DRM_DEVICES = "/dev/dri/card1";
   };
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1

@@ -60,6 +60,7 @@
       (import ./overlays/nvim/codeiumnvim)
       (import ./overlays/nvim/focus)
       (import ./overlays/nvim/neotest-java)
+      (import ./overlays/nvim/neotest-vim-test)
       (import ./overlays/nvim/neotest-gradle)
       (import ./overlays/nvim/neotest)
       (import ./overlays/nvim/nvim-nio)
