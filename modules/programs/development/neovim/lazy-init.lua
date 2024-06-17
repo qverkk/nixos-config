@@ -1,5 +1,4 @@
 -- move this file to .config/nvim and rename it to init.lua
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -67,8 +66,13 @@ require("lazy").setup({
 	"theHamsta/nvim-dap-virtual-text",
 	"mfussenegger/nvim-dap",
 	"rcarriga/nvim-dap-ui",
+	"nvim-neotest/nvim-nio",
 	"nvim-lualine/lualine.nvim",
-	"ThePrimeagen/harpoon",
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 	"lewis6991/gitsigns.nvim",
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	"simrat39/symbols-outline.nvim",
@@ -78,16 +82,38 @@ require("lazy").setup({
 	"GnikDroy/projections.nvim",
 	"nvim-pack/nvim-spectre",
 	"mrjones2014/legendary.nvim",
-	"rest-nvim/rest.nvim",
+	-- "rest-nvim/rest.nvim",
 	"jose-elias-alvarez/null-ls.nvim",
 	"nvim-focus/focus.nvim",
+	{
+		"stevearc/aerial.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},
 	"mbbill/undotree",
-	"sindrets/diffview.nvim"
+	"sindrets/diffview.nvim",
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
+	"nvim-neotest/neotest-jest",
+	"marilari88/neotest-vitest",
+	"nvim-neotest/neotest-vim-test",
+	{ "folke/neodev.nvim", opts = {} },
 })
 
 require("qverkk")
