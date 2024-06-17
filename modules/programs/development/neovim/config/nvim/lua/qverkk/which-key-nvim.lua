@@ -114,6 +114,10 @@ local mappings = {
 	-- 	s = { "<cmd>lua require('sg.extensions.telescope').fuzzy_search_results()<CR>", "Search" },
 	-- 	c = { "<cmd>CodyToggle<CR>", "Toggle Cody" },
 	-- },
+	["s"] = {
+      		"<cmd>lua require('utils.treesitter-utils').goto_translation()<CR>",
+      		"Go to translation",
+    	},
 	d = {
 		name = "Debug",
 		t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
