@@ -114,6 +114,8 @@ require("lazy").setup({
 	"marilari88/neotest-vitest",
 	"nvim-neotest/neotest-vim-test",
 	{ "folke/neodev.nvim", opts = {} },
+	"windwp/nvim-autopairs",
+	"windwp/nvim-ts-autotag"
 })
 
 require("qverkk")
