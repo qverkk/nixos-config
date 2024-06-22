@@ -134,6 +134,7 @@ in {
       pkgs.codeium-nvim
 
       pkgs.typescript-tools-nvim
+      nvim-ts-autotag
 
       # Search and replace
       nvim-spectre
@@ -226,7 +227,7 @@ in {
       # lsp
       nvim-lspconfig
       # symbols-outline-nvim
-	  aerial-nvim
+      aerial-nvim
       trouble-nvim
       vim-surround
       fidget-nvim

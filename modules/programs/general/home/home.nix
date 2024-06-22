@@ -3,6 +3,7 @@
   ./gimp/home.nix
   ./pipewire/home.nix
   ./direnv/home.nix
+  ./devenv/home.nix
   ./keepassxc/home.nix
   # ./syncthing.nix
   ./kitty/home.nix
