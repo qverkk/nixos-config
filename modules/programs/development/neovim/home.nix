@@ -172,6 +172,9 @@ in {
       # coq-artifacts
       # pkgs.coq-thirdparty
 
+      # refactoring
+      refactoring-nvim
+
       # utils
       comment-nvim
       nvim-autopairs

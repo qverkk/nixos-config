@@ -5,7 +5,7 @@ local which_key = require("which-key")
 local harpoon = require("harpoon")
 
 local opts = {
-	mode = "n", -- NORMAL mode
+	mode = "n",  -- NORMAL mode
 	prefix = "<leader>",
 	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
 	silent = true, -- use `silent` when creating keymaps
@@ -14,7 +14,7 @@ local opts = {
 }
 
 local vopts = {
-	mode = "v", -- VISUAL mode
+	mode = "v",  -- VISUAL mode
 	prefix = "<leader>",
 	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
 	silent = true, -- use `silent` when creating keymaps
@@ -115,9 +115,9 @@ local mappings = {
 	-- 	c = { "<cmd>CodyToggle<CR>", "Toggle Cody" },
 	-- },
 	["s"] = {
-      		"<cmd>lua require('utils.treesitter-utils').goto_translation()<CR>",
-      		"Go to translation",
-    	},
+		"<cmd>lua require('utils.treesitter-utils').goto_translation()<CR>",
+		"Go to translation",
+	},
 	d = {
 		name = "Debug",
 		t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
@@ -235,6 +235,10 @@ local mappings = {
 			"Find and replace - Rearch in file",
 		},
 	},
+	R = {
+		"<cmd> lua require('telescope').extensions.refactoring.refactors()<cr>",
+		"Refactoring",
+	},
 }
 
 which_key.setup({
@@ -278,16 +282,16 @@ which_key.setup({
 			winblend = 0,
 		},
 		layout = {
-			height = { min = 4, max = 25 }, -- min and max height of the columns
-			width = { min = 20, max = 50 }, -- min and max width of the columns
-			spacing = 3, -- spacing between columns
-			align = "left", -- align columns left, center or right
+			height = { min = 4, max = 25 },                                     -- min and max height of the columns
+			width = { min = 20, max = 50 },                                     -- min and max width of the columns
+			spacing = 3,                                                        -- spacing between columns
+			align = "left",                                                     -- align columns left, center or right
 		},
-		ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
+		ignore_missing = false,                                                 -- enable this to hide mappings for which you didn't specify a label
 		hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-		show_help = true, -- show help message on the command line when the popup is visible
-		show_keys = true, -- show the currently pressed key and its label as a message in the command line
-		triggers = "auto", -- automatically setup triggers
+		show_help = true,                                                       -- show help message on the command line when the popup is visible
+		show_keys = true,                                                       -- show the currently pressed key and its label as a message in the command line
+		triggers = "auto",                                                      -- automatically setup triggers
 		-- triggers = {"<leader>"} -- or specify a list manually
 		triggers_blacklist = {
 			-- list of mode / prefixes that should never be hooked by WhichKey
