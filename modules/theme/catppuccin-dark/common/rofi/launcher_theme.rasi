@@ -1,7 +1,7 @@
 configuration {
   modi:                       "combi,Projects:~/.config/rofi/projects.sh";
   combi-modes: [window,drun];
-  font:                       "JetBrainsMono Nerd Font 12";
+  font:                       "CaskaydiaCove Nerd Font 12";
   show-icons:                 true;
   icon-theme:                 "Papirus";
   display-drun:               "";
@@ -31,7 +31,7 @@ prompt {
   padding:                    0.30% 1% 0% -0.5%;
   background-color:           @al;
   text-color:                 #C0CAF5;
-  font:                       "JetBrainsMono Nerd Font 16";
+  font:                       "CaskaydiaCove Nerd Font 16";
 }
 
 entry {

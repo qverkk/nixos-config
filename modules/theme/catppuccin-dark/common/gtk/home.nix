@@ -1,20 +1,18 @@
 {pkgs, ...}: rec {
   home.sessionVariables = {
-    GTK_THEME = "Catppuccin-Mocha-Standard-Green-Dark";
+    GTK_THEME = "Sweet-Ambar-Blue-Dark-v40";
   };
 
   gtk = {
     enable = true;
     font = {
-      name = "JetBrainsMono Nerd Font";
+      # name = "JetBrainsMono Nerd Font";
+      name = "CaskaydiaCove Nerd Font Mono";
       size = 12;
     };
     theme = {
-      name = "Catppuccin-Mocha-Standard-Green-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["green"];
-        variant = "mocha";
-      };
+      name = "Sweet-Ambar-Blue-Dark-v40";
+      package = pkgs.sweet;
     };
     iconTheme = {
       name = "Papirus-Dark";
