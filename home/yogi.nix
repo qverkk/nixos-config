@@ -33,5 +33,13 @@
       modeline = "";
       custom = "";
     }
+	{
+      name = "HDMI-A-1";
+      x = 2560;
+      width = 3440;
+      height = 1440;
+      refreshRate = 100;
+      workspace = "2";
+	}
   ];
 }

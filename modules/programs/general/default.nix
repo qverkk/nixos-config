@@ -2,5 +2,4 @@
   ./firefox
   ./syncthing
   ./spotifyd
-  ./brave
 ]

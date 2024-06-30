@@ -28,6 +28,7 @@
     ../../modules/programs/development/shell-scripts
     ../../modules/programs/general/caddy
     ../../modules/programs/general/freshrss
+    ../../modules/programs/general/brave
   ];
 
   age = {

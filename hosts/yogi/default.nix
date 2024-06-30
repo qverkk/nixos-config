@@ -27,6 +27,7 @@
     ../../modules/desktop/hyprland
     ../../modules/programs/development/podman
     ../../modules/programs/development/shell-scripts
+    ../../modules/programs/general/brave
   ];
 
   programs.auto-cpufreq = {
