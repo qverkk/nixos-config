@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  extraEnv = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    XWAYLAND_NO_GLAMOR = "1";
+    WLR_RENDERER = "vulkan";
+  };
+in {
   imports = [
     ../../programs/wayland/greetd
   ];
@@ -6,6 +12,10 @@
     dconf.enable = true;
     light.enable = true;
   };
+
+  environment.variables = extraEnv;
+  environment.sessionVariables = extraEnv;
+
   security.pam.services.swaylock = {};
   xdg.portal = {
     enable = true;
