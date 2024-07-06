@@ -24,22 +24,27 @@
   monitors = [
     {
       name = "eDP-1";
-      width = 2560;
-      height = 1600;
-      refreshRate = 90;
+      # width = 2560;
+      # height = 1600;
+      # refreshRate = 90;
+      width = 1920;
+      height = 1200;
+      refreshRate = 60;
       x = 0;
       workspace = "1";
-      enabled = true;
+      # scale = "1.6";
+      scale = "1";
       modeline = "";
       custom = "";
     }
-	{
+    {
       name = "HDMI-A-1";
       x = 2560;
       width = 3440;
       height = 1440;
       refreshRate = 100;
       workspace = "2";
-	}
+      scale = "1";
+    }
   ];
 }

@@ -37,18 +37,18 @@ in {
           type = types.int;
           default = 0;
         };
-        enabled = mkOption {
-          type = types.bool;
-          default = true;
+        scale = mkOption {
+          type = types.str;
+          default = "1";
         };
-		modeline = mkOption {
+        modeline = mkOption {
           type = types.str;
           default = "";
-		};
-		custom = mkOption {
+        };
+        custom = mkOption {
           type = types.str;
           default = "";
-		};
+        };
         workspace = mkOption {
           type = types.nullOr types.str;
           default = null;
