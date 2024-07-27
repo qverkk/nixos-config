@@ -29,6 +29,7 @@
     ../../modules/programs/general/caddy
     ../../modules/programs/general/freshrss
     ../../modules/programs/general/brave
+    ../../modules/programs/gaming
   ];
 
   age = {
