@@ -1,8 +1,8 @@
 {...}: {
   imports =
     [
-      # ../modules/desktop/sway/home.nix
-      ../modules/desktop/hyprland/home.nix
+      ../modules/desktop/sway/home.nix
+      # ../modules/desktop/hyprland/home.nix
       ../modules/desktop/hyprland/monitors-config.nix
 
       ../modules/programs/moonlander/home.nix

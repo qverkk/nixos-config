@@ -23,8 +23,8 @@
     ../../modules/programs/moonlander
     ../../modules/programs/general/tailscale
     ../../modules/programs/general/zsh
-    #../../modules/desktop/sway
-    ../../modules/desktop/hyprland
+    ../../modules/desktop/sway
+    # ../../modules/desktop/hyprland
     ../../modules/programs/development/podman
     ../../modules/programs/development/shell-scripts
     ../../modules/programs/general/brave

@@ -211,6 +211,11 @@ in {
           tap enabled
           drag enabled
       }
+
+      input 1267:12947:ELAN0662:00_04F3:3293_Touchpad {
+          tap enabled
+          drag enabled
+      }
     '';
   };
 
