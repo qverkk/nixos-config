@@ -126,5 +126,13 @@ map <leader>T <Action>(ActivateTerminalToolWindow)
 let g:WhichKeyDesc_find_and_replace        = "<leader>S  Find and replace"
 map <leader>S <Action>(ReplaceInPath)
 
+let g:WhichKeyDesc_git        = "<leader>g GIT"
+let g:WhichKeyDesc_git_commit       = "<leader>gc Commit"
+map <leader>gc <Action>(CheckinProject)
+let g:WhichKeyDesc_git_pull       = "<leader>gp Pull"
+map <leader>gc <Action>(Vcs.UpdateProject)
+let g:WhichKeyDesc_git_push       = "<leader>gP Push"
+map <leader>gc <Action>(Vcs.Push)
+
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 " Find more examples here: https://jb.gg/share-ideavimrc
