@@ -39,7 +39,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.todo_comments,
 
 		-- nix
-		null_ls.builtins.formatting.alejandra,
+		null_ls.builtins.formatting.nixfmt,
 		-- bash
 		null_ls.builtins.formatting.beautysh,
 		-- java

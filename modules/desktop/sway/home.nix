@@ -1,12 +1,8 @@
+{ config, pkgs, ... }:
+let
+  monitor-setup = import ./monitors-decoder.nix { inherit (config) monitors; };
+in
 {
-  config,
-  pkgs,
-  ...
-}: let
-  monitor-setup = import ./monitors-decoder.nix {
-    inherit (config) monitors;
-  };
-in {
   # imports = [
   #   ../../../optional/home-manager/kanshi.nix
   # ];
@@ -64,7 +60,7 @@ in {
 
   wayland.windowManager.sway = {
     enable = true;
-    extraOptions = ["--unsupported-gpu"];
+    extraOptions = [ "--unsupported-gpu" ];
     wrapperFeatures.gtk = true;
     systemd = {
       enable = true;
@@ -171,7 +167,7 @@ in {
         "${modifier}+Shift+9" = "move container to workspace 9";
         "${modifier}+Shift+0" = "move container to workspace 10";
 
-        "${modifier}+r" = "mode \"resize\"";
+        "${modifier}+r" = ''mode "resize"'';
 
         # Volume
         "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 5%-";
@@ -188,7 +184,7 @@ in {
         "XF86AudioNext" = "exec playerctl next";
 
         # Screenshot
-        "${modifier}+Print" = "exec grim -g \"$(slurp -d)\" - | wl-copy -t image/png";
+        "${modifier}+Print" = ''exec grim -g "$(slurp -d)" - | wl-copy -t image/png'';
       };
     };
     extraConfigEarly = ''

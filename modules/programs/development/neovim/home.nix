@@ -7,7 +7,8 @@
 ## Thanks ernestre
 ## https://github.com/ernestre/dotfiles/blob/master/nixpkgs/home-manager/modules/neovim/default.nix
 let
-  plugin = repo: rev: ref: sha256:
+  plugin =
+    repo: rev: ref: sha256:
     pkgs.vimUtils.buildVimPlugin {
       pname = "${lib.strings.sanitizeDerivationName repo}";
       version = rev;
@@ -19,23 +20,26 @@ let
       inherit sha256;
     };
 
-  lsp-enabled = lang: langconf: lib.mkIf (builtins.elem lang ["java"]) langconf;
+  lsp-enabled = lang: langconf: lib.mkIf (builtins.elem lang [ "java" ]) langconf;
 
-  sg = let
-    package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
-  in {
-    inherit package;
-    init = pkgs.writeTextFile {
-      name = "sg.lua";
-      text = ''
-        return function()
-          package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
-        end
-      '';
+  sg =
+    let
+      package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
+    in
+    {
+      inherit package;
+      init = pkgs.writeTextFile {
+        name = "sg.lua";
+        text = ''
+          return function()
+            package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
+          end
+        '';
+      };
+      paths = [ inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default ];
     };
-    paths = [inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default];
-  };
-in {
+in
+{
   home.file.".config/nvim".source = ./config/nvim;
 
   home.sessionVariables = {
@@ -61,7 +65,8 @@ in {
       ## nix
       deadnix
       statix
-      alejandra
+      # alejandra
+      nixfmt-rfc-style
 
       ## java
       checkstyle

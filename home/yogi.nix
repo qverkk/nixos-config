@@ -24,16 +24,16 @@
   monitors = [
     {
       name = "eDP-1";
-      # width = 2560;
-      # height = 1600;
-      # refreshRate = 90;
-      width = 1920;
-      height = 1200;
-      refreshRate = 60;
+      width = 2560;
+      height = 1600;
+      refreshRate = 90;
+      # width = 1920;
+      # height = 1200;
+      # refreshRate = 60;
       x = 0;
       workspace = "1";
-      # scale = "1.6";
-      scale = "1";
+      scale = "1.6";
+      # scale = "1";
       modeline = "";
       custom = "";
     }
