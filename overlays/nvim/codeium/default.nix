@@ -1,4 +1,4 @@
-self: super: {
+_self: super: {
   codeium-vim = super.vimUtils.buildVimPlugin {
     pname = "codeium.vim";
     version = "2023-10-27";
@@ -12,8 +12,6 @@ self: super: {
 
     meta.homepage = "https://github.com/Exafunction/codeium.vim/";
 
-    patches = [
-      ./patches/wrap-with-steam-run.patch
-    ];
+    patches = [ ./patches/wrap-with-steam-run.patch ];
   };
 }

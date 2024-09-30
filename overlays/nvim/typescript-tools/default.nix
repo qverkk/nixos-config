@@ -1,4 +1,4 @@
-self: super: {
+_self: super: {
   typescript-tools-nvim = super.vimUtils.buildVimPlugin {
     name = "typescript-tools.nvim";
 

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ ... }:
+{
   home.file.zellij-default-layout = {
     target = ".config/zellij/layout_default.kdl";
     text = ''

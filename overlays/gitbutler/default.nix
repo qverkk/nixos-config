@@ -48,7 +48,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "A Git client for simultaneous branches on top of your existing workflow.";
     homepage = "https://gitbutler.com/";
-    platforms = ["x86_64-linux"];
+    platforms = [ "x86_64-linux" ];
     license = licenses.mit;
     mainProgram = "git-butler";
   };

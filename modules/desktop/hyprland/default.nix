@@ -1,7 +1,6 @@
-{pkgs, ...}: {
-  imports = [
-    ../../programs/wayland/greetd
-  ];
+{ pkgs, ... }:
+{
+  imports = [ ../../programs/wayland/greetd ];
 
   programs = {
     dconf.enable = true;
@@ -21,7 +20,7 @@
     enable = true;
   };
 
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   xdg.portal = {
     enable = true;
     wlr.enable = true;

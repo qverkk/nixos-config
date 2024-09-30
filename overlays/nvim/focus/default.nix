@@ -1,4 +1,4 @@
-self: super: {
+_self: super: {
   focus-nvim = super.vimUtils.buildVimPlugin {
     name = "focus.nvim";
 

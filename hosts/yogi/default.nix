@@ -6,7 +6,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -130,7 +131,12 @@
   users.users.qverkk = {
     isNormalUser = true;
     description = "qverkk";
-    extraGroups = ["networkmanager" "wheel" "podman" "openrazer"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "podman"
+      "openrazer"
+    ];
     shell = pkgs.zsh;
   };
 

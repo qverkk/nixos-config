@@ -1,5 +1,5 @@
-self: super: {
-  rofi-wayland-unwrapped = super.rofi-wayland-unwrapped.overrideAttrs (old: rec {
+_self: super: {
+  rofi-wayland-unwrapped = super.rofi-wayland-unwrapped.overrideAttrs (_old: rec {
     version = "812ad0277f202010c651ab308357a1bfde05065b";
 
     src = super.fetchFromGitHub {

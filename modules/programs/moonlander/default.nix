@@ -1,3 +1,1 @@
-_: {
-  hardware.keyboard.zsa.enable = true;
-}
+_: { hardware.keyboard.zsa.enable = true; }

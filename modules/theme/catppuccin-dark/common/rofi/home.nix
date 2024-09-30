@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   home.file = {
     ".config/rofi/launcher.sh".source = ./launcher.sh;
     ".config/rofi/projects.sh".source = ./projects.sh;

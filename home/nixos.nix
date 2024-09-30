@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports =
     [
       # ../modules/desktop/sway/home.nix

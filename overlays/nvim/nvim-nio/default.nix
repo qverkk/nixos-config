@@ -1,4 +1,4 @@
-self: super: {
+_self: super: {
   nvim-nio = super.vimUtils.buildVimPlugin {
     name = "nvim-nio";
 

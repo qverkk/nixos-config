@@ -1,4 +1,4 @@
-self: super: {
+_self: super: {
   coq-thirdparty = super.vimUtils.buildVimPlugin {
     name = "coq.thirdparty";
 

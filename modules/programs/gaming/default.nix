@@ -1,5 +1,4 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    steam
-  ];
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [ steam ];
 }

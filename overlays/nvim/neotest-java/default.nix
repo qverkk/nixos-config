@@ -1,4 +1,4 @@
-self: super: {
+_self: super: {
   neotest-java = super.vimUtils.buildVimPlugin {
     name = "neotest-java";
 

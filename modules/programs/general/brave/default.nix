@@ -1,7 +1,6 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    brave
-  ];
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [ brave ];
 
   programs.chromium = {
     enable = true;
@@ -26,9 +25,7 @@
         "pl"
         "en-US"
       ];
-      "ClearBrowsingDataOnExitList" = [
-        "password_signin"
-      ];
+      "ClearBrowsingDataOnExitList" = [ "password_signin" ];
       "RestoreOnStartup" = 1;
       "ShowHomeButton" = false;
       "BrowserLabsEnabled" = false;

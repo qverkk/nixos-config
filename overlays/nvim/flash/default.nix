@@ -1,4 +1,4 @@
-self: super: {
+_self: super: {
   flash-nvim = super.vimUtils.buildVimPlugin {
     name = "flash.nvim";
 

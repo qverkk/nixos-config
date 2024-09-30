@@ -1,4 +1,4 @@
-self: super: {
+_self: super: {
   projections-nvim = super.vimUtils.buildVimPlugin {
     name = "projections.nvim";
 

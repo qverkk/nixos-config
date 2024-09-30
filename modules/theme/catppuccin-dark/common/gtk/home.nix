@@ -1,4 +1,5 @@
-{pkgs, ...}: rec {
+{ pkgs, ... }:
+rec {
   home.sessionVariables = {
     GTK_THEME = "Sweet-Ambar-Blue-Dark-v40";
   };

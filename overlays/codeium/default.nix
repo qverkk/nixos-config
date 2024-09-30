@@ -1,5 +1,4 @@
 {
-  lib,
   stdenv,
   fetchurl,
   autoPatchelfHook,
@@ -24,5 +23,8 @@ stdenv.mkDerivation rec {
     install -m755 $src $out/bin/codeium-lsp
   '';
 
-  phases = ["installPhase" "fixupPhase"];
+  phases = [
+    "installPhase"
+    "fixupPhase"
+  ];
 }

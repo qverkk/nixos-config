@@ -1,12 +1,9 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    ironbar
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ ironbar ];
 
   xdg.configFile."ironbar/config.json".text =
-    /*
-    json
-    */
+    # json
     ''
       {
         "name": "main",

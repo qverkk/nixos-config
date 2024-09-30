@@ -1,9 +1,5 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  config,
-  lib,
-  ...
-}: {
   services.freshrss = {
     enable = true;
     defaultUser = "qverkk";
@@ -11,7 +7,7 @@
     passwordFile = config.age.secrets.freshrss.path;
     dataDir = "/var/lib/freshrss";
     virtualHost = "freshrss";
-    package = pkgs.freshrss.overrideAttrs (old: {
+    package = pkgs.freshrss.overrideAttrs (_old: {
       overrideConfig = pkgs.writeText "constants.local.php" ''
         <?php
               define('DATA_PATH', getenv('FRESHRSS_DATA_PATH'));

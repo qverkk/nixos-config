@@ -1,10 +1,5 @@
-{
-  outputs,
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ pkgs, ... }:
+let
   # Dependencies
   jq = "${pkgs.jq}/bin/jq";
   xml = "${pkgs.xmlstarlet}/bin/xml";
@@ -27,25 +22,29 @@
   mail = terminal-spawn neomutt;
 
   # Function to simplify making waybar outputs
-  jsonOutput = name: {
-    pre ? "",
-    text ? "",
-    tooltip ? "",
-    alt ? "",
-    class ? "",
-    percentage ? "",
-  }: "${pkgs.writeShellScriptBin "waybar-${name}" ''
-    set -euo pipefail
-    ${pre}
-    ${jq} -cn \
-      --arg text "${text}" \
-      --arg tooltip "${tooltip}" \
-      --arg alt "${alt}" \
-      --arg class "${class}" \
-      --arg percentage "${percentage}" \
-      '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
-  ''}/bin/waybar-${name}";
-in {
+  jsonOutput =
+    name:
+    {
+      pre ? "",
+      text ? "",
+      tooltip ? "",
+      alt ? "",
+      class ? "",
+      percentage ? "",
+    }:
+    "${pkgs.writeShellScriptBin "waybar-${name}" ''
+      set -euo pipefail
+      ${pre}
+      ${jq} -cn \
+        --arg text "${text}" \
+        --arg tooltip "${tooltip}" \
+        --arg alt "${alt}" \
+        --arg class "${class}" \
+        --arg percentage "${percentage}" \
+        '{text:$text,tooltip:$tooltip,alt:$alt,class:$class,percentage:$percentage}'
+    ''}/bin/waybar-${name}";
+in
+{
   programs.waybar = {
     enable = true;
     settings = {
@@ -130,7 +129,11 @@ in {
             headphone = "";
             headset = "";
             portable = "";
-            default = ["" "" ""];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = pavucontrol;
         };
@@ -144,7 +147,18 @@ in {
         battery = {
           bat = "BAT0";
           interval = 10;
-          format-icons = ["" "" "" "" "" "" "" "" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           format = "{icon} {capacity}%";
           format-charging = " {capacity}%";
           onclick = "";
@@ -212,9 +226,7 @@ in {
           exec-if = "${gamemoded} --status | grep 'is active' -q";
           interval = 2;
           return-type = "json";
-          exec = jsonOutput "gamemode" {
-            tooltip = "Gamemode is active";
-          };
+          exec = jsonOutput "gamemode" { tooltip = "Gamemode is active"; };
           format = " ";
         };
         "custom/gammastep" = {

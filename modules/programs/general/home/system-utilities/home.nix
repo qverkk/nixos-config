@@ -1,7 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    dua
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ dua ];
 
   programs = {
     # ls alternative

@@ -39,120 +39,135 @@
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    home-manager,
-    nur,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      nur,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
 
-    system = "x86_64-linux";
+      system = "x86_64-linux";
 
-    overlays = [
-      (import ./overlays/rofi-wayland-unwrapped)
-      (import ./overlays/leetcode-cli)
-      (import ./overlays/nvim/projections)
-      (import ./overlays/nvim/typescript-tools)
-      # (import ./overlays/nvim/codeium)
-      (import ./overlays/nvim/codeiumnvim)
-      (import ./overlays/nvim/focus)
-      (import ./overlays/nvim/neotest-java)
-      (import ./overlays/nvim/neotest-vim-test)
-      (import ./overlays/nvim/neotest-gradle)
-      (import ./overlays/nvim/neotest)
-      (import ./overlays/nvim/nvim-nio)
-      (import ./overlays/nvim/flash)
-      # (import ./overlays/nvim/coq-thirdparty)
-      (import ./overlays {})
-      inputs.nur.overlay
-    ];
+      overlays = [
+        (import ./overlays/rofi-wayland-unwrapped)
+        (import ./overlays/leetcode-cli)
+        (import ./overlays/nvim/projections)
+        (import ./overlays/nvim/typescript-tools)
+        # (import ./overlays/nvim/codeium)
+        (import ./overlays/nvim/codeiumnvim)
+        (import ./overlays/nvim/focus)
+        (import ./overlays/nvim/neotest-java)
+        (import ./overlays/nvim/neotest-vim-test)
+        (import ./overlays/nvim/neotest-gradle)
+        (import ./overlays/nvim/neotest)
+        (import ./overlays/nvim/nvim-nio)
+        (import ./overlays/nvim/flash)
+        # (import ./overlays/nvim/coq-thirdparty)
+        (import ./overlays { })
+        inputs.nur.overlay
+      ];
 
-    pkgs = import nixpkgs {
-      inherit system;
-      inherit overlays;
-      config.allowUnfree = true;
+      pkgs = import nixpkgs {
+        inherit system;
+        inherit overlays;
+        config.allowUnfree = true;
+      };
+
+      inherit (nixpkgs) lib;
+    in
+    {
+      devShells.${system} = {
+        #run by `nix devlop` or `nix-shell`(legacy)
+        default = import ./shell.nix { inherit pkgs; };
+      };
+
+      homeConfigurations = {
+        "qverkk@nixos" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit inputs outputs pkgs;
+          };
+          modules = [
+            ./home/nixos.nix
+
+            { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
+            { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
+            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
+          ];
+        };
+
+        "qverkk@hybrid" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit inputs outputs pkgs;
+          };
+          modules = [
+            ./home/hybrid.nix
+
+            { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
+            { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
+            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
+          ];
+        };
+
+        "qverkk@yogi" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit inputs outputs pkgs;
+          };
+          modules = [
+            ./home/yogi.nix
+
+            { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
+            { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
+            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
+          ];
+        };
+      };
+      nixosConfigurations = {
+        nixos = lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./hosts/nixos
+
+            { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }
+            { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
+            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
+          ];
+        };
+
+        hybrid = lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./hosts/hybrid
+
+            { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }
+            { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
+            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
+          ];
+        };
+
+        yogi = lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./hosts/yogi
+
+            { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }
+            { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
+            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
+          ];
+        };
+      };
     };
-
-    inherit (nixpkgs) lib;
-  in {
-    devShells.${system} = {
-      #run by `nix devlop` or `nix-shell`(legacy)
-      default = import ./shell.nix {inherit pkgs;};
-    };
-
-    homeConfigurations = {
-      "qverkk@nixos" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {inherit inputs outputs pkgs;};
-        modules = [
-          ./home/nixos.nix
-
-          {home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";}
-          {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
-          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
-        ];
-      };
-
-      "qverkk@hybrid" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {inherit inputs outputs pkgs;};
-        modules = [
-          ./home/hybrid.nix
-
-          {home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";}
-          {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
-          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
-        ];
-      };
-
-      "qverkk@yogi" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {inherit inputs outputs pkgs;};
-        modules = [
-          ./home/yogi.nix
-
-          {home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}";}
-          {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
-          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
-        ];
-      };
-    };
-    nixosConfigurations = {
-      nixos = lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/nixos
-
-          {nix.nixPath = ["nixpkgs=flake:nixpkgs"];}
-          {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
-          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
-        ];
-      };
-
-      hybrid = lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/hybrid
-
-          {nix.nixPath = ["nixpkgs=flake:nixpkgs"];}
-          {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
-          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
-        ];
-      };
-
-      yogi = lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/yogi
-
-          {nix.nixPath = ["nixpkgs=flake:nixpkgs"];}
-          {nix.registry.nixpkgs.flake = inputs.nixpkgs;}
-          {nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable;}
-        ];
-      };
-    };
-  };
 }

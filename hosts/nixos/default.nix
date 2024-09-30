@@ -6,7 +6,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -33,9 +34,7 @@
   ];
 
   age = {
-    identityPaths = [
-      "/home/qverkk/.ssh/nixos-desktop"
-    ];
+    identityPaths = [ "/home/qverkk/.ssh/nixos-desktop" ];
     secrets = {
       spotify-username = {
         file = "/home/qverkk/.secrets/spotify-username.age";
@@ -141,7 +140,13 @@
   users.users.qverkk = {
     isNormalUser = true;
     description = "qverkk";
-    extraGroups = ["networkmanager" "wheel" "podman" "openrazer" "Git"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "podman"
+      "openrazer"
+      "Git"
+    ];
     shell = pkgs.zsh;
   };
 

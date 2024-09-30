@@ -1,10 +1,5 @@
+{ ... }:
 {
-  config,
-  lib,
-  pkgs,
-  user,
-  ...
-}: {
   # nixpkgs.overlays = [
   #   (final: prev: {
   #     waybar = let
@@ -172,9 +167,7 @@
           "mpd"
           "custom/cava-internal"
         ];
-        modules-center = [
-          "clock"
-        ];
+        modules-center = [ "clock" ];
         modules-right = [
           "pulseaudio"
           "backlight"
@@ -220,14 +213,23 @@
           "on-scroll-up" = "light -A 5";
           "on-scroll-down" = "light -U 5";
           "format" = "{icon} {percent}%";
-          "format-icons" = ["" "" "" ""];
+          "format-icons" = [
+            ""
+            ""
+            ""
+            ""
+          ];
         };
         "pulseaudio" = {
           "scroll-step" = 1;
           "format" = "{icon} {volume}%";
           "format-muted" = "婢 Muted";
           "format-icons" = {
-            "default" = ["" "" ""];
+            "default" = [
+              ""
+              ""
+              ""
+            ];
           };
           "states" = {
             "warning" = 85;
@@ -242,7 +244,17 @@
             "critical" = 10;
           };
           "format" = "{icon} {capacity}%";
-          "format-icons" = ["" "" "" "" "" "" "" "" ""];
+          "format-icons" = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           "format-full" = "{icon} {capacity}%";
           "format-charging" = " {capacity}%";
           "tooltip" = false;
@@ -251,9 +263,7 @@
           "interval" = 1;
           "format" = "{:%I:%M %p  %A %b %d}";
           "tooltip" = true;
-          /*
-          "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>"
-          */
+          # "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>"
           "tooltip-format" = "上午：高数\n下午：Ps\n晚上：Golang\n<tt>{calendar}</tt>";
         };
         "memory" = {

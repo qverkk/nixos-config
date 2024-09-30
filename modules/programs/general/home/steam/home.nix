@@ -1,5 +1,4 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    steam-run
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ steam-run ];
 }

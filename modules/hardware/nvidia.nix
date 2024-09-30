@@ -1,8 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config, pkgs, ... }:
+let
   extraEnv = {
     WLR_NO_HARDWARE_CURSORS = "1";
     XWAYLAND_NO_GLAMOR = "1";
@@ -17,7 +14,8 @@
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec "$@"
   '';
-in {
+in
+{
   config = {
     boot.kernelParams = [
       # "nvidia-drm.modeset=1"
@@ -25,7 +23,7 @@ in {
     ];
 
     services = {
-      xserver.videoDrivers = ["nvidia"];
+      xserver.videoDrivers = [ "nvidia" ];
     };
 
     environment.variables = extraEnv;

@@ -1,4 +1,4 @@
-self: super: {
+_self: super: {
   codeium-nvim = super.vimUtils.buildVimPlugin {
     pname = "codeium.nvim";
     version = "2024-06-09";
