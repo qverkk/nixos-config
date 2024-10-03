@@ -22,22 +22,22 @@ let
 
   lsp-enabled = lang: langconf: lib.mkIf (builtins.elem lang [ "java" ]) langconf;
 
-  sg =
-    let
-      package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
-    in
-    {
-      inherit package;
-      init = pkgs.writeTextFile {
-        name = "sg.lua";
-        text = ''
-          return function()
-            package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
-          end
-        '';
-      };
-      paths = [ inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default ];
-    };
+  # sg =
+  #   let
+  #     package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
+  #   in
+  #   {
+  #     inherit package;
+  #     init = pkgs.writeTextFile {
+  #       name = "sg.lua";
+  #       text = ''
+  #         return function()
+  #           package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
+  #         end
+  #       '';
+  #     };
+  #     paths = [ inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default ];
+  #   };
 in
 {
   home.file.".config/nvim".source = ./config/nvim;
@@ -55,7 +55,7 @@ in
 
     extraPackages = with pkgs; [
       # sg
-      sg.package
+      # sg.package
 
       # linters
       ## lua
