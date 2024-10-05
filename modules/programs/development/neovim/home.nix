@@ -22,23 +22,23 @@ let
 
   lsp-enabled = lang: langconf: lib.mkIf (builtins.elem lang [ "java" ]) langconf;
 
-  # sg =
-  #   let
-  #     package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
-  #   in
-  #   {
-  #     inherit package;
-  #     init = pkgs.writeTextFile {
-  #       name = "sg.lua";
-  #       text = ''
-  #         return function()
-  #           package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
-  #         end
-  #       '';
-  #     };
-  #     paths = [ inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default ];
-  #   };
 in
+# sg =
+#   let
+#     package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
+#   in
+#   {
+#     inherit package;
+#     init = pkgs.writeTextFile {
+#       name = "sg.lua";
+#       text = ''
+#         return function()
+#           package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
+#         end
+#       '';
+#     };
+#     paths = [ inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default ];
+#   };
 {
   home.file.".config/nvim".source = ./config/nvim;
 
@@ -98,6 +98,9 @@ in
       # typescript
       nodePackages.typescript
       # nodePackages.typescript-language-server
+
+      # prettier formatting
+      nodePackages.prettier
 
       # docker
       nodePackages.dockerfile-language-server-nodejs

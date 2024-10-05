@@ -62,7 +62,26 @@ null_ls.setup({
 		-- }),
 		--
 		-- "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html", "json", "jsonc", "yaml", "markdown", "markdown.mdx", "graphql", "handlebars"
-		-- null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.prettier.with({
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"vue",
+				"css",
+				"scss",
+				"less",
+				-- "html",
+				-- "json",
+				-- "jsonc",
+				"yaml",
+				"markdown",
+				"markdown.mdx",
+				"graphql",
+				"handlebars",
+			},
+		}),
 		-- rust
 		null_ls.builtins.formatting.rustfmt,
 		-- toml
