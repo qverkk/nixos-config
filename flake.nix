@@ -55,6 +55,7 @@
       (import ./overlays/rofi-wayland-unwrapped)
       (import ./overlays/leetcode-cli)
       (import ./overlays/google-java-format)
+      (import ./overlays/nvim/supermaven)
       (import ./overlays/nvim/projections)
       (import ./overlays/nvim/typescript-tools)
       # (import ./overlays/nvim/codeium)

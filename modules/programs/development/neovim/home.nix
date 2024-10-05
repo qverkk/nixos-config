@@ -139,7 +139,8 @@ in
 
       # codeium
       # pkgs.codeium-vim
-      pkgs.codeium-nvim
+      # pkgs.codeium-nvim
+	  pkgs.supermaven
 
       pkgs.typescript-tools-nvim
       nvim-ts-autotag
