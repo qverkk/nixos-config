@@ -218,6 +218,7 @@ in
       pkgs.neotest
       FixCursorHold-nvim
       pkgs.neotest-java
+      pkgs.neotest-jdtls
       pkgs.neotest-gradle
       pkgs.neotest-vim-test
       neotest-jest
