@@ -267,6 +267,7 @@ in
         plugins.tree-sitter-java
         plugins.tree-sitter-kotlin
         plugins.tree-sitter-http
+        plugins.tree-sitter-groovy
       ]))
     ];
   };

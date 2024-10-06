@@ -34,6 +34,21 @@ self: super: {
          
          ---TODO use this function to execute commands
       '')
+      (super.writeText "neotest-project-patch.patch" ''
+        diff --git a/lua/neotest-jdtls/utils/project.lua b/lua/neotest-jdtls/utils/project.lua
+        index f9d0ef1..981351b 100644
+        --- a/lua/neotest-jdtls/utils/project.lua
+        +++ b/lua/neotest-jdtls/utils/project.lua
+        @@ -55,7 +55,7 @@ local function load_current_project()
+         	local cache = ProjectCache()
+         	local root = jdtls.root_dir()
+         	local project = jdtls.find_java_projects(root)
+        -	assert(#project == 1)
+        +	-- assert(#project == 1)
+         	local jdtHandler = project[1].jdtHandler
+         
+         	local data = jdtls.find_test_packages_and_types(jdtHandler)
+      '')
     ];
 
     meta.homepage = "https://github.com/atm1020/neotest-jdtls";

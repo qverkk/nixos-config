@@ -17,8 +17,8 @@ neotest.setup({
 		-- require("neotest-gradle"),
 		-- require("neotest-jdtls"),
 		require("neotest-vim-test")({
-			-- allow_file_types = { "java", "kotlin", "groovy" },
-			allow_file_types = { "kotlin", "groovy" },
+			allow_file_types = { "java", "kotlin", "groovy" },
+			-- allow_file_types = { "kotlin", "groovy" },
 		}),
 	},
 })
