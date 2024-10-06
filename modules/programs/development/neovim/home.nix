@@ -22,23 +22,23 @@ let
 
   lsp-enabled = lang: langconf: lib.mkIf (builtins.elem lang [ "java" ]) langconf;
 
-  sg =
-    let
-      package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
-    in
-    {
-      inherit package;
-      init = pkgs.writeTextFile {
-        name = "sg.lua";
-        text = ''
-          return function()
-            package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
-          end
-        '';
-      };
-      paths = [ inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default ];
-    };
 in
+# sg =
+#   let
+#     package = inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default;
+#   in
+#   {
+#     inherit package;
+#     init = pkgs.writeTextFile {
+#       name = "sg.lua";
+#       text = ''
+#         return function()
+#           package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
+#         end
+#       '';
+#     };
+#     paths = [ inputs.sg-nvim.packages.${pkgs.hostPlatform.system}.default ];
+#   };
 {
   home.file.".config/nvim".source = ./config/nvim;
 
@@ -55,7 +55,7 @@ in
 
     extraPackages = with pkgs; [
       # sg
-      sg.package
+      # sg.package
 
       # linters
       ## lua
@@ -99,6 +99,9 @@ in
       nodePackages.typescript
       # nodePackages.typescript-language-server
 
+      # prettier formatting
+      nodePackages.prettier
+
       # docker
       nodePackages.dockerfile-language-server-nodejs
       docker-compose-language-service
@@ -136,7 +139,8 @@ in
 
       # codeium
       # pkgs.codeium-vim
-      pkgs.codeium-nvim
+      # pkgs.codeium-nvim
+	  pkgs.supermaven
 
       pkgs.typescript-tools-nvim
       nvim-ts-autotag
@@ -214,6 +218,7 @@ in
       pkgs.neotest
       FixCursorHold-nvim
       pkgs.neotest-java
+      pkgs.neotest-jdtls
       pkgs.neotest-gradle
       pkgs.neotest-vim-test
       neotest-jest
@@ -262,6 +267,7 @@ in
         plugins.tree-sitter-java
         plugins.tree-sitter-kotlin
         plugins.tree-sitter-http
+        plugins.tree-sitter-groovy
       ]))
     ];
   };

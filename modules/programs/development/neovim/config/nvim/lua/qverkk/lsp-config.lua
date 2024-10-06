@@ -30,17 +30,15 @@ vim.g.coq_settings = {
 
 local presentCodeium, codeium = pcall(require, "codeium")
 
-if not presentCodeium then
-	return
+if presentCodeium then
+	local codeium_lsp_dir = os.getenv("CODEIUM_LSP_DIR")
+
+	codeium.setup({
+		tools = {
+			language_server = codeium_lsp_dir .. "/bin/codeium-lsp",
+		},
+	})
 end
-
-local codeium_lsp_dir = os.getenv("CODEIUM_LSP_DIR")
-
-codeium.setup({
-	tools = {
-		language_server = codeium_lsp_dir .. "/bin/codeium-lsp",
-	},
-})
 
 -- local coq = require("coq")
 -- local capabilities = coq.lsp_ensure_capabilities()

@@ -2,11 +2,11 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -30,9 +30,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sg-nvim = {
-      url = "github:sourcegraph/sg.nvim";
-    };
+    # sg-nvim = {
+    #   url = "github:sourcegraph/sg.nvim";
+    # };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -56,12 +56,15 @@
       overlays = [
         (import ./overlays/rofi-wayland-unwrapped)
         (import ./overlays/leetcode-cli)
-        (import ./overlays/nvim/projections)
+        (import ./overlays/google-java-format)
+      (import ./overlays/nvim/supermaven)
+      (import ./overlays/nvim/projections)
         (import ./overlays/nvim/typescript-tools)
         # (import ./overlays/nvim/codeium)
         (import ./overlays/nvim/codeiumnvim)
         (import ./overlays/nvim/focus)
         (import ./overlays/nvim/neotest-java)
+      (import ./overlays/nvim/neotest-jdtls)
         (import ./overlays/nvim/neotest-vim-test)
         (import ./overlays/nvim/neotest-gradle)
         (import ./overlays/nvim/neotest)
