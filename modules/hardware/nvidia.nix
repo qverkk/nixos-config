@@ -62,9 +62,9 @@ in
         };
       };
 
-      opengl = {
+      graphics = {
         enable = true;
-        driSupport = true;
+        # driSupport = true;
         extraPackages = with pkgs; [
           vaapiVdpau
           vulkan-validation-layers
