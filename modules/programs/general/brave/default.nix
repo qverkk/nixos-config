@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
-  environment.systemPackages = with pkgs; [ brave ];
+  environment.systemPackages = with pkgs; [
+    brave
+    inputs.zen-browser.packages.${pkgs.system}.default
+  ];
 
   programs.chromium = {
     enable = true;

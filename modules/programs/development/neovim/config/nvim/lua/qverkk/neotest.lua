@@ -4,9 +4,9 @@ neotest.setup({
 	-- diagnostic = { enabled = false },
 	-- quickfix = { open = false },
 	adapters = {
-		-- require("neotest-java")({
-		-- 	ignore_wrapper = false, -- whether to ignore maven/gradle wrapper
-		-- }),
+		require("neotest-java")({
+			ignore_wrapper = false, -- whether to ignore maven/gradle wrapper
+		}),
 		require("neotest-jest"),
 		require("neotest-vitest")({
 			-- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
@@ -17,8 +17,8 @@ neotest.setup({
 		-- require("neotest-gradle"),
 		-- require("neotest-jdtls"),
 		require("neotest-vim-test")({
-			allow_file_types = { "java", "kotlin", "groovy" },
-			-- allow_file_types = { "kotlin", "groovy" },
+			-- allow_file_types = { "java", "kotlin", "groovy" },
+			allow_file_types = { "kotlin", "groovy" },
 		}),
 	},
 })
