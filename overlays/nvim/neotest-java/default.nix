@@ -5,8 +5,8 @@ _self: super: {
     src = super.fetchFromGitHub {
       owner = "rcasia";
       repo = "neotest-java";
-      rev = "c73d1d8f17aab973a7fad2e159645fe0df3f40eb";
-      sha256 = "sha256-zzGiz+XgckgXSU+dTJCPQCbavJmGEdr2W9qKOCO4Jlg=";
+      rev = "03c415f8bf19d5c9e17df3170e98e87e8e1353b0";
+      sha256 = "sha256-dkh2WnswSDmSasXSKdqNYfGVPOwVxJ8/3St3+5owFx0=";
 	  # sha256 = super.lib.fakeSha256;
     };
 
