@@ -175,6 +175,8 @@
       experimental-features = nix-command flakes
       auto-optimise-store = true
     '';
+
+    settings.trusted-users = [ "root" "qverkk" ];
   };
 
   # List services that you want to enable:
