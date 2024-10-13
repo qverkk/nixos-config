@@ -514,7 +514,7 @@ local mappings = {
 	},
 	{
 		"<leader>ts",
-		"<cmd>lua require('neotest').summary.open()<cr>",
+		"<cmd>lua require('neotest').summary.toggle()<cr>",
 		desc = "Summary",
 	},
 	{
