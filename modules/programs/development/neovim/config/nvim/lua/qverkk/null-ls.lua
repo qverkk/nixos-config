@@ -7,7 +7,7 @@ local function load_project_config()
 		local config = dofile(config_path)
 		return config.formatting_sources or {} -- default to LSP if not specified
 	end
-	return {} -- default fallback
+	return {}                            -- default fallback
 end
 
 local formatting_sources = {
@@ -40,9 +40,9 @@ local default_sources = {
 	null_ls.builtins.diagnostics.selene,
 	-- Waiting to be added in nixpkgs
 	-- gradle, java, jenkins
-	-- null_ls.builtins.diagnostics.npm_groovy_lint.with({
-	-- 	filetypes = { "groovy", "Jenkinsfile" },
-	-- }),
+	null_ls.builtins.diagnostics.npm_groovy_lint.with({
+		filetypes = { "groovy", "Jenkinsfile" },
+	}),
 	--
 	-- shell
 	null_ls.builtins.diagnostics.shellcheck,
@@ -70,10 +70,10 @@ local default_sources = {
 	null_ls.builtins.formatting.stylua,
 	-- Waiting to be added in nixpkgs
 	-- groovy, jenkins
-	-- null_ls.builtins.formatting.npm_groovy_lint.with({
-	-- 	filetypes = { "groovy", "Jenkinsfile" },
-	-- }),
-	--
+	null_ls.builtins.formatting.npm_groovy_lint.with({
+		filetypes = { "groovy", "Jenkinsfile" },
+	}),
+
 	-- "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html", "json", "jsonc", "yaml", "markdown", "markdown.mdx", "graphql", "handlebars"
 	null_ls.builtins.formatting.prettier.with({
 		filetypes = {

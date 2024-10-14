@@ -33,7 +33,7 @@
       # refreshRate = 60;
       x = 0;
       workspace = "1";
-      scale = "1.6";
+      scale = "1.75";
       # scale = "1";
       modeline = "";
       custom = "";

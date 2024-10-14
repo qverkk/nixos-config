@@ -90,7 +90,7 @@ in
 
       ### TODO: Possibly add this to nixpkgs
       ## groovy, jenkinsfile
-      # npm_groovy_lint
+	  npm-groovy-lint
 
       # language specific colors
       tree-sitter
@@ -140,7 +140,7 @@ in
       # codeium
       # pkgs.codeium-vim
       # pkgs.codeium-nvim
-	  pkgs.supermaven
+      pkgs.supermaven
 
       pkgs.typescript-tools-nvim
       nvim-ts-autotag
