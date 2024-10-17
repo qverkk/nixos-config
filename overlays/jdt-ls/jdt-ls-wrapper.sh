@@ -132,5 +132,13 @@ $java_bin \
     --add-modules=ALL-SYSTEM \
     --add-opens java.base/java.util=ALL-UNNAMED \
     --add-opens java.base/java.lang=ALL-UNNAMED \
+    --add-opens java.base/sun.nio.fs=ALL-UNNAMED \
+	-Dosgi.bundles.defaultStartLevel=4 \
+	-Declipse.application=org.eclipse.jdt.ls.core.id1 \
+	-Declipse.product=org.eclipse.jdt.ls.core.product \
+	-XX:+UseParallelGC \
+	-XX:GCTimeRatio=4 \
+	-XX:AdaptiveSizePolicyWeight=90 \
+	-Dsun.zip.disableMemoryMapping=true \
     -configuration "$configuration" \
     -data "$data" ${extra_args[@]}
