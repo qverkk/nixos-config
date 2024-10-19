@@ -90,7 +90,7 @@ in
 
       ### TODO: Possibly add this to nixpkgs
       ## groovy, jenkinsfile
-	  npm-groovy-lint
+      npm-groovy-lint
 
       # language specific colors
       tree-sitter

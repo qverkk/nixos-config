@@ -13,6 +13,8 @@ in
     light.enable = true;
   };
 
+  services.desktopManager.plasma6.enable = true;
+
   environment.variables = extraEnv;
   environment.sessionVariables = extraEnv;
 

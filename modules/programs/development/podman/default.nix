@@ -26,5 +26,6 @@ in
     podman-tui
     dockerStart
     dockerStop
+    distrobox
   ];
 }
