@@ -133,7 +133,7 @@
   ];
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
 
     gc = {
       automatic = true;

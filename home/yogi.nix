@@ -45,7 +45,7 @@
       height = 1440;
       refreshRate = 100;
       workspace = "2";
-      scale = "1";
+      scale = "1.25";
     }
   ];
 }
