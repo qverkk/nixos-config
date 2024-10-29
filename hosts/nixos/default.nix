@@ -30,6 +30,7 @@
     ../../modules/programs/general/caddy
     ../../modules/programs/general/freshrss
     ../../modules/programs/general/brave
+    ../../modules/programs/general/kdeconnect
     ../../modules/programs/gaming
   ];
 
@@ -56,7 +57,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_10;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
     loader = {
       # Bootloader.
       systemd-boot.enable = true;

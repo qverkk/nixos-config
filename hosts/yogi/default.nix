@@ -29,6 +29,7 @@
     ../../modules/programs/development/podman
     ../../modules/programs/development/shell-scripts
     ../../modules/programs/general/brave
+    ../../modules/programs/general/kdeconnect
   ];
 
   programs.auto-cpufreq = {
