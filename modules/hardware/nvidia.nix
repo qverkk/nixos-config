@@ -6,6 +6,10 @@ let
     # This has to be disabled in order to get hyprland working
     # WLR_RENDERER = "vulkan";
     # WLR_DRM_DEVICES = "/dev/dri/card1";
+    GBM_BACKEND = "nvidia-drm";
+    __GL_GSYNC_ALLOWED = "1";
+    __GL_VRR_ALLOWED = "1";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
