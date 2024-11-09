@@ -18,10 +18,12 @@
     "usbhid"
     "sd_mod"
   ];
+
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ ];
+  boot.blacklistedKernelModules = [ "i915" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/NIXROOT";

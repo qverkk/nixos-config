@@ -35,11 +35,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # sg-nvim = {
     #   url = "github:sourcegraph/sg.nvim";
     # };
@@ -56,7 +51,6 @@
       nixpkgs-unstable,
       home-manager,
       nur,
-      nix-flatpak,
       ...
     }@inputs:
     let
@@ -175,7 +169,6 @@
             inherit inputs;
           };
           modules = [
-            nix-flatpak.nixosModules.nix-flatpak
             ./hosts/yogi
 
             { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }

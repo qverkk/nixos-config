@@ -11,6 +11,10 @@
       SDL_VIDEODRIVER = "wayland";
       XDG_SESSION_TYPE = "wayland";
       NIXOS_OZONE_WL = "1";
+      LIBVA_DRIVER_NAME = "nvidia";
+      GBM_BACKEND = "nvidia-drm";
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      NVD_BACKEND = "direct";
     };
   };
 }

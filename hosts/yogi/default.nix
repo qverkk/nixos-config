@@ -115,21 +115,6 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
-
-    flatpak = {
-      enable = true;
-      packages = [
-        # this is available in nixos packages
-        # {
-        #   appId = "com.usebruno.Bruno";
-        #   origin = "flathub";
-        # }
-        {
-          appId = "com.adamcake.Bolt";
-          origin = "flathub";
-        }
-      ];
-    };
   };
 
   # Configure console keymap
