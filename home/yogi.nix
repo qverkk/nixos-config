@@ -2,8 +2,8 @@
 {
   imports =
     [
-      ../modules/desktop/sway/home.nix
-      # ../modules/desktop/hyprland/home.nix
+      # ../modules/desktop/sway/home.nix
+      ../modules/desktop/hyprland/home.nix
       ../modules/desktop/hyprland/monitors-config.nix
 
       ../modules/programs/moonlander/home.nix
@@ -33,8 +33,8 @@
       # refreshRate = 60;
       x = 0;
       workspace = "1";
-      scale = "1.75";
-      # scale = "1";
+      # scale = "1.75";
+      scale = "2";
       modeline = "";
       custom = "";
     }
