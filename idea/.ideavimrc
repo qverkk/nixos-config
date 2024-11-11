@@ -13,7 +13,7 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 set NERDTree
 set which-key
