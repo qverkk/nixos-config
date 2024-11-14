@@ -24,13 +24,15 @@ set sneak
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
 
-" Don't use Ex mode, use Q for formatting.
 map Q gq
 
 map <S-j> 10j
 map <S-k> 10k
 map <leader>j <Action>(MethodDown)
 map <leader>k <Action>(MethodUp)
+
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
 
 map <C-j> <Action>(EditorScrollDown)
 map <C-k> <Action>(EditorScrollUp)
@@ -119,6 +121,12 @@ map <leader>u <Action>(LocalHistory.ShowHistory)
 let g:WhichKeyDesc_test        = "<leader>t  Test"
 let g:WhichKeyDesc_test_go_to_test        = "<leader>tt  Go to test"
 map <leader>tt <Action>(GotoTest)
+
+let g:WhichKeyDesc_action        = "<leader>a  Action"
+let g:WhichKeyDesc_run_configurations        = "<leader>ar  Go run configurations"
+map <leader>ar <Action>(ChooseRunConfiguration)
+let g:WhichKeyDesc_run_debug_configurations        = "<leader>ad  Go run debug configurations"
+map <leader>ad <Action>(ChooseDebugConfiguration)
 
 let g:WhichKeyDesc_terminal        = "<leader>T  Terminal"
 map <leader>T <Action>(ActivateTerminalToolWindow)
