@@ -75,6 +75,8 @@ map <leader>c <Action>(CloseContent)
 let g:WhichKeyDesc_find        = "<leader>f  Find"
 let g:WhichKeyDesc_find_file        = "<leader>ff  File"
 map <leader>ff <Action>(GotoFile)
+let g:WhichKeyDesc_find_class        = "<leader>fc  Class"
+map <leader>fc <Action>(GotoClass)
 let g:WhichKeyDesc_find_text        = "<leader>fg  Text"
 map <leader>fg <Action>(FindInPath)
 let g:WhichKeyDesc_find_recent_files        = "<leader>fb  Buffers"
