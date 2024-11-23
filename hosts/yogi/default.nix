@@ -97,6 +97,10 @@
   };
 
   services = {
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
     # Configure keymap in X11
     xserver.xkb = {
       layout = "pl";
