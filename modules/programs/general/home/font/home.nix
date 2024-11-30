@@ -1,17 +1,19 @@
 { pkgs, ... }:
 let
-  nerdFonts = pkgs.nerdfonts.override {
-    fonts = [
-      "JetBrainsMono"
-      "NerdFontsSymbolsOnly"
-      "CascadiaCode"
-    ];
-  };
+  # nerdFonts = pkgs.nerd-fonts.override {
+  #   fonts = [
+  #     "JetBrainsMono"
+  #     "NerdFontsSymbolsOnly"
+  #     "CascadiaCode"
+  #   ];
+  # };
 in
 {
   fonts.fontconfig.enable = true;
   home.packages = [
-    nerdFonts
+	pkgs.nerd-fonts.jetbrains-mono
+	# pkgs.nerd-fonts.cascadia-code
+	pkgs.nerd-fonts.symbols-only
     pkgs.jetbrains-mono
     pkgs.cascadia-code
   ];
