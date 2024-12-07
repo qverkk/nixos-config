@@ -13,7 +13,7 @@
     ./hardware-configuration.nix
     ./vfio.nix
     inputs.agenix.nixosModules.default
-    inputs.nur.nixosModules.nur
+    inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     ../../modules/hardware/nvidia.nix
     ../../modules/hardware/bluetooth.nix

@@ -12,7 +12,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.agenix.nixosModules.default
-    inputs.nur.nixosModules.nur
+    inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     inputs.nixos-hardware.nixosModules.common-gpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
