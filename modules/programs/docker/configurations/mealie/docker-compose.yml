@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:v2.3.0
+    container_name: mealie
+    restart: always
+    ports:
+      - "9925:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+    volumes:
+      - ./mealie-data:/app/data/
+    environment:
+      - ALLOW_SIGNUP=true
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Warsaw
+      - MAX_WORKERS=1
+      - WEB_CONCURRENCY=1
+      - BASE_URL=http://mealie.localhost
