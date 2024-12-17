@@ -33,7 +33,7 @@
   ];
 
   programs.auto-cpufreq = {
-    enable = false;
+    enable = true;
 
     settings = {
       charger = {
