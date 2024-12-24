@@ -26,7 +26,7 @@
     ../../modules/programs/general/zsh
     ../../modules/desktop/sway
     # ../../modules/desktop/hyprland
-    ../../modules/programs/development/podman
+    ../../modules/programs/development/docker
     ../../modules/programs/development/shell-scripts
     ../../modules/programs/general/brave
     ../../modules/programs/general/kdeconnect
@@ -140,6 +140,7 @@
       "networkmanager"
       "wheel"
       "podman"
+      "docker"
       "openrazer"
     ];
     shell = pkgs.zsh;
