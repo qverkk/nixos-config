@@ -7,6 +7,7 @@
   ./keepassxc/home.nix
   # ./syncthing.nix
   ./kitty/home.nix
+  ./ghostty/home.nix
   ./font/home.nix
   # ./spotifyd.nix
   ../zsh/home.nix

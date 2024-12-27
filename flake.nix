@@ -10,6 +10,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ghostty-hm = {
+      url = "github:clo4/ghostty-hm-module";
+      inputs.pkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -76,7 +86,10 @@
         (import ./overlays/nvim/nvim-nio)
         (import ./overlays/nvim/flash)
         # (import ./overlays/nvim/coq-thirdparty)
-        (import ./overlays { })
+        (import ./overlays {
+          inherit inputs;
+          inherit pkgs;
+        })
         inputs.nur.overlay
       ];
 
