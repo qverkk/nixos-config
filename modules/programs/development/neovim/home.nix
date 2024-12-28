@@ -132,6 +132,7 @@ in
 
       # blazing fast buffer switching
       # (plugin "ThePrimeagen/harpoon" "a84ab829eaf3678b586609888ef52f7779102263" "harpoon2" "")
+	  harpoon2
 
       # search commands
       legendary-nvim
