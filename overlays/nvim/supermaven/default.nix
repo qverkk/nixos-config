@@ -5,8 +5,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "supermaven-inc";
       repo = "supermaven-nvim";
-      rev = "aecec7090f1da456ad5683f5c6c3640c2a745dc1";
-      sha256 = "sha256-dYsu16uNsbZzI7QhXV3QBkvJy+0MndfGwcb1zQi5ic0=";
+      rev = "07d20fce48a5629686aefb0a7cd4b25e33947d50";
+      sha256 = "sha256-1z3WKIiikQqoweReUyK5O8MWSRN5y95qcxM6qzlKMME=";
 	  # sha256 = super.lib.fakeSha256;
     };
     meta.homepage = "https://github.com/supermaven-inc/supermaven-nvim";

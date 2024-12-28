@@ -127,8 +127,11 @@ in
       rust-analyzer
     ];
     plugins = with pkgs.vimPlugins; [
+      # req
+      plenary-nvim
+
       # blazing fast buffer switching
-      (plugin "ThePrimeagen/harpoon" "0378a6c428a0bed6a2781d459d7943843f374bce" "harpoon2" "")
+      # (plugin "ThePrimeagen/harpoon" "a84ab829eaf3678b586609888ef52f7779102263" "harpoon2" "")
 
       # search commands
       legendary-nvim
@@ -140,9 +143,10 @@ in
       # codeium
       # pkgs.codeium-vim
       # pkgs.codeium-nvim
-      pkgs.supermaven
+      supermaven-nvim
 
-      pkgs.typescript-tools-nvim
+      # pkgs.typescript-tools-nvim
+      typescript-tools-nvim
       nvim-ts-autotag
 
       # Search and replace
@@ -155,10 +159,12 @@ in
       noice-nvim
 
       # auto resize buffers
-      pkgs.focus-nvim
+      # pkgs.focus-nvim
+      focus-nvim
 
       # navigation
-      pkgs.flash-nvim
+      # pkgs.flash-nvim
+      flash-nvim
 
       # git
       gv-vim # commit browser, maybe replace this with lazygit? Atm it's laggy due to nightfox
@@ -217,9 +223,10 @@ in
       pkgs.nvim-nio
       pkgs.neotest
       FixCursorHold-nvim
-      pkgs.neotest-java
-      pkgs.neotest-jdtls
-      pkgs.neotest-gradle
+      # pkgs.neotest-java
+      neotest-java
+      # pkgs.neotest-jdtls
+      # pkgs.neotest-gradle
       pkgs.neotest-vim-test
       neotest-jest
       neotest-vitest
@@ -247,7 +254,6 @@ in
       null-ls-nvim
 
       # telescope
-      plenary-nvim
       telescope-fzf-native-nvim
       telescope-fzf-writer-nvim
       telescope-nvim
