@@ -97,6 +97,7 @@
   };
 
   services = {
+    pulseaudio.enable = false;
     mullvad-vpn = {
       enable = true;
       package = pkgs.mullvad-vpn;
@@ -126,7 +127,6 @@
 
   # Enable sound with pipewire.
   # sound.enable = true;
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).

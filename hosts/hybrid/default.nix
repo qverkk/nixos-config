@@ -77,6 +77,7 @@
   };
 
   services = {
+    pulseaudio.enable = false;
     # Configure keymap in X11
     xserver.xkb = {
       layout = "pl";
@@ -102,7 +103,6 @@
 
   # Enable sound with pipewire.
   # sound.enable = true;
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
