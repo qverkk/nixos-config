@@ -218,17 +218,19 @@ in
       nvim-jdtls
 
       # testing
-      vim-test
+      # vim-test
 
       # neotest
-      pkgs.nvim-nio
-      pkgs.neotest
+      # pkgs.nvim-nio
+	  nvim-nio
+      # pkgs.neotest
+	  neotest
       FixCursorHold-nvim
       # pkgs.neotest-java
       neotest-java
       # pkgs.neotest-jdtls
       # pkgs.neotest-gradle
-      pkgs.neotest-vim-test
+      # pkgs.neotest-vim-test
       neotest-jest
       neotest-vitest
       neodev-nvim

@@ -32,21 +32,21 @@
     ../../modules/programs/general/kdeconnect
   ];
 
-  programs.auto-cpufreq = {
-    enable = true;
+  # programs.auto-cpufreq = {
+  #   enable = true;
 
-    settings = {
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
+  #   settings = {
+  #     charger = {
+  #       governor = "performance";
+  #       turbo = "auto";
+  #     };
 
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-      };
-    };
-  };
+  #     battery = {
+  #       governor = "powersave";
+  #       turbo = "never";
+  #     };
+  #   };
+  # };
 
   # Bootloader.
   boot = {
