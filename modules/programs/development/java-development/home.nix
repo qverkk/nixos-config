@@ -5,6 +5,7 @@
     # jetbrains.idea-community
     jetbrains.webstorm
     git-ignore
+    vscode.fhs
     # leetcode-cli
     # gitbutler
 
