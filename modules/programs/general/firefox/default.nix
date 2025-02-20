@@ -100,7 +100,7 @@
           "browser.startup.page" = 3; # Restore previous session
         };
 
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           clearurls
           vimium
