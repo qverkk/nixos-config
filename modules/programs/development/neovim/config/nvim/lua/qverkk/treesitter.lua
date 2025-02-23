@@ -3,7 +3,7 @@ if not setup then
 	return
 end
 
-require("nvim-treesitter.configs").setup({
+plugin.setup({
 	highlight = {
 		enable = true,
 	},
