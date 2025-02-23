@@ -15,10 +15,19 @@ _G.bind = vim.api.nvim_set_keymap
 --   widgets.centered_float(widgets.scopes)
 -- end, {})
 
-require("nvim-dap-virtual-text").setup()
-require("dapui").setup()
+local setup_dap, dap = pcall(require, "dap")
+if not setup_dap then
+	return
+end
 
-local dap, dapui = require("dap"), require("dapui")
+local setup_dapui, dapui = pcall(require, "dapui")
+if not setup_dapui then
+	return
+end
+
+require("nvim-dap-virtual-text").setup()
+dapui.setup()
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
 end

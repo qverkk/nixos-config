@@ -129,6 +129,8 @@ let g:WhichKeyDesc_run_configurations        = "<leader>ar  Go run configuration
 map <leader>ar <Action>(ChooseRunConfiguration)
 let g:WhichKeyDesc_run_debug_configurations        = "<leader>ad  Go run debug configurations"
 map <leader>ad <Action>(ChooseDebugConfiguration)
+let g:WhichKeyDesc_run_current_test        = "<leader>ad Run current test/class"
+map <leader>aR <Action>(RunClass)
 
 let g:WhichKeyDesc_terminal        = "<leader>T  Terminal"
 map <leader>T <Action>(ActivateTerminalToolWindow)

@@ -1,4 +1,9 @@
-require("Comment").setup({
+local setup, plugin = pcall(require, "Comment")
+if not setup then
+	return
+end
+
+plugin.setup({
 	active = true,
 	on_config_done = nil,
 	---Add a space b/w comment and the line

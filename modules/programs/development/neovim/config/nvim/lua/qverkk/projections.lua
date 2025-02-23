@@ -1,4 +1,9 @@
-require("projections").setup({
+local setup, plugin = pcall(require, "projections")
+if not setup then
+	return
+end
+
+plugin.setup({
 	store_hooks = {
 		pre = function()
 			local nvim_tree_present, api = pcall(require, "nvim-tree.api")

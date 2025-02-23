@@ -1,4 +1,8 @@
-local rest_nvim = require("rest-nvim")
+local setup, rest_nvim = pcall(require, "rest-nvim")
+if not setup then
+	return
+end
+
 local autocmd = vim.api.nvim_create_autocmd
 
 rest_nvim.setup({

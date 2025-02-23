@@ -1,4 +1,9 @@
-require("spectre").setup({
+local setup, plugin = pcall(require, "spectre")
+if not setup then
+	return
+end
+
+plugin.setup({
 	color_devicons = true,
 	open_cmd = "botright vnew",
 	live_update = false, -- auto execute search again when you write to any file in vim

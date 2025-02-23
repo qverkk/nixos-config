@@ -1,4 +1,7 @@
-local harpoon = require("harpoon")
+local setup, harpoon = pcall(require, "harpoon")
+if not setup then
+	return
+end
 
 -- REQUIRED
 harpoon:setup({

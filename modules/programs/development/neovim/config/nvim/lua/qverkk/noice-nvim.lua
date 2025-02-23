@@ -1,4 +1,9 @@
-require("noice").setup({
+local setup, plugin = pcall(require, "noice")
+if not setup then
+	return
+end
+
+plugin.setup({
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 		override = {

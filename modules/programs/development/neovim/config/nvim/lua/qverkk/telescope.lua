@@ -1,7 +1,12 @@
+local setup, plugin = pcall(require, "telescope")
+if not setup then
+	return
+end
+
 local lga_actions = require("telescope-live-grep-args.actions")
 
 -- This is your opts table
-require("telescope").setup({
+plugin.setup({
 	pickers = {
 		buffers = {
 			show_all_buffers = true,

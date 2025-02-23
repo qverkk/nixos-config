@@ -1,3 +1,8 @@
+local setup, plugin = pcall(require, "nvim-tree")
+if not setup then
+	return
+end
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -37,7 +42,7 @@ local function on_attach(bufnr)
 	vim.keymap.set("n", "R", api.tree.reload, opts("Refresh"))
 end
 
-require("nvim-tree").setup({
+plugin.setup({
 	on_attach = on_attach,
 	filters = {
 		dotfiles = true,

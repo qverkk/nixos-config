@@ -1,6 +1,10 @@
+local is_vscode = vim.g.vscode ~= nil
+
 vim.cmd("set clipboard=unnamedplus")
 
-vim.cmd("colorscheme carbonfox")
+if not is_vscode then
+	vim.cmd("colorscheme carbonfox")
+end
 
 vim.opt.nu = true
 vim.opt.relativenumber = true

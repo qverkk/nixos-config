@@ -1,4 +1,7 @@
-local neotest = require("neotest")
+local setup, neotest = pcall(require, "neotest")
+if not setup then
+	return
+end
 
 neotest.setup({
 	-- diagnostic = { enabled = false },

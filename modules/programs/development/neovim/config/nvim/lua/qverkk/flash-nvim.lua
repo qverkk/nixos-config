@@ -1,6 +1,9 @@
-local flash = require("flash")
+local setup, plugin = pcall(require, "flash")
+if not setup then
+	return
+end
 
-flash.setup({
+plugin.setup({
 	modes = {
 		search = {
 			enabled = false,

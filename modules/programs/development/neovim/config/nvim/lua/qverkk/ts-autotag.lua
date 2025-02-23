@@ -1,4 +1,9 @@
-require("nvim-ts-autotag").setup({
+local setup, plugin = pcall(require, "nvim-ts-autotag")
+if not setup then
+	return
+end
+
+plugin.setup({
 	opts = {
 		-- Defaults
 		enable_close_on_slash = true,

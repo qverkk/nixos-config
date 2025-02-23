@@ -1,4 +1,9 @@
-require("focus").setup({
+local setup, plugin = pcall(require, "focus")
+if not setup then
+	return
+end
+
+plugin.setup({
     enable = true, -- Enable module
     commands = true, -- Create Focus commands
     autoresize = {

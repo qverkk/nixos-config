@@ -1,3 +1,9 @@
+local setup_lspconfig, lspconfig = pcall(require, "lspconfig")
+if not setup_lspconfig then
+	return
+end
+
+
 vim.g.coq_settings = {
 	auto_start = "shut-up",
 	xdg = true,
@@ -43,15 +49,15 @@ end
 -- local coq = require("coq")
 -- local capabilities = coq.lsp_ensure_capabilities()
 
-require("lspconfig").lua_ls.setup({})
-require("lspconfig").kotlin_language_server.setup({})
-require("lspconfig").rust_analyzer.setup({})
-require("lspconfig").bashls.setup({})
-require("lspconfig").nixd.setup({})
-require("lspconfig").dockerls.setup({})
-require("lspconfig").docker_compose_language_service.setup({})
+lspconfig.lua_ls.setup({})
+lspconfig.kotlin_language_server.setup({})
+lspconfig.rust_analyzer.setup({})
+lspconfig.bashls.setup({})
+lspconfig.nixd.setup({})
+lspconfig.dockerls.setup({})
+lspconfig.docker_compose_language_service.setup({})
 
-local root_pattern = require("lspconfig").util.root_pattern
+local root_pattern = lspconfig.util.root_pattern
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -131,7 +137,7 @@ function start_jdtls()
 	vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_jar), "\n"))
 
 	require("jdtls").start_or_attach({
-		cmd = { "jdt-ls", "-data", workspace_dir, "-Xmx8g" },
+		cmd = { "jdtls", "-data", workspace_dir, "-Xmx8g" },
 		on_attach = jdt_on_attach,
 		root_dir = root_dir,
 		capabilities = capabilities,

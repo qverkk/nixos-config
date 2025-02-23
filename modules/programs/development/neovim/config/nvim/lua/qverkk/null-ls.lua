@@ -1,4 +1,7 @@
-local null_ls = require("null-ls")
+local setup, null_ls = pcall(require, "null-ls")
+if not setup then
+	return
+end
 
 local function load_project_config()
 	local config_path = vim.fn.getcwd() .. "/.nvim.lua"

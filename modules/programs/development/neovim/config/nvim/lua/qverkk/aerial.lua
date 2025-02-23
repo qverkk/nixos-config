@@ -1,4 +1,9 @@
-require("aerial").setup({
+local setup, plugin = pcall(require, "aerial")
+if not setup then
+	return
+end
+
+plugin.setup({
 	manage_folds = true,
 	show_guides = true,
 	layout = {

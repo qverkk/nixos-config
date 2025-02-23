@@ -1,4 +1,8 @@
-require("qverkk.remap")
+if not vim.g.vscode then
+	require("qverkk.remap")
+else
+	require("qverkk.vscode")
+end
 require("qverkk.set")
 require("qverkk.completion")
 require("qverkk.dressing")

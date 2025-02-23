@@ -1,4 +1,8 @@
-local cmp = require("cmp")
+local setup, cmp = pcall(require, "cmp")
+if not setup then
+	return
+end
+
 local compare = require("cmp.config.compare")
 
 local has_words_before = function()

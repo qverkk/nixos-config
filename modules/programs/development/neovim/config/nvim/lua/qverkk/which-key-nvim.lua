@@ -1,8 +1,12 @@
+local setup, which_key = pcall(require, "which-key")
+if not setup then
+	return
+end
+
+local harpoon = require("harpoon")
+
 vim.o.timeout = true
 vim.o.timeoutlen = 300
-
-local which_key = require("which-key")
-local harpoon = require("harpoon")
 
 local harpoonopts = {
 	mode = "n", -- NORMAL mode

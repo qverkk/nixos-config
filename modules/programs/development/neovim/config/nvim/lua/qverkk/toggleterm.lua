@@ -1,4 +1,9 @@
-require("toggleterm").setup({
+local setup, plugin = pcall(require, "toggleterm")
+if not setup then
+	return
+end
+
+plugin.setup({
 	shell = "zsh",
 })
 

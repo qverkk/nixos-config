@@ -6,6 +6,7 @@ keybinds clear-defaults=true {
         bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "d" { Detach; }
         bind "q" { Quit; }
+        bind "[" { SwitchToMode "Scroll"; }
         bind "Esc" { SwitchToMode "normal"; }
      }
 
@@ -15,15 +16,50 @@ keybinds clear-defaults=true {
         bind "Esc" { UndoRenameTab; SwitchToMode "normal"; }
     }
 
+    scroll {
+        bind "Ctrl s" { SwitchToMode "Normal"; }
+        bind "e" { EditScrollback; SwitchToMode "Normal"; }
+        bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
+        bind "Esc" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "j" "Down" { ScrollDown; }
+        bind "k" "Up" { ScrollUp; }
+        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
+        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
+        // uncomment this and adjust key if using copy_on_select=false
+        // bind "Alt c" { Copy; }
+    }
+
+    search {
+        bind "Ctrl s" { SwitchToMode "Normal"; }
+        bind "Esc" { ScrollToBottom; SwitchToMode "Normal"; }
+        bind "j" "Down" { ScrollDown; }
+        bind "k" "Up" { ScrollUp; }
+        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
+        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
+        bind "n" { Search "down"; }
+        bind "p" { Search "up"; }
+        bind "c" { SearchToggleOption "CaseSensitivity"; }
+        bind "w" { SearchToggleOption "Wrap"; }
+        bind "o" { SearchToggleOption "WholeWord"; }
+    }
+    entersearch {
+        bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
+        bind "Enter" { SwitchToMode "Search"; }
+    }
+
     normal {
         bind "Ctrl b" { SwitchToMode "tmux"; }
-        bind "Alt !" { GoToTab 1; }
-        bind "Alt @" { GoToTab 2; }
-        bind "Alt #" { GoToTab 3; }
-        bind "Alt $" { GoToTab 4; }
-        bind "Alt %" { GoToTab 5; }
-        bind "Alt H" { GoToPreviousTab; }
-        bind "Alt L" { GoToNextTab; }
+        bind "Alt Shift 1" { GoToTab 1; }
+        bind "Alt Shift 2" { GoToTab 2; }
+        bind "Alt Shift 3" { GoToTab 3; }
+        bind "Alt Shift 4" { GoToTab 4; }
+        bind "Alt Shift 5" { GoToTab 5; }
+        bind "Alt Shift h" { GoToPreviousTab; }
+        bind "Alt Shift l" { GoToNextTab; }
     }
 }
 
@@ -65,7 +101,7 @@ themes {
 }
 
 
-default_shell "zsh"
+default_shell "fish"
 mouse_mode true
 scroll_buffer_size 8192
 copy_command "wl-copy"
