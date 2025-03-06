@@ -1,0 +1,515 @@
+{
+    "windsurf.autocompleteSpeed": "default",
+    "redhat.telemetry.enabled": false,
+    "windsurf.autoExecutionPolicy": "off",
+    "windsurf.rememberLastModelSelection": true,
+    "windsurf.explainAndFixInCurrentConversation": true,
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "fzf-picker.general.openCommand": "windsurf -g",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "whichkey.sortOrder": "alphabetically",
+    "whichkey.bindings": [
+        
+        {
+            "key": ";",
+            "name": "Vscode Commands",
+            "type": "command",
+            "command": "workbench.action.showCommands"
+        },
+        {
+            "key": "/",
+            "name": "comment",
+            "type": "command",
+            "command": "vscode-neovim.send",
+            "args": "<C-/>"
+        },
+        {
+            "key": "R",
+            "name": "Refactor",
+            "command": "editor.action.refactor",
+            "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+        },
+        {
+            "key": "T",
+            "name": "Toggle terminal",
+            "command": "workbench.action.terminal.toggleTerminal",
+            "when": "terminal.active"
+        },
+        {
+            "key": "c",
+            "name": "Close buffer",
+            "type": "command",
+            "command": "workbench.action.closeActiveEditor"
+        },
+        {
+            "key": "?",
+            "name": "Search keybindings",
+            "type": "command",
+            "command": "whichkey.searchBindings"
+        },
+        {
+            "key": "e",
+            "name": "Toggle Explorer",
+            "type": "command",
+            "command": "workbench.action.toggleSidebarVisibility"
+        },
+        {
+            "key": "d",
+            "name": "+Debug",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "U",
+                    "name": "Show Testing UI",
+                    "command": "workbench.view.debug",
+                    "when": "viewContainer.workbench.view.debug.enabled"
+                },
+                {
+                    "key": "b",
+                    "name": "Step back debug",
+                    "command": "workbench.action.debug.stepBack"
+                },
+                {
+                    "key": "c",
+                    "name": "Continue debug",
+                    "type": "command",
+                    "command": "workbench.action.debug.continue"
+                },
+                {
+                    "key": "d",
+                    "name": "Disconnect debug",
+                    "command": "workbench.action.debug.disconnect",
+                    "when": "focusedSessionIsAttach && inDebugMode"
+                },
+                {
+                    "key": "f",
+                    "name": "Run current file",
+                    "command": "testing.runCurrentFile",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "key": "p",
+                    "name": "Pause debug",
+                    "type": "command",
+                    "command": "workbench.action.debug.pause"
+                },
+                {
+                    "key": "q",
+                    "name": "Stop debug",
+                    "command": "workbench.action.debug.stop",
+                    "when": "inDebugMode && !focusedSessionIsAttach"
+                },
+                {
+                    "key": "i",
+                    "name": "Step into",
+                    "type": "command",
+                    "command": "workbench.action.debug.stepInto"
+                },
+                {
+                    "key": "n",
+                    "name": "Debug nearest method",
+                    "command": "testing.debugAtCursor",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "key": "o",
+                    "name": "Step over",
+                    "type": "command",
+                    "command": "workbench.action.debug.stepOver"
+                },
+                {
+                    "key": "u",
+                    "name": "Step out",
+                    "type": "command",
+                    "command": "workbench.action.debug.stepOut"
+                },
+                {
+                    "key": "t",
+                    "name": "Toggle breakpoint",
+                    "type": "command",
+                    "command": "editor.debug.action.toggleBreakpoint"
+                },
+                {
+                    "key": "T",
+                    "name": "Toggle conditional breakpoint",
+                    "type": "command",
+                    "command": "editor.debug.action.conditionalBreakpoint"
+                },
+                {
+                    "key": "C",
+                    "name": "Jump to cursor",
+                    "type": "command",
+                    "command": "debug.jumpToCursor"
+                },
+                {
+                    "key": "r",
+                    "name": "REPL",
+                    "type": "command",
+                    "command": "workbench.debug.action.toggleRepl"
+                },
+                {
+                    "key": "s",
+                    "name": "Start debug",
+                    "command": "workbench.action.debug.start",
+                    "when": "debuggersAvailable && debugState == 'inactive'"
+                },
+            ]
+        },
+        {
+            "key": "e",
+            "name": "+Errors",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": ".",
+                    "name": "Error transient",
+                    "type": "command",
+                    "command": "whichkey.showTransient",
+                    "args": "whichkey.transient.error"
+                },
+                {
+                    "key": "l",
+                    "name": "List errors",
+                    "type": "command",
+                    "command": "workbench.actions.view.problems"
+                },
+                {
+                    "key": "N",
+                    "name": "Previous error",
+                    "type": "command",
+                    "command": "editor.action.marker.prev"
+                },
+                {
+                    "key": "n",
+                    "name": "Next error",
+                    "type": "command",
+                    "command": "editor.action.marker.next"
+                },
+                {
+                    "key": "p",
+                    "name": "Previous error",
+                    "type": "command",
+                    "command": "editor.action.marker.prev"
+                }
+            ]
+        },
+        {
+            "key": "f",
+            "name": "Find",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "a",
+                    "name": "Find Commands",
+                    "type": "command",
+                    "command": "workbench.action.showCommands"
+                },
+                {
+                    "key": "P",
+                    "name": "Find Projects",
+                    "type": "command",
+                    "command": "workbench.action.openRecent"
+                },
+                {
+                    "key": "b",
+                    "name": "Find Buffers",
+                    "type": "command",
+                    "command": "workbench.action.showAllEditors"
+                },
+                {
+                    "key": "f",
+                    "name": "Find File",
+                    "type": "command",
+                    "command": "find-it-faster.findFiles"
+                },
+                {
+                    "key": "g",
+                    "name": "Find Text",
+                    "type": "command",
+                    "command": "find-it-faster.findWithinFiles"
+                },
+                {
+                    "key": "l",
+                    "name": "Resume last search",
+                    "type": "command",
+                    "command": "find-it-faster.resumeSearch"
+                },
+                {
+                    "key": "s",
+                    "name": "Show symbols outline",
+                    "type": "command",
+                    "command": "outline.focus"
+                },
+            ]
+        },
+        {
+            "key": "h",
+            "name": "+Harpoon",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "e",
+                    "name": "Harpoon Browse marks",
+                    "type": "command",
+                    "command": "vscode-harpoon.editEditors"
+                },
+                {
+                    "key": "a",
+                    "name": "Harpoon add mark",
+                    "type": "command",
+                    "command": "vscode-harpoon.addEditor"
+                }
+            ]
+        },
+        {
+            "key": "g",
+            "name": "+Git",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "C",
+                    "name": "History for current file",
+                    "type": "command",
+                    "command": "gitlens.views.fileHistory.focus"
+                },
+                {
+                    "key": "b",
+                    "name": "Checkout branch",
+                    "type": "command",
+                    "command": "git.checkout"
+                },
+                {
+                    "key": "c",
+                    "name": "Git checkout commit",
+                    "type": "command",
+                    "command": "gitlens.toggleGraph"
+                },
+                {
+                    "key": "j",
+                    "name": "Next Change",
+                    "type": "command",
+                    "command": "workbench.action.editor.nextChange"
+                },
+                {
+                    "key": "p",
+                    "name": "Git preview Hunk",
+                    "command": "editor.action.dirtydiff.next",
+                    "when": "editorTextFocus && !textCompareEditorActive"
+                },
+                {
+                    "key": "r",
+                    "name": "Git Reset Hunk",
+                    "command": "git.revertSelectedRanges",
+                    "when": "isInDiffEditor && !operationInProgress"
+                },
+                {
+                    "key": "d",
+                    "name": "Git diff",
+                    "type": "command",
+                    "command": "git.timeline.openDiff"
+                },
+                {
+                    "key": "l",
+                    "name": "Git blame",
+                    "type": "command",
+                    "command": "gitlens.toggleFileBlame",
+                    "when": "editorTextFocus && gitlens:canToggleCodeLens && gitlens:enabled && config.gitlens.keymap == 'alternate'"
+                },
+                {
+                    "key": "k",
+                    "name": "Previous Change",
+                    "type": "command",
+                    "command": "workbench.action.editor.previousChange"
+                },
+                {
+                    "key": "P",
+                    "name": "Push",
+                    "type": "command",
+                    "command": "git.publish"
+                },
+                {
+                    "key": "p",
+                    "name": "Pull",
+                    "type": "command",
+                    "command": "git.pull"
+                },
+                {
+                    "key": "g",
+                    "name": "Status",
+                    "type": "command",
+                    "command": "workbench.view.scm"
+                },
+            ]
+        },
+        {
+            "key": "l",
+            "name": "+LSP",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "Q",
+                    "name": "Quickfix",
+                    "command": "workbench.actions.view.problems",
+                    "when": "workbench.panel.markers.view.active"
+                },
+                {
+                    "key": "R",
+                    "name": "Rename",
+                    "command": "editor.action.rename",
+                    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+                },
+                {
+                    "key": "S",
+                    "name": "Workspace symbols",
+                    "command": "workbench.action.showAllSymbols"
+                },
+                {
+                    "key": "a",
+                    "name": "Code action",
+                    "command": "editor.action.quickFix",
+                    "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+                },
+                {
+                    "key": "d",
+                    "name": "Definition",
+                    "command": "editor.action.revealDefinition"
+                },
+                {
+                    "key": "f",
+                    "name": "Format",
+                    "command": "editor.action.formatDocument",
+                    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+                },
+                {
+                    "key": "i",
+                    "name": "Implementation",
+                    "command": "editor.action.goToImplementation",
+                    "when": "editorHasImplementationProvider && editorTextFocus"
+                },
+                {
+                    "key": "j",
+                    "name": "Next diagnostic",
+                    "command": "editor.action.marker.next",
+                    "when": "editorFocus"
+                },
+                {
+                    "key": "k",
+                    "name": "Previous diagnostic",
+                    "command": "editor.action.marker.prev",
+                    "when": "editorFocus"
+                },
+                {
+                    "key": "q",
+                    "name": "Signature Info",
+                    "command": "editor.action.triggerParameterHints",
+                    "when": "editorHasSignatureHelpProvider && editorTextFocus"
+                },
+                {
+                    "key": "r",
+                    "name": "References",
+                    "command": "editor.action.goToReferences",
+                    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+                },
+                {
+                    "key": "s",
+                    "name": "Document symbols",
+                    "command": "workbench.action.gotoSymbol",
+                    "when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
+                }
+            ]
+        },
+        {
+            "key": "r",
+            "name": "+Find and replace",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "f",
+                    "name": "Replace in file",
+                    "command": "editor.action.startFindReplaceAction",
+                    "when": "editorFocus || editorIsOpen"
+                },
+                {
+                    "key": "o",
+                    "name": "Replace in project",
+                    "type": "command",
+                    "command": "workbench.action.replaceInFiles"
+                },
+                {
+                    "key": "w",
+                    "name": "Replace word in file",
+                    "type": "commands",
+                    "commands": [
+                        "editor.action.addSelectionToNextFindMatch",
+                        "editor.action.startFindReplaceAction"
+                    ]
+                },
+            ]
+        },
+        {
+            "key": "t",
+            "name": "+Tests",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "f",
+                    "name": "Test file",
+                    "command": "testing.runCurrentFile",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "key": "n",
+                    "name": "Test nearest",
+                    "command": "testing.runAtCursor",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "key": "l",
+                    "name": "Run last",
+                    "command": "testing.reRunLastRun"
+                },
+                {
+                    "key": "o",
+                    "name": "Test output",
+                    "command": "testing.openOutputPeek"
+                },
+                {
+                    "key": "F",
+                    "name": "Debug file",
+                    "command": "testing.debugCurrentFile",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "key": "N",
+                    "name": "Debug nearest",
+                    "command": "testing.debugAtCursor",
+                    "when": "editorTextFocus"
+                },
+                {
+                    "key": "L",
+                    "name": "Debug last",
+                    "command": "testing.debugLastRun"
+                }
+            ]
+        },
+        {
+            "key": "v",
+            "name": "Smart select/expand region transient",
+            "type": "commands",
+            "commands": [
+                "editor.action.smartSelect.grow",
+                "whichkey.showTransient"
+            ],
+            "args": [
+                null,
+                "whichkey.transient.smartExpand"
+            ]
+        },
+    ],
+    "explorer.confirmDragAndDrop": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "testing.showAllMessages": true,
+}
