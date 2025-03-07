@@ -216,7 +216,7 @@
                     "key": "b",
                     "name": "Find Buffers",
                     "type": "command",
-                    "command": "workbench.action.showAllEditors"
+                    "command": "workbench.action.quickOpenPreviousRecentlyUsedEditor"
                 },
                 {
                     "key": "f",
