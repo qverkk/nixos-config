@@ -160,6 +160,7 @@
     git
     fd
     ripgrep
+    fzf
     nss_latest
   ];
 

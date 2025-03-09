@@ -6,12 +6,12 @@
   fetchurl,
   nixosTests,
   commandLineArgs ? "",
-  useVSCodeRipgrep ? stdenv.hostPlatform.isDarwin,
 }:
 # https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest
 # https://windsurf-next.codeium.com/api/update/linux-x64/stable/latest
 callPackage "${pkgs.path}/pkgs/applications/editors/vscode/generic.nix" rec {
-  inherit commandLineArgs useVSCodeRipgrep;
+  inherit commandLineArgs;
+  useVSCodeRipgrep = true;
 
   version = "1.4.4";
   pname = "windsurf";

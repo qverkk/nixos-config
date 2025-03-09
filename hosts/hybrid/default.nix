@@ -130,6 +130,7 @@
     git
     fd
     ripgrep
+    fzf
   ];
 
   nix = {

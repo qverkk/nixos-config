@@ -155,6 +155,7 @@
     git
     fd
     ripgrep
+    fzf
     neovim
   ];
 
