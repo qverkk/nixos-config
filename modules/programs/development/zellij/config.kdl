@@ -101,7 +101,7 @@ themes {
 }
 
 
-default_shell "fish"
+default_shell "zsh"
 mouse_mode true
 scroll_buffer_size 8192
 copy_command "wl-copy"

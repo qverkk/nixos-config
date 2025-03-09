@@ -6,4 +6,5 @@ _self: super: {
   gitbutler = super.callPackage ./gitbutler { };
   npm-groovy-lint = super.callPackage ./npm-groovy-lint { };
   ghostty = inputs.ghostty.packages.${pkgs.system}.default;
+  windsurf = super.callPackage ./windsurf { };
 }

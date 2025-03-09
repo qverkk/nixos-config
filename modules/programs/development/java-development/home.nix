@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     jetbrains.idea-ultimate
+    windsurf
     # jetbrains.idea-community
     jetbrains.webstorm
     git-ignore
