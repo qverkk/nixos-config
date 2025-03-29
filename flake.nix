@@ -69,7 +69,7 @@
       system = "x86_64-linux";
 
       overlays = [
-        (import ./overlays/rofi-wayland-unwrapped)
+        # (import ./overlays/rofi-wayland-unwrapped)
         (import ./overlays/leetcode-cli)
         # (import ./overlays/google-java-format)
         # (import ./overlays/nvim/supermaven)
