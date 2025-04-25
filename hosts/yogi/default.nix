@@ -24,8 +24,8 @@
     ../../modules/programs/moonlander
     ../../modules/programs/general/tailscale
     ../../modules/programs/general/zsh
-    ../../modules/desktop/sway
-    # ../../modules/desktop/hyprland
+    # ../../modules/desktop/sway
+    ../../modules/desktop/hyprland
     ../../modules/programs/development/docker
     ../../modules/programs/development/shell-scripts
     ../../modules/programs/general/brave
@@ -50,7 +50,7 @@
 
   # Bootloader.
   boot = {
-    # kernelPackages = pkgs.linuxKernel.packages.linux_6_11;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
     loader = {
       systemd-boot.enable = true;
       efi = {

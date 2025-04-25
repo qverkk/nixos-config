@@ -92,7 +92,8 @@ in
         "${modifier}+Space" = "exec ${menu}";
 
         # exit
-        "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+        "${modifier}+Shift+e" =
+          "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
         "${modifier}+t" = "border normal";
         "${modifier}+y" = "border 1pixel";
@@ -188,35 +189,35 @@ in
       };
     };
     extraConfigEarly = ''
-      # default gaps
-      gaps inner 5
-      gaps outer 0
+            # default gaps
+            gaps inner 5
+            gaps outer 0
 
-      for_window [class="^.*"] border pixel 1
-      # new_window 1pixel
-      default_border none
+            for_window [class="^.*"] border pixel 1
+            # new_window 1pixel
+            default_border none
 
-      # colors
-      client.background n/a #434c5e n/a
-      client.focused #434c5e #434c5e #eceff4 #434c5e #434c5e
-      client.focused_inactive #3b4252 #3b4252 #eceff4 #3b4252 #3b4252
-      client.unfocused #3b4252 #3b4252 #eceff4 #3b4252 #3b4252
-      client.urgent #434c5e #434c5e #eceff4 #434c5e #434c5e
+            # colors
+            client.background n/a #434c5e n/a
+            client.focused #434c5e #434c5e #eceff4 #434c5e #434c5e
+            client.focused_inactive #3b4252 #3b4252 #eceff4 #3b4252 #3b4252
+            client.unfocused #3b4252 #3b4252 #eceff4 #3b4252 #3b4252
+            client.urgent #434c5e #434c5e #eceff4 #434c5e #434c5e
 
-      input 1739:31251:SYNA2393:00_06CB:7A13_Touchpad {
-          tap enabled
-          drag enabled
-      }
+            input 1739:31251:SYNA2393:00_06CB:7A13_Touchpad {
+                tap enabled
+                drag enabled
+            }
 
-	  input 1267:12947:ELAN06FA:00_04F3:3293_Touchpad {
-          tap enabled
-          drag enabled
-	  }
+      	  input 1267:12947:ELAN06FA:00_04F3:3293_Touchpad {
+                tap enabled
+                drag enabled
+      	  }
 
-      input 1267:12947:ELAN0662:00_04F3:3293_Touchpad {
-          tap enabled
-          drag enabled
-      }
+            input 1267:12947:ELAN0662:00_04F3:3293_Touchpad {
+                tap enabled
+                drag enabled
+            }
     '';
   };
 

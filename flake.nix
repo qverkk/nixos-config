@@ -69,23 +69,9 @@
       system = "x86_64-linux";
 
       overlays = [
-        # (import ./overlays/rofi-wayland-unwrapped)
         (import ./overlays/leetcode-cli)
-        # (import ./overlays/google-java-format)
-        # (import ./overlays/nvim/supermaven)
-        (import ./overlays/nvim/projections)
-        # (import ./overlays/nvim/typescript-tools)
-        # (import ./overlays/nvim/codeium)
-        (import ./overlays/nvim/codeiumnvim)
-        (import ./overlays/nvim/focus)
-        # (import ./overlays/nvim/neotest-java)
         # (import ./overlays/nvim/neotest-jdtls)
         (import ./overlays/nvim/neotest-vim-test)
-        (import ./overlays/nvim/neotest-gradle)
-        (import ./overlays/nvim/neotest)
-        (import ./overlays/nvim/nvim-nio)
-        (import ./overlays/nvim/flash)
-        # (import ./overlays/nvim/coq-thirdparty)
         (import ./overlays {
           inherit inputs;
           inherit pkgs;

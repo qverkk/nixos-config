@@ -33,7 +33,7 @@ if not vim.g.vscode then
 	require("qverkk.typescript-tools")
 	require("qverkk.neotest")
 	require("qverkk.project-settings")
-	require("qverkk.supermaven")
+	-- require("qverkk.supermaven")
 else
 	require("qverkk.vscode")
 end

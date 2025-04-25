@@ -11,7 +11,7 @@
     settings = {
       gtk-titlebar = false; # better on tiling wm
       font-size = 14;
-	  font-family = "CaskaydiaCove Nerd Font Mono";
+      font-family = "CaskaydiaCove Nerd Font Mono";
       window-theme = "dark";
       theme = "Dark Pastel";
     };

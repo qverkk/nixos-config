@@ -45,7 +45,7 @@ in
   home.sessionVariables = {
     JAVA_TEST_DIR = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test/server/*.jar";
     JAVA_DEBUG_DIR = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug/server/com.microsoft.java.debug.plugin-*.jar";
-    CODEIUM_LSP_DIR = "${pkgs.codeium-lsp}";
+    CODEIUM_LSP_DIR = "${pkgs.vimPlugins.windsurf-nvim}";
   };
 
   programs.neovim = {
@@ -132,7 +132,7 @@ in
 
       # blazing fast buffer switching
       # (plugin "ThePrimeagen/harpoon" "a84ab829eaf3678b586609888ef52f7779102263" "harpoon2" "")
-	  harpoon2
+      harpoon2
 
       # search commands
       legendary-nvim
@@ -141,9 +141,8 @@ in
       # cody
       # sg-nvim
 
-      # codeium
-      # pkgs.codeium-vim
-      # pkgs.codeium-nvim
+      # windsurf - codeium
+      # windsurf-nvim
       supermaven-nvim
 
       # pkgs.typescript-tools-nvim
@@ -154,17 +153,15 @@ in
       nvim-spectre
 
       # project management
-      pkgs.projections-nvim
+      projections-nvim
 
       # noice
       noice-nvim
 
       # auto resize buffers
-      # pkgs.focus-nvim
       focus-nvim
 
       # navigation
-      # pkgs.flash-nvim
       flash-nvim
 
       # git
@@ -184,9 +181,6 @@ in
       cmp-path
       cmp-cmdline
       nvim-cmp
-      # coq_nvim
-      # coq-artifacts
-      # pkgs.coq-thirdparty
 
       # refactoring
       refactoring-nvim
@@ -221,12 +215,9 @@ in
       # vim-test
 
       # neotest
-      # pkgs.nvim-nio
-	  nvim-nio
-      # pkgs.neotest
-	  neotest
+      nvim-nio
+      neotest
       FixCursorHold-nvim
-      # pkgs.neotest-java
       neotest-java
       # pkgs.neotest-jdtls
       # pkgs.neotest-gradle
@@ -254,7 +245,7 @@ in
       trouble-nvim
       vim-surround
       fidget-nvim
-      null-ls-nvim
+      none-ls-nvim
 
       # telescope
       telescope-fzf-native-nvim

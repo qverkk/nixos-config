@@ -137,7 +137,7 @@ function start_jdtls()
 	vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_jar), "\n"))
 
 	require("jdtls").start_or_attach({
-		cmd = { "jdtls", "-data", workspace_dir, "-Xmx8g" },
+		cmd = { "jdt-ls", "-data", workspace_dir, "-Xmx8g" },
 		on_attach = jdt_on_attach,
 		root_dir = root_dir,
 		capabilities = capabilities,

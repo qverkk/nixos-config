@@ -9,17 +9,17 @@
 
 buildNpmPackage rec {
   pname = "npm-groovy-lint";
-  version = "15.0.2";
+  version = "15.1.0";
 
   src = fetchFromGitHub {
     owner = "nvuillam";
     repo = "npm-groovy-lint";
     rev = "v${version}";
-    sha256 = "sha256-WLQH+BkPl2Urih2VpcCMSM85RKEwLA/Cn/Cux98AknU=";
+    sha256 = "sha256-BLR709MCzq3t9+7v4vfBzojd0tARG/pvhCxob5A7Xxk=";
     # sha256 = lib.fakeSha256;
   };
 
-  npmDepsHash = "sha256-wdclH75A8IPgjh9eimSt2OGTPZOHddU/z8Jf8lwaDlE=";
+  npmDepsHash = "sha256-qvao/iJ3njcdrEXsH3jgNh0LuaAPrO2bLVOeiUdTwVM=";
 
   buildInputs = [ makeWrapper ];
   postFixup = ''

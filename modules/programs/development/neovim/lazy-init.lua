@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 local is_vscode = vim.g.vscode ~= nil
 
 require("lazy").setup({
-	{ "folke/which-key.nvim", cond = not is_vscode },
+	{ "folke/which-key.nvim",   cond = not is_vscode },
 	{ "EdenEast/nightfox.nvim", cond = not is_vscode },
 	{
 		"hrsh7th/nvim-cmp",
@@ -35,7 +35,7 @@ require("lazy").setup({
 		},
 	},
 	{ "stevearc/dressing.nvim", cond = not is_vscode },
-	{ "folke/flash.nvim", cond = not is_vscode },
+	{ "folke/flash.nvim",       cond = not is_vscode },
 	{
 		"folke/noice.nvim",
 		cond = not is_vscode,
@@ -44,7 +44,7 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		},
 	},
-	{ "numToStr/Comment.nvim", cond = not is_vscode },
+	{ "numToStr/Comment.nvim",   cond = not is_vscode },
 	{ "nvim-tree/nvim-tree.lua", cond = not is_vscode },
 	{
 		"nvim-telescope/telescope.nvim",
@@ -67,36 +67,37 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		cond = not is_vscode,
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		build =
+		"cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
 	{ "nvim-treesitter/nvim-treesitter", cond = not is_vscode },
 	{ "theHamsta/nvim-dap-virtual-text", cond = not is_vscode },
-	{ "mfussenegger/nvim-dap", cond = not is_vscode },
-	{ "rcarriga/nvim-dap-ui", cond = not is_vscode },
-	{ "nvim-neotest/nvim-nio", cond = not is_vscode },
-	{ "nvim-lualine/lualine.nvim", cond = not is_vscode },
+	{ "mfussenegger/nvim-dap",           cond = not is_vscode },
+	{ "rcarriga/nvim-dap-ui",            cond = not is_vscode },
+	{ "nvim-neotest/nvim-nio",           cond = not is_vscode },
+	{ "nvim-lualine/lualine.nvim",       cond = not is_vscode },
 	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
 		cond = not is_vscode,
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
-	{ "lewis6991/gitsigns.nvim", cond = not is_vscode },
+	{ "lewis6991/gitsigns.nvim",       cond = not is_vscode },
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		cond = not is_vscode,
 		main = "ibl",
 	},
 	{ "simrat39/symbols-outline.nvim", cond = not is_vscode },
-	{ "akinsho/toggleterm.nvim", cond = not is_vscode },
-	{ "norcalli/nvim-colorizer.lua", cond = not is_vscode },
-	{ "j-hui/fidget.nvim", cond = not is_vscode },
-	{ "GnikDroy/projections.nvim", cond = not is_vscode },
-	{ "nvim-pack/nvim-spectre", cond = not is_vscode },
-	{ "mrjones2014/legendary.nvim", cond = not is_vscode },
+	{ "akinsho/toggleterm.nvim",       cond = not is_vscode },
+	{ "norcalli/nvim-colorizer.lua",   cond = not is_vscode },
+	{ "j-hui/fidget.nvim",             cond = not is_vscode },
+	{ "GnikDroy/projections.nvim",     cond = not is_vscode },
+	{ "nvim-pack/nvim-spectre",        cond = not is_vscode },
+	{ "mrjones2014/legendary.nvim",    cond = not is_vscode },
 	-- "rest-nvim/rest.nvim",
-	{ "jose-elias-alvarez/null-ls.nvim", cond = not is_vscode },
-	{ "nvim-focus/focus.nvim", cond = not is_vscode },
+	{ "nvimtools/none-ls.nvim",        cond = not is_vscode },
+	{ "nvim-focus/focus.nvim",         cond = not is_vscode },
 	{
 		"stevearc/aerial.nvim",
 		cond = not is_vscode,
@@ -113,7 +114,7 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 	},
-	{ "mbbill/undotree", cond = not is_vscode },
+	{ "mbbill/undotree",        cond = not is_vscode },
 	{ "sindrets/diffview.nvim", cond = not is_vscode },
 	{
 		"nvim-neotest/neotest",
@@ -125,13 +126,13 @@ require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},
-	{ "nvim-neotest/neotest-jest", cond = not is_vscode },
-	{ "marilari88/neotest-vitest", cond = not is_vscode },
+	{ "nvim-neotest/neotest-jest",     cond = not is_vscode },
+	{ "marilari88/neotest-vitest",     cond = not is_vscode },
 	{ "nvim-neotest/neotest-vim-test", cond = not is_vscode },
 	-- TODO: Replace neodev with lazydev
-	{ "folke/neodev.nvim", cond = not is_vscode, opts = {} },
-	{ "windwp/nvim-autopairs", cond = not is_vscode },
-	{ "windwp/nvim-ts-autotag", cond = not is_vscode },
+	{ "folke/neodev.nvim",             cond = not is_vscode, opts = {} },
+	{ "windwp/nvim-autopairs",         cond = not is_vscode },
+	{ "windwp/nvim-ts-autotag",        cond = not is_vscode },
 	{
 		"ThePrimeagen/refactoring.nvim",
 		cond = not is_vscode,
@@ -150,8 +151,8 @@ require("lazy").setup({
 		cond = not is_vscode,
 		dependencies = {
 			"mfussenegger/nvim-jdtls",
-			"mfussenegger/nvim-dap", -- for the debugger
-			"rcarriga/nvim-dap-ui", -- recommended
+			"mfussenegger/nvim-dap",  -- for the debugger
+			"rcarriga/nvim-dap-ui",   -- recommended
 			"theHamsta/nvim-dap-virtual-text", -- recommended
 		},
 	},
