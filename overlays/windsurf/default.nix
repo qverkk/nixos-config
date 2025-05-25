@@ -13,7 +13,7 @@ callPackage "${pkgs.path}/pkgs/applications/editors/vscode/generic.nix" rec {
   inherit commandLineArgs;
   useVSCodeRipgrep = true;
 
-  version = "1.9.0";
+  version = "1.9.2";
   pname = "windsurf";
 
   executableName = "windsurf";
@@ -21,8 +21,8 @@ callPackage "${pkgs.path}/pkgs/applications/editors/vscode/generic.nix" rec {
   shortName = "windsurf";
 
   src = fetchurl {
-    url = "https://windsurf-stable.codeiumdata.com/linux-x64/stable/fbebfca390b10f7a152fd231f94606109d576e12/Windsurf-linux-x64-1.9.0.tar.gz";
-    sha256 = "sha256-lBZA41FKXuUklDE1tDkhkkOtsoj+xIRxLrwpNRc6qTg=";
+    url = "https://windsurf-stable.codeiumdata.com/linux-x64/stable/8cb7f313303c8b35844a56b6fe0f76e508261569/Windsurf-linux-x64-1.9.2.tar.gz";
+    sha256 = "sha256-7lpKw4+aJRilRCnLI1uudtdLP/8PWUfb/ClzjXjyhUI=";
     # sha256 = lib.fakeSha256;
   };
 
