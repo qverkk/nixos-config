@@ -48,8 +48,8 @@
 }:
 let
   pname = "cursor";
-  version = "0.51.1";
-  sha = "a9dd46cbd249a30044eaae1526eb6ca1ec2f7568";
+  version = "1.0.0";
+  sha = "53b99ce608cba35127ae3a050c1738a959750865";
   # https://github.com/oslook/cursor-ai-downloads?tab=readme-ov-file
 
   inherit (stdenvNoCC) hostPlatform;
@@ -57,7 +57,7 @@ let
   sources = {
     x86_64-linux = fetchurl {
       url = "https://downloads.cursor.com/production/${sha}/linux/x64/Cursor-${version}-x86_64.AppImage";
-      hash = "sha256-KOKVvEH8PpXA11e7rieGWSmnjPTRIK0M73kVcQHjep4=";
+      hash = "sha256-HJiT3aDB66K2slcGJDC21+WhK/kv4KCKVZgupbfmLG0=";
       # hash = lib.fakeSha256;
     };
   };
