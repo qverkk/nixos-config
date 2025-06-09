@@ -74,6 +74,9 @@
     firewall = {
       enable = true;
     };
+
+    # Enable when using wireguard
+    # firewall.checkReversePath = "loose";
   };
 
   # Set your time zone.
