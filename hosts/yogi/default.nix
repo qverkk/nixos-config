@@ -32,21 +32,26 @@
     ../../modules/programs/general/kdeconnect
   ];
 
-  # programs.auto-cpufreq = {
-  #   enable = true;
+  services.power-profiles-daemon.enable = false;
+  programs.auto-cpufreq = {
+    enable = true;
 
-  #   settings = {
-  #     charger = {
-  #       governor = "performance";
-  #       turbo = "auto";
-  #     };
+    settings = {
+      charger = {
+        governor = "performance";
+		energy_performance_preference = "performance";
+		energy_perf_bias = "performance";
+        turbo = "always";
+      };
 
-  #     battery = {
-  #       governor = "powersave";
-  #       turbo = "never";
-  #     };
-  #   };
-  # };
+      battery = {
+        governor = "powersave";
+		energy_performance_preference = "power";
+		energy_perf_bias = "power";
+        turbo = "never";
+      };
+    };
+  };
 
   # Bootloader.
   boot = {
@@ -76,7 +81,7 @@
     };
 
     # Enable when using wireguard
-    # firewall.checkReversePath = "loose";
+    firewall.checkReversePath = "loose";
   };
 
   # Set your time zone.
