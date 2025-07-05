@@ -39,23 +39,27 @@
     settings = {
       charger = {
         governor = "performance";
-		energy_performance_preference = "performance";
-		energy_perf_bias = "performance";
+        energy_performance_preference = "performance";
+        energy_perf_bias = "performance";
         turbo = "always";
       };
 
       battery = {
         governor = "powersave";
-		energy_performance_preference = "power";
-		energy_perf_bias = "power";
+        energy_performance_preference = "power";
+        energy_perf_bias = "power";
         turbo = "never";
       };
     };
   };
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 
   # Bootloader.
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_14;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_15;
     loader = {
       systemd-boot.enable = true;
       efi = {
