@@ -2,5 +2,5 @@
   ./firefox
   ./syncthing
   ./spotifyd
-  # ./zen-browser
+  ./zen-browser
 ]

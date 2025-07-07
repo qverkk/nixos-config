@@ -32,6 +32,7 @@
     ../../modules/programs/general/kdeconnect
   ];
 
+  services.flatpak.enable = true;
   services.power-profiles-daemon.enable = false;
   programs.auto-cpufreq = {
     enable = true;
