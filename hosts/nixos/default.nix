@@ -15,6 +15,7 @@
     inputs.agenix.nixosModules.default
     inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-ssd
+	# this is different
     ../../modules/hardware/nvidia.nix
     ../../modules/hardware/bluetooth.nix
     ../../modules/hardware/openrazer.nix
@@ -31,6 +32,7 @@
     ../../modules/programs/general/freshrss
     ../../modules/programs/general/brave
     ../../modules/programs/general/kdeconnect
+	# this is different
     ../../modules/programs/gaming
   ];
 
