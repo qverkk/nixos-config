@@ -19,11 +19,11 @@ in
   );
 
   home.packages = with pkgs; [
-    jetbrains.idea-ultimate
+    # jetbrains.idea-ultimate
+    # jetbrains.webstorm
     windsurf.fhs
     cursor
     # jetbrains.idea-community
-    jetbrains.webstorm
     git-ignore
     vscode.fhs
     # leetcode-cli
