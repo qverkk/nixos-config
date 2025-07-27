@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  imports = [ ../../programs/wayland/greetd ];
+  imports = [
+    ../../theme/stylix
+    ../../programs/wayland/greetd
+  ];
 
   programs = {
     dconf.enable = true;

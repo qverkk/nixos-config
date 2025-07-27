@@ -35,6 +35,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -128,6 +133,7 @@
             inherit inputs outputs pkgs;
           };
           modules = [
+			inputs.stylix.homeModules.stylix
             ./home/yogi.nix
 
             { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
@@ -168,6 +174,7 @@
             inherit inputs;
           };
           modules = [
+			inputs.stylix.nixosModules.stylix
             ./hosts/yogi
 
             { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }
