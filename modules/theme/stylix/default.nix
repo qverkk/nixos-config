@@ -33,6 +33,9 @@
       name = "Bibata-Modern-Ice";
       size = 24;
     };
+    targets = {
+      chromium.enable = false;
+    };
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
