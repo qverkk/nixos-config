@@ -105,6 +105,7 @@
             inherit inputs outputs pkgs;
           };
           modules = [
+			inputs.stylix.homeModules.stylix
             ./home/nixos.nix
 
             { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
@@ -148,6 +149,7 @@
             inherit inputs;
           };
           modules = [
+			inputs.stylix.nixosModules.stylix
             ./hosts/nixos
 
             { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }
