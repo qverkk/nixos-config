@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -9,7 +9,7 @@
     };
     enableVteIntegration = true;
     autocd = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     history = {
       expireDuplicatesFirst = true;
       extended = true;
