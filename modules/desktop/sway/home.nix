@@ -7,13 +7,12 @@ in
   #   ../../../optional/home-manager/kanshi.nix
   # ];
 
-  imports =
-    [
-      ../../programs/wayland/bars/eww/home.nix
-      # ../../programs/wayland/bars/waybar/home.nix
-    ]
-    ++ (import ../../programs/wayland/home.nix)
-    ++ (import ../../theme/catppuccin-dark/wayland/home.nix);
+  imports = [
+    ../../programs/wayland/bars/eww/home.nix
+    # ../../programs/wayland/bars/waybar/home.nix
+  ]
+  ++ (import ../../programs/wayland/home.nix)
+  ++ (import ../../theme/catppuccin-dark/wayland/home.nix);
   programs.i3status-rust = {
     enable = true;
     bars.top = {

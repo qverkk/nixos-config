@@ -15,4 +15,5 @@
   ./video/home.nix
   ./steam/home.nix
   ./system-utilities/home.nix
+  ./atuin/home.nix
 ]

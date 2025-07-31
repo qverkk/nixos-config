@@ -30,7 +30,7 @@
     ../../modules/programs/development/shell-scripts
     ../../modules/programs/general/brave
     ../../modules/programs/general/kdeconnect
-	# this is different
+    # this is different
     ../../modules/programs/gaming
   ];
 

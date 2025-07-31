@@ -103,9 +103,10 @@
           pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = {
             inherit inputs outputs pkgs;
+            hostName = "nixos";
           };
           modules = [
-			inputs.stylix.homeModules.stylix
+            inputs.stylix.homeModules.stylix
             ./home/nixos.nix
 
             { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
@@ -118,6 +119,7 @@
           pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = {
             inherit inputs outputs pkgs;
+            hostName = "hybrid";
           };
           modules = [
             ./home/hybrid.nix
@@ -132,9 +134,10 @@
           pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = {
             inherit inputs outputs pkgs;
+            hostName = "yogi";
           };
           modules = [
-			inputs.stylix.homeModules.stylix
+            inputs.stylix.homeModules.stylix
             ./home/yogi.nix
 
             { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
@@ -149,7 +152,7 @@
             inherit inputs;
           };
           modules = [
-			inputs.stylix.nixosModules.stylix
+            inputs.stylix.nixosModules.stylix
             ./hosts/nixos
 
             { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }
@@ -176,7 +179,7 @@
             inherit inputs;
           };
           modules = [
-			inputs.stylix.nixosModules.stylix
+            inputs.stylix.nixosModules.stylix
             ./hosts/yogi
 
             { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }

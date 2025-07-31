@@ -2,7 +2,7 @@
 let
   additionalJDKs = with pkgs; [
     openjdk11
-	zulu11
+    zulu11
   ];
 in
 {
