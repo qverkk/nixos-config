@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local is_vscode = vim.g.vscode ~= nil
 
+vim.opt.termguicolors = true
+
 require("lazy").setup({
 	{ "folke/which-key.nvim",   cond = not is_vscode },
 	{ "EdenEast/nightfox.nvim", cond = not is_vscode },
@@ -64,12 +66,7 @@ require("lazy").setup({
 			},
 		},
 	},
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		cond = not is_vscode,
-		build =
-		"cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	},
+	{ 'nvim-telescope/telescope-fzf-native.nvim', cond = not is_vscode, build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 && cmake --build build --config=Release && cmake --install build' },
 	{ "nvim-treesitter/nvim-treesitter", cond = not is_vscode },
 	{ "theHamsta/nvim-dap-virtual-text", cond = not is_vscode },
 	{ "mfussenegger/nvim-dap",           cond = not is_vscode },
