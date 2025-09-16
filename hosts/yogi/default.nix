@@ -16,7 +16,7 @@
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     inputs.nixos-hardware.nixosModules.common-gpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
-    inputs.auto-cpufreq.nixosModules.default
+    # inputs.auto-cpufreq.nixosModules.default
     ../../modules/hardware/bluetooth.nix
     ../../modules/hardware/openrazer.nix
     ../../modules/hardware/onlykey.nix
@@ -36,25 +36,29 @@
 
   services.flatpak.enable = true;
   services.power-profiles-daemon.enable = false;
-  programs.auto-cpufreq = {
-    enable = true;
+  # programs.auto-cpufreq = {
+  #   enable = true;
 
-    settings = {
-      charger = {
-        governor = "performance";
-        energy_performance_preference = "performance";
-        energy_perf_bias = "performance";
-        turbo = "always";
-      };
+  #   settings = {
+  #     charger = {
+  #       governor = "performance";
+  #       energy_performance_preference = "performance";
+  #       energy_perf_bias = "performance";
+  #       turbo = "always";
+  #     };
 
-      battery = {
-        governor = "powersave";
-        energy_performance_preference = "power";
-        energy_perf_bias = "power";
-        turbo = "never";
-      };
-    };
-  };
+  #     battery = {
+  #       # governor = "powersave";
+  #       # energy_performance_preference = "power";
+  #       # energy_perf_bias = "power";
+  #       # turbo = "never";
+  #       governor = "performance";
+  #       energy_performance_preference = "performance";
+  #       energy_perf_bias = "performance";
+  #       turbo = "always";
+  #     };
+  #   };
+  # };
   programs.appimage = {
     enable = true;
     binfmt = true;
