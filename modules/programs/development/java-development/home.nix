@@ -19,7 +19,8 @@ in
   );
 
   home.packages = with pkgs; [
-    # jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
+    jetbrains.datagrip
     # jetbrains.webstorm
     windsurf.fhs
     cursor
