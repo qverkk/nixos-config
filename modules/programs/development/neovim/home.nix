@@ -103,7 +103,7 @@ in
       nodePackages.prettier
 
       # docker
-      nodePackages.dockerfile-language-server-nodejs
+      dockerfile-language-server
       docker-compose-language-service
 
       # lua
