@@ -17,7 +17,8 @@
       onShutdown = "shutdown";
       qemu = {
         runAsRoot = true;
-        ovmf.enable = true;
+        # Disabled for now? Why?
+        # ovmf.enable = true;
         verbatimConfig = ''
           user = "qverkk"
           group = "kvm"
