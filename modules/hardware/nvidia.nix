@@ -97,7 +97,7 @@ in
         # enable = true;
         # driSupport = true;
         extraPackages = with pkgs; [
-          vaapiVdpau
+          libva-vdpau-driver
           vulkan-validation-layers
           nvidia-vaapi-driver
         ];
@@ -105,7 +105,7 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-      glxinfo
+      mesa-demos
       vulkan-tools
       glmark2
       nvidia-offload
