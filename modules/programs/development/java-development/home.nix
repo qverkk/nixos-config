@@ -23,6 +23,7 @@ in
     jetbrains.datagrip
     # jetbrains.webstorm
     windsurf.fhs
+    antigravity
     cursor
     # jetbrains.idea-community
     git-ignore
