@@ -56,7 +56,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    nur.url = "github:nix-community/NUR";
+    # nur.url = "github:nix-community/NUR";
   };
 
   outputs =
@@ -65,7 +65,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
-      nur,
+      # nur,
       ...
     }@inputs:
     let
@@ -81,7 +81,7 @@
           inherit inputs;
           inherit pkgs;
         })
-        inputs.nur.overlays.default
+        # inputs.nur.overlays.default
       ];
 
       pkgs = import nixpkgs {

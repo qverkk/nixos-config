@@ -19,7 +19,7 @@ in
   );
 
   home.packages = with pkgs; [
-    jetbrains.idea-ultimate
+    jetbrains.idea
     jetbrains.datagrip
     # jetbrains.webstorm
     windsurf.fhs

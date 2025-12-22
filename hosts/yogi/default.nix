@@ -7,12 +7,17 @@
   pkgs,
   ...
 }:
+let
+  staticSDL2 = pkgs.SDL2.overrideAttrs (old: {
+    dontDisableStatic = true;
+  });
+in
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.agenix.nixosModules.default
-    inputs.nur.modules.nixos.default
+    # inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
     inputs.nixos-hardware.nixosModules.common-gpu-amd
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -33,6 +38,12 @@
     # this is different
     ../../modules/programs/gaming
   ];
+
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk;
+  };
+  services.printing.enable = true;
 
   services.flatpak.enable = true;
   services.power-profiles-daemon.enable = false;
@@ -176,6 +187,9 @@
     ripgrep
     fzf
     neovim
+    cmake
+    staticSDL2
+	SDL2.dev
   ];
 
   nix = {

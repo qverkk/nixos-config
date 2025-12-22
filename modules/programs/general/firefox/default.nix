@@ -100,14 +100,14 @@
           "browser.startup.page" = 3; # Restore previous session
         };
 
-        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-          ublock-origin
-          clearurls
-          vimium
-          decentraleyes
-          privacy-badger
-          keepassxc-browser
-        ];
+        # extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        #   ublock-origin
+        #   clearurls
+        #   vimium
+        #   decentraleyes
+        #   privacy-badger
+        #   keepassxc-browser
+        # ];
       };
       work = {
         id = 1;

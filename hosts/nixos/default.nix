@@ -13,7 +13,7 @@
     ./hardware-configuration.nix
     ./vfio.nix
     inputs.agenix.nixosModules.default
-    inputs.nur.modules.nixos.default
+    # inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     # this is different
     ../../modules/hardware/nvidia.nix

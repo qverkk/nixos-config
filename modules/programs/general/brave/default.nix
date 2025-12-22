@@ -43,6 +43,7 @@
         "https://search.nixos.org/packages?&query={searchTerms}"
         "https://duckduckgo.com/?q={searchTerms}"
         "https://mynixos.com/search?q={searchTerms}"
+		"https://kagi.com/search?q={searchTerms}"
       ];
       "VoiceInteractionContextEnabled" = false;
       "MediaRouterCastAllowAllIPs" = true;
