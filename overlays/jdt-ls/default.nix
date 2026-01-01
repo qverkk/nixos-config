@@ -8,13 +8,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "jdt-ls";
-  version = "1.50.0";
-  timestamp = "202509041425";
+  version = "1.54.0";
+  timestamp = "202511261751";
 
   src = fetchurl {
-    url = "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/1.50.0/jdt-language-server-1.50.0-202509041425.tar.gz";
+    url = "https://www.eclipse.org/downloads/download.php?file=/jdtls/milestones/1.54.0/jdt-language-server-1.54.0-202511261751.tar.gz";
     # url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-    sha256 = "sha256-MpLFwziI+Vqw/3GOd37pT/VJa4Y1ojqIRLh27gkOveo=";
+    sha256 = "sha256-GikaJpvYizxASCGRIpYaUuyAhyr7x6PzQnCyznf3oUw=";
     # sha256 = lib.fakeSha256;
   };
 
