@@ -16,6 +16,7 @@
       "lckanjgmijmafbedllaakclkaicjfmnk" # clear urls
       "ldpochfccmkkmhdbclfhpagapcfdljkj" # decentraleyes
       "gbmgphmejlcoihgedabhgjdkcahacjlj" # wallabag
+      "cdglnehniifkbagbbombnjghhcihifij" # kagi search
     ];
     extraOpts = {
       "BrowserSignin" = 0;
@@ -37,14 +38,21 @@
       "SearchSuggestEnabled" = false;
       "DefaultSearchProviderEnabled" = true;
       "DefaultSearchProviderAlternateURLs" = [
+        "https://kagi.com/search?q={searchTerms}"
         "https://search.brave.com/search?q={searchTerms}"
         "https://sourcegraph.com/search?q=context:global+file:.nix%24+{searchTerms}&patternType=literal"
         "https://github.com/search?q=language%3ANix+{searchTerms}&type=code"
         "https://search.nixos.org/packages?&query={searchTerms}"
         "https://duckduckgo.com/?q={searchTerms}"
         "https://mynixos.com/search?q={searchTerms}"
-		"https://kagi.com/search?q={searchTerms}"
       ];
+      "DefaultSearchProviderImageURL" = "https://assets.kagi.com/v2/apple-touch-icon.png";
+      "DefaultSearchProviderKeyword" = "kagi";
+      "DefaultSearchProviderName" = "Kagi";
+      "DefaultSearchProviderSearchURL" = "https://kagi.com/search?q={searchTerms}";
+      "DefaultSearchProviderSuggestURL" = "https://kagi.com/api/autosuggest?q={searchTerms}";
+      "HomePageLocation" = "https://kagi.com";
+      "NewTabPageLocation" = "https://kagi.com";
       "VoiceInteractionContextEnabled" = false;
       "MediaRouterCastAllowAllIPs" = true;
       "TabOrganizerSettings" = 1;
