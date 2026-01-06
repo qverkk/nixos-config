@@ -12,6 +12,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./vfio.nix
+    ../substituters.nix
     inputs.agenix.nixosModules.default
     # inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-ssd

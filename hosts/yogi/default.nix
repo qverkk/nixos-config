@@ -16,6 +16,7 @@ in
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../substituters.nix
     inputs.agenix.nixosModules.default
     # inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -189,7 +190,7 @@ in
     neovim
     cmake
     staticSDL2
-	SDL2.dev
+    SDL2.dev
   ];
 
   nix = {
