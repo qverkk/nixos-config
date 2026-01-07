@@ -237,7 +237,7 @@
         tooltip label {
           color: #${config.lib.stylix.colors.base08};
         }
-        #pulseaudio, #cpu, #memory, #disk-root, #idle_inhibitor {
+        #pulseaudio, #cpu, #memory, #disk.root, #idle_inhibitor {
           font-weight: bold;
           margin: 4px 0px;
           margin-left: 7px;
