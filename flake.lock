@@ -471,6 +471,26 @@
         "type": "github"
       }
     },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768631749,
+        "narHash": "sha256-bZLh9RKcW2Ua+myNK/jNvoqgSYu8rXJMC9MMm/5QSqs=",
+        "owner": "anomalyco",
+        "repo": "opencode",
+        "rev": "ea13b6e8aa219f0c75eb13a6a58271d75c37521e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anomalyco",
+        "repo": "opencode",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -482,6 +502,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "opencode": "opencode",
         "stylix": "stylix",
         "vicinae": "vicinae",
         "vicinae-extensions": "vicinae-extensions",

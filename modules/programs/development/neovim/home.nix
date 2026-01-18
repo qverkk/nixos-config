@@ -66,7 +66,7 @@ in
       deadnix
       statix
       # alejandra
-      nixfmt-rfc-style
+      nixfmt
 
       ## java
       checkstyle

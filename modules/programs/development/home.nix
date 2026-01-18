@@ -5,4 +5,5 @@
   ./git/home.nix
   ./neovim/home.nix
   ./zellij/home.nix
+  ./opencode/home.nix
 ]
