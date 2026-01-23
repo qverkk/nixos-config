@@ -111,6 +111,7 @@ in
 
       # kotlin
       kotlin-language-server
+      kotlin-lsp
 
       # nix
       nixd
