@@ -34,6 +34,7 @@ in
     ../../modules/desktop/hyprland
     ../../modules/programs/development/docker
     ../../modules/programs/development/shell-scripts
+    ../../modules/programs/general/caddy
     ../../modules/programs/general/brave
     ../../modules/programs/general/kdeconnect
     # this is different
@@ -78,7 +79,7 @@ in
 
   # Bootloader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    # kernelPackages = pkgs.linuxPackages_zen;
     loader = {
       systemd-boot.enable = true;
       efi = {
