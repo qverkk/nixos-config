@@ -65,39 +65,39 @@ in
           Default = 1;
         };
       };
-      ".zen/default/search.json.mozlz4" = {
-        force = true;
-        source =
-          let
-            settings = {
-              version = 6;
-              force = true;
-              default = "DuckDuckGo";
-              order = [
-                "DuckDuckGo"
-                "Google"
-              ];
-              engines = {
-                "MyNixOs" = {
-                  urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
-                  icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                  definedAliases = [ "nx" ];
-                };
-                "Bing".metaData.hidden = true;
-                "Google".metaData.alias = "g"; # builtin engines only support specifying one additional alias
-              };
+      # ".zen/default/search.json.mozlz4" = {
+      #   force = true;
+      #   source =
+      #     let
+      #       settings = {
+      #         version = 6;
+      #         force = true;
+      #         default = "DuckDuckGo";
+      #         order = [
+      #           "DuckDuckGo"
+      #           "Google"
+      #         ];
+      #         engines = {
+      #           "MyNixOs" = {
+      #             urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
+      #             icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+      #             definedAliases = [ "nx" ];
+      #           };
+      #           "Bing".metaData.hidden = true;
+      #           "Google".metaData.alias = "g"; # builtin engines only support specifying one additional alias
+      #         };
 
-            };
-          in
-          pkgs.runCommand "search.json.mozlz4"
-            {
-              nativeBuildInputs = with pkgs; [ mozlz4a ];
-              json = builtins.toJSON settings;
-            }
-            ''
-              mozlz4a <(echo "$json") "$out"
-            '';
-      };
+      #       };
+      #     in
+      #     pkgs.runCommand "search.json.mozlz4"
+      #       {
+      #         nativeBuildInputs = with pkgs; [ mozlz4a ];
+      #         json = builtins.toJSON settings;
+      #       }
+      #       ''
+      #         mozlz4a <(echo "$json") "$out"
+      #       '';
+      # };
 
       ".zen/default/user.js".text = mkPrefs {
         # Disable auto update
