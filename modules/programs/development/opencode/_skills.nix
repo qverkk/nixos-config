@@ -119,7 +119,7 @@ let
       repo = "agent-skills";
       rev = "main";
       basePath = "skills/react-best-practices";
-      hash = "sha256-WUzBSN6ZwcDOMO2LAipHrv81ZT6gpk8l3LaSmB687qk=";
+      hash = "sha256-rSfySiCwtEP82tG9La4G7l4bu7W40ICT2qHeqpJArXc=";
     };
   };
 
