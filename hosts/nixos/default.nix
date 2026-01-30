@@ -17,7 +17,8 @@
     # inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-ssd
     # this is different
-    ../../modules/hardware/nvidia.nix
+    # ../../modules/hardware/nvidia.nix
+    ../../modules/hardware/amdgpu.nix
     ../../modules/hardware/bluetooth.nix
     ../../modules/hardware/openrazer.nix
     ../../modules/hardware/onlykey.nix
