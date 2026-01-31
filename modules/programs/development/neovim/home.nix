@@ -113,6 +113,9 @@ in
       kotlin-language-server
       kotlin-lsp
 
+      # svelte
+      svelte-language-server
+
       # nix
       nixd
 
@@ -267,6 +270,7 @@ in
         plugins.tree-sitter-rust
         plugins.tree-sitter-java
         plugins.tree-sitter-kotlin
+        plugins.tree-sitter-svelte
         plugins.tree-sitter-http
         plugins.tree-sitter-groovy
       ]))

@@ -2,18 +2,18 @@
   lib,
   stdenv,
   pkgs,
-  callPackage,
+  buildVscode,
   fetchurl,
   nixosTests,
   commandLineArgs ? "",
 }:
 # https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest
 # https://windsurf-next.codeium.com/api/update/linux-x64/stable/latest
-callPackage "${pkgs.path}/pkgs/applications/editors/vscode/generic.nix" rec {
+buildVscode {
   inherit commandLineArgs;
   useVSCodeRipgrep = true;
 
-  version = "1.13.13";
+  version = "1.9544.26";
   pname = "windsurf";
 
   executableName = "windsurf";
@@ -21,8 +21,8 @@ callPackage "${pkgs.path}/pkgs/applications/editors/vscode/generic.nix" rec {
   shortName = "windsurf";
 
   src = fetchurl {
-    url = "https://windsurf-stable.codeiumdata.com/linux-x64/stable/ca71c32d680a52e5f4726f9fcfa5a38efb09ff4c/Windsurf-linux-x64-1.13.13.tar.gz";
-    sha256 = "sha256-NMqOSopkhbVGIGeSC3QIgRJZWYQwb7Y1AXYOtaYmSPw=";
+    url = "https://windsurf-stable.codeiumdata.com/linux-x64/stable/c378df247aa57450376bd5346440192e1549717d/Windsurf-linux-x64-1.9544.26.tar.gz";
+    sha256 = "sha256-j1te7TKPJ4dddTbcCbTWcpvxDqOLigQ+IhyUNL2gEXA=";
     # sha256 = lib.fakeSha256;
   };
 
