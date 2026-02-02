@@ -96,6 +96,7 @@ local default_sources = {
 			"markdown.mdx",
 			"graphql",
 			"handlebars",
+			"svelte",
 		},
 	}),
 	-- rust
