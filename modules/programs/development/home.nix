@@ -6,4 +6,5 @@
   ./neovim/home.nix
   ./zellij/home.nix
   ./opencode/home.nix
+  ./tmux/home.nix
 ]
