@@ -43,7 +43,9 @@ in
   xdg.configFile = {
     "${configFile}".text = builtins.toJSON {
       "$schema" = "https://opencode.ai/config.json";
-      plugin = [ "oh-my-opencode@3.0.0-beta.9" ];
+      plugin = [
+        # "oh-my-opencode@3.0.0-beta.9"
+      ];
       formatter = languages.formatter;
       lsp = languages.lsp;
       provider = providers.config;
