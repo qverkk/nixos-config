@@ -25,6 +25,7 @@ in
     windsurf.fhs
     antigravity
     cursor
+    claude-code
     # jetbrains.idea-community
     git-ignore
     vscode.fhs

@@ -27,7 +27,10 @@ in
 
   formatter = {
     alejandra = {
-      command = [ formatterBins.alejandra "-q" ];
+      command = [
+        formatterBins.alejandra
+        "-q"
+      ];
       extensions = [ "nix" ];
     };
     google-java-format = {
@@ -35,12 +38,27 @@ in
       extensions = [ "java" ];
     };
     ktlint = {
-      command = [ formatterBins.ktlint "--format" ];
-      extensions = [ "kt" "kts" ];
+      command = [
+        formatterBins.ktlint
+        "--format"
+      ];
+      extensions = [
+        "kt"
+        "kts"
+      ];
     };
     biome = {
-      command = [ formatterBins.biome "format" "--stdin-file-path" ];
-      extensions = [ "js" "jsx" "ts" "tsx" ];
+      command = [
+        formatterBins.biome
+        "format"
+        "--stdin-file-path"
+      ];
+      extensions = [
+        "js"
+        "jsx"
+        "ts"
+        "tsx"
+      ];
     };
   };
 
@@ -55,11 +73,22 @@ in
     };
     kotlin-language-server = {
       command = [ lspBins.kotlin-language-server ];
-      extensions = [ "kt" "kts" ];
+      extensions = [
+        "kt"
+        "kts"
+      ];
     };
     biome = {
-      command = [ lspBins.biome "lsp-proxy" ];
-      extensions = [ "js" "jsx" "ts" "tsx" ];
+      command = [
+        lspBins.biome
+        "lsp-proxy"
+      ];
+      extensions = [
+        "js"
+        "jsx"
+        "ts"
+        "tsx"
+      ];
     };
   };
 }

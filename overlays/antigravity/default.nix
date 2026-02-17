@@ -1,32 +1,33 @@
-{ lib
-, stdenv
-, fetchurl
-, buildFHSEnv
-, makeDesktopItem
-, copyDesktopItems
-, writeShellScript
-, alsa-lib
-, at-spi2-atk
-, at-spi2-core
-, atk
-, cairo
-, cups
-, dbus
-, expat
-, glib
-, gtk3
-, libdrm
-, libgbm
-, libnotify
-, libsecret
-, libuuid
-, libxkbcommon
-, mesa
-, nspr
-, nss
-, pango
-, systemd
-, zlib
+{
+  lib,
+  stdenv,
+  fetchurl,
+  buildFHSEnv,
+  makeDesktopItem,
+  copyDesktopItems,
+  writeShellScript,
+  alsa-lib,
+  at-spi2-atk,
+  at-spi2-core,
+  atk,
+  cairo,
+  cups,
+  dbus,
+  expat,
+  glib,
+  gtk3,
+  libdrm,
+  libgbm,
+  libnotify,
+  libsecret,
+  libuuid,
+  libxkbcommon,
+  mesa,
+  nspr,
+  nss,
+  pango,
+  systemd,
+  zlib,
 }:
 
 let
@@ -69,46 +70,48 @@ let
   fhs = buildFHSEnv {
     name = "antigravity-fhs";
 
-    targetPkgs = pkgs: (with pkgs; [
-      alsa-lib
-      at-spi2-atk
-      at-spi2-core
-      atk
-      cairo
-      cups
-      dbus
-      expat
-      glib
-      gtk3
-      libdrm
-      libgbm
-      libglvnd
-      libnotify
-      libsecret
-      libuuid
-      libxkbcommon
-      mesa
-      nspr
-      nss
-      pango
-      stdenv.cc.cc.lib
-      systemd
-      vulkan-loader
-      libX11
-      libXScrnSaver
-      libXcomposite
-      libXcursor
-      libXdamage
-      libXext
-      libXfixes
-      libXi
-      libXrandr
-      libXrender
-      libXtst
-      libxcb
-      libxshmfence
-      zlib
-    ]);
+    targetPkgs =
+      pkgs:
+      (with pkgs; [
+        alsa-lib
+        at-spi2-atk
+        at-spi2-core
+        atk
+        cairo
+        cups
+        dbus
+        expat
+        glib
+        gtk3
+        libdrm
+        libgbm
+        libglvnd
+        libnotify
+        libsecret
+        libuuid
+        libxkbcommon
+        mesa
+        nspr
+        nss
+        pango
+        stdenv.cc.cc.lib
+        systemd
+        vulkan-loader
+        libX11
+        libXScrnSaver
+        libXcomposite
+        libXcursor
+        libXdamage
+        libXext
+        libXfixes
+        libXi
+        libXrandr
+        libXrender
+        libXtst
+        libxcb
+        libxshmfence
+        zlib
+      ]);
 
     runScript = writeShellScript "antigravity-wrapper" ''
       exec ${antigravity-unwrapped}/lib/antigravity/antigravity "$@"
@@ -123,7 +126,10 @@ let
     comment = "Next-generation agentic IDE";
     exec = "antigravity %U";
     icon = "antigravity";
-    categories = [ "Development" "IDE" ];
+    categories = [
+      "Development"
+      "IDE"
+    ];
     startupNotify = true;
     startupWMClass = "Antigravity";
     mimeTypes = [

@@ -7,5 +7,6 @@ _self: super: {
   ghostty = inputs.ghostty.packages.${pkgs.system}.default;
   windsurf = super.callPackage ./windsurf { };
   cursor = super.callPackage ./cursor { };
+  claude-code = super.callPackage ./claude-code { };
   antigravity = super.callPackage ./antigravity { };
 }
