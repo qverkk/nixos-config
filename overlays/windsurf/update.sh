@@ -26,7 +26,7 @@ fi
 
 # Compute hash for the new URL
 echo "Computing hash for new version..."
-LATEST_SHA256_SRI=$(nix-prefetch-url "$LATEST_URL" 2>/dev/null | xargs nix-hash --to-sri --type sha256)
+LATEST_SHA256_SRI=$(nix-prefetch-url "$LATEST_URL" 2>/dev/null | xargs nix hash convert --hash-algo sha256)
 
 if [ -z "$LATEST_SHA256_SRI" ]; then
     echo "Error: Failed to compute hash" >&2

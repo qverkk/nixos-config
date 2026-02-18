@@ -20,7 +20,7 @@ tar -xzf "$tmpdir/claude-code.tgz" -C "$tmpdir"
 cp "$tmpdir/package/package-lock.json" "$LOCKFILE"
 
 hash=$(nix-prefetch-url --type sha256 --unpack "$tarball" 2>/dev/null)
-sri_hash=$(nix hash to-sri --type sha256 "$hash")
+sri_hash=$(nix hash convert --hash-algo sha256 "$hash")
 npm_deps_hash=$(prefetch-npm-deps "$LOCKFILE")
 
 sed -i "s/version = \"[^\"]*\";/version = \"$version\";/" "$DEFAULT_NIX"
