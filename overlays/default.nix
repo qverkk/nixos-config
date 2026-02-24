@@ -4,7 +4,7 @@ _self: super: {
   kotlin-lsp = super.callPackage ./kotlin-lsp { };
   rofi-collection = super.callPackage ./rofi-collection { };
   npm-groovy-lint = super.callPackage ./npm-groovy-lint { };
-  ghostty = inputs.ghostty.packages.${pkgs.system}.default;
+  ghostty = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
   windsurf = super.callPackage ./windsurf { };
   cursor = super.callPackage ./cursor { };
   claude-code = super.callPackage ./claude-code { };
