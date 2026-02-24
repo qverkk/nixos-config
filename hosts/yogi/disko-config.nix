@@ -4,24 +4,21 @@
       type = "disk";
       device = "/dev/nvme0n1";
       content = {
-        type = "table";
-        format = "gpt";
-        partitions = [
-          {
-            name = "ESP";
-            start = "1MiB";
-            end = "512MiB";
-            bootable = true;
+        type = "gpt";
+        partitions = {
+          ESP = {
+            priority = 1;
+            size = "512MiB";
+            type = "EF00";
             content = {
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
             };
-          }
-          {
-            name = "luks";
-            start = "512MiB";
-            end = "100%";
+          };
+          luks = {
+            priority = 2;
+            size = "100%";
             content = {
               type = "luks";
               name = "crypted";
@@ -30,8 +27,8 @@
                 vg = "pool";
               };
             };
-          }
-        ];
+          };
+        };
       };
     };
     lvm_vg.pool = {
