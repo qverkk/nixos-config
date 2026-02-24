@@ -41,10 +41,11 @@ in
     ../../modules/programs/gaming
   ];
 
-  programs.java = {
-    enable = true;
-    package = pkgs.jdk;
-  };
+  # programs.java = {
+  #   enable = true;
+  #   package = pkgs.jdk;
+  # };
+  programs.nix-ld.enable = true;
   services.printing.enable = true;
 
   services.flatpak.enable = true;
@@ -174,6 +175,8 @@ in
       "podman"
       "docker"
       "openrazer"
+      # "video"
+      # "render"
     ];
     shell = pkgs.zsh;
   };
