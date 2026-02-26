@@ -9,4 +9,14 @@ _self: super: {
   cursor = super.callPackage ./cursor { };
   claude-code = super.callPackage ./claude-code { };
   antigravity = super.callPackage ./antigravity { };
+  opencode =
+    (inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default).overrideAttrs
+      (oldAttrs: {
+        postPatch = (oldAttrs.postPatch or "") + ''
+          substituteInPlace packages/script/src/index.ts \
+            --replace-fail \
+            'if (!semver.satisfies(process.versions.bun, expectedBunVersionRange)) {' \
+            'if (false) {'
+        '';
+      });
 }

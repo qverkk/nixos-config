@@ -4,7 +4,7 @@ let
   providers = import ./_providers.nix;
   skills = import ./_skills.nix { inherit pkgs; };
 
-  opencode = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  opencode = pkgs.opencode;
 
   opencodeEnv = pkgs.buildEnv {
     name = "opencode-env";
