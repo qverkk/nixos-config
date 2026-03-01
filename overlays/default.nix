@@ -17,6 +17,8 @@ _self: super: {
             --replace-fail \
             'if (!semver.satisfies(process.versions.bun, expectedBunVersionRange)) {' \
             'if (false) {'
+          mkdir -p .github
+          touch .github/TEAM_MEMBERS
         '';
       });
 }
