@@ -26,6 +26,7 @@ in
     antigravity
     cursor
     claude-code
+    gh
     # jetbrains.idea-community
     git-ignore
     vscode.fhs
