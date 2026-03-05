@@ -7,12 +7,12 @@
 
   programs = {
     dconf.enable = true;
-    light.enable = true;
   };
 
   services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
+    brightnessctl
     #inputs.hypr-contrib.packages.${pkgs.system}.grimblast
     #inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
     #swww
