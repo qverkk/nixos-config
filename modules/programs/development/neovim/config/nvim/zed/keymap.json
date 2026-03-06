@@ -1,0 +1,265 @@
+[
+  //
+  // Neovim keybindings ported from ~/.config/nvim
+  // Leader key = space (default in Zed vim mode)
+  //
+
+  // ============================================================
+  // INSERT MODE
+  // ============================================================
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      // jk to escape (from remap.lua)
+      "j k": "vim::NormalBefore",
+      // Signature help (from remap.lua: <A-q> in insert)
+      "alt-q": "editor::Hover"
+    }
+  },
+
+  // ============================================================
+  // NORMAL + VISUAL MODE (VimControl)
+  // ============================================================
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // --- Window navigation (from remap.lua: <C-h/j/k/l>) ---
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+
+      // --- Jump 10 lines (from remap.lua: <S-j> / <S-k>) ---
+      "shift-j": ["editor::MoveDownByLines", { "lines": 10 }],
+      "shift-k": ["editor::MoveUpByLines", { "lines": 10 }],
+
+      // --- Alt shortcuts (from remap.lua) ---
+      // Show diagnostic float
+      "alt-q": "editor::Hover",
+      // Code actions
+      "alt-enter": "editor::ToggleCodeActions",
+      // Go to implementations
+      "alt-i": "editor::GoToImplementation",
+      // Go to definitions
+      "alt-d": "editor::GoToDefinition",
+      // Go to references
+      "alt-r": "editor::FindAllReferences",
+      // Workspace symbols
+      "alt-c": "project_symbols::Toggle",
+      // Prev/next diagnostic (from remap.lua: <A-[> / <A-]>)
+      "alt-[": "editor::GoToPreviousDiagnostic",
+      "alt-]": "editor::GoToDiagnostic"
+    }
+  },
+
+  // ============================================================
+  // NORMAL MODE - Leader bindings (from which-key-nvim.lua)
+  // ============================================================
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      // --- Basic operations ---
+      // Comment toggle current line (leader /)
+      "space /": "editor::ToggleComments",
+      // Save (leader w)
+      "space w": "workspace::Save",
+      // Quit (leader q)
+      "space q": "pane::CloseActiveItem",
+      // Close buffer (leader c)
+      "space c": "pane::CloseActiveItem",
+      // Toggle explorer / file panel (leader e)
+      "space e": "workspace::ToggleLeftDock",
+      // Toggle terminal (leader T)
+      "space shift-t": "terminal_panel::ToggleFocus",
+
+      // --- Find group (leader f) ---
+      // Find files (leader ff)
+      "space f f": "file_finder::Toggle",
+      // Find text / live grep (leader fg)
+      "space f g": "pane::DeploySearch",
+      // Find buffers (leader fb)
+      "space f b": "tab_switcher::Toggle",
+      // Find git files (leader fp)
+      "space f p": "file_finder::Toggle",
+      // Find commands / command palette (leader fa)
+      "space f a": "command_palette::Toggle",
+      // Resume last search (leader fl)
+      "space f l": "pane::DeploySearch",
+      // Find symbols outline (leader fs)
+      "space f s": "outline::Toggle",
+      // Find projects (leader fP)
+      "space f shift-p": "projects::OpenRecent",
+      // Workspace symbols (leader fS) -- not in nvim, but useful
+      // Find legendary commands / all commands (leader fA)
+      "space f shift-a": "command_palette::Toggle",
+
+      // --- LSP group (leader l) ---
+      // Code action (leader la)
+      "space l a": "editor::ToggleCodeActions",
+      // Go to definition (leader ld)
+      "space l d": "editor::GoToDefinition",
+      // Go to implementations (leader li)
+      "space l i": "editor::GoToImplementation",
+      // Go to references (leader lr)
+      "space l r": "editor::FindAllReferences",
+      // Rename (leader lR)
+      "space l shift-r": "editor::Rename",
+      // Format (leader lf)
+      "space l f": "editor::Format",
+      // Next diagnostic (leader lj)
+      "space l j": "editor::GoToDiagnostic",
+      // Prev diagnostic (leader lk)
+      "space l k": "editor::GoToPreviousDiagnostic",
+      // Document symbols (leader ls)
+      "space l s": "outline::Toggle",
+      // Workspace symbols (leader lS)
+      "space l shift-s": "project_symbols::Toggle",
+      // Buffer diagnostics (leader lD)
+      "space l shift-d": "diagnostics::Deploy",
+      // All diagnostics (leader lW)
+      "space l shift-w": "diagnostics::Deploy",
+      // Signature/hover info (leader lq)
+      "space l q": "editor::Hover",
+      // LSP info (leader lI)
+      "space l shift-i": "editor::Hover",
+      // Quickfix / Telescope quickfix (leader le)
+      "space l e": "diagnostics::Deploy",
+
+      // --- Git group (leader g) ---
+      // Git diff (leader gd)
+      "space g d": "editor::ToggleSelectedDiffHunks",
+      // Git blame line (leader gl)
+      "space g l": "git::Blame",
+      // Next git hunk (leader gj)
+      "space g j": "editor::GoToHunk",
+      // Prev git hunk (leader gk)
+      "space g k": "editor::GoToPreviousHunk",
+      // Preview git hunk (leader gp)
+      "space g p": "editor::ToggleSelectedDiffHunks",
+      // Reset git hunk (leader gr)
+      "space g r": "git::Restore",
+      // Reset buffer (leader gR)
+      "space g shift-r": "git::RestoreFile",
+      // Git status / open changed file (leader go)
+      "space g o": "git_panel::ToggleFocus",
+      // Git commits (leader gc)
+      "space g c": "git_panel::ToggleFocus",
+      // Git branches (leader gb)
+      "space g b": "git::Branch",
+      // Lazygit (leader gg) - open git panel
+      "space g g": "git_panel::ToggleFocus",
+
+      // --- Find and replace group (leader r) ---
+      // Open search and replace (leader ro)
+      "space r o": ["pane::DeploySearch", { "replace_enabled": true }],
+      // Search current word (leader rw)
+      "space r w": ["pane::DeploySearch", { "replace_enabled": true }],
+      // Search in file (leader rf)
+      "space r f": ["buffer_search::Deploy", { "replace_enabled": true }],
+
+      // --- Test group (leader t) ---
+      // Run nearest test (leader tn)
+      "space t n": "task::Rerun",
+      // Run file tests (leader tf)
+      "space t f": "task::Rerun",
+      // Run last test (leader tl)
+      "space t l": "task::Rerun",
+      // Test summary / toggle test panel (leader ts)
+      "space t s": "task::Spawn",
+
+      // --- Debug group (leader d) ---
+      // Toggle breakpoint (leader dt)
+      "space d t": "editor::ToggleBreakpoint",
+      // Debug continue (leader dc)
+      "space d c": "debugger::Continue",
+      // Debug start (leader ds)
+      "space d s": "debugger::Start",
+      // Debug step into (leader di)
+      "space d i": "debugger::StepInto",
+      // Debug step over (leader do)
+      "space d o": "debugger::StepOver",
+      // Debug step out (leader du)
+      "space d u": "debugger::StepOut",
+      // Debug disconnect / quit (leader dd / leader dq)
+      "space d d": "debugger::Stop",
+      "space d q": "debugger::Stop",
+      // Debug pause (leader dp)
+      "space d p": "debugger::Pause",
+      // Debug toggle UI (leader dU)
+      "space d shift-u": "debug_panel::ToggleFocus",
+      // Debug step back (leader db)
+      "space d b": "debugger::StepBack",
+
+      // --- Aerial / Outline (leader a) ---
+      // Toggle outline panel (leader aa)
+      "space a a": "outline_panel::ToggleFocus",
+
+      // --- Refactoring (leader R) ---
+      "space shift-r": "editor::ToggleCodeActions",
+
+      // --- Harpoon (from which-key harpoon group) ---
+      // There is no native harpoon in Zed, but we can map to numbered panes
+      // Harpoon add mark (leader ha) - not directly available
+      // Harpoon browse marks (leader he) - not directly available
+
+      // --- Sneak / Flash (from flash-nvim.lua: s in normal) ---
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward"
+    }
+  },
+
+  // ============================================================
+  // VISUAL MODE - Leader bindings
+  // ============================================================
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      // Jump 10 lines in visual mode (from remap.lua)
+      "shift-j": ["editor::SelectDownByLines", { "lines": 10 }],
+      "shift-k": ["editor::SelectUpByLines", { "lines": 10 }],
+      // Comment toggle (leader / in visual)
+      "space /": "editor::ToggleComments",
+      // Code action (leader la in visual)
+      "space l a": "editor::ToggleCodeActions",
+      // Find and replace cursor word (leader ro in visual)
+      "space r o": ["pane::DeploySearch", { "replace_enabled": true }],
+      // Surround with shift-s in visual mode
+      "shift-s": "vim::PushAddSurrounds"
+    }
+  },
+
+  // ============================================================
+  // TERMINAL - jk to escape
+  // ============================================================
+  {
+    "context": "Terminal",
+    "bindings": {
+      "j k": ["terminal::SendKeystroke", "escape"]
+    }
+  },
+
+  // ============================================================
+  // DOCK NAVIGATION (navigate to/from panels with ctrl-h/j/k/l)
+  // ============================================================
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+
+  // ============================================================
+  // EMPTY PANE - file finder with space ff
+  // ============================================================
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space f f": "file_finder::Toggle",
+      "space f a": "command_palette::Toggle",
+      "space e": "workspace::ToggleLeftDock"
+    }
+  }
+]
