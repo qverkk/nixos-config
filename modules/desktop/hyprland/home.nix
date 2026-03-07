@@ -3,7 +3,8 @@
   imports = [
     ../../programs/wayland/bars/eww/home.nix
     ./stylix-home.nix
-    ../../programs/wayland/bars/waybar/home.nix
+    # ../../programs/wayland/bars/waybar/home.nix
+    ../../programs/wayland/bars/quickshell/home.nix
     (import ../../environment/hypr-variables.nix)
   ]
   ++ (import ../../programs/wayland/home.nix)
