@@ -34,7 +34,7 @@ Variants {
         color: "transparent"
         // Height = 6px top gap + 40px bar + 6px bottom gap so windows
         // get pushed down by the full 52px.
-        implicitHeight: 52
+        implicitHeight: 40
 
         property bool idleInhibited: false
         property string clockStr: ""
@@ -90,9 +90,9 @@ Variants {
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.topMargin: 6
-            anchors.leftMargin: 8
-            anchors.rightMargin: 8
+            anchors.topMargin: 0
+            anchors.leftMargin: 0
+            anchors.rightMargin: 0
             height: 40
             radius: 12
             color: Qt.rgba(
@@ -107,28 +107,6 @@ Variants {
                 anchors.leftMargin: 10
                 anchors.rightMargin: 10
                 spacing: 6
-
-                Rectangle {
-                    Layout.alignment: Qt.AlignVCenter
-                    Layout.preferredHeight: 28
-                    Layout.preferredWidth: 36
-                    radius: 1000
-                    color: Colors.base01
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: ShellState.toggleSidebar(barWindow.screen.name, 0)
-                        cursorShape: Qt.PointingHandCursor
-                    }
-
-                    Text {
-                        anchors.centerIn: parent
-                        text: "\uf0c9"
-                        font.family: "CaskaydiaCove Nerd Font Mono"
-                        font.pixelSize: 13
-                        color: Colors.base0E
-                    }
-                }
 
                 // === LEFT: Audio pill ===
                 Rectangle {
@@ -178,33 +156,6 @@ Variants {
                             }
                         }
 
-                        Rectangle { width: 1; height: 12; color: Colors.base02; visible: BrightnessService.available }
-
-                        Item {
-                            visible: BrightnessService.available
-                            implicitWidth: brightnessRow.implicitWidth
-                            implicitHeight: brightnessRow.implicitHeight
-
-                            RowLayout {
-                                id: brightnessRow
-                                anchors.centerIn: parent
-                                spacing: 5
-
-                                Text {
-                                    text: "\uf185"
-                                    font.family: "CaskaydiaCove Nerd Font Mono"
-                                    font.pixelSize: 13
-                                    color: Colors.base0A
-                                }
-                                Text {
-                                    text: BrightnessService.percent + "%"
-                                    font.family: "CaskaydiaCove Nerd Font Mono"
-                                    font.pixelSize: 12
-                                    color: Colors.base05
-                                }
-                            }
-                        }
-
                         Rectangle { width: 1; height: 12; color: Colors.base02 }
 
                         Item {
@@ -239,6 +190,33 @@ Variants {
                             Process {
                                 id: micToggle
                                 command: ["wpctl", "set-mute", "@DEFAULT_AUDIO_SOURCE@", "toggle"]
+                            }
+                        }
+
+                        Rectangle { width: 1; height: 12; color: Colors.base02; visible: BrightnessService.available }
+
+                        Item {
+                            visible: BrightnessService.available
+                            implicitWidth: brightnessRow.implicitWidth
+                            implicitHeight: brightnessRow.implicitHeight
+
+                            RowLayout {
+                                id: brightnessRow
+                                anchors.centerIn: parent
+                                spacing: 5
+
+                                Text {
+                                    text: "\uf185"
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 13
+                                    color: Colors.base0A
+                                }
+                                Text {
+                                    text: BrightnessService.percent + "%"
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 12
+                                    color: Colors.base05
+                                }
                             }
                         }
                     }
@@ -417,19 +395,31 @@ Variants {
                         spacing: 6
 
                         // Power button — nf-fa-power-off \uf011
-                        Text {
-                            text: "\uf011"
-                            font.family: "CaskaydiaCove Nerd Font Mono"
-                            font.pixelSize: 13
-                            color: Colors.base08
+                        Item {
+                            id: powerButton
+                            implicitWidth: powerIcon.implicitWidth
+                            implicitHeight: 28
+
+                            Text {
+                                id: powerIcon
+                                anchors.centerIn: parent
+                                text: "\uf011"
+                                font.family: "CaskaydiaCove Nerd Font Mono"
+                                font.pixelSize: 13
+                                color: Colors.base08
+                            }
+
                             MouseArea {
                                 anchors.fill: parent
-                                onClicked: exitLaunch.running = true
+                                onClicked: ShellState.togglePower(barWindow.screen.name)
                                 cursorShape: Qt.PointingHandCursor
                             }
-                            Process {
-                                id: exitLaunch
-                                command: ["wlogout"]
+
+                            Loader {
+                                active: ShellState.powerOpen && ShellState.powerScreenName === barWindow.screen.name
+                                sourceComponent: PowerPopup {
+                                    anchorItem: powerButton
+                                }
                             }
                         }
 
@@ -441,48 +431,6 @@ Variants {
                             font.family: "CaskaydiaCove Nerd Font Mono"
                             font.pixelSize: 12
                             color: Colors.base05
-                        }
-
-                        Rectangle { width: 1; height: 12; color: Colors.base02 }
-
-                        Item {
-                            id: notificationsAnchor
-                            implicitWidth: notificationsRow.implicitWidth
-                            implicitHeight: notificationsRow.implicitHeight
-
-                            RowLayout {
-                                id: notificationsRow
-                                anchors.centerIn: parent
-                                spacing: 4
-
-                                Text {
-                                    text: "\uf0f3"
-                                    font.family: "CaskaydiaCove Nerd Font Mono"
-                                    font.pixelSize: 13
-                                    color: NotificationService.unread > 0 ? Colors.base0E : Colors.base05
-                                }
-
-                                Text {
-                                    visible: NotificationService.unread > 0
-                                    text: NotificationService.unread
-                                    font.family: "CaskaydiaCove Nerd Font Mono"
-                                    font.pixelSize: 11
-                                    color: Colors.base0E
-                                }
-                            }
-
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: ShellState.toggleNotifications(barWindow.screen.name)
-                                cursorShape: Qt.PointingHandCursor
-                            }
-
-                            Loader {
-                                active: ShellState.notificationsOpen && ShellState.notificationsScreenName === barWindow.screen.name
-                                sourceComponent: NotificationCenterPopup {
-                                    anchorItem: notificationsAnchor
-                                }
-                            }
                         }
 
                         Rectangle { width: 1; height: 12; color: Colors.base02 }
@@ -514,46 +462,65 @@ Variants {
 
                         Rectangle { width: 1; height: 12; color: Colors.base02 }
 
-                        // Network icon
-                        Text {
-                            text: {
-                                if (!NetworkInfo.connected) return "\uf071";
-                                if (NetworkInfo.connectionType === "ethernet") return "\uf796";
-                                return "\uf1eb";
-                            }
-                            font.family: "CaskaydiaCove Nerd Font Mono"
-                            font.pixelSize: 13
-                            color: NetworkInfo.connected ? Colors.base0B : Colors.base08
+                        Item {
+                            implicitWidth: netRow.implicitWidth
+                            implicitHeight: 28
+
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: netLaunch.running = true
                                 cursorShape: Qt.PointingHandCursor
                             }
+
                             Process {
                                 id: netLaunch
                                 command: ["kitty", "-e", "nmtui"]
                             }
-                        }
-                        // Network name + signal (wifi) or just name (ethernet)
-                        Text {
-                            visible: NetworkInfo.connected
-                            text: {
-                                if (!NetworkInfo.connected) return "";
-                                if (NetworkInfo.connectionType === "wifi")
-                                    return NetworkInfo.connectionName + " " + NetworkInfo.signal + "%";
-                                return NetworkInfo.connectionName;
+
+                            RowLayout {
+                                id: netRow
+                                anchors.centerIn: parent
+                                spacing: 4
+
+                                Text {
+                                    text: {
+                                        if (!NetworkInfo.connected) return "\uf071";
+                                        if (NetworkInfo.connectionType === "ethernet") return "\uf796";
+                                        return "\uf1eb";
+                                    }
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 13
+                                    color: NetworkInfo.connected ? Colors.base0B : Colors.base08
+                                }
+
+                                Text {
+                                    visible: NetworkInfo.connected
+                                    text: {
+                                        if (!NetworkInfo.connected) return "";
+                                        if (NetworkInfo.connectionType === "wifi")
+                                            return NetworkInfo.connectionName + " " + NetworkInfo.signal + "%";
+                                        return NetworkInfo.connectionName;
+                                    }
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 12
+                                    color: Colors.base05
+                                }
                             }
-                            font.family: "CaskaydiaCove Nerd Font Mono"
-                            font.pixelSize: 12
-                            color: Colors.base05
                         }
 
                         // Battery (laptops only)
                         Rectangle {
+                            id: batteryPill
                             visible: UPower.displayDevice.isLaptopBattery
                             width: visible ? batRow.implicitWidth + 8 : 0
-                            height: 12
+                            height: 28
                             color: "transparent"
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: ShellState.toggleBattery(barWindow.screen.name)
+                                cursorShape: Qt.PointingHandCursor
+                            }
 
                             RowLayout {
                                 id: batRow
@@ -576,6 +543,13 @@ Variants {
                                         if (perc <= 40) return Colors.base0A;
                                         return Colors.base05;
                                     }
+                                }
+                            }
+
+                            Loader {
+                                active: ShellState.batteryOpen && ShellState.batteryScreenName === barWindow.screen.name
+                                sourceComponent: BatteryPopup {
+                                    anchorItem: batteryPill
                                 }
                             }
                         }

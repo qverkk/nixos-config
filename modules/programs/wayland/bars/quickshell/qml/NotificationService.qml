@@ -111,7 +111,7 @@ Singleton {
         root.list = root.list.slice();
     }
 
-    function dismissNotification(id) {
+    function removeNotificationRecord(id) {
         const record = root.list.find(notif => notif.notificationId === id);
         if (!record)
             return;
@@ -120,10 +120,17 @@ Singleton {
             record.timer.destroy();
             record.timer = null;
         }
-        if (record.trackedNotification)
-            record.trackedNotification.dismiss();
         root.list = root.list.filter(notif => notif.notificationId !== id);
         record.destroy();
+    }
+
+    function dismissNotification(id) {
+        const record = root.list.find(notif => notif.notificationId === id);
+        if (!record)
+            return;
+        if (record.trackedNotification)
+            record.trackedNotification.dismiss();
+        removeNotificationRecord(id);
     }
 
     function clearAll() {
@@ -148,7 +155,7 @@ Singleton {
         const action = record.trackedNotification.actions.find(candidate => candidate.identifier === identifier);
         if (action)
             action.invoke();
-        dismissNotification(id);
+        removeNotificationRecord(id);
     }
 
     NotificationServer {

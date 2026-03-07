@@ -161,6 +161,7 @@ Item {
                 // Single player reference used by all children
                 readonly property var player: Mpris.players.values.length > 0
                     ? Mpris.players.values[0] : null
+                readonly property bool playing: player?.isPlaying ?? false
 
                 // "No media" placeholder
                 Text {
@@ -187,14 +188,25 @@ Item {
                         Layout.alignment: Qt.AlignVCenter
                         radius: 44
                         color: Qt.rgba(Colors.base01.r, Colors.base01.g, Colors.base01.b, 0.9)
+                        clip: true
+
+                        AnimatedImage {
+                            anchors.fill: parent
+                            anchors.margins: 6
+                            visible: mediaSection.playing
+                            playing: visible
+                            fillMode: Image.PreserveAspectFit
+                            source: Qt.resolvedUrl("assets/bongocat.gif")
+                        }
 
                         Text {
                             anchors.centerIn: parent
+                            visible: !mediaSection.playing
                             text: "\uf001"
                             font.family: "CaskaydiaCove Nerd Font Mono"
                             font.pixelSize: 28
                             color: Colors.base0D
-                            opacity: mediaSection.player?.isPlaying ? 1.0 : 0.4
+                            opacity: mediaSection.player !== null ? 0.8 : 0.4
                         }
 
                     }

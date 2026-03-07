@@ -1,7 +1,8 @@
 import Quickshell.Services.UPower
+import Quickshell.Io
 import QtQuick
 
-QtObject {
+Item {
     id: root
 
     property bool available: UPower.displayDevice.isLaptopBattery
@@ -12,9 +13,24 @@ QtObject {
         UPowerDeviceState.PendingCharge,
         UPowerDeviceState.FullyCharged
     ].includes(state)
+    property string pendingSummary: ""
+    property string pendingBody: ""
+    property string pendingUrgency: "normal"
     property bool lowSent: false
     property bool criticalSent: false
     property bool fullSent: false
+
+    Process {
+        id: notifyProcess
+        command: ["notify-send", "-u", root.pendingUrgency, root.pendingSummary, root.pendingBody]
+    }
+
+    function sendNotification(summary, body, urgency) {
+        root.pendingSummary = summary;
+        root.pendingBody = body;
+        root.pendingUrgency = urgency;
+        notifyProcess.running = true;
+    }
 
     function notifyIfNeeded() {
         if (!root.available)
@@ -26,7 +42,7 @@ QtObject {
             if (root.percent < 95)
                 root.fullSent = false;
             if (root.percent >= 100 && !root.fullSent) {
-                NotificationService.pushLocal("Battery", "Battery full", "You can unplug the charger.", "normal");
+                root.sendNotification("Battery full", "You can unplug the charger.", "normal");
                 root.fullSent = true;
             }
             return;
@@ -40,13 +56,13 @@ QtObject {
             root.criticalSent = false;
 
         if (root.percent <= 10 && !root.criticalSent) {
-            NotificationService.pushLocal("Battery", "Critically low battery", "Plug in the charger soon.", "critical");
+            root.sendNotification("Critically low battery", "Plug in the charger soon.", "critical");
             root.criticalSent = true;
             return;
         }
 
         if (root.percent <= 20 && !root.lowSent) {
-            NotificationService.pushLocal("Battery", "Low battery", "Consider plugging in your device.", "normal");
+            root.sendNotification("Low battery", "Consider plugging in your device.", "normal");
             root.lowSent = true;
         }
     }

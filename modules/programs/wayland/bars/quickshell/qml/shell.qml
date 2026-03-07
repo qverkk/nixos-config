@@ -7,7 +7,5 @@ ShellRoot {
     Bar {}
     Osd {}
     Dashboard {}
-    LeftSidebar {}
-    NotificationPopup {}
     BatteryAlerts {}
 }

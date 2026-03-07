@@ -34,6 +34,7 @@ let
   barPackage = pkgs.runCommand "quickshell-bar" { } ''
     mkdir -p $out
     cp ${./qml}/*.qml $out/
+    cp -r ${./qml}/assets $out/
     cp ${colorsQml} $out/Colors.qml
   '';
 in
@@ -41,8 +42,7 @@ in
   home.packages = [
     pkgs.quickshell
     pkgs.blueman
-    pkgs.curl
-    pkgs."translate-shell"
+    pkgs.libnotify
   ];
 
   xdg.configFile."quickshell/bar".source = barPackage;
