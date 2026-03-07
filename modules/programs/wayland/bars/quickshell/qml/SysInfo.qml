@@ -57,12 +57,12 @@ Singleton {
 
     Process {
         id: diskProc
-        command: ["df", "-h", "--output=avail", "/"]
+        command: ["sh", "-c", "df -h --output=avail / | tail -n 1"]
         stdout: StdioCollector {
             onStreamFinished: {
                 const lines = text.trim().split("\n");
-                if (lines.length >= 2)
-                    root.diskFree = lines[1].trim();
+                if (lines.length > 0)
+                    root.diskFree = lines[lines.length - 1].trim();
             }
         }
     }

@@ -38,7 +38,12 @@ let
   '';
 in
 {
-  home.packages = [ pkgs.quickshell ];
+  home.packages = [
+    pkgs.quickshell
+    pkgs.blueman
+    pkgs.curl
+    pkgs."translate-shell"
+  ];
 
   xdg.configFile."quickshell/bar".source = barPackage;
 }

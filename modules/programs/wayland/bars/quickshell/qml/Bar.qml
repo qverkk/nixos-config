@@ -108,6 +108,28 @@ Variants {
                 anchors.rightMargin: 10
                 spacing: 6
 
+                Rectangle {
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.preferredHeight: 28
+                    Layout.preferredWidth: 36
+                    radius: 1000
+                    color: Colors.base01
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: ShellState.toggleSidebar(barWindow.screen.name, 0)
+                        cursorShape: Qt.PointingHandCursor
+                    }
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: "\uf0c9"
+                        font.family: "CaskaydiaCove Nerd Font Mono"
+                        font.pixelSize: 13
+                        color: Colors.base0E
+                    }
+                }
+
                 // === LEFT: Audio pill ===
                 Rectangle {
                     Layout.alignment: Qt.AlignVCenter
@@ -116,44 +138,108 @@ Variants {
                     radius: 1000
                     color: Colors.base01
 
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: audioLaunch.running = true
-                        cursorShape: Qt.PointingHandCursor
-                    }
-                    Process {
-                        id: audioLaunch
-                        command: ["pavucontrol"]
-                    }
-
                     RowLayout {
                         id: audioRow
                         anchors.centerIn: parent
                         spacing: 5
 
-                        Text {
-                            text: AudioService.muted ? "\uf6a9" : "\uf028"
-                            font.family: "CaskaydiaCove Nerd Font Mono"
-                            font.pixelSize: 13
-                            color: Colors.base0D
+                        Item {
+                            implicitWidth: speakerRow.implicitWidth
+                            implicitHeight: speakerRow.implicitHeight
+
+                            RowLayout {
+                                id: speakerRow
+                                anchors.centerIn: parent
+                                spacing: 5
+
+                                Text {
+                                    text: AudioService.muted ? "\uf6a9" : "\uf028"
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 13
+                                    color: Colors.base0D
+                                }
+                                Text {
+                                    text: Math.round(AudioService.volume * 100) + "%"
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 12
+                                    color: Colors.base05
+                                }
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: audioLaunch.running = true
+                                cursorShape: Qt.PointingHandCursor
+                            }
+
+                            Process {
+                                id: audioLaunch
+                                command: ["pavucontrol"]
+                            }
                         }
-                        Text {
-                            text: Math.round(AudioService.volume * 100) + "%"
-                            font.family: "CaskaydiaCove Nerd Font Mono"
-                            font.pixelSize: 12
-                            color: Colors.base05
+
+                        Rectangle { width: 1; height: 12; color: Colors.base02; visible: BrightnessService.available }
+
+                        Item {
+                            visible: BrightnessService.available
+                            implicitWidth: brightnessRow.implicitWidth
+                            implicitHeight: brightnessRow.implicitHeight
+
+                            RowLayout {
+                                id: brightnessRow
+                                anchors.centerIn: parent
+                                spacing: 5
+
+                                Text {
+                                    text: "\uf185"
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 13
+                                    color: Colors.base0A
+                                }
+                                Text {
+                                    text: BrightnessService.percent + "%"
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 12
+                                    color: Colors.base05
+                                }
+                            }
                         }
-                        Text {
-                            text: AudioService.sourceMuted ? "\uf131" : "\uf130"
-                            font.family: "CaskaydiaCove Nerd Font Mono"
-                            font.pixelSize: 13
-                            color: Colors.base0B
-                        }
-                        Text {
-                            text: Math.round(AudioService.sourceVolume * 100) + "%"
-                            font.family: "CaskaydiaCove Nerd Font Mono"
-                            font.pixelSize: 12
-                            color: Colors.base05
+
+                        Rectangle { width: 1; height: 12; color: Colors.base02 }
+
+                        Item {
+                            implicitWidth: micRow.implicitWidth
+                            implicitHeight: micRow.implicitHeight
+
+                            RowLayout {
+                                id: micRow
+                                anchors.centerIn: parent
+                                spacing: 5
+
+                                Text {
+                                    text: AudioService.sourceMuted ? "\uf131" : "\uf130"
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 13
+                                    color: Colors.base0B
+                                }
+                                Text {
+                                    text: Math.round(AudioService.sourceVolume * 100) + "%"
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 12
+                                    color: Colors.base05
+                                }
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: micToggle.running = true
+                                cursorShape: Qt.PointingHandCursor
+                            }
+
+                            Process {
+                                id: micToggle
+                                command: ["wpctl", "set-mute", "@DEFAULT_AUDIO_SOURCE@", "toggle"]
+                            }
                         }
                     }
                 }
@@ -307,18 +393,6 @@ Variants {
                             color: nowPlayingPill.playing ? Colors.base0D : Colors.base05
                         }
 
-                        // Truncated track title
-                        Text {
-                            visible: (nowPlayingPill.player?.trackTitle ?? "") !== ""
-                            text: {
-                                const t = nowPlayingPill.player?.trackTitle ?? "";
-                                return t.length > 22 ? t.substring(0, 22) + "…" : t;
-                            }
-                            font.family: "CaskaydiaCove Nerd Font Mono"
-                            font.pixelSize: 12
-                            color: Colors.base05
-                        }
-
                         // Pulsing dot when playing
                         Rectangle {
                             visible: nowPlayingPill.playing
@@ -371,6 +445,48 @@ Variants {
 
                         Rectangle { width: 1; height: 12; color: Colors.base02 }
 
+                        Item {
+                            id: notificationsAnchor
+                            implicitWidth: notificationsRow.implicitWidth
+                            implicitHeight: notificationsRow.implicitHeight
+
+                            RowLayout {
+                                id: notificationsRow
+                                anchors.centerIn: parent
+                                spacing: 4
+
+                                Text {
+                                    text: "\uf0f3"
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 13
+                                    color: NotificationService.unread > 0 ? Colors.base0E : Colors.base05
+                                }
+
+                                Text {
+                                    visible: NotificationService.unread > 0
+                                    text: NotificationService.unread
+                                    font.family: "CaskaydiaCove Nerd Font Mono"
+                                    font.pixelSize: 11
+                                    color: Colors.base0E
+                                }
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: ShellState.toggleNotifications(barWindow.screen.name)
+                                cursorShape: Qt.PointingHandCursor
+                            }
+
+                            Loader {
+                                active: ShellState.notificationsOpen && ShellState.notificationsScreenName === barWindow.screen.name
+                                sourceComponent: NotificationCenterPopup {
+                                    anchorItem: notificationsAnchor
+                                }
+                            }
+                        }
+
+                        Rectangle { width: 1; height: 12; color: Colors.base02 }
+
                         // Bluetooth — nf-fa-bluetooth \uf293 / nf-fa-bluetooth-b \uf294
                         Text {
                             text: {
@@ -383,6 +499,17 @@ Variants {
                             color: Bluetooth.defaultAdapter?.enabled
                                 ? (Bluetooth.devices.values.some(d => d.connected) ? Colors.base0D : Colors.base05)
                                 : Colors.base03
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: bluetoothLaunch.running = true
+                                cursorShape: Qt.PointingHandCursor
+                            }
+
+                            Process {
+                                id: bluetoothLaunch
+                                command: ["blueman-manager"]
+                            }
                         }
 
                         Rectangle { width: 1; height: 12; color: Colors.base02 }
@@ -475,11 +602,18 @@ Variants {
 
                 // === RIGHT: Clock — same pill style as others, accent text ===
                 Rectangle {
+                    id: clockPill
                     Layout.alignment: Qt.AlignVCenter
                     Layout.preferredHeight: 28
                     Layout.preferredWidth: clockRow.implicitWidth + 20
                     radius: 1000
                     color: Colors.base01
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: ShellState.toggleCalendar(barWindow.screen.name)
+                        cursorShape: Qt.PointingHandCursor
+                    }
 
                     RowLayout {
                         id: clockRow
@@ -498,6 +632,13 @@ Variants {
                             font.pixelSize: 13
                             font.bold: true
                             color: Colors.base0C
+                        }
+                    }
+
+                    Loader {
+                        active: ShellState.calendarOpen && ShellState.calendarScreenName === barWindow.screen.name
+                        sourceComponent: CalendarPopup {
+                            anchorItem: clockPill
                         }
                     }
                 }
