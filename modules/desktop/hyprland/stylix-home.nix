@@ -8,5 +8,6 @@
     hyprland.enable = false;
     hyprlock.enable = false;
     ghostty.enable = false;
+    hyprpaper.enable = false;
   };
 }
