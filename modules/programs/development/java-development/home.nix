@@ -30,7 +30,7 @@ in
     # jetbrains.idea-community
     git-ignore
     vscode.fhs
-    # zed-editor-fhs
+    zed-editor-fhs
     # leetcode-cli
     # gitbutler
 
