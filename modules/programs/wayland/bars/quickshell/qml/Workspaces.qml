@@ -56,19 +56,42 @@ Rectangle {
                 required property int index
                 readonly property int wsId: index + 1
                 readonly property bool active: root.activeWsId === wsId
+                // A workspace only exists in Hyprland.workspaces when it has open windows.
+                // Binding directly to .values makes QML track the ObjectModel reactively.
+                readonly property bool occupied: {
+                    const ws = Hyprland.workspaces.values;
+                    for (let i = 0; i < ws.length; i++) {
+                        if (ws[i].id === wsId)
+                            return true;
+                    }
+                    return false;
+                }
 
                 width: root.itemW
                 height: root.itemH
 
                 Text {
                     anchors.centerIn: parent
+                    anchors.verticalCenterOffset: wsItem.occupied && !wsItem.active ? -2 : 0
                     text: wsItem.wsId
                     font.family: "CaskaydiaCove Nerd Font Mono"
                     font.pixelSize: 11
                     font.bold: wsItem.active
                     color: wsItem.active ? Colors.base00 : Colors.base05
                     opacity: wsItem.active ? 1.0 : 0.55
+                }
 
+                // Occupied dot — shown below the number when a window is open
+                Rectangle {
+                    visible: wsItem.occupied && !wsItem.active
+                    width: 4
+                    height: 4
+                    radius: 2
+                    color: Colors.base05
+                    opacity: 0.8
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 1
                 }
 
                 MouseArea {

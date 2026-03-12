@@ -105,14 +105,24 @@ Item {
                                     required property int index
                                     readonly property int wsId: index + 1
                                     readonly property bool active: wsGrid.activeWsId === wsId
+                                    // A workspace only exists in Hyprland.workspaces when it has open windows.
+                                    // Binding directly to .values makes QML track the ObjectModel reactively.
+                                    readonly property bool occupied: {
+                                        const ws = Hyprland.workspaces.values;
+                                        for (let i = 0; i < ws.length; i++) {
+                                            if (ws[i].id === wsId)
+                                                return true;
+                                        }
+                                        return false;
+                                    }
 
                                     width: 40
                                     height: 32
                                     radius: 8
 
                                     gradient: wsBtn.active ? activeGrad : null
-                                    color: wsBtn.active ? "transparent" : Qt.rgba(
-                                        Colors.base02.r, Colors.base02.g, Colors.base02.b, 0.8)
+                                    color: wsBtn.active ? "transparent"
+                                         : Qt.rgba(Colors.base02.r, Colors.base02.g, Colors.base02.b, 0.8)
 
                                     Gradient {
                                         id: activeGrad
@@ -123,12 +133,26 @@ Item {
 
                                     Text {
                                         anchors.centerIn: parent
+                                        anchors.verticalCenterOffset: wsBtn.occupied && !wsBtn.active ? -3 : 0
                                         text: wsBtn.wsId
                                         font.family: "CaskaydiaCove Nerd Font Mono"
                                         font.pixelSize: 13
                                         font.bold: wsBtn.active
                                         color: wsBtn.active ? Colors.base00 : Colors.base05
                                         opacity: wsBtn.active ? 1.0 : 0.6
+                                    }
+
+                                    // Occupied dot — shown below the number when a window is open
+                                    Rectangle {
+                                        visible: wsBtn.occupied && !wsBtn.active
+                                        width: 5
+                                        height: 5
+                                        radius: 3
+                                        color: Colors.base05
+                                        opacity: 0.8
+                                        anchors.horizontalCenter: parent.horizontalCenter
+                                        anchors.bottom: parent.bottom
+                                        anchors.bottomMargin: 3
                                     }
 
                                     MouseArea {
