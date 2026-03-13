@@ -1,7 +1,6 @@
 [
   ./notification/home.nix
   ./launcher/home.nix
-  ./swaybg/home.nix
   ./hyprpaper/home.nix
   ./swaylock/home.nix
   ./screenshots/home.nix

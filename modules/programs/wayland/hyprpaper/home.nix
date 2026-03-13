@@ -1,11 +1,19 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
-  home.packages = with pkgs; [ hyprpaper ];
-
-  xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ~/.local/share/wallpapers/darkcityscape.jpg
-    wallpaper = , ~/.local/share/wallpapers/darkcityscape.jpg
-  '';
+  home.packages = [ pkgs.hyprpaper ];
 
   xdg.dataFile."wallpapers".source = ../swaybg/wallpapers;
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      splash = false;
+      wallpaper = [
+        {
+          monitor = "";
+          path = "${config.home.homeDirectory}/.local/share/wallpapers/darkcityscape.jpg";
+        }
+      ];
+    };
+  };
 }
