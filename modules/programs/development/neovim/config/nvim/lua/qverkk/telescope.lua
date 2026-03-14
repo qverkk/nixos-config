@@ -7,6 +7,9 @@ local lga_actions = require("telescope-live-grep-args.actions")
 
 -- This is your opts table
 plugin.setup({
+	defaults = {
+		path_display = { "filename_first" },
+	},
 	pickers = {
 		buffers = {
 			show_all_buffers = true,
