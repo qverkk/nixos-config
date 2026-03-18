@@ -1,13 +1,11 @@
 {
   nix.settings = {
     substituters = [
-      # high priority since it's almost always used
       "https://cache.nixos.org?priority=10"
-
-      "https://hyprland.cachix.org"
-      "https://nix-community.cachix.org"
-      "https://vicinae.cachix.org"
-      "https://devenv.cachix.org"
+      "https://nix-community.cachix.org?priority=20"
+      "https://hyprland.cachix.org?priority=30"
+      "https://vicinae.cachix.org?priority=30"
+      "https://devenv.cachix.org?priority=30"
     ];
 
     trusted-public-keys = [

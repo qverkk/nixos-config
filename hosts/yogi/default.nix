@@ -17,6 +17,7 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../substituters.nix
+    ../nix-settings.nix
     inputs.agenix.nixosModules.default
     # inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -196,26 +197,6 @@ in
     staticSDL2
     SDL2.dev
   ];
-
-  nix = {
-    package = pkgs.nixVersions.stable;
-
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      auto-optimise-store = true
-    '';
-
-    settings.trusted-users = [
-      "root"
-      "qverkk"
-    ];
-  };
 
   # List services that you want to enable:
 

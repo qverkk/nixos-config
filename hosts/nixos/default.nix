@@ -13,6 +13,7 @@
     ./hardware-configuration.nix
     ./vfio.nix
     ../substituters.nix
+    ../nix-settings.nix
     inputs.agenix.nixosModules.default
     # inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-ssd
@@ -167,26 +168,6 @@
     fzf
     nss_latest
   ];
-
-  nix = {
-    package = pkgs.nixVersions.stable;
-
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      auto-optimise-store = true
-    '';
-
-    settings.trusted-users = [
-      "root"
-      "qverkk"
-    ];
-  };
 
   # List services that you want to enable:
 

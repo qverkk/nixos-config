@@ -12,6 +12,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../substituters.nix
+    ../nix-settings.nix
     inputs.agenix.nixosModules.default
     # inputs.nur.modules.nixos.default
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -133,21 +134,6 @@
     ripgrep
     fzf
   ];
-
-  nix = {
-    package = pkgs.nixVersions.stable;
-
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      auto-optimise-store = true
-    '';
-  };
 
   # List services that you want to enable:
 

@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -18,12 +17,13 @@
 
     opencode = {
       url = "github:anomalyco/opencode/v1.2.27";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ghostty = {
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     ghostty-hm = {
@@ -54,6 +54,7 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     hyprland-contrib = {
@@ -74,7 +75,6 @@
     {
       self,
       nixpkgs,
-      nixpkgs-unstable,
       home-manager,
       # nur,
       ...
@@ -122,7 +122,6 @@
 
             { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
             { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
-            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
           ];
         };
 
@@ -137,7 +136,6 @@
 
             { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
             { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
-            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
           ];
         };
 
@@ -153,7 +151,6 @@
 
             { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
             { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
-            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
           ];
         };
       };
@@ -168,7 +165,6 @@
 
             { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }
             { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
-            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
           ];
         };
 
@@ -181,7 +177,6 @@
 
             { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }
             { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
-            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
           ];
         };
 
@@ -195,7 +190,6 @@
 
             { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }
             { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
-            { nix.registry.nixpkgs-unstable.flake = inputs.nixpkgs-unstable; }
           ];
         };
       };
