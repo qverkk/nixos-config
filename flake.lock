@@ -213,15 +213,16 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "systems": "systems_2",
         "zig": "zig",
         "zon2nix": "zon2nix"
       },
       "locked": {
-        "lastModified": 1773934729,
-        "narHash": "sha256-HrX1rEHZDcFQdJCTYv7XXsrsr2cKxXRFzAHaY+QLvmw=",
+        "lastModified": 1774067149,
+        "narHash": "sha256-oGKMmkxeJfW8dxoMstW3Ab6EZyL0ef3Rwwl8yjiQ3FE=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "c2e9de224eaf09a2ce3e7cb2f6c26d6d577ed8f0",
+        "rev": "efb35235919a38bb04ac8b8ef06537f0317b7045",
         "type": "github"
       },
       "original": {
@@ -271,11 +272,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773952365,
-        "narHash": "sha256-temgIjfdoniHw2vvUGM/BgVgIUig0quH2ClRfSnNk94=",
+        "lastModified": 1774007980,
+        "narHash": "sha256-FOnZjElEI8pqqCvB6K/1JRHTE8o4rer8driivTpq2uo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9bc3ca1230d96119bdf61b9c3ec0c66a2b6eafdc",
+        "rev": "9670de2921812bc4e0452f6e3efd8c859696c183",
         "type": "github"
       },
       "original": {
@@ -328,11 +329,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1773533765,
-        "narHash": "sha256-qonGfS2lzCgCl59Zl63jF6dIRRpvW3AJooBGMaXjHiY=",
+        "lastModified": 1774018263,
+        "narHash": "sha256-HHYEwK1A22aSaxv2ibhMMkKvrDGKGlA/qObG4smrSqc=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "f8e82243fd601afb9f59ad230958bd073795cbfe",
+        "rev": "2d4b4717b2534fad5c715968c1cece04a172b365",
         "type": "github"
       },
       "original": {
@@ -633,11 +634,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1773920308,
-        "narHash": "sha256-nAcckDP7Sh3qRo1zvMf9SeiqJx4v+amvQICk0srU1fA=",
+        "lastModified": 1774007131,
+        "narHash": "sha256-TFprJpX1CcEn3DZpmS2WueCEuBry4/E+Guevi5/f5+M=",
         "owner": "vicinaehq",
         "repo": "vicinae",
-        "rev": "3562add7a983641b0361776a5bee464c614b44e3",
+        "rev": "b4460a35e3f66a36cb260c3130bf6b17ae088e31",
         "type": "github"
       },
       "original": {
@@ -724,7 +725,10 @@
           "ghostty",
           "nixpkgs"
         ],
-        "systems": "systems_2"
+        "systems": [
+          "ghostty",
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1773145353,
