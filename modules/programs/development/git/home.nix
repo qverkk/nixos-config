@@ -56,5 +56,7 @@
       ".direnv"
       "node_modules"
     ];
+
+    signing.format = "openpgp";
   };
 }

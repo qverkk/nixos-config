@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 rec {
   home.sessionVariables = {
     GTK_THEME = "Sweet-Ambar-Blue-Dark-v40";
@@ -32,6 +32,7 @@ rec {
       gtk-xft-hintstyle="hintslight"
       gtk-xft-rgba="rgb"
     '';
+    gtk4.theme = config.gtk.theme;
   };
 
   services.xsettingsd = {
