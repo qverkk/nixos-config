@@ -20,5 +20,14 @@ _self: super: {
           mkdir -p .github
           touch .github/TEAM_MEMBERS
         '';
+        buildPhase = ''
+          runHook preBuild
+
+          cd ./packages/opencode
+          bun --bun ./script/build.ts --single --skip-install --skip-embed-web-ui
+          bun --bun ./script/schema.ts schema.json
+
+          runHook postBuild
+        '';
       });
 }
