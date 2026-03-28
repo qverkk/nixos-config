@@ -32,6 +32,7 @@ if not vim.g.vscode then
 	require("qverkk.project-settings")
 	require("qverkk.trouble")
 	require("qverkk.diffview")
+	require("qverkk.octo")
 else
 	require("qverkk.vscode")
 end

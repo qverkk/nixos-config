@@ -172,6 +172,7 @@ in
       vim-fugitive
       gitsigns-nvim
       diffview-nvim
+      octo-nvim
 
       # rest client
       # rest-nvim

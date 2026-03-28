@@ -478,6 +478,55 @@ local mappings = {
 		desc = "Document Symbols",
 	},
 	{
+		"<leader>o",
+		group = "Octo (PR Review)",
+	},
+	{
+		"<leader>op",
+		"<cmd>Octo pr list<cr>",
+		desc = "List PRs",
+	},
+	{
+		"<leader>oo",
+		"<cmd>Octo pr search<cr>",
+		desc = "Search PRs",
+	},
+	{
+		"<leader>or",
+		"<cmd>Octo review start<cr>",
+		desc = "Start review",
+	},
+	{
+		"<leader>oR",
+		"<cmd>Octo review resume<cr>",
+		desc = "Resume review",
+	},
+	{
+		"<leader>oS",
+		"<cmd>Octo review submit<cr>",
+		desc = "Submit review",
+	},
+	{
+		"<leader>oc",
+		"<cmd>Octo review comments<cr>",
+		desc = "Review comments",
+	},
+	{
+		"<leader>oa",
+		"<cmd>Octo review approve<cr>",
+		desc = "Approve PR",
+	},
+	{
+		"<leader>om",
+		"<cmd>Octo pr merge<cr>",
+		desc = "Merge PR",
+	},
+	{
+		"<leader>oi",
+		"<cmd>Octo issue list<cr>",
+		desc = "List issues",
+	},
+	{
 		"<leader>q",
 		"<cmd>confirm q<CR>",
 		desc = "Quit",
