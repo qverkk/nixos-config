@@ -18,7 +18,7 @@ if not vim.g.vscode then
 	require("qverkk.aerial")
 	require("qverkk.vim-test")
 	require("qverkk.colorizer")
-	require("qverkk.projections")
+	require("qverkk.auto-session")
 	require("qverkk.grug-far")
 	require("qverkk.legendary-nvim")
 	require("qverkk.which-key-nvim")

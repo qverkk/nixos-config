@@ -155,8 +155,8 @@ in
       # Search and replace
       grug-far-nvim
 
-      # project management
-      projections-nvim
+      # project management / session
+      auto-session
 
       # noice
       noice-nvim

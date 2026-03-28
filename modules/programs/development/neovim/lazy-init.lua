@@ -87,7 +87,7 @@ require("lazy").setup({
 
 	{ "lewis6991/gitsigns.nvim", cond = not is_vscode },
 	{ "norcalli/nvim-colorizer.lua", cond = not is_vscode },
-	{ "GnikDroy/projections.nvim", cond = not is_vscode },
+	{ "rmagatti/auto-session", cond = not is_vscode },
 
 	{ "iamcco/markdown-preview.nvim", cond = not is_vscode },
 	{ "mrjones2014/legendary.nvim", cond = not is_vscode },

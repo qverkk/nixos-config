@@ -192,7 +192,7 @@ local mappings = {
 	},
 	{
 		"<leader>fP",
-		"<cmd>Telescope projections<cr>",
+		"<cmd>AutoSession search<cr>",
 		desc = "Find projects",
 	},
 	{
