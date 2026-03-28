@@ -90,7 +90,7 @@
       // Symbols outline / aerial (leader fs)
       "space f s": "outline::Toggle",
       // Find projects / sessions (leader fP)
-      "space f shift-p": "recent_projects::Open",
+      "space f shift-p": "projects::OpenRecent",
       // Find legendary commands (leader fA)
       "space f shift-a": "command_palette::Toggle",
 
