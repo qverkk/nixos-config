@@ -71,6 +71,8 @@
       "space e": "workspace::ToggleLeftDock",
       // Toggle terminal (leader T)
       "space shift-t": "terminal_panel::ToggleFocus",
+      // Undotree (leader u) — no native Zed equivalent
+      // "space u": not available
 
       // --- Find group (leader f) ---
       // Find files (leader ff)
@@ -85,12 +87,11 @@
       "space f a": "command_palette::Toggle",
       // Resume last search (leader fl)
       "space f l": "pane::DeploySearch",
-      // Find symbols outline (leader fs)
+      // Symbols outline / aerial (leader fs)
       "space f s": "outline::Toggle",
-      // Find projects (leader fP)
-      "space f shift-p": "projects::OpenRecent",
-      // Workspace symbols (leader fS) -- not in nvim, but useful
-      // Find legendary commands / all commands (leader fA)
+      // Find projects / sessions (leader fP)
+      "space f shift-p": "recent_projects::Open",
+      // Find legendary commands (leader fA)
       "space f shift-a": "command_palette::Toggle",
 
       // --- LSP group (leader l) ---
@@ -115,18 +116,18 @@
       // Workspace symbols (leader lS)
       "space l shift-s": "project_symbols::Toggle",
       // Buffer diagnostics (leader lD)
-      "space l shift-d": "diagnostics::Deploy",
-      // All diagnostics (leader lW)
+      "space l shift-d": "diagnostics::DeployCurrentFile",
+      // All workspace diagnostics (leader lW)
       "space l shift-w": "diagnostics::Deploy",
       // Signature/hover info (leader lq)
       "space l q": "editor::Hover",
       // LSP info (leader lI)
       "space l shift-i": "editor::Hover",
-      // Quickfix / Telescope quickfix (leader le)
+      // Quickfix list (leader le)
       "space l e": "diagnostics::Deploy",
 
       // --- Git group (leader g) ---
-      // Git diff (leader gd)
+      // Git diff current file vs HEAD (leader gd)
       "space g d": "editor::ToggleSelectedDiffHunks",
       // Git blame line (leader gl)
       "space g l": "git::Blame",
@@ -140,14 +141,36 @@
       "space g r": "git::Restore",
       // Reset buffer (leader gR)
       "space g shift-r": "git::RestoreFile",
-      // Git status / open changed file (leader go)
+      // Git status / open changed files (leader go)
       "space g o": "git_panel::ToggleFocus",
-      // Git commits (leader gc)
-      "space g c": "git_panel::ToggleFocus",
+      // Git commit log (leader gc) → git graph
+      "space g c": "git_graph::Open",
+      // Git file commit log (leader gC) → file history
+      "space g shift-c": "git::FileHistory",
       // Git branches (leader gb)
       "space g b": "git::Branch",
-      // Lazygit (leader gg) - open git panel
+      // Lazygit / git panel (leader gg)
       "space g g": "git_panel::ToggleFocus",
+      // Diff view open (leader gD)
+      "space g shift-d": "git::BranchDiff",
+      // Diff file history (leader gH)
+      "space g shift-h": "git::FileHistory",
+      // GitHub Issues (leader gi) — opens browser (no native Zed issue browser)
+      "space g i": "git::CreatePullRequest",
+      // GitHub PRs open (leader gP) — create/view PR in browser
+      "space g shift-p": "git::CreatePullRequest",
+
+      // --- Trouble / diagnostics group (leader x) ---
+      // Workspace diagnostics (leader xx)
+      "space x x": "diagnostics::Deploy",
+      // Buffer diagnostics (leader xb)
+      "space x b": "diagnostics::DeployCurrentFile",
+      // Quickfix list (leader xq)
+      "space x q": "diagnostics::Deploy",
+      // Location list (leader xl)
+      "space x l": "diagnostics::Deploy",
+      // Document symbols (leader xs)
+      "space x s": "outline::Toggle",
 
       // --- Find and replace group (leader r) ---
       // Open search and replace (leader ro)
@@ -164,7 +187,7 @@
       "space t f": "task::Rerun",
       // Run last test (leader tl)
       "space t l": "task::Rerun",
-      // Test summary / toggle test panel (leader ts)
+      // Test summary (leader ts)
       "space t s": "task::Spawn",
 
       // --- Debug group (leader d) ---
@@ -197,11 +220,6 @@
       // --- Refactoring (leader R) ---
       "space shift-r": "editor::ToggleCodeActions",
 
-      // --- Harpoon (from which-key harpoon group) ---
-      // There is no native harpoon in Zed, but we can map to numbered panes
-      // Harpoon add mark (leader ha) - not directly available
-      // Harpoon browse marks (leader he) - not directly available
-
       // --- Sneak / Flash (from flash-nvim.lua: s in normal) ---
       "s": "vim::PushSneak",
       "shift-s": "vim::PushSneakBackward"
@@ -221,7 +239,7 @@
       "space /": "editor::ToggleComments",
       // Code action (leader la in visual)
       "space l a": "editor::ToggleCodeActions",
-      // Find and replace cursor word (leader ro in visual)
+      // Find and replace in visual selection (leader ro)
       "space r o": ["pane::DeploySearch", { "replace_enabled": true }],
       // Surround with shift-s in visual mode
       "shift-s": "vim::PushAddSurrounds"
