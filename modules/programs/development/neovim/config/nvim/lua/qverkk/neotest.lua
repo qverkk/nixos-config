@@ -6,6 +6,11 @@ end
 neotest.setup({
 	-- diagnostic = { enabled = false },
 	-- quickfix = { open = false },
+	floating = {
+		border = "rounded",
+		max_height = 0.8,
+		max_width = 0.9,
+	},
 	adapters = {
 		require("neotest-java")({
 			ignore_wrapper = false, -- whether to ignore maven/gradle wrapper
@@ -26,6 +31,8 @@ neotest.setup({
 	},
 })
 
-require("neodev").setup({
-	library = { plugins = { "neotest" }, types = true },
+require("lazydev").setup({
+	library = {
+		{ path = "neotest", types = true },
+	},
 })

@@ -147,14 +147,13 @@ in
 
       # windsurf - codeium
       # windsurf-nvim
-      supermaven-nvim
 
       # pkgs.typescript-tools-nvim
       typescript-tools-nvim
       nvim-ts-autotag
 
       # Search and replace
-      nvim-spectre
+      grug-far-nvim
 
       # project management
       projections-nvim
@@ -181,6 +180,7 @@ in
       cmp-buffer
       cmp-calc
       cmp-nvim-lsp
+      cmp-nvim-lsp-signature-help
       cmp_luasnip
       cmp-path
       cmp-cmdline
@@ -190,21 +190,14 @@ in
       refactoring-nvim
 
       # utils
-      comment-nvim
       nvim-autopairs
       lualine-nvim
       nvim-colorizer-lua
-      indent-blankline-nvim
+      snacks-nvim
       markdown-preview-nvim
       undotree
       nvim-tree-lua
       vim-repeat
-
-      # nvim speedup
-      impatient-nvim # needs setting up?
-
-      # terminal
-      toggleterm-nvim
 
       # dap
       nvim-dap
@@ -221,44 +214,32 @@ in
       # neotest
       nvim-nio
       neotest
-      FixCursorHold-nvim
       neotest-java
       # pkgs.neotest-jdtls
       # pkgs.neotest-gradle
       # pkgs.neotest-vim-test
       neotest-jest
       neotest-vitest
-      neodev-nvim
+      lazydev-nvim
 
       #snippets
-      vim-vsnip
-      cmp-vsnip
       luasnip
-      vim-snippets
       friendly-snippets
 
       # themes
-      gruvbox
       nightfox-nvim
       nvim-web-devicons
 
       # lsp
       nvim-lspconfig
-      # symbols-outline-nvim
       aerial-nvim
       trouble-nvim
-      vim-surround
-      fidget-nvim
+      nvim-surround
       none-ls-nvim
 
       # telescope
       telescope-fzf-native-nvim
-      telescope-fzf-writer-nvim
       telescope-nvim
-      telescope-live-grep-args-nvim
-
-      # dressing
-      dressing-nvim
 
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: [
         plugins.tree-sitter-javascript

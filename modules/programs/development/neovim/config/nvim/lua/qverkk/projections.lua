@@ -27,7 +27,7 @@ vim.opt.sessionoptions:append("localoptions")
 local Session = require("projections.session")
 vim.api.nvim_create_autocmd({ "VimLeavePre" }, {
 	callback = function()
-		Session.store(vim.loop.cwd())
+		Session.store(vim.uv.cwd())
 	end,
 })
 
@@ -36,7 +36,7 @@ local switcher = require("projections.switcher")
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	callback = function()
 		if vim.fn.argc() == 0 then
-			switcher.switch(vim.loop.cwd())
+			switcher.switch(vim.uv.cwd())
 		end
 	end,
 })

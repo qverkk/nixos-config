@@ -8,87 +8,54 @@ local harpoon = require("harpoon")
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
-local harpoonopts = {
-	mode = "n", -- NORMAL mode
-	prefix = "<A>",
-	-- buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	-- silent = true, -- use `silent` when creating keymaps
-	-- noremap = true, -- use `noremap` when creating keymaps
-	-- nowait = true, -- use `nowait` when creating keymaps
-}
-
-local harpoonmappings = {
-	["<A-h>"] = {
-		function()
-			harpoon:list():select(1)
-		end,
-		"Harpoon file 1",
-	},
-	["<A-j>"] = {
-		function()
-			harpoon:list():select(2)
-		end,
-		"Harpoon file 2",
-	},
-	["<A-k>"] = {
-		function()
-			harpoon:list():select(3)
-		end,
-		"Harpoon file 3",
-	},
-	["<A-l>"] = {
-		function()
-			harpoon:list():select(4)
-		end,
-		"Harpoon file 4",
-	},
-}
-
 -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
 -- see https://neovim.io/doc/user/map.html#:map-cmd
 local vmappings = {
-	mode = "v", -- VISUAL mode
-	prefix = "<leader>",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
 	{
 		"<leader>/",
-		"<Plug>(comment_toggle_linewise_visual)",
-		desc = "Comment toggle linewise (visual)",
+		"gc",
+		desc = "Comment toggle (visual)",
+		mode = "v",
+		remap = true,
 	},
 	{
 		"<leader>l",
 		group = "LSP",
+		mode = "v",
 	},
 	{
 		"<leader>la",
 		"<cmd>lua vim.lsp.buf.code_action()<cr>",
 		desc = "Code Action",
+		mode = "v",
 	},
 	{
 		"<leader>r",
 		group = "Find and replace",
+		mode = "v",
 	},
 	{
 		"<leader>ro",
-		"<esc>:lua require('spectre').open_visual()<cr>",
+		function()
+			require("grug-far").with_visual_selection()
+		end,
 		desc = "Find under cursor",
+		mode = "v",
 	},
 }
 
 local mappings = {
 	mode = "n",
 	prefix = "<leader>",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = true, -- use `nowait` when creating keymaps
+	buffer = nil,
+	silent = true,
+	noremap = true,
+	nowait = true,
 	{
 		"<leader>/",
-		"<Plug>(comment_toggle_linewise_current)",
+		"gcc",
 		desc = "Comment toggle current line",
+		remap = true,
 	},
 	{
 		"<leader>R",
@@ -97,7 +64,9 @@ local mappings = {
 	},
 	{
 		"<leader>T",
-		"<cmd>ToggleTerm<cr>",
+		function()
+			Snacks.terminal()
+		end,
 		desc = "Toggle terminal",
 	},
 	{
@@ -150,7 +119,9 @@ local mappings = {
 	},
 	{
 		"<leader>df",
-		"<cmd>lua _debug_test_class()<CR>",
+		function()
+			require("jdtls").test_class()
+		end,
 		desc = "Debug test class",
 	},
 	{
@@ -165,7 +136,9 @@ local mappings = {
 	},
 	{
 		"<leader>dn",
-		"<cmd>lua _debug_nearest_method()<CR>",
+		function()
+			require("jdtls").test_nearest_method()
+		end,
 		desc = "Debug nearest method",
 	},
 	{
@@ -224,38 +197,50 @@ local mappings = {
 	},
 	{
 		"<leader>fa",
-		"<cmd>Telescope commands<cr>",
+		function()
+			Snacks.picker.commands()
+		end,
 		desc = "Find commands",
 	},
 	{
 		"<leader>fb",
-		"<cmd>Telescope buffers<cr>",
+		function()
+			Snacks.picker.buffers()
+		end,
 		desc = "Find buffers",
 	},
 	{
 		"<leader>ff",
-		"<cmd>Telescope find_files<cr>",
+		function()
+			Snacks.picker.files()
+		end,
 		desc = "Find files",
 	},
 	{
 		"<leader>fg",
-		"<cmd>Telescope live_grep<cr>",
+		function()
+			Snacks.picker.grep()
+		end,
 		desc = "Find text",
 	},
 	{
 		"<leader>fl",
-		"<cmd>Telescope resume<cr>",
+		function()
+			Snacks.picker.resume()
+		end,
 		desc = "Resume last search",
 	},
 	{
 		"<leader>fp",
-		"<cmd>Telescope git_files<cr>",
+		function()
+			Snacks.picker.git_files()
+		end,
 		desc = "Find git files",
 	},
 	{
 		"<leader>fs",
-		"<cmd>SymbolsOutline<cr>",
-		desc = "Find symbols outline",
+		"<cmd>AerialToggle!<cr>",
+		desc = "Symbols outline",
 	},
 	{
 		"<leader>g",
@@ -263,8 +248,20 @@ local mappings = {
 	},
 	{
 		"<leader>gC",
-		"<cmd>Telescope git_bcommits<cr>",
+		function()
+			Snacks.picker.git_log_file()
+		end,
 		desc = "Checkout commit(for current file)",
+	},
+	{
+		"<leader>gD",
+		"<cmd>DiffviewOpen<cr>",
+		desc = "Diff view open",
+	},
+	{
+		"<leader>gH",
+		"<cmd>DiffviewFileHistory<cr>",
+		desc = "Diff file history",
 	},
 	{
 		"<leader>gR",
@@ -273,12 +270,16 @@ local mappings = {
 	},
 	{
 		"<leader>gb",
-		"<cmd>Telescope git_branches<cr>",
+		function()
+			Snacks.picker.git_branches()
+		end,
 		desc = "Git checkout branch",
 	},
 	{
 		"<leader>gc",
-		"<cmd>Telescope git_commits<cr>",
+		function()
+			Snacks.picker.git_log()
+		end,
 		desc = "Git checkout commit",
 	},
 	{
@@ -288,7 +289,9 @@ local mappings = {
 	},
 	{
 		"<leader>gg",
-		"<cmd>lua _lazygit_toggle()<CR>",
+		function()
+			Snacks.lazygit()
+		end,
 		desc = "Lazygit",
 	},
 	{
@@ -308,7 +311,9 @@ local mappings = {
 	},
 	{
 		"<leader>go",
-		"<cmd>Telescope git_status<cr>",
+		function()
+			Snacks.picker.git_status()
+		end,
 		desc = "Git open changed file",
 	},
 	{
@@ -345,7 +350,9 @@ local mappings = {
 	},
 	{
 		"<leader>lD",
-		"<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>",
+		function()
+			Snacks.picker.diagnostics_buffer()
+		end,
 		desc = "Buffer Diagnostics",
 	},
 	{
@@ -365,12 +372,16 @@ local mappings = {
 	},
 	{
 		"<leader>lS",
-		"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+		function()
+			Snacks.picker.lsp_workspace_symbols()
+		end,
 		desc = "Workspace Symbols",
 	},
 	{
 		"<leader>lW",
-		"<cmd>Telescope diagnostics<cr>",
+		function()
+			Snacks.picker.diagnostics()
+		end,
 		desc = "Diagnostics",
 	},
 	{
@@ -380,13 +391,17 @@ local mappings = {
 	},
 	{
 		"<leader>ld",
-		"<cmd>:Telescope lsp_definitions<cr>",
+		function()
+			Snacks.picker.lsp_definitions()
+		end,
 		desc = "Definitions",
 	},
 	{
 		"<leader>le",
-		"<cmd>Telescope quickfix<cr>",
-		desc = "Telescope Quickfix",
+		function()
+			Snacks.picker.qflist()
+		end,
+		desc = "Quickfix list",
 	},
 	{
 		"<leader>lf",
@@ -395,7 +410,9 @@ local mappings = {
 	},
 	{
 		"<leader>li",
-		"<cmd>:Telescope lsp_implementations<cr>",
+		function()
+			Snacks.picker.lsp_implementations()
+		end,
 		desc = "Implementations",
 	},
 	{
@@ -420,12 +437,16 @@ local mappings = {
 	},
 	{
 		"<leader>lr",
-		"<cmd>:Telescope lsp_references<cr>",
+		function()
+			Snacks.picker.lsp_references()
+		end,
 		desc = "References",
 	},
 	{
 		"<leader>ls",
-		"<cmd>Telescope lsp_document_symbols<cr>",
+		function()
+			Snacks.picker.lsp_symbols()
+		end,
 		desc = "Document Symbols",
 	},
 	{
@@ -439,23 +460,24 @@ local mappings = {
 	},
 	{
 		"<leader>rf",
-		"<cmd>lua require('spectre').open_file_search()<cr>",
-		desc = "Find and replace - Rearch in file",
-	},
-	{
-		"<leader>rl",
-		"<cmd>lua require('spectre').resume_last_search()<cr>",
-		desc = "Find and replace - Resume last search",
+		function()
+			require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
+		end,
+		desc = "Find and replace in current file",
 	},
 	{
 		"<leader>ro",
-		"<cmd>lua require('spectre').open()<cr>",
+		function()
+			require("grug-far").open()
+		end,
 		desc = "Find and replace - Open",
 	},
 	{
 		"<leader>rw",
-		"<cmd>lua require('spectre').open_visual({select_word=true})<cr>",
-		desc = "Find and replace - Seach current word",
+		function()
+			require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } })
+		end,
+		desc = "Find and replace - Search current word",
 	},
 	{
 		"<leader>s",
@@ -531,103 +553,70 @@ local mappings = {
 		"<cmd>w!<CR>",
 		desc = "Save",
 	},
+	{
+		"<leader>x",
+		group = "Trouble",
+	},
+	{
+		"<leader>xx",
+		"<cmd>Trouble diagnostics toggle<cr>",
+		desc = "Diagnostics (workspace)",
+	},
+	{
+		"<leader>xb",
+		"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+		desc = "Buffer Diagnostics",
+	},
+	{
+		"<leader>xq",
+		"<cmd>Trouble qflist toggle<cr>",
+		desc = "Quickfix List",
+	},
+	{
+		"<leader>xl",
+		"<cmd>Trouble loclist toggle<cr>",
+		desc = "Location List",
+	},
+	{
+		"<leader>xs",
+		"<cmd>Trouble symbols toggle<cr>",
+		desc = "Document Symbols",
+	},
 }
 
 which_key.setup({
-	active = true,
-	on_config_done = nil,
-	setup = {
-		plugins = {
-			marks = false, -- shows a list of your marks on ' and `
-			registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-			spelling = {
-				enabled = true,
-				suggestions = 20,
-			}, -- use which-key for spelling hints
-			-- the presets plugin, adds help for a bunch of default keybindings in Neovim
-			-- No actual key bindings are created
-			presets = {
-				operators = false, -- adds help for operators like d, y, ...
-				motions = false, -- adds help for motions
-				text_objects = false, -- help for text objects triggered after entering an operator
-				windows = false, -- default bindings on <c-w>
-				nav = false, -- misc bindings to work with windows
-				z = false, -- bindings for folds, spelling and others prefixed with z
-				g = false, -- bindings for prefixed with g
-			},
+	plugins = {
+		marks = false,
+		registers = false,
+		spelling = {
+			enabled = true,
+			suggestions = 20,
 		},
-		-- add operators that will trigger motion and text object completion
-		-- to enable all native operators, set the preset / operators plugin above
-		operators = { gc = "Comments" },
-		key_labels = {
-			-- override the label used to display some keys. It doesn't effect WK in any other way.
-			-- For example:
-			-- ["<space>"] = "SPC",
-			-- ["<cr>"] = "RET",
-			-- ["<tab>"] = "TAB",
+		presets = {
+			operators = false,
+			motions = false,
+			text_objects = false,
+			windows = false,
+			nav = false,
+			z = false,
+			g = false,
 		},
-		window = {
-			border = "single", -- none, single, double, shadow
-			position = "bottom", -- bottom, top
-			margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-			padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-			winblend = 0,
-		},
-		layout = {
-			height = { min = 4, max = 25 }, -- min and max height of the columns
-			width = { min = 20, max = 50 }, -- min and max width of the columns
-			spacing = 3, -- spacing between columns
-			align = "left", -- align columns left, center or right
-		},
-		ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
-		hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-		show_help = true, -- show help message on the command line when the popup is visible
-		show_keys = true, -- show the currently pressed key and its label as a message in the command line
-		triggers = "auto", -- automatically setup triggers
-		-- triggers = {"<leader>"} -- or specify a list manually
-		triggers_blacklist = {
-			-- list of mode / prefixes that should never be hooked by WhichKey
-			-- this is mostly relevant for key maps that start with a native binding
-			-- most people should not need to change this
-			i = { "j", "k" },
-			v = { "j", "k" },
-		},
-		-- disable the WhichKey popup for certain buf types and file types.
-		-- Disabled by default for Telescope
-		disable = {
-			buftypes = {},
-			filetypes = { "TelescopePrompt" },
-		},
+	},
+	win = {
+		border = "single",
+		padding = { 2, 2 },
+	},
+	layout = {
+		spacing = 3,
+		align = "left",
+	},
+	show_help = true,
+	show_keys = true,
+	disable = {
+		buftypes = {},
+		filetypes = { "TelescopePrompt" },
 	},
 })
 
-function _G.http_mappings()
-	local buffKeymap = {
-		e = { "<Plug>RestNvim", "Execute" },
-		p = { "<Plug>RestNvimPreview", "Preview" },
-		l = { "<Plug>RestNvimLast", "Re-run last" },
-	}
-
-	which_key.register(buffKeymap, { prefix = "<localleader>", buffer = 0 })
-end
-
-function _G.typescript_mappings()
-	local buffKeymap = {
-		i = {
-			name = "Typescript tools",
-			r = { "<cmd>TSToolsRenameFile<CR>", "Rename file" },
-			a = { "<cmd>TSToolsAddMissingImports sync<CR>", "Add missing imports" },
-			o = { "<cmd>TSToolsOrganizeImports sync<CR>", "Organize imports" },
-			u = { "<cmd>TSToolsRemoveUnusedImports sync<CR>", "Remove unused" },
-			f = { "<cmd>TSToolsFixAll sync<CR>", "Fix all problems" },
-		},
-	}
-
-	which_key.register(buffKeymap, opts)
-end
-
 which_key.add(mappings)
-which_key.register(vmappings, vopts)
-
--- TODO: Doesn't work, needs fixing, these don't work in legendary aswell
--- which_key.register(harpoonmappings, harpoonopts)
+which_key.add(vmappings)

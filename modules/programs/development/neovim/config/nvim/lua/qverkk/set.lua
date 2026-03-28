@@ -1,8 +1,14 @@
 local is_vscode = vim.g.vscode ~= nil
 
-vim.cmd("set clipboard=unnamedplus")
+vim.opt.clipboard = "unnamedplus"
 
 if not is_vscode then
+	vim.api.nvim_create_autocmd("ColorScheme", {
+		pattern = "*",
+		callback = function()
+			vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+		end,
+	})
 	vim.cmd("colorscheme carbonfox")
 end
 

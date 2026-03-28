@@ -1,44 +1,7 @@
-local setup_lspconfig, lspconfig = pcall(require, "lspconfig")
-if not setup_lspconfig then
-	return
-end
-
-
-vim.g.coq_settings = {
-	auto_start = "shut-up",
-	xdg = true,
-
-	keymap = {
-		jump_to_mark = "<tab>",
-	},
-
-	clients = {
-		tabnine = {
-			enabled = false,
-		},
-	},
-	display = {
-		preview = {
-			border = "shadow",
-		},
-	},
-	limits = {
-		completion_auto_timeout = 0.5,
-	},
-	match = {
-		max_results = 100,
-	},
-}
-
--- require("coq_3p")({
--- 	{ src = "codeium", short_name = "COD" },
--- })
-
+-- Codeium AI completion (optional)
 local presentCodeium, codeium = pcall(require, "codeium")
-
 if presentCodeium then
 	local codeium_lsp_dir = os.getenv("CODEIUM_LSP_DIR")
-
 	codeium.setup({
 		tools = {
 			language_server = codeium_lsp_dir .. "/bin/codeium-lsp",
@@ -46,47 +9,28 @@ if presentCodeium then
 	})
 end
 
--- local coq = require("coq")
--- local capabilities = coq.lsp_ensure_capabilities()
+-- Set capabilities globally for ALL servers before enabling them
+vim.lsp.config("*", {
+	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+})
 
-lspconfig.lua_ls.setup({})
-lspconfig.kotlin_language_server.setup({})
-lspconfig.rust_analyzer.setup({})
-lspconfig.bashls.setup({})
-lspconfig.svelte.setup({})
-lspconfig.nixd.setup({})
-lspconfig.dockerls.setup({})
-lspconfig.docker_compose_language_service.setup({})
+-- Enable servers — nvim-lspconfig provides their default configs via lsp/
+vim.lsp.enable({
+	"lua_ls",
+	"kotlin_language_server",
+	"rust_analyzer",
+	"bashls",
+	"svelte",
+	"nixd",
+	"dockerls",
+	"docker_compose_language_service",
+})
 
-local root_pattern = lspconfig.util.root_pattern
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
+-- JDTLS (Java) — handled by nvim-jdtls, not the native LSP API
 local function jdt_on_attach(client, bufnr)
 	local jdtls = require("jdtls")
-
-	function _extract_variable()
-		vim.keymap.set("n", "<c-a-v>", "<cmd>lua require('jdtls').extract_variable()<cr>", {})
-		-- jdtls.extract_variable()
-	end
-
-	function _extract_method()
-		vim.keymap.set("n", "<c-a-m>", "<cmd>lua require('jdtls').extract_method()<cr>", {})
-		-- jdtls.extract_method()
-	end
-
-	function _debug_nearest_method()
-		-- vim.keymap.set("n", "<leader>dn", "<cmd>lua require'jdtls'.test_nearest_method()<CR>", {})
-		jdtls.test_nearest_method()
-	end
-
-	function _debug_test_class()
-		-- vim.keymap.set("n", "<leader>df", "<cmd>lua require'jdtls'.test_class()<CR>", {})
-		jdtls.test_class()
-	end
-
-	_extract_method()
-	_extract_variable()
+	vim.keymap.set("n", "<c-a-v>", "<cmd>lua require('jdtls').extract_variable()<cr>", { buffer = bufnr })
+	vim.keymap.set("n", "<c-a-m>", "<cmd>lua require('jdtls').extract_method()<cr>", { buffer = bufnr })
 	jdtls.setup_dap({ hotcodereplace = "auto" })
 	require("jdtls.setup").add_commands()
 	require("jdtls.dap").setup_dap_main_class_configs()
@@ -94,7 +38,7 @@ end
 
 local home = os.getenv("HOME")
 
-function start_jdtls()
+local function start_jdtls()
 	local settings = {
 		["java.settings.url"] = home .. "/.config/nvim/formatters/settings.pref",
 		["java.format.settings.profile"] = "Helix",
@@ -120,13 +64,14 @@ function start_jdtls()
 			},
 		},
 	}
+
+	local lspconfig_util = require("lspconfig.util")
 	local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
-	local root_dir = root_pattern(".git", "gradlew", "mvnw")(bufname)
+	local root_dir = lspconfig_util.root_pattern(".git", "gradlew", "mvnw")(bufname)
 	local workspace_dir = "/tmp/jdtls_workspaces/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 	local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 	extendedClientCapabilities["progressReportProvider"] = false
-
 	extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 	local java_debug_jar = os.getenv("JAVA_DEBUG_DIR")
@@ -134,14 +79,13 @@ function start_jdtls()
 	local bundles = {
 		vim.fn.glob(java_debug_jar, 1),
 	}
-
 	vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_jar), "\n"))
 
 	require("jdtls").start_or_attach({
 		cmd = { "jdt-ls", "-data", workspace_dir, "-Xmx8g" },
 		on_attach = jdt_on_attach,
 		root_dir = root_dir,
-		capabilities = capabilities,
+		capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		settings = settings,
 		init_options = {
 			bundles = bundles,
@@ -153,12 +97,8 @@ function start_jdtls()
 	})
 end
 
-vim.api.nvim_exec(
-	[[
-		augroup LspCustom
-		  autocmd!
-		  autocmd FileType java lua start_jdtls()
-		augroup END
-	]],
-	true
-)
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "java",
+	callback = start_jdtls,
+	group = vim.api.nvim_create_augroup("LspCustom", { clear = true }),
+})

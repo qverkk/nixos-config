@@ -1,4 +1,4 @@
-_G.bind = vim.api.nvim_set_keymap
+local bind = vim.api.nvim_set_keymap
 
 local opt = { noremap = false, silent = true }
 
@@ -27,14 +27,13 @@ bind("n", "<a-q>", "<cmd>lua vim.diagnostic.open_float({focusable = false, show_
 -- code actions
 bind("n", "<a-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", {})
 bind("v", "<a-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", {})
--- bind("n", "<a-e>", "<cmd>lua vim.lsp.buf.rename()<cr>", {}) -- shift f6?
 bind("i", "<a-q>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", {})
 
 -- goto jumps
-bind("n", "<a-i>", "<cmd>:Telescope lsp_implementations<cr>", opt)
-bind("n", "<a-d>", "<cmd>:Telescope lsp_definitions<cr>", opt)
-bind("n", "<a-r>", "<cmd>:Telescope lsp_references<cr>", opt)
-bind("n", "<a-c>", "<cmd>:Telescope lsp_dynamic_workspace_symbols<cr>", opt)
+bind("n", "<a-i>", "<cmd>lua Snacks.picker.lsp_implementations()<cr>", opt)
+bind("n", "<a-d>", "<cmd>lua Snacks.picker.lsp_definitions()<cr>", opt)
+bind("n", "<a-r>", "<cmd>lua Snacks.picker.lsp_references()<cr>", opt)
+bind("n", "<a-c>", "<cmd>lua Snacks.picker.lsp_workspace_symbols()<cr>", opt)
 
 -- diagnostics
 bind("n", "<a-[>", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opt)
