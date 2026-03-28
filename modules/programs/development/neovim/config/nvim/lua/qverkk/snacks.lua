@@ -73,6 +73,9 @@ snacks.setup({
 		},
 	},
 
+	-- GitHub CLI integration (issues, PRs, diffs)
+	gh = { enabled = true },
+
 	-- Auto-highlight all LSP references of symbol under cursor
 	words = { enabled = true },
 

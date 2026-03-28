@@ -254,6 +254,34 @@ local mappings = {
 		desc = "Checkout commit(for current file)",
 	},
 	{
+		"<leader>gi",
+		function()
+			Snacks.picker.gh_issue()
+		end,
+		desc = "GitHub Issues (open)",
+	},
+	{
+		"<leader>gI",
+		function()
+			Snacks.picker.gh_issue({ state = "all" })
+		end,
+		desc = "GitHub Issues (all)",
+	},
+	{
+		"<leader>gP",
+		function()
+			Snacks.picker.gh_pr()
+		end,
+		desc = "GitHub Pull Requests (open)",
+	},
+	{
+		"<leader>gA",
+		function()
+			Snacks.picker.gh_pr({ state = "all" })
+		end,
+		desc = "GitHub Pull Requests (all)",
+	},
+	{
 		"<leader>gD",
 		"<cmd>DiffviewOpen<cr>",
 		desc = "Diff view open",
