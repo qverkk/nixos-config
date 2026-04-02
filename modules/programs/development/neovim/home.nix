@@ -96,11 +96,11 @@ in
       tree-sitter
 
       # typescript
-      nodePackages.typescript
-      # nodePackages.typescript-language-server
+      typescript
+      # typescript-language-server
 
       # prettier formatting
-      nodePackages.prettier
+      prettier
 
       # docker
       dockerfile-language-server
@@ -125,7 +125,7 @@ in
       vscode-extensions.vscjava.vscode-java-debug
 
       # bash
-      nodePackages.bash-language-server
+      bash-language-server
 
       # rust
       rust-analyzer
