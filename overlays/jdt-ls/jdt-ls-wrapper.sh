@@ -83,7 +83,7 @@
 
 # Java options
 log_level="-Dlog.level=INFO"
-xms="-Xms1g"
+xms="-Xms256m"
 xmx="-Xmx2G"
 
 # jdt.ls options
@@ -136,9 +136,8 @@ $java_bin \
 	-Dosgi.bundles.defaultStartLevel=4 \
 	-Declipse.application=org.eclipse.jdt.ls.core.id1 \
 	-Declipse.product=org.eclipse.jdt.ls.core.product \
-	-XX:+UseParallelGC \
-	-XX:GCTimeRatio=4 \
-	-XX:AdaptiveSizePolicyWeight=90 \
+	-XX:+UseG1GC \
+	-XX:+UseStringDeduplication \
 	-Dsun.zip.disableMemoryMapping=true \
     -configuration "$configuration" \
     -data "$data" ${extra_args[@]}

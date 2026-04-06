@@ -19,14 +19,15 @@ _self: super: {
       # base = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
       #
       # WORKAROUND (comment out when upstream is fixed):
-      src = inputs.opencode.sourceInfo;
-      rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.dirtyShortRev or "dirty";
-      node_modules = pkgs.callPackage "${src}/nix/node_modules.nix" {
-        inherit rev;
-        hash = "sha256-C7y5FMI1pGEgMw/vcPoBhK9tw5uGg1bk0gPXPUUVhgU=";
-      };
-      base = pkgs.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
+      # src = inputs.opencode.sourceInfo;
+      # rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.dirtyShortRev or "dirty";
+      # node_modules = pkgs.callPackage "${src}/nix/node_modules.nix" {
+      #   inherit rev;
+      #   hash = "sha256-C7y5FMI1pGEgMw/vcPoBhK9tw5uGg1bk0gPXPUUVhgU=";
+      # };
+      # base = pkgs.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
       # END WORKAROUND
+      base = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in
     base.overrideAttrs (oldAttrs: {
       postPatch = (oldAttrs.postPatch or "") + ''
