@@ -270,11 +270,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775556024,
-        "narHash": "sha256-j1u/859OVS54rGlsvFqJdwKPEnFYCI+4pyfTiSfv1Xc=",
+        "lastModified": 1775661044,
+        "narHash": "sha256-HlvLj+wE5ELaU+u2cY2nBFUJHdrob1V7qydk9lBx7oE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "4bdfeff1d9b7473e6e58f73f5809576e8a69e406",
+        "rev": "4ac0a4fd1537325d769377d574dccd10b97c28a2",
         "type": "github"
       },
       "original": {
@@ -404,16 +404,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1775461158,
-        "narHash": "sha256-FiQzBj3C0sAnKU+WMktliqt0zM3YQDrgQbner1LOTi8=",
+        "lastModified": 1775608351,
+        "narHash": "sha256-u3OeU+3Y/O6KEeDiOl+pswBZ7++kMqwoK+ams03qWE4=",
         "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "517e6c9aa4c61dbc125e7654fc596f1d529f20d9",
+        "rev": "98325dcdc6a566de6b7ab42cc87af544bed3658d",
         "type": "github"
       },
       "original": {
         "owner": "anomalyco",
-        "ref": "v1.3.17",
+        "ref": "v1.4.0",
         "repo": "opencode",
         "type": "github"
       }
@@ -614,11 +614,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1775501472,
-        "narHash": "sha256-Dk9vlzgAYty1AIgGzQPzLIvVD74J2R2qR1vVZJZVWiU=",
+        "lastModified": 1775585296,
+        "narHash": "sha256-2uD3oLIeY5G1mLT5ZGMZdF2jdkLbEh75rMBBziYfLJA=",
         "owner": "vicinaehq",
         "repo": "vicinae",
-        "rev": "83be620db38a8b5146e80b3724399d65a626bacb",
+        "rev": "c0450c0bd63265b66584dc9b7313dd9e97cca556",
         "type": "github"
       },
       "original": {
@@ -636,11 +636,11 @@
         "vicinae": "vicinae_2"
       },
       "locked": {
-        "lastModified": 1775209041,
-        "narHash": "sha256-8juuSr/mOGMdxr+OuWf954EtvEGRk9TDXJYpqx1ycW8=",
+        "lastModified": 1775656381,
+        "narHash": "sha256-sdnBiacE/tf+96137boINxt2HUjdzOit1w2oILibc+c=",
         "owner": "vicinaehq",
         "repo": "extensions",
-        "rev": "d732ba957b6a540e0eb2479b81b19e9d6368c8c7",
+        "rev": "315ec2082b26826c4103adaa853ad4fe5f85db9a",
         "type": "github"
       },
       "original": {
@@ -682,11 +682,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775453133,
-        "narHash": "sha256-VIlMG985ONqVqF+OnPuS5Shbz5k6tqbOWnDL7EH+IT4=",
+        "lastModified": 1775649431,
+        "narHash": "sha256-GhXOFE81wmiiyK7uS16z5uQuTz6zCbPYY878vfNWhJQ=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "8d0508ffceba8ad785ae442591dd115080a55142",
+        "rev": "80e0b30183ad7608a1ecb80656cc42e3b6c8b06f",
         "type": "github"
       },
       "original": {

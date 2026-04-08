@@ -52,6 +52,8 @@ in
     enable = true;
     vimAlias = true;
     withNodeJs = true;
+    withRuby = false; # match HM 26.05+ default; silence legacy-default warning
+    withPython3 = false;
 
     extraPackages = with pkgs; [
       # sg
