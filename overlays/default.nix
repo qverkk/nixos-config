@@ -8,6 +8,7 @@ _self: super: {
   windsurf = super.callPackage ./windsurf { };
   cursor = super.callPackage ./cursor { };
   claude-code = super.callPackage ./claude-code { };
+  copilot-cli = super.callPackage ./copilot-cli { };
   antigravity = super.callPackage ./antigravity { };
   opencode =
     let

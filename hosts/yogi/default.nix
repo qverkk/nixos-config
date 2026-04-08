@@ -191,6 +191,7 @@ in
     git
     fd
     ripgrep
+    gnused
     fzf
     neovim
     cmake

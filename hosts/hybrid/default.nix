@@ -132,6 +132,7 @@
     git
     fd
     ripgrep
+    gnused
     fzf
   ];
 

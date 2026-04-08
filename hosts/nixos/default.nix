@@ -165,6 +165,7 @@
     git
     fd
     ripgrep
+    gnused
     fzf
     nss_latest
   ];

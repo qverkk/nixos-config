@@ -26,6 +26,7 @@ in
     antigravity
     cursor
     claude-code
+    copilot-cli
     gh
     # jetbrains.idea-community
     git-ignore
