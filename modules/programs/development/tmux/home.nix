@@ -1,56 +1,37 @@
-{ pkgs, ... }:
+{ config, lib, ... }:
+let
+  scriptDir = "${config.xdg.configHome}/tmux/scripts";
+  scriptSources = {
+    "copy-to-system.sh" = ./scripts/copy-to-system.sh;
+    "fzf-list-keys.sh" = ./scripts/fzf-list-keys.sh;
+    "fzf-switch-session.sh" = ./scripts/fzf-switch-session.sh;
+    "fzf-switch-window.sh" = ./scripts/fzf-switch-window.sh;
+    "rename-new-session.sh" = ./scripts/rename-new-session.sh;
+    "worktree-new.sh" = ./scripts/worktree-new.sh;
+  };
+  tmuxConf =
+    builtins.replaceStrings [ "@tmux_script_dir@" ] [ scriptDir ] (builtins.readFile ./tmux.conf);
+in
 {
+  xdg.configFile = lib.mapAttrs' (
+    name: source:
+    lib.nameValuePair "tmux/scripts/${name}" {
+      inherit source;
+      executable = true;
+    }
+  ) scriptSources;
+
   programs.tmux = {
     enable = true;
     terminal = "tmux-256color";
     mouse = true;
     keyMode = "vi";
     extraConfig =
-      builtins.readFile ./tmux.conf
+      tmuxConf
       + ''
-        # Name new sessions after cwd basename; append -1, -2, … if the name exists.
-        set-hook -g session-created "run-shell '${pkgs.writeShellScript "tmux-rename-new-session" ''
-          sid=$(tmux display -p '${"#"}{session_id}' 2>/dev/null) || exit 0
-          base=$(tmux display -p '${"#"}{b:pane_current_path}' 2>/dev/null) || base=
-          case "$base" in
-            ""|"/"|".") base=session ;;
-          esac
-          name=$base
-          i=0
-          while tmux has-session -t "$name" 2>/dev/null; do
-            existing=$(tmux display-message -pt "$name" '${"#"}{session_id}' 2>/dev/null || true)
-            if [ "$existing" = "$sid" ]; then
-              exit 0
-            fi
-            i=$((i + 1))
-            name="$base-$i"
-          done
-          exec tmux rename-session -t "$sid" -- "$name"
-        ''}'"
-      ''
-      + ''
-        # Git worktree + new session creator (prefix + f).
-        # fzf lists local branches; type a new name to create a fresh worktree+branch.
-        bind f display-popup -d "#{pane_current_path}" -w 75% -h 65% -E "${pkgs.writeShellScript "tmux-worktree-new" ''
-          root=$(git rev-parse --show-toplevel 2>/dev/null) || { printf "Not a git repo.\n"; sleep 1; exit 1; }
-          name=$(git -C "$root" branch --format="%(refname:short)" | \
-            fzf --reverse --ansi --height 100% --print-query \
-                --prompt="  " \
-                --header="Worktree: select branch or type a new name" \
-                --pointer="" \
-                --color="bg+:#2d4f67,bg:#1f1f28,spinner:#ff9e3b,hl:#c34043" \
-                --color="fg:#dcd7ba,gutter:#1f1f28,header:#938aa9,info:#7e9cd8,pointer:#7fb4ca" \
-                --color="marker:#98bb6c,fg+:#dcd7ba,prompt:#76946a,hl+:#c34043" \
-                --border="none" | tail -1)
-          [ -z "$name" ] && exit 0
-          worktree="$(dirname "$root")/$name"
-          if [ ! -d "$worktree" ]; then
-            git -C "$root" worktree add "$worktree" "$name" 2>/dev/null || \
-              git -C "$root" worktree add -b "$name" "$worktree"
-          fi
-          tmux new-session -d -s "$name" -c "$worktree" 2>/dev/null
-          tmux switch-client -t "$name"
-        ''}"
+
+        # Reload Home Manager–generated tmux.conf (prefix C-b then C-r).
+        bind C-r run-shell 'tmux source-file ${config.xdg.configHome}/tmux/tmux.conf'
       '';
   };
 }
