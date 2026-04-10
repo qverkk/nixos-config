@@ -10,7 +10,7 @@ let
     "worktree-new.sh" = ./scripts/worktree-new.sh;
   };
   tmuxConf =
-    builtins.replaceStrings [ "@tmux_script_dir@" ] [ scriptDir ] (builtins.readFile ./tmux.conf);
+    builtins.replaceStrings [ "$HOME/.config/tmux/scripts" ] [ scriptDir ] (builtins.readFile ./tmux.conf);
 in
 {
   xdg.configFile = lib.mapAttrs' (
