@@ -434,6 +434,26 @@
         "type": "github"
       }
     },
+    "openspec": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775782898,
+        "narHash": "sha256-Z8YgDheFCHe3Xg50jVtZxIXtiUqas7fuSYL31c9zVWU=",
+        "owner": "Fission-AI",
+        "repo": "OpenSpec",
+        "rev": "af0b3418d094f3d73af173a984424edbffbe3ad0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Fission-AI",
+        "repo": "OpenSpec",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -445,6 +465,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "opencode": "opencode",
+        "openspec": "openspec",
         "stylix": "stylix",
         "vicinae": "vicinae",
         "vicinae-extensions": "vicinae-extensions",

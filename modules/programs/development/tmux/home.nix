@@ -9,8 +9,9 @@ let
     "rename-new-session.sh" = ./scripts/rename-new-session.sh;
     "worktree-new.sh" = ./scripts/worktree-new.sh;
   };
-  tmuxConf =
-    builtins.replaceStrings [ "$HOME/.config/tmux/scripts" ] [ scriptDir ] (builtins.readFile ./tmux.conf);
+  tmuxConf = builtins.replaceStrings [ "$HOME/.config/tmux/scripts" ] [ scriptDir ] (
+    builtins.readFile ./tmux.conf
+  );
 in
 {
   xdg.configFile = lib.mapAttrs' (
@@ -26,12 +27,10 @@ in
     terminal = "tmux-256color";
     mouse = true;
     keyMode = "vi";
-    extraConfig =
-      tmuxConf
-      + ''
+    extraConfig = tmuxConf + ''
 
-        # Reload Home Manager–generated tmux.conf (prefix C-b then C-r).
-        bind C-r run-shell 'tmux source-file ${config.xdg.configHome}/tmux/tmux.conf'
-      '';
+      # Reload Home Manager–generated tmux.conf (prefix C-b then C-r).
+      bind C-r run-shell 'tmux source-file ${config.xdg.configHome}/tmux/tmux.conf'
+    '';
   };
 }

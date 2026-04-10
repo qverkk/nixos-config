@@ -27,6 +27,7 @@ in
     cursor
     claude-code
     copilot-cli
+    openspec
     gh
     # jetbrains.idea-community
     git-ignore
