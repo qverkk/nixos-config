@@ -4,9 +4,13 @@ import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
 
-// Capsule container with a sliding accent indicator behind the active workspace
+// Capsule container with a sliding accent indicator behind the active workspace.
+// Each bar passes its own screen so the active workspace tracks that monitor
+// independently of which monitor is currently focused.
 Rectangle {
     id: root
+
+    property var screen: null
 
     readonly property int wsCount: 10
     readonly property int itemW: 28
@@ -14,7 +18,16 @@ Rectangle {
     readonly property int itemSpacing: 3
     readonly property int hPad: 6
 
-    readonly property int activeWsId: Hyprland.focusedWorkspace?.id ?? -1
+    readonly property var thisMonitor: {
+        if (!screen) return null;
+        const monitors = Hyprland.monitors.values;
+        for (let i = 0; i < monitors.length; i++) {
+            if (monitors[i].name === screen.name)
+                return monitors[i];
+        }
+        return null;
+    }
+    readonly property int activeWsId: root.thisMonitor?.activeWorkspace?.id ?? -1
 
     color: Colors.base01
     radius: 1000
@@ -37,7 +50,6 @@ Rectangle {
             GradientStop { position: 0.0; color: Colors.base0D }
             GradientStop { position: 1.0; color: Colors.base0E }
         }
-
     }
 
     // Workspace buttons row
@@ -79,6 +91,19 @@ Rectangle {
                     font.bold: wsItem.active
                     color: wsItem.active ? Colors.base00 : Colors.base05
                     opacity: wsItem.active ? 1.0 : 0.55
+                }
+
+                // Dark dot on the active pill — marks this monitor's active workspace
+                Rectangle {
+                    visible: wsItem.active
+                    width: 4
+                    height: 4
+                    radius: 2
+                    color: Colors.base00
+                    opacity: 0.5
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 1
                 }
 
                 // Occupied dot — shown below the number when a window is open

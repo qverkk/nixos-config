@@ -326,6 +326,7 @@ Variants {
                 // === CENTER: Workspaces ===
                 Workspaces {
                     Layout.alignment: Qt.AlignVCenter
+                    screen: barWindow.screen
                 }
 
                 // === SPACER ===
