@@ -385,7 +385,7 @@ local mappings = {
 	},
 	{
 		"<leader>lI",
-		"<cmd>LspInfo<cr>",
+		"<cmd>checkhealth vim.lsp<cr>",
 		desc = "Info",
 	},
 	{
