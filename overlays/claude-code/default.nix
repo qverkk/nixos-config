@@ -6,49 +6,65 @@
   versionCheckHook,
   writableTmpDirAsHomeHook,
   bubblewrap,
+  patchelf,
   procps,
   socat,
 }:
-buildNpmPackage (finalAttrs: {
+let
+  version = "2.1.114";
+
+  # The native binary is shipped as a separate optional npm package per platform.
+  # postinstall (install.cjs) normally copies it to bin/claude.exe — we do it manually.
+  nativeBin = fetchzip {
+    url = "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64/-/claude-code-linux-x64-${version}.tgz";
+    hash = "sha256-gejcdjRzKnWsvLzxJLfdjr+PeYdOR9tkCOL8owuJuf8=";
+  };
+in
+buildNpmPackage {
   pname = "claude-code";
-  version = "2.1.112";
+  inherit version;
 
   src = fetchzip {
-    url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${finalAttrs.version}.tgz";
-    hash = "sha256-SJJqU7XHbu9IRGPMJNUg6oaMZiQUKqJhI2wm7BnR1gs=";
+    url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
+    hash = "sha256-r78N6eE/8JQsHP8XTWP9efkbzkmuV+o7JSB1GxrlE3E=";
   };
 
-  npmDepsHash = "sha256-bdkej9Z41GLew9wi1zdNX+Asauki3nT1+SHmBmaUIBU=";
+  nativeBuildInputs = [ patchelf ];
+
+  npmDepsHash = "sha256-ymfM4CGoBnotxinqsf51Mjr7Uh5Rl1EIFfLhd14a3uc=";
 
   strictDeps = true;
 
   postPatch = ''
     cp ${./package-lock.json} package-lock.json
 
-    # https://github.com/anthropics/claude-code/issues/15195
-    substituteInPlace cli.js \
-          --replace-fail '#!/bin/sh' '#!/usr/bin/env sh'
+    # Place the native binary where postinstall (install.cjs) would have put it.
+    # As of 2.1.114, cli.js is gone — the bin entry points to this native ELF binary.
+    cp ${nativeBin}/claude bin/claude.exe
+    chmod +x bin/claude.exe
   '';
 
   dontNpmBuild = true;
 
   env.AUTHORIZED = "1";
 
-  # `claude-code` tries to auto-update by default, this disables that functionality.
-  # https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview#environment-variables
-  # The DEV=true env var causes claude to crash with `TypeError: window.WebSocket is not a constructor`
   postInstall = ''
+    # Patch ELF interpreter for NixOS (binary ships with /lib64/ld-linux-x86-64.so.2)
+    patchelf \
+      --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
+      $out/lib/node_modules/@anthropic-ai/claude-code/bin/claude.exe
+
+    # npm wraps the bin entry with `node`, but claude.exe is a native binary — replace it
+    rm $out/bin/claude
+    ln -s $out/lib/node_modules/@anthropic-ai/claude-code/bin/claude.exe $out/bin/claude
+
     wrapProgram $out/bin/claude \
       --set DISABLE_AUTOUPDATER 1 \
       --set DISABLE_INSTALLATION_CHECKS 1 \
       --unset DEV \
       --prefix PATH : ${
         lib.makeBinPath (
-          [
-            # claude-code uses [node-tree-kill](https://github.com/pkrumins/node-tree-kill) which requires procps's pgrep(darwin) or ps(linux)
-            procps
-          ]
-          # the following packages are required for the sandbox to work (Linux only)
+          [ procps ]
           ++ lib.optionals stdenv.hostPlatform.isLinux [
             bubblewrap
             socat
@@ -70,6 +86,7 @@ buildNpmPackage (finalAttrs: {
     description = "Agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster";
     homepage = "https://github.com/anthropics/claude-code";
     downloadPage = "https://www.npmjs.com/package/@anthropic-ai/claude-code";
+    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
     license = lib.licenses.unfree;
     maintainers = with lib.maintainers; [
       adeci
@@ -79,5 +96,6 @@ buildNpmPackage (finalAttrs: {
       xiaoxiangmoe
     ];
     mainProgram = "claude";
+    platforms = [ "x86_64-linux" ];
   };
-})
+}

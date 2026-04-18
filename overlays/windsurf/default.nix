@@ -13,7 +13,7 @@ buildVscode {
   inherit commandLineArgs;
   useVSCodeRipgrep = true;
 
-  version = "2.0.50";
+  version = "2.0.61";
   pname = "windsurf";
 
   executableName = "windsurf";
@@ -21,8 +21,8 @@ buildVscode {
   shortName = "windsurf";
 
   src = fetchurl {
-    url = "https://windsurf-stable.codeiumdata.com/linux-x64/stable/c973f91b37b89375b5b009109c2fe84d185fab48/Windsurf-linux-x64-2.0.50.tar.gz";
-    sha256 = "sha256-xgd4/9cvZd2mc1g6FqqTgyQammHKRTvhoEERA1ViTtU=";
+    url = "https://windsurf-stable.codeiumdata.com/linux-x64/stable/abcd9c8664da5af505557f3b327b5537400635f2/Windsurf-linux-x64-2.0.61.tar.gz";
+    sha256 = "sha256-Hfpkd+VzzCZEdoji/7sbmwOsf+AWrmXI0CXG9xLrooo=";
     # sha256 = lib.fakeSha256;
   };
 
