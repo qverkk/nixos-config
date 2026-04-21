@@ -25,13 +25,19 @@ _self: super: {
       rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.dirtyShortRev or "dirty";
       node_modules = pkgs.callPackage "${src}/nix/node_modules.nix" {
         inherit rev;
-        hash = "sha256-GjpBQhvGLTM6NWX29b/mS+KjrQPl0w9VjQHH5jaK9SM=";
+        hash = "sha256-DOGOZdPdkcuyDhVAyWHGsL4rrV28S+YFZj/VORuoQ8Q=";
       };
       base = pkgs.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
       # END WORKAROUND
       # base = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in
     base.overrideAttrs (oldAttrs: {
+      preBuild = (oldAttrs.preBuild or "") + ''
+        substituteInPlace packages/opencode/src/cli/cmd/generate.ts \
+          --replace-fail 'const prettier = await import("prettier")' 'const prettier: any = { format: async (s: string) => s }' \
+          --replace-fail 'const babel = await import("prettier/plugins/babel")' 'const babel = {}' \
+          --replace-fail 'const estree = await import("prettier/plugins/estree")' 'const estree = {}'
+      '';
       postPatch = (oldAttrs.postPatch or "") + ''
         substituteInPlace packages/script/src/index.ts \
           --replace-fail \

@@ -48,7 +48,7 @@
 }:
 let
   pname = "cursor";
-  version = "3.1.15";
+  version = "3.1.17";
   # sha = "5491d1158b9f2bf4c483cff438c7cc162fd7d131";
   # https://github.com/oslook/cursor-ai-downloads?tab=readme-ov-file
 
@@ -56,8 +56,8 @@ let
 
   sources = {
     x86_64-linux = fetchurl {
-      url = "https://downloads.cursor.com/production/3a67af7b780e0bfc8d32aefa96b8ff1cb8817f88/linux/x64/Cursor-3.1.15-x86_64.AppImage";
-      hash = "sha256-kJCOFo/KRS8MkCeBiQuiLaF+dcJ5I35OkXYTF4mJGlk=";
+      url = "https://downloads.cursor.com/production/fce1e9ab7844f9ea35793da01e634aa7e50bce90/linux/x64/Cursor-3.1.17-x86_64.AppImage";
+      hash = "sha256-+Pk5MvQSjhoKJdtN+pWX/vcyWnHmbXvJ5wFDvgtHo20=";
       # hash = lib.fakeSha256;
     };
   };
