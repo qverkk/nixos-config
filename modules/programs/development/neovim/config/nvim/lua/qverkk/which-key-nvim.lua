@@ -59,7 +59,9 @@ local mappings = {
 	},
 	{
 		"<leader>R",
-		"<cmd> lua require('telescope').extensions.refactoring.refactors()<cr>",
+		function()
+			require("refactoring").select_refactor()
+		end,
 		desc = "Refactoring",
 	},
 	{
