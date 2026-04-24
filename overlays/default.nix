@@ -11,6 +11,7 @@ _self: super: {
   claude-code = super.callPackage ./claude-code { };
   copilot-cli = super.callPackage ./copilot-cli { };
   antigravity = super.callPackage ./antigravity { };
+  rtk = super.callPackage ./rtk { };
   opencode =
     let
       # --- WORKAROUND: upstream hashes.json has a wrong hash for x86_64-linux node_modules in v1.3.13.
