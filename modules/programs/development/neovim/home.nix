@@ -96,6 +96,18 @@ in
 
       # language specific colors
       tree-sitter
+      tree-sitter-grammars.tree-sitter-javascript
+      tree-sitter-grammars.tree-sitter-jsdoc
+      tree-sitter-grammars.tree-sitter-json
+      tree-sitter-grammars.tree-sitter-nix
+      tree-sitter-grammars.tree-sitter-lua
+      tree-sitter-grammars.tree-sitter-typescript
+      tree-sitter-grammars.tree-sitter-rust
+      tree-sitter-grammars.tree-sitter-java
+      tree-sitter-grammars.tree-sitter-kotlin
+      tree-sitter-grammars.tree-sitter-svelte
+      tree-sitter-grammars.tree-sitter-http
+      tree-sitter-grammars.tree-sitter-groovy
 
       # typescript
       typescript
@@ -243,21 +255,6 @@ in
       # telescope
       telescope-fzf-native-nvim
       telescope-nvim
-
-      (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: [
-        plugins.tree-sitter-javascript
-        plugins.tree-sitter-jsdoc
-        plugins.tree-sitter-json
-        plugins.tree-sitter-nix
-        plugins.tree-sitter-lua
-        plugins.tree-sitter-typescript
-        plugins.tree-sitter-rust
-        plugins.tree-sitter-java
-        plugins.tree-sitter-kotlin
-        plugins.tree-sitter-svelte
-        plugins.tree-sitter-http
-        plugins.tree-sitter-groovy
-      ]))
     ];
   };
 

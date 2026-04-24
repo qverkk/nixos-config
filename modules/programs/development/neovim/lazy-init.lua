@@ -69,8 +69,6 @@ require("lazy").setup({
 	},
 	{ "nvim-telescope/telescope-dap.nvim", cond = not is_vscode },
 
-	{ "nvim-treesitter/nvim-treesitter", cond = not is_vscode },
-
 	{ "theHamsta/nvim-dap-virtual-text", cond = not is_vscode },
 	{ "mfussenegger/nvim-dap", cond = not is_vscode },
 	{ "rcarriga/nvim-dap-ui", cond = not is_vscode },
@@ -99,7 +97,6 @@ require("lazy").setup({
 		cond = not is_vscode,
 		opts = {},
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
@@ -137,7 +134,6 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-neotest/nvim-nio",
 			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
 			"nvim-neotest/neotest-jest",
 			"marilari88/neotest-vitest",
 			{
@@ -171,7 +167,6 @@ require("lazy").setup({
 		dependencies = {
 			"lewis6991/async.nvim",
 			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
 		},
 		lazy = false,
 		config = function()
