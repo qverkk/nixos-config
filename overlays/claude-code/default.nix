@@ -31,7 +31,7 @@ buildNpmPackage {
 
   nativeBuildInputs = [ patchelf ];
 
-  npmDepsHash = "sha256-durBbNV3SKFip2OA7kCh/3fiAawkm4A1PeaQRq1n7JQ=";
+  npmDepsHash = "sha256-rKp3mMCc4xyYMdQBgFr8FPpjrOcMgkP6Ied5ijfdN58=";
 
   strictDeps = true;
 
