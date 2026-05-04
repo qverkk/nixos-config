@@ -40,16 +40,16 @@ local home = os.getenv("HOME")
 
 local function start_jdtls()
 	local settings = {
-		["java.settings.url"] = home .. "/.config/nvim/formatters/settings.pref",
+		["java.settings.url"] = home .. "/.config/nvim/formatters/settings.prefs",
 		["java.format.settings.profile"] = "Helix",
 		["java.format.settings.url"] = home .. "/.config/nvim/formatters/eclipse-java-google-style.xml",
 
 		java = {
 			signatureHelp = { enabled = true },
-			referenceCodeLens = { enabled = true },
-			implementationsCodeLens = { enabled = true },
+			referenceCodeLens = { enabled = false },
+			implementationsCodeLens = { enabled = false },
 			autobuild = { enabled = true },
-			trace = { server = "verbose" },
+			trace = { server = "off" },
 			contentProvider = { preferred = "fernflower" },
 			sources = {
 				organizeImports = {
@@ -62,13 +62,16 @@ local function start_jdtls()
 					template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
 				},
 			},
+			project = {
+				exclusions = { "**/generated/src/**" },
+			},
 		},
 	}
 
 	local lspconfig_util = require("lspconfig.util")
 	local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
 	local root_dir = lspconfig_util.root_pattern(".git", "gradlew", "mvnw")(bufname)
-	local workspace_dir = "/tmp/jdtls_workspaces/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
+	local workspace_dir = home .. "/.cache/jdtls_workspaces/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 	local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 	extendedClientCapabilities["progressReportProvider"] = false
@@ -82,7 +85,7 @@ local function start_jdtls()
 	vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_jar), "\n"))
 
 	require("jdtls").start_or_attach({
-		cmd = { "jdt-ls", "-data", workspace_dir, "-Xmx8g" },
+		cmd = { "jdt-ls", "--jvm-arg=-Xmx8g", "-data", workspace_dir },
 		on_attach = jdt_on_attach,
 		root_dir = root_dir,
 		capabilities = require("cmp_nvim_lsp").default_capabilities(),
