@@ -47,7 +47,7 @@ while :; do
     list_sessions |
       fzf --reverse --ansi --height 100% \
         --expect=enter,ctrl-x \
-        --delimiter='\t' --with-nth=2,3 --nth=2 \
+        --delimiter='\t' --with-nth=2,3 \
         --prompt='  ' \
         --header='Sessions (previous first, then current; green [current] is active) | Enter: switch, Ctrl-x: kill' \
         --pointer='' \
