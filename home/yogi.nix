@@ -46,5 +46,14 @@
       workspace = "2";
       scale = "1.25";
     }
+    {
+      name = "DP-2";
+      x = 2560;
+      width = 2560;
+      height = 1440;
+      refreshRate = 165;
+      workspace = "2";
+      scale = "1";
+    }
   ];
 }

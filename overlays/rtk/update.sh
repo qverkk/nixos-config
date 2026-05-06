@@ -6,6 +6,7 @@ set -euo pipefail
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 DEFAULT_NIX="$SCRIPT_DIR/default.nix"
 REPO_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/../.." && pwd)
+FAKE_HASH="sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
 
 latest=$(curl -fsSL "https://api.github.com/repos/rtk-ai/rtk/releases/latest" | jq -r '.tag_name | ltrimstr("v")')
 
@@ -15,13 +16,19 @@ if [ -z "$latest" ] || [ "$latest" = "null" ]; then
 fi
 
 current=$(sed -n 's/^[[:space:]]*version = "\([^"]*\)";.*/\1/p' "$DEFAULT_NIX")
+cargo_hash_current=$(sed -n 's/^[[:space:]]*cargoHash = "\([^"]*\)";.*/\1/p' "$DEFAULT_NIX")
 
 if [ -z "$current" ]; then
   printf 'Failed to read current version from %s\n' "$DEFAULT_NIX" >&2
   exit 1
 fi
 
-if [ "$current" = "$latest" ]; then
+if [ -z "$cargo_hash_current" ]; then
+  printf 'Failed to read cargoHash from %s\n' "$DEFAULT_NIX" >&2
+  exit 1
+fi
+
+if [ "$current" = "$latest" ] && [ "$cargo_hash_current" != "$FAKE_HASH" ]; then
   printf 'Already on %s, nothing to do.\n' "$latest"
   exit 0
 fi
@@ -34,15 +41,23 @@ src_sri=$(nix hash convert --hash-algo sha256 "$src_hash")
 
 sed -i 's/version = "'"$current"'";/version = "'"$latest"'";/' "$DEFAULT_NIX"
 sed -i 's|hash = "sha256-[^"]*";|hash = "'"$src_sri"'";|' "$DEFAULT_NIX"
-sed -i 's|cargoHash = "sha256-[^"]*";|cargoHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";|' "$DEFAULT_NIX"
+sed -i 's|cargoHash = "sha256-[^"]*";|cargoHash = "'"$FAKE_HASH"'";|' "$DEFAULT_NIX"
 
 if ! nix build --impure --no-link --print-out-paths --expr '
   let
     flake = builtins.getFlake (toString '"$REPO_DIR"');
+    pkgs = import flake.inputs.nixpkgs {
+      system = builtins.currentSystem;
+      overlays = [
+        (final: prev: {
+          rtk = prev.callPackage '"$SCRIPT_DIR"' { };
+        })
+      ];
+    };
   in
-  flake.nixosConfigurations.nixos.pkgs.rtk
+  pkgs.rtk
 ' >"$tmpdir/build.log" 2>&1; then
-  cargo_hash=$(sed -n 's/.*got:[[:space:]]*\(sha256-[A-Za-z0-9+/=]*\).*/\1/p' "$tmpdir/build.log" | tail -n 1)
+  cargo_hash=$(sed -n 's/.*got:[[:space:]]*\(sha256-[A-Za-z0-9+/=]*\).*/\1/p' "$tmpdir/build.log" | sed -n '$p')
 
   if [ -z "$cargo_hash" ]; then
     sed -n '/got:/p' "$tmpdir/build.log" >&2

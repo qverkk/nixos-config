@@ -11,6 +11,7 @@ _self: super: {
   claude-code = super.callPackage ./claude-code { };
   copilot-cli = super.callPackage ./copilot-cli { };
   antigravity = super.callPackage ./antigravity { };
+  orion-browser = super.callPackage ./orion-browser { };
   rtk = super.callPackage ./rtk { };
   opencode =
     let
