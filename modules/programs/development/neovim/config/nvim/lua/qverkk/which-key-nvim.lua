@@ -529,6 +529,16 @@ local mappings = {
 		desc = "List issues",
 	},
 	{
+		"<leader>j",
+		"<cmd>AerialNext<CR>",
+		desc = "Next method/symbol",
+	},
+	{
+		"<leader>k",
+		"<cmd>AerialPrev<CR>",
+		desc = "Prev method/symbol",
+	},
+	{
 		"<leader>q",
 		"<cmd>confirm q<CR>",
 		desc = "Quit",
