@@ -23,8 +23,8 @@ in
     jetbrains.datagrip
     # jetbrains.webstorm
     windsurf.fhs
-    antigravity
-    cursor
+    # antigravity
+    # cursor
     claude-code
     rtk
     copilot-cli
