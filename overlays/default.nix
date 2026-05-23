@@ -5,7 +5,14 @@ _self: super: {
   rofi-collection = super.callPackage ./rofi-collection { };
   npm-groovy-lint = super.callPackage ./npm-groovy-lint { };
   ghostty = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  openspec = inputs.openspec.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  openspec =
+    let
+      base = inputs.openspec.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      filterNodejs = pkg: !(super.lib.strings.hasPrefix "nodejs-20" pkg.name or "");
+    in
+    base.overrideAttrs (oldAttrs: {
+      nativeBuildInputs = (super.lib.filter filterNodejs (oldAttrs.nativeBuildInputs or [ ])) ++ [ super.nodejs_22 ];
+    });
   windsurf = super.callPackage ./windsurf { };
   cursor = super.callPackage ./cursor { };
   claude-code = super.callPackage ./claude-code { };
@@ -20,16 +27,16 @@ _self: super: {
       # Track: https://github.com/anomalyco/opencode
       #
       # SIMPLE (restore when upstream is fixed):
-      # base = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      base = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
       #
       # WORKAROUND (comment out when upstream is fixed):
-      src = inputs.opencode.sourceInfo;
-      rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.dirtyShortRev or "dirty";
-      node_modules = pkgs.callPackage "${src}/nix/node_modules.nix" {
-        inherit rev;
-        hash = "sha256-hIarzU3QNIvkwpfnearfsGaBMCSdovkOWAuvX+EBQI8=";
-      };
-      base = pkgs.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
+      # src = inputs.opencode.sourceInfo;
+      # rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.dirtyShortRev or "dirty";
+      # node_modules = pkgs.callPackage "${src}/nix/node_modules.nix" {
+      #   inherit rev;
+      #   hash = "sha256-hIarzU3QNIvkwpfnearfsGaBMCSdovkOWAuvX+EBQI8=";
+      # };
+      # base = pkgs.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
       # END WORKAROUND
       # base = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in
