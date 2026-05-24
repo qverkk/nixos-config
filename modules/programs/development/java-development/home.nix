@@ -26,6 +26,7 @@ in
     # antigravity
     # cursor
     claude-code
+    codex-cli
     rtk
     copilot-cli
     openspec

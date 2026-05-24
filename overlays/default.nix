@@ -11,11 +11,14 @@ _self: super: {
       filterNodejs = pkg: !(super.lib.strings.hasPrefix "nodejs-20" pkg.name or "");
     in
     base.overrideAttrs (oldAttrs: {
-      nativeBuildInputs = (super.lib.filter filterNodejs (oldAttrs.nativeBuildInputs or [ ])) ++ [ super.nodejs_22 ];
+      nativeBuildInputs = (super.lib.filter filterNodejs (oldAttrs.nativeBuildInputs or [ ])) ++ [
+        super.nodejs_22
+      ];
     });
   windsurf = super.callPackage ./windsurf { };
   cursor = super.callPackage ./cursor { };
   claude-code = super.callPackage ./claude-code { };
+  codex-cli = super.callPackage ./codex-cli { };
   copilot-cli = super.callPackage ./copilot-cli { };
   antigravity = super.callPackage ./antigravity { };
   orion-browser = super.callPackage ./orion-browser { };
