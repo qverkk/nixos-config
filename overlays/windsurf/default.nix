@@ -11,7 +11,7 @@
 # https://windsurf-next.codeium.com/api/update/linux-x64/stable/latest
 buildVscode {
   inherit commandLineArgs;
-  useVSCodeRipgrep = true;
+  useVSCodeRipgrep = false;
 
   version = "2.3.9";
   pname = "windsurf";
