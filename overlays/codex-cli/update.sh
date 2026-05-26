@@ -50,7 +50,7 @@ for i in "${!PLATFORMS[@]}"; do
   echo "  $platform: $sri_hash"
 
   # Update hash in default.nix - match the arch line and update the hash on the next line
-  sed -i "/arch = \"${arch}\";/,/[}];/{s/hash = \"sha256-[^\"]*\";/hash = \"$sri_hash\";/}" "$DEFAULT_NIX"
+  sed -i "/arch = \"${arch}\";/,/[}];/{s|hash = \"sha256-[^\"]*\";|hash = \"$sri_hash\";|}" "$DEFAULT_NIX"
 done
 
 echo ""
