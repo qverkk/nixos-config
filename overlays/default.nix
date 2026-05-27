@@ -37,7 +37,7 @@ _self: super: {
       # rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.dirtyShortRev or "dirty";
       # node_modules = pkgs.callPackage "${src}/nix/node_modules.nix" {
       #   inherit rev;
-      #   hash = "sha256-hIarzU3QNIvkwpfnearfsGaBMCSdovkOWAuvX+EBQI8=";
+      #   hash = "sha256-FT8N4SBP7OmVu73OwNyPJvBoxFd2+IXzNnFubB8y6J0=";
       # };
       # base = pkgs.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
       # END WORKAROUND
