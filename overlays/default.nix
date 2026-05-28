@@ -23,6 +23,7 @@ _self: super: {
   antigravity = super.callPackage ./antigravity { };
   orion-browser = super.callPackage ./orion-browser { };
   rtk = super.callPackage ./rtk { };
+  ccusage = inputs.ccusage.packages.${pkgs.stdenv.hostPlatform.system}.default;
   opencode =
     let
       # --- WORKAROUND: upstream hashes.json has a wrong hash for x86_64-linux node_modules in v1.3.13.

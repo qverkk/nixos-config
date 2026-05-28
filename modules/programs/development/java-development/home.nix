@@ -27,6 +27,7 @@ in
     # cursor
     claude-code
     codex-cli
+    ccusage
     rtk
     copilot-cli
     openspec
