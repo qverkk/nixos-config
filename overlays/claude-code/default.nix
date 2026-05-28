@@ -11,13 +11,13 @@
   socat,
 }:
 let
-  version = "2.1.152";
+  version = "2.1.153";
 
   # The native binary is shipped as a separate optional npm package per platform.
   # postinstall (install.cjs) normally copies it to bin/claude.exe — we do it manually.
   nativeBin = fetchzip {
     url = "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64/-/claude-code-linux-x64-${version}.tgz";
-    hash = "sha256-nObwk/A31avN8TqjuRKuWQ3Hvyj5KZeyRGFYfmlArqY=";
+    hash = "sha256-kOXcCui5jMCIJgelpuWUjfv2tkupCBBuw9KLKs6JCv4=";
   };
 in
 buildNpmPackage {
@@ -26,12 +26,12 @@ buildNpmPackage {
 
   src = fetchzip {
     url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${version}.tgz";
-    hash = "sha256-E1dBZGEOqUFVi2tRemakIL1xoyj4Mwbu0glek2x7JzY=";
+    hash = "sha256-H54BHuEvmnpHQLLWox58qpZvn88CYSgO633ob7kW4Sk=";
   };
 
   nativeBuildInputs = [ patchelf ];
 
-  npmDepsHash = "sha256-7Uhrmp2c8/D4mkWuq/c7Va25h0hezfZnhNm/am20S2E=";
+  npmDepsHash = "sha256-u/iWu5sr48hpwKaLX0VjrgGlHOdQa4KDRWjO1FyfDEI=";
 
   strictDeps = true;
 
