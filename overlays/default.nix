@@ -31,16 +31,16 @@ _self: super: {
       # Track: https://github.com/anomalyco/opencode
       #
       # SIMPLE (restore when upstream is fixed):
-      base = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      # base = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
       #
       # WORKAROUND (comment out when upstream is fixed):
-      # src = inputs.opencode.sourceInfo;
-      # rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.dirtyShortRev or "dirty";
-      # node_modules = pkgs.callPackage "${src}/nix/node_modules.nix" {
-      #   inherit rev;
-      #   hash = "sha256-FT8N4SBP7OmVu73OwNyPJvBoxFd2+IXzNnFubB8y6J0=";
-      # };
-      # base = pkgs.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
+      src = inputs.opencode.sourceInfo;
+      rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.dirtyShortRev or "dirty";
+      node_modules = pkgs.callPackage "${src}/nix/node_modules.nix" {
+        inherit rev;
+        hash = "sha256-70om2TEJYJJOcf9lqex+Sxs27c1SVVgN7FNkLbTXBR0=";
+      };
+      base = pkgs.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
       # END WORKAROUND
       # base = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in
