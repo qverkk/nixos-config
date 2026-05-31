@@ -22,6 +22,9 @@
 
     settings = {
       credential.helper = "keepassxc --git-groups";
+      push = {
+        autoSetupRemote = true;
+      };
       user = {
         email = "membersy@gmail.com";
         name = "qverkk";
