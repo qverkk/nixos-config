@@ -18,7 +18,7 @@
   home = {
     username = "qverkk";
     homeDirectory = "/home/qverkk";
-    stateVersion = "26.05";
+    stateVersion = "26.11";
   };
 
   monitors = [
