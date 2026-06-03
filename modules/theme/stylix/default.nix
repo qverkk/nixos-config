@@ -35,6 +35,7 @@
     };
     targets = {
       chromium.enable = false;
+      kmscon.enable = false;
     };
     fonts = {
       monospace = {
