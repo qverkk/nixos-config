@@ -14,6 +14,7 @@
   useVSCodeRipgrep = false;
 
   version = "3.0.28";
+  vscodeVersion = "1.110.1";
   pname = "windsurf";
 
   executableName = "windsurf";

@@ -36,6 +36,7 @@ esac
 
 # Get current version from default.nix
 CURRENT_VERSION=$(grep -E '^\s*version\s*=' "$DEFAULT_NIX" | sed -E "s/.*version\s*=\s*\"([^\"]+)\".*/\1/")
+CURRENT_VSCODE_VERSION=$(grep -E '^\s*vscodeVersion\s*=' "$DEFAULT_NIX" | sed -E "s/.*vscodeVersion\s*=\s*\"([^\"]+)\".*/\1/" || true)
 CURRENT_URL=$(grep -E '^\s*url\s*=' "$DEFAULT_NIX" | sed -E "s|.*url\s*=\s*\"([^\"]+)\".*|\1|")
 CURRENT_SOURCE_ROOT=$(grep -E '^\s*sourceRoot\s*=' "$DEFAULT_NIX" | sed -E "s/.*sourceRoot\s*=\s*\"([^\"]+)\".*/\1/")
 CURRENT_SOURCE_EXECUTABLE_NAME=$(grep -E '^\s*sourceExecutableName\s*=' "$DEFAULT_NIX" | sed -E "s/.*sourceExecutableName\s*=\s*\"([^\"]+)\".*/\1/" || true)
@@ -48,6 +49,7 @@ echo "Latest version:  $LATEST_VERSION"
 # Check if update is needed
 if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ] \
     && [ "$CURRENT_URL" = "$LATEST_URL" ] \
+    && [ -n "$CURRENT_VSCODE_VERSION" ] \
     && [ "$CURRENT_SOURCE_ROOT" = "$SOURCE_ROOT" ] \
     && [ "$CURRENT_SOURCE_EXECUTABLE_NAME" = "$SOURCE_EXECUTABLE_NAME" ] \
     && [ "$CURRENT_LONG_NAME" = "$LONG_NAME" ] \
@@ -68,8 +70,27 @@ fi
 echo "New hash: $LATEST_SHA256_SRI"
 echo "Updating to version $LATEST_VERSION..."
 
+echo "Fetching VS Code version from archive metadata..."
+LATEST_VSCODE_VERSION=$(
+    curl -fsSL "$LATEST_URL" \
+        | tar -xzOf - "$SOURCE_ROOT/resources/app/product.json" \
+        | jq -r '.version'
+)
+
+if [ -z "$LATEST_VSCODE_VERSION" ] || [ "$LATEST_VSCODE_VERSION" = "null" ]; then
+    echo "Error: Failed to read VS Code version from archive" >&2
+    exit 1
+fi
+
 # Update version
 sed -i "s/version = \"[^\"]*\"/version = \"$LATEST_VERSION\"/" "$DEFAULT_NIX"
+
+# Update embedded VS Code version
+if grep -q 'vscodeVersion = ' "$DEFAULT_NIX"; then
+    sed -i "s/vscodeVersion = \"[^\"]*\"/vscodeVersion = \"$LATEST_VSCODE_VERSION\"/" "$DEFAULT_NIX"
+else
+    sed -i "/version = /a\\  vscodeVersion = \"$LATEST_VSCODE_VERSION\";" "$DEFAULT_NIX"
+fi
 
 # Update URL
 sed -i "s|url = \"https://[^\"]*\"|url = \"$LATEST_URL\"|" "$DEFAULT_NIX"
@@ -90,5 +111,6 @@ sed -i "s|sourceRoot = \"[^\"]*\"|sourceRoot = \"$SOURCE_ROOT\"|" "$DEFAULT_NIX"
 echo "✓ Successfully updated to version $LATEST_VERSION"
 echo "  URL: $LATEST_URL"
 echo "  SHA256: $LATEST_SHA256_SRI"
+echo "  VS Code version: $LATEST_VSCODE_VERSION"
 echo "  Source root: $SOURCE_ROOT"
 echo "  Source executable: $SOURCE_EXECUTABLE_NAME"
