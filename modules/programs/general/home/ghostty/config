@@ -1,0 +1,2 @@
+keybind = global:ctrl+u=toggle_quick_terminal
+macos-option-as-alt = true
