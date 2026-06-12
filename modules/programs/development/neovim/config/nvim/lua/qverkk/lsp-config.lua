@@ -17,7 +17,7 @@ vim.lsp.config("*", {
 -- Enable servers — nvim-lspconfig provides their default configs via lsp/
 vim.lsp.enable({
 	"lua_ls",
-	"kotlin_language_server",
+	"kotlin_lsp",
 	"rust_analyzer",
 	"bashls",
 	"svelte",
