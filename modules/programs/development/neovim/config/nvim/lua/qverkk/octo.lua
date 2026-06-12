@@ -14,7 +14,7 @@ octo.setup({
 	},
 	file_panel = {
 		size = 10,
-		use_icons = true,
+		icons = true,
 	},
 	reviews = {
 		auto_show_threads = true,
