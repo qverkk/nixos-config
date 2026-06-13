@@ -124,7 +124,6 @@ in
       lua-language-server
 
       # kotlin
-      kotlin-language-server
       kotlin-lsp
 
       # svelte

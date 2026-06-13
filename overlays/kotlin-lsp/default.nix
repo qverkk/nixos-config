@@ -1,7 +1,7 @@
 {
   lib,
   stdenv,
-  fetchzip,
+  fetchurl,
   makeWrapper,
   autoPatchelfHook,
   zlib,
@@ -10,18 +10,18 @@
   libxrender,
   libxtst,
   libxi,
+  libxkbcommon,
   freetype,
   alsa-lib,
   wayland,
 }:
 stdenv.mkDerivation rec {
   pname = "kotlin-lsp";
-  version = "261.13587.0";
+  version = "262.7569.0";
 
-  src = fetchzip {
-    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/kotlin-lsp-${version}-linux-x64.zip";
-    hash = "sha256-EweSqy30NJuxvlJup78O+e+JOkzvUdb6DshqAy1j9jE=";
-    stripRoot = false;
+  src = fetchurl {
+    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/kotlin-server-${version}.tar.gz";
+    hash = "sha256-MzyyEhXizgSBcle71caTy71KmRIawQCBRgHtwfktJXA=";
   };
 
   dontBuild = true;
@@ -39,6 +39,7 @@ stdenv.mkDerivation rec {
     libxrender
     libxtst
     libxi
+    libxkbcommon
     freetype
     alsa-lib
     wayland
@@ -47,17 +48,19 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out
     cp -r * $out/
-    chmod +x $out/kotlin-lsp.sh
-    find $out/jre/bin -type f -exec chmod +x {} \;
-    sed -i '/chmod +x.*java/d' $out/kotlin-lsp.sh
-    makeWrapper $out/kotlin-lsp.sh $out/bin/kotlin-lsp
+    chmod +x $out/bin/intellij-server
+    find $out/jbr/bin -type f -exec chmod +x {} \;
+    makeWrapper $out/bin/intellij-server $out/bin/kotlin-lsp
   '';
 
+  passthru.updateScript = ./update.sh;
+
   meta = {
-    description = "kotlin language server";
+    description = "Official Kotlin Language Server from JetBrains";
     maintainers = [ ];
     homepage = "https://github.com/Kotlin/kotlin-lsp";
     platforms = [ "x86_64-linux" ];
-    sourceProvenance = [ lib.sourceTypes.binaryBytecode ];
+    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
+    mainProgram = "kotlin-lsp";
   };
 }

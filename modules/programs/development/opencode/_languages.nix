@@ -10,7 +10,7 @@ let
   lspBins = {
     biome = "${pkgs.biome}/bin/biome";
     jdt-ls = "${pkgs.jdt-ls}/bin/jdt-ls";
-    kotlin-language-server = "${pkgs.kotlin-language-server}/bin/kotlin-language-server";
+    kotlin-lsp = "${pkgs.kotlin-lsp}/bin/kotlin-lsp";
     nil = "${pkgs.nil}/bin/nil";
   };
 in
@@ -21,7 +21,7 @@ in
     google-java-format
     jdt-ls
     ktlint
-    kotlin-language-server
+    kotlin-lsp
     nil
   ];
 
@@ -71,8 +71,8 @@ in
       command = [ lspBins.jdt-ls ];
       extensions = [ "java" ];
     };
-    kotlin-language-server = {
-      command = [ lspBins.kotlin-language-server ];
+    kotlin-lsp = {
+      command = [ lspBins.kotlin-lsp ];
       extensions = [
         "kt"
         "kts"
