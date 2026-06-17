@@ -540,6 +540,27 @@
         "type": "github"
       }
     },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781715441,
+        "narHash": "sha256-yyui90BUxu+A/NjUBO2RV9ubrC0lc/ECzuy2aWGnNEA=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "ee9c7b96c90bbb23620544201e26de92858b9ce3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "ref": "master",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "nix-filter": {
       "locked": {
         "lastModified": 1757882181,
@@ -708,6 +729,7 @@
         "ghostty-hm": "ghostty-hm",
         "home-manager": "home-manager_2",
         "hyprland-contrib": "hyprland-contrib",
+        "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "opencode": "opencode",

@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env nix
+#!nix shell --ignore-environment nixpkgs#bash nixpkgs#cacert nixpkgs#coreutils nixpkgs#curl nixpkgs#gnused nixpkgs#gnutar nixpkgs#gzip nixpkgs#jq nixpkgs#nix --command bash
+
 set -euo pipefail
 
 API_URL="https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest"

@@ -4,10 +4,10 @@ _self: super: {
   kotlin-lsp = super.callPackage ./kotlin-lsp { };
   rofi-collection = super.callPackage ./rofi-collection { };
   npm-groovy-lint = super.callPackage ./npm-groovy-lint { };
-  ghostty = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  ghostty = inputs.ghostty.packages.${super.stdenv.hostPlatform.system}.default;
   openspec =
     let
-      base = inputs.openspec.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      base = inputs.openspec.packages.${super.stdenv.hostPlatform.system}.default;
       filterNodejs = pkg: !(super.lib.strings.hasPrefix "nodejs-20" pkg.name or "");
     in
     base.overrideAttrs (oldAttrs: {
@@ -15,15 +15,23 @@ _self: super: {
         super.nodejs_22
       ];
     });
-  windsurf = super.callPackage ./windsurf { };
+  windsurf =
+    if super.stdenv.hostPlatform.isLinux then
+      super.callPackage ./windsurf { }
+    else
+      super.windsurf;
   cursor = super.callPackage ./cursor { };
-  claude-code = super.callPackage ./claude-code { };
+  claude-code =
+    if super.stdenv.hostPlatform.isLinux then
+      super.callPackage ./claude-code { }
+    else
+      super.claude-code;
   codex-cli = super.callPackage ./codex-cli { };
   copilot-cli = super.callPackage ./copilot-cli { };
   antigravity = super.callPackage ./antigravity { };
   orion-browser = super.callPackage ./orion-browser { };
   rtk = super.callPackage ./rtk { };
-  ccusage = inputs.ccusage.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  ccusage = inputs.ccusage.packages.${super.stdenv.hostPlatform.system}.default;
   opencode =
     let
       # --- WORKAROUND: upstream hashes.json has a wrong hash for x86_64-linux node_modules in v1.3.13.
@@ -36,11 +44,11 @@ _self: super: {
       # WORKAROUND (comment out when upstream is fixed):
       src = inputs.opencode.sourceInfo;
       rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.dirtyShortRev or "dirty";
-      node_modules = pkgs.callPackage "${src}/nix/node_modules.nix" {
+      node_modules = super.callPackage "${src}/nix/node_modules.nix" {
         inherit rev;
         hash = "sha256-Y+8gz+NfFSb4dysjho4CCaQpx012vvajnptfd3cdh/k=";
       };
-      base = pkgs.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
+      base = super.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
       # END WORKAROUND
       # base = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
     in

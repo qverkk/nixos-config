@@ -46,6 +46,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # auto-cpufreq = {
     #   url = "github:AdnanHodzic/auto-cpufreq";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -86,6 +91,7 @@
       self,
       nixpkgs,
       home-manager,
+      nix-darwin,
       # nur,
       ...
     }@inputs:
@@ -93,6 +99,7 @@
       inherit (self) outputs;
 
       system = "x86_64-linux";
+      darwinSystem = "aarch64-darwin";
 
       overlays = [
         (import ./overlays/leetcode-cli)
@@ -107,6 +114,12 @@
 
       pkgs = import nixpkgs {
         inherit system;
+        inherit overlays;
+        config.allowUnfree = true;
+      };
+
+      darwinPkgs = import nixpkgs {
+        system = darwinSystem;
         inherit overlays;
         config.allowUnfree = true;
       };
@@ -163,7 +176,50 @@
             { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
           ];
         };
+
+        "qverkk@moonder" = home-manager.lib.homeManagerConfiguration {
+          pkgs = darwinPkgs;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            pkgs = darwinPkgs;
+            hostName = "moonder";
+          };
+          modules = [
+            ./home/moonder.nix
+
+            { home.sessionVariables.NIX_PATH = "nixpkgs=flake:nixpkgs$\{NIX_PATH:+:$NIX_PATH}"; }
+            { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
+          ];
+        };
       };
+
+      darwinConfigurations = {
+        moonder = nix-darwin.lib.darwinSystem {
+          system = darwinSystem;
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/moonder
+            home-manager.darwinModules.home-manager
+
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs outputs;
+                pkgs = darwinPkgs;
+                hostName = "moonder";
+              };
+              home-manager.users.qverkk = import ./home/moonder.nix;
+            }
+
+            { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }
+            { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
+          ];
+        };
+      };
+
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           specialArgs = {
@@ -183,6 +239,7 @@
             inherit inputs;
           };
           modules = [
+            inputs.stylix.nixosModules.stylix
             ./hosts/hybrid
 
             { nix.nixPath = [ "nixpkgs=flake:nixpkgs" ]; }

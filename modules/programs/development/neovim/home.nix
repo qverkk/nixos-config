@@ -7,6 +7,8 @@
 ## Thanks ernestre
 ## https://github.com/ernestre/dotfiles/blob/master/nixpkgs/home-manager/modules/neovim/default.nix
 let
+  inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
+
   plugin =
     repo: rev: ref: sha256:
     pkgs.vimUtils.buildVimPlugin {
@@ -55,7 +57,9 @@ in
     withRuby = false; # match HM 26.05+ default; silence legacy-default warning
     withPython3 = false;
 
-    extraPackages = with pkgs; [
+    extraPackages =
+      with pkgs;
+      [
       # sg
       # sg.package
 
@@ -123,9 +127,6 @@ in
       # lua
       lua-language-server
 
-      # kotlin
-      kotlin-lsp
-
       # svelte
       svelte-language-server
 
@@ -142,7 +143,15 @@ in
 
       # rust
       rust-analyzer
-    ];
+      ]
+      ++ lib.optionals isDarwin [
+        # kotlin
+        kotlin-lsp
+      ]
+      ++ lib.optionals isLinux [
+        # kotlin
+        kotlin-lsp
+      ];
     plugins = with pkgs.vimPlugins; [
       # req
       plenary-nvim

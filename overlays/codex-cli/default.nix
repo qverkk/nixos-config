@@ -31,7 +31,7 @@ let
       aarch64-darwin = {
         platform = "darwin-arm64";
         arch = "aarch64-apple-darwin";
-        hash = lib.fakeHash;
+        hash = "sha256-WM3DjMfnJGJbN2H+Xo6PJFNtFqhRlnRWW9LgPlB4X68=";
       };
     }
     .${stdenv.hostPlatform.system}
@@ -62,10 +62,10 @@ stdenv.mkDerivation (finalAttrs: {
     # The main binary
     makeWrapper $out/lib/${finalAttrs.pname}/bin/codex $out/bin/codex \
       --prefix PATH : ${
-        lib.makeBinPath [
-          ripgrep
-          bubblewrap
-        ]
+        lib.makeBinPath (
+          [ ripgrep ]
+          ++ lib.optionals stdenv.hostPlatform.isLinux [ bubblewrap ]
+        )
       }
 
     runHook postInstall

@@ -1,6 +1,7 @@
-#!/usr/bin/env sh
+#!/usr/bin/env nix
+#!nix shell --ignore-environment nixpkgs#bash nixpkgs#cacert nixpkgs#coreutils nixpkgs#curl nixpkgs#gawk nixpkgs#gnugrep nixpkgs#gnused nixpkgs#nix --command bash
 
-set -e
+set -euo pipefail
 
 MILESTONES_URL="https://download.eclipse.org/jdtls/milestones/"
 DEFAULT_NIX="$(dirname "$0")/default.nix"
