@@ -16,10 +16,7 @@ _self: super: {
       ];
     });
   windsurf =
-    if super.stdenv.hostPlatform.isLinux then
-      super.callPackage ./windsurf { }
-    else
-      super.windsurf;
+    if super.stdenv.hostPlatform.isLinux then super.callPackage ./windsurf { } else super.windsurf;
   cursor = super.callPackage ./cursor { };
   claude-code =
     if super.stdenv.hostPlatform.isLinux then
@@ -46,7 +43,11 @@ _self: super: {
       rev = inputs.opencode.sourceInfo.shortRev or inputs.opencode.sourceInfo.dirtyShortRev or "dirty";
       node_modules = super.callPackage "${src}/nix/node_modules.nix" {
         inherit rev;
-        hash = "sha256-Y+8gz+NfFSb4dysjho4CCaQpx012vvajnptfd3cdh/k=";
+        hash =
+          if super.stdenv.hostPlatform.isDarwin then
+            "sha256-CJ8dvzGzJp5sgaNJYHwxRc1xK9bWA8zyTmDFi4wTI3o="
+          else
+            "sha256-Y+8gz+NfFSb4dysjho4CCaQpx012vvajnptfd3cdh/k=";
       };
       base = super.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
       # END WORKAROUND

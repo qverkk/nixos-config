@@ -40,19 +40,19 @@ let
     .${stdenv.hostPlatform.system}
       or (throw "kotlin-lsp: unsupported system ${stdenv.hostPlatform.system}");
 in
-stdenv.mkDerivation ({
-  pname = "kotlin-lsp";
-  inherit version;
+stdenv.mkDerivation (
+  {
+    pname = "kotlin-lsp";
+    inherit version;
 
-  src = fetchurl {
-    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/${platform.artifact}";
-    inherit (platform) hash;
-  };
+    src = fetchurl {
+      url = "https://download-cdn.jetbrains.com/kotlin-lsp/${version}/${platform.artifact}";
+      inherit (platform) hash;
+    };
 
-  dontBuild = true;
+    dontBuild = true;
 
-  nativeBuildInputs =
-    [
+    nativeBuildInputs = [
       makeWrapper
     ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
@@ -62,63 +62,65 @@ stdenv.mkDerivation ({
       unzip
     ];
 
-  buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
-    stdenv.cc.cc.lib
-    zlib
-    libx11
-    libxext
-    libxrender
-    libxtst
-    libxi
-    libxkbcommon
-    freetype
-    alsa-lib
-    wayland
-  ];
-
-  sourceRoot = "kotlin-server-${version}";
-
-  installPhase = ''
-    runHook preInstall
-
-    mkdir -p $out
-    cp -r * $out/
-    chmod +x $out/bin/intellij-server
-    if [ -d "$out/jbr/bin" ]; then
-      find $out/jbr/bin -type f -exec chmod +x {} \;
-    fi
-    if [ -d "$out/jbr/Contents/Home/bin" ]; then
-      find $out/jbr/Contents/Home/bin -type f -exec chmod +x {} \;
-    fi
-    if [ -d "$out/lib/pty4j" ]; then
-      find $out/lib/pty4j -type f -exec chmod +x {} \;
-    fi
-    makeWrapper $out/bin/intellij-server $out/bin/kotlin-lsp
-
-    runHook postInstall
-  '';
-
-  passthru.updateScript = ./update.sh;
-
-  meta = {
-    description = "Official Kotlin Language Server from JetBrains";
-    maintainers = [ ];
-    homepage = "https://github.com/Kotlin/kotlin-lsp";
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
+    buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
+      stdenv.cc.cc.lib
+      zlib
+      libx11
+      libxext
+      libxrender
+      libxtst
+      libxi
+      libxkbcommon
+      freetype
+      alsa-lib
+      wayland
     ];
-    sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
-    mainProgram = "kotlin-lsp";
-  };
-} // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
-  unpackPhase = ''
-    runHook preUnpack
 
-    unzip "$src"
+    sourceRoot = "kotlin-server-${version}";
 
-    runHook postUnpack
-  '';
-})
+    installPhase = ''
+      runHook preInstall
+
+      mkdir -p $out
+      cp -r * $out/
+      chmod +x $out/bin/intellij-server
+      if [ -d "$out/jbr/bin" ]; then
+        find $out/jbr/bin -type f -exec chmod +x {} \;
+      fi
+      if [ -d "$out/jbr/Contents/Home/bin" ]; then
+        find $out/jbr/Contents/Home/bin -type f -exec chmod +x {} \;
+      fi
+      if [ -d "$out/lib/pty4j" ]; then
+        find $out/lib/pty4j -type f -exec chmod +x {} \;
+      fi
+      makeWrapper $out/bin/intellij-server $out/bin/kotlin-lsp
+
+      runHook postInstall
+    '';
+
+    passthru.updateScript = ./update.sh;
+
+    meta = {
+      description = "Official Kotlin Language Server from JetBrains";
+      maintainers = [ ];
+      homepage = "https://github.com/Kotlin/kotlin-lsp";
+      platforms = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
+      mainProgram = "kotlin-lsp";
+    };
+  }
+  // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
+    unpackPhase = ''
+      runHook preUnpack
+
+      unzip "$src"
+
+      runHook postUnpack
+    '';
+  }
+)

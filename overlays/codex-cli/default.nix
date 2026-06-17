@@ -62,10 +62,7 @@ stdenv.mkDerivation (finalAttrs: {
     # The main binary
     makeWrapper $out/lib/${finalAttrs.pname}/bin/codex $out/bin/codex \
       --prefix PATH : ${
-        lib.makeBinPath (
-          [ ripgrep ]
-          ++ lib.optionals stdenv.hostPlatform.isLinux [ bubblewrap ]
-        )
+        lib.makeBinPath ([ ripgrep ] ++ lib.optionals stdenv.hostPlatform.isLinux [ bubblewrap ])
       }
 
     runHook postInstall

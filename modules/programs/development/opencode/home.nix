@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ lib, pkgs, ... }:
 let
   languages = import ./_languages.nix { inherit pkgs; };
   providers = import ./_providers.nix;
@@ -32,7 +32,7 @@ let
         mkdir -p $out/bin
         makeWrapper ${opencodeInitScript} $out/bin/opencode \
           --prefix PATH : ${opencodeEnv}/bin \
-          --set OPENCODE_LIBC ${pkgs.glibc}/lib/libc.so.6
+          ${lib.optionalString pkgs.stdenv.hostPlatform.isLinux "--set OPENCODE_LIBC ${pkgs.glibc}/lib/libc.so.6"}
       '';
 
   configFile = "opencode/config.json";

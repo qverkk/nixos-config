@@ -42,20 +42,20 @@ in
       windsurf
     ]
     ++ lib.optionals isLinux [
-    # jetbrains.webstorm
+      # jetbrains.webstorm
       windsurf.fhs
-    # antigravity
-    # cursor
+      # antigravity
+      # cursor
       claude-code
       codex-cli
       ccusage
       rtk
       copilot-cli
       openspec
-    # jetbrains.idea-community
+      # jetbrains.idea-community
       vscode.fhs
       zed-editor-fhs
-    # leetcode-cli
-    # gitbutler
+      # leetcode-cli
+      # gitbutler
     ];
 }

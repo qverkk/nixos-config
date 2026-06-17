@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
-  home.packages = with pkgs; [ gimp ];
+  home.packages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [ pkgs.gimp ];
 }

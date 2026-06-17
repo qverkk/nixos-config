@@ -60,89 +60,89 @@ in
     extraPackages =
       with pkgs;
       [
-      # sg
-      # sg.package
+        # sg
+        # sg.package
 
-      # linters
-      ## lua
-      selene
-      stylua
+        # linters
+        ## lua
+        selene
+        stylua
 
-      ## nix
-      deadnix
-      statix
-      # alejandra
-      nixfmt
+        ## nix
+        deadnix
+        statix
+        # alejandra
+        nixfmt
 
-      ## java
-      checkstyle
-      google-java-format
+        ## java
+        checkstyle
+        google-java-format
 
-      ## html, xml
-      html-tidy
+        ## html, xml
+        html-tidy
 
-      ## Dockerfile
-      hadolint
+        ## Dockerfile
+        hadolint
 
-      ## Shell
-      shellcheck
-      beautysh
+        ## Shell
+        shellcheck
+        beautysh
 
-      ## rustfmt
-      rustfmt
+        ## rustfmt
+        rustfmt
 
-      ## toml
-      taplo
+        ## toml
+        taplo
 
-      ### TODO: Possibly add this to nixpkgs
-      ## groovy, jenkinsfile
-      npm-groovy-lint
+        ### TODO: Possibly add this to nixpkgs
+        ## groovy, jenkinsfile
+        npm-groovy-lint
 
-      # language specific colors
-      tree-sitter
-      tree-sitter-grammars.tree-sitter-javascript
-      tree-sitter-grammars.tree-sitter-jsdoc
-      tree-sitter-grammars.tree-sitter-json
-      tree-sitter-grammars.tree-sitter-nix
-      tree-sitter-grammars.tree-sitter-lua
-      tree-sitter-grammars.tree-sitter-typescript
-      tree-sitter-grammars.tree-sitter-rust
-      tree-sitter-grammars.tree-sitter-java
-      tree-sitter-grammars.tree-sitter-kotlin
-      tree-sitter-grammars.tree-sitter-svelte
-      tree-sitter-grammars.tree-sitter-http
-      tree-sitter-grammars.tree-sitter-groovy
+        # language specific colors
+        tree-sitter
+        tree-sitter-grammars.tree-sitter-javascript
+        tree-sitter-grammars.tree-sitter-jsdoc
+        tree-sitter-grammars.tree-sitter-json
+        tree-sitter-grammars.tree-sitter-nix
+        tree-sitter-grammars.tree-sitter-lua
+        tree-sitter-grammars.tree-sitter-typescript
+        tree-sitter-grammars.tree-sitter-rust
+        tree-sitter-grammars.tree-sitter-java
+        tree-sitter-grammars.tree-sitter-kotlin
+        tree-sitter-grammars.tree-sitter-svelte
+        tree-sitter-grammars.tree-sitter-http
+        tree-sitter-grammars.tree-sitter-groovy
 
-      # typescript
-      typescript
-      # typescript-language-server
+        # typescript
+        typescript
+        # typescript-language-server
 
-      # prettier formatting
-      prettier
+        # prettier formatting
+        prettier
 
-      # docker
-      dockerfile-language-server
-      docker-compose-language-service
+        # docker
+        dockerfile-language-server
+        docker-compose-language-service
 
-      # lua
-      lua-language-server
+        # lua
+        lua-language-server
 
-      # svelte
-      svelte-language-server
+        # svelte
+        svelte-language-server
 
-      # nix
-      nixd
+        # nix
+        nixd
 
-      # Java
-      jdt-ls
-      vscode-extensions.vscjava.vscode-java-test
-      vscode-extensions.vscjava.vscode-java-debug
+        # Java
+        jdt-ls
+        vscode-extensions.vscjava.vscode-java-test
+        vscode-extensions.vscjava.vscode-java-debug
 
-      # bash
-      bash-language-server
+        # bash
+        bash-language-server
 
-      # rust
-      rust-analyzer
+        # rust
+        rust-analyzer
       ]
       ++ lib.optionals isDarwin [
         # kotlin
