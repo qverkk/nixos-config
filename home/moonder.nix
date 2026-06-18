@@ -20,6 +20,7 @@
     ../modules/programs/general/home/starship/home.nix
     ../modules/programs/general/home/system-utilities/home.nix
     ../modules/programs/general/home/video/home.nix
+    ../modules/programs/general/zen-browser
     ../modules/programs/general/zsh/home.nix
     ../modules/programs/social/messaging/home.nix
     ../modules/programs/social/thunderbird/home.nix
@@ -31,12 +32,18 @@
     experimental-features = nix-command flakes
   '';
 
+  targets.darwin.copyApps = {
+    enable = true;
+    directory = "Applications/Home Manager Apps";
+  };
+
   home = {
     username = "qverkk";
     homeDirectory = "/Users/qverkk";
     stateVersion = "26.11";
 
     packages = with pkgs; [
+      brave
       jq
       tree
       wget
