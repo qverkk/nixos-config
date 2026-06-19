@@ -8,15 +8,13 @@ let
     theme = "Dark Pastel";
   };
 
-  configText = ''
-    keybind = global:ctrl+u=toggle_quick_terminal
-    macos-option-as-alt = true
-  ''
-  + lib.concatStringsSep "" (
-    lib.mapAttrsToList (name: value: ''
-      ${name} = ${toString value}
-    '') settings
-  );
+  configText =
+    builtins.readFile ./config
+    + lib.concatStringsSep "" (
+      lib.mapAttrsToList (name: value: ''
+        ${name} = ${toString value}
+      '') settings
+    );
 in
 {
   config = lib.mkMerge [
@@ -34,6 +32,8 @@ in
     })
 
     (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+      home.packages = [ pkgs.ghostty-bin ];
+
       home.file."Library/Application Support/com.mitchellh.ghostty/config".text = configText;
     })
   ];

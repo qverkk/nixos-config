@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   fonts.fontconfig.enable = true;
   home.packages = [
@@ -10,9 +10,11 @@
     pkgs.noto-fonts-color-emoji
     pkgs.noto-fonts-cjk-sans
     pkgs.font-awesome
-    pkgs.symbola
     pkgs.material-icons
     pkgs.fira-code
     pkgs.fira-code-symbols
+  ]
+  ++ lib.optionals pkgs.stdenv.isLinux [
+    pkgs.symbola
   ];
 }

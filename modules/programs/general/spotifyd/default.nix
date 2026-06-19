@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
-  services.spotifyd = {
+  services.spotifyd = lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
     settings = {
       global = {
