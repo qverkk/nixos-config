@@ -78,6 +78,14 @@
     ];
   };
 
+  homebrew = {
+    enable = true;
+    brews = [ "mas" ];
+    masApps = {
+      WireGuard = 1451685025;
+    };
+  };
+
   system = {
     primaryUser = "qverkk";
     stateVersion = 6;

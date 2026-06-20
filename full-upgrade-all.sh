@@ -11,5 +11,5 @@ SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 (cd "$SCRIPT_DIR/overlays/copilot-cli" && ./update.sh)
 (cd "$SCRIPT_DIR/overlays/jdt-ls" && ./update.sh)
 (cd "$SCRIPT_DIR/overlays/rtk" && ./update.sh)
-
+#
 (cd "$SCRIPT_DIR" && ./full-upgrade.sh)

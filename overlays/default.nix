@@ -45,7 +45,7 @@ _self: super: {
         inherit rev;
         hash =
           if super.stdenv.hostPlatform.isDarwin then
-            "sha256-CJ8dvzGzJp5sgaNJYHwxRc1xK9bWA8zyTmDFi4wTI3o="
+            "sha256-tpBydRbrJ+4QxmkGUt/BhME8q6ysCW/CXrsNshYgqDU="
           else
             "sha256-Y+8gz+NfFSb4dysjho4CCaQpx012vvajnptfd3cdh/k=";
       };
