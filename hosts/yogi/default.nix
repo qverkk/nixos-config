@@ -38,6 +38,7 @@ in
     ../../modules/programs/general/caddy
     ../../modules/programs/general/brave
     ../../modules/programs/general/kdeconnect
+    ../../modules/programs/general/localsend
     # this is different
     ../../modules/programs/gaming
   ];

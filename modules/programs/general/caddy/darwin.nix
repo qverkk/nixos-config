@@ -1,52 +1,37 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 let
-  caddyRootCertificate = "/var/lib/caddy-localhost-proxies/pki/authorities/local/root.crt";
-
   caddyConfig = pkgs.writeText "Caddyfile-localhost-proxies" ''
-    {
-    	storage file_system /var/lib/caddy-localhost-proxies
-    }
+        {
+        	storage file_system /var/lib/caddy-localhost-proxies
+        }
 
-    full-text-rss.localhost {
-    	tls internal
-    	reverse_proxy 127.0.0.1:9907
-    }
+        full-text-rss.localhost {
+    		bind 127.0.0.1
+        	tls internal
+        	reverse_proxy 127.0.0.1:9907
+        }
 
-    wallabag.localhost {
-    	tls internal
-    	reverse_proxy 127.0.0.1:9908
-    }
+        wallabag.localhost {
+    		bind 127.0.0.1
+        	tls internal
+        	reverse_proxy 127.0.0.1:9908
+        }
 
-    syncthing.localhost {
-    	tls internal
-    	reverse_proxy 127.0.0.1:8384
-    }
+        syncthing.localhost {
+    		bind 127.0.0.1
+        	tls internal
+        	reverse_proxy 127.0.0.1:8384
+        }
 
-    freshrss.localhost {
-    	tls internal
-    	reverse_proxy freshrss.local
-    }
+        freshrss.localhost {
+    		bind 127.0.0.1
+        	tls internal
+        	reverse_proxy freshrss.local
+        }
   '';
 in
 {
   environment.systemPackages = [ pkgs.caddy ];
-
-  system.activationScripts.postActivation.text = lib.mkAfter ''
-    caddy_root_cert=${caddyRootCertificate}
-    system_keychain=/Library/Keychains/System.keychain
-
-    if [ -r "$caddy_root_cert" ]; then
-      echo "Trusting Caddy localhost root CA in the System keychain..."
-      /usr/bin/security add-trusted-cert \
-        -d \
-        -r trustRoot \
-        -p ssl \
-        -k "$system_keychain" \
-        "$caddy_root_cert"
-    else
-      echo "Caddy localhost root CA does not exist yet; visit a Caddy localhost site, then rerun darwin-rebuild switch."
-    fi
-  '';
 
   launchd.daemons.caddy-localhost-proxies = {
     environment = {

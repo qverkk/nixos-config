@@ -35,6 +35,7 @@
     ../../modules/programs/general/freshrss
     ../../modules/programs/general/brave
     ../../modules/programs/general/kdeconnect
+    ../../modules/programs/general/localsend
     # this is different
     ../../modules/programs/gaming
   ];

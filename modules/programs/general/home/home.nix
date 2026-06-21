@@ -5,6 +5,7 @@
   ./direnv/home.nix
   ./devenv/home.nix
   ./keepassxc/home.nix
+  ./localsend/home.nix
   # ./syncthing.nix
   ./kitty/home.nix
   # ./ghostty/home.nix
