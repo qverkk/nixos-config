@@ -47,7 +47,7 @@ _self: super: {
           if super.stdenv.hostPlatform.isDarwin then
             "sha256-tpBydRbrJ+4QxmkGUt/BhME8q6ysCW/CXrsNshYgqDU="
           else
-            "sha256-Y+8gz+NfFSb4dysjho4CCaQpx012vvajnptfd3cdh/k=";
+            "sha256-LOxTad/iCquvJyonFOcz6/rDTPNDmwyBnykhWZJ5GC4=";
       };
       base = super.callPackage "${src}/nix/opencode.nix" { inherit node_modules; };
       # END WORKAROUND
