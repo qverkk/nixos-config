@@ -5,11 +5,14 @@
   ...
 }:
 {
-  home.packages = lib.optionals (builtins.elem hostName [
-    "moonder"
-    "yogi"
-    "nixos"
-  ]) [
-    pkgs.localsend
-  ];
+  home.packages =
+    lib.optionals
+      (builtins.elem hostName [
+        "moonder"
+        "yogi"
+        "nixos"
+      ])
+      [
+        pkgs.localsend
+      ];
 }

@@ -9,6 +9,7 @@
     inputs.agenix.darwinModules.default
     ../../modules/programs/general/caddy/darwin.nix
     ../../modules/programs/general/tailscale/darwin.nix
+    ../../modules/programs/development/podman/darwin.nix
   ];
 
   networking = {
