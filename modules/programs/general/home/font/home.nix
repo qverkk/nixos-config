@@ -7,8 +7,6 @@
     pkgs.nerd-fonts.symbols-only
     pkgs.cascadia-code
 
-    pkgs.noto-fonts-color-emoji
-    pkgs.noto-fonts-cjk-sans
     pkgs.font-awesome
     pkgs.material-icons
     pkgs.fira-code

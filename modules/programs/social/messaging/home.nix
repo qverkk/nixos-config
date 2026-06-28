@@ -1,8 +1,17 @@
 { pkgs, ... }:
+let
+  signal-desktop =
+    if pkgs.stdenv.isDarwin then
+      pkgs.signal-desktop.override {
+        withAppleEmojis = true;
+      }
+    else
+      pkgs.signal-desktop;
+in
 {
-  home.packages = with pkgs; [
+  home.packages = [
     signal-desktop
-    telegram-desktop
-    discord
+    pkgs.telegram-desktop
+    pkgs.discord
   ];
 }
