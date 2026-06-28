@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  home = "/Users/qverkk";
+in
 {
   imports = [
     ../modules/programs/general/home/ghostty/home.nix
@@ -21,8 +24,14 @@
 
   home = {
     username = "qverkk";
-    homeDirectory = "/Users/qverkk";
+    homeDirectory = home;
     stateVersion = "26.11";
+    sessionPath = [
+      "/opt/homebrew/bin"
+      "/opt/homebrew/sbin"
+      "/usr/local/bin"
+      "/usr/local/sbin"
+    ];
 
     packages = with pkgs; [
       brave

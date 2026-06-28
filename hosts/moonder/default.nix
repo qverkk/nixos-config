@@ -71,12 +71,6 @@
 
   environment = {
     shells = [ pkgs.zsh ];
-    systemPath = [
-      "/opt/homebrew/bin"
-      "/opt/homebrew/sbin"
-      "/usr/local/bin"
-      "/usr/local/sbin"
-    ];
     systemPackages = with pkgs; [
       fd
       fzf
