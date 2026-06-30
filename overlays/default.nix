@@ -5,16 +5,6 @@ _self: super: {
   rofi-collection = super.callPackage ./rofi-collection { };
   npm-groovy-lint = super.callPackage ./npm-groovy-lint { };
   ghostty = inputs.ghostty.packages.${super.stdenv.hostPlatform.system}.default;
-  openspec =
-    let
-      base = inputs.openspec.packages.${super.stdenv.hostPlatform.system}.default;
-      filterNodejs = pkg: !(super.lib.strings.hasPrefix "nodejs-20" pkg.name or "");
-    in
-    base.overrideAttrs (oldAttrs: {
-      nativeBuildInputs = (super.lib.filter filterNodejs (oldAttrs.nativeBuildInputs or [ ])) ++ [
-        super.nodejs_22
-      ];
-    });
   windsurf =
     if super.stdenv.hostPlatform.isLinux then super.callPackage ./windsurf { } else super.windsurf;
   cursor = super.callPackage ./cursor { };
